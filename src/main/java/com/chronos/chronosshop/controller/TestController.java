@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TestController {
     @RequestMapping("/hello")
     public String index() {
-        return "index";
+        return "page/home-page";
     }
+
+    @RequestMapping("/login")
+    public String login() {return "page/login-page";};
+
+
 }
