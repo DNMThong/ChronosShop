@@ -15,4 +15,9 @@ public class TestController {
     public String productItem() {
         return "page/ProductItem";
     }
+
+    @RequestMapping("/login")
+    public String login() {return "page/login-page";};
+
+
 }
