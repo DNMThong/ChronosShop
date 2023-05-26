@@ -1,4 +1,3 @@
-
 const splide = new Splide(".splide", {
     type: "loop",
     speed: 150,
