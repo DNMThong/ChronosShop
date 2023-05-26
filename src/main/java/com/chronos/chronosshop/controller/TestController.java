@@ -2,18 +2,17 @@ package com.chronos.chronosshop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TestController {
-    @RequestMapping("/hello")
+    @RequestMapping("/")
     public String index() {
-        return "index";
+        return "page/home-page";
     }
 
     @RequestMapping("/productItem")
     public String productItem() {
-        return "page/ProductItem";
+        return "page/productItem";
     }
 
     @RequestMapping("/login")
@@ -48,7 +47,6 @@ public class TestController {
         return "admin/brandlist";
     }
 
-    //    t----t
     @RequestMapping("/activities")
     public String activities() {
         return "admin/activities";
