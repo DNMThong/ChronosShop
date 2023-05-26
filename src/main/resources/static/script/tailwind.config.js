@@ -8,5 +8,3 @@ tailwind.config = {
         }
     }
 }
-
-console.log("abc")

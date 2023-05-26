@@ -10,4 +10,9 @@ public class TestController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping("/productItem")
+    public String productItem() {
+        return "page/ProductItem";
+    }
 }
