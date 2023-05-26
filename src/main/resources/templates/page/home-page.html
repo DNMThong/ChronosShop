@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="component/html-head">
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="~{component/html-head :: headTitle('Trang chủ')}"></head>
 <body>
-<header th:replace="component/header"></header>
+<header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
 
 
 <!--    Slider  -->
-<div class="lg:container">
+<div class="container">
     <div class="relative flex flex-nowrap items-stretch overflow-auto">
         <div class="relative w-full flex-shrink-0">
             <div>
@@ -52,13 +49,13 @@
     </div>
 </div>
 <!--    Banner  -->
-<div class="lg:container">
+<div class="container">
     <div class="bg-no-repeat bg-contain h-[300px] bg-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/banner-home-khuyen-mai.png?1684398883028')]"></div>
 </div>
 
 
 <!--    Collection  -->
-<div class="lg:container">
+<div class="container">
     <div class="w-full relative after:content-[''] after:absolute after:w-full after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-primary after:rounded-md after:mt-2 ">
         <h2 class="font-bold uppercase">Bộ sưu tập</h2>
         <div class="mt-3 flex items-center">
@@ -86,7 +83,7 @@
 
 <!--    Collection Link  -->
 
-<div class="lg:container mt-5">
+<div class="container mt-5">
     <div class="flex items-center justify-center gap-10">
         <div class="px-4 py-1.5 border-2 border-transparent border-b-primary w-full max-w-[150px] text-center cursor-pointer active hover:text-primary">
             <h5 class="text-center font-medium text-lg text-primary">Nữ</h5>
@@ -128,7 +125,7 @@
 
 
 <!--    List Product With Content   -->
-<div class="lg:container grid grid-cols-5 gap-x-5 gap-y-3 h-[550px] mt-5 mb-[100px]">
+<div class="container grid grid-cols-5 gap-x-5 gap-y-3 h-[550px] mt-5 mb-[100px]">
     <h3 class="col-span-5">Best</h3>
     <div class="h-full">
         <img
@@ -332,6 +329,6 @@
     </div>
 </div>
 
-<footer th:replace="component/footer"></footer>
+<footer th:replace="~{component/footer :: footer}"></footer>
 </body>
 </html>
