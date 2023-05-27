@@ -34,10 +34,10 @@
     <div class="header">
 
         <div class="header-left active">
-            <a th:href="@{/index}" class="logo">
+            <a th:href="@{/admin/index}" class="logo">
                 <img th:src="@{/assets/admin/img/logo.png}" alt="">
             </a>
-            <a th:href="@{/index}" class="logo-small">
+            <a th:href="@{/admin/index}" class="logo-small">
                 <img th:src="@{/assets/admin/img/logo-small.png}" alt="">
             </a>
             <a id="toggle_btn" href="javascript:void(0);">
@@ -105,7 +105,7 @@
                     <div class="noti-content">
                         <ul class="notification-list">
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
 <span class="avatar flex-shrink-0">
 <img alt="" th:src="@{/assets/admin/img/profiles/avatar-02.jpg}">
@@ -118,7 +118,7 @@
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
 <span class="avatar flex-shrink-0">
 <img alt="" th:src="@{/assets/admin/img/profiles/avatar-03.jpg}">
@@ -131,7 +131,7 @@
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
 <span class="avatar flex-shrink-0">
 <img alt="" th:src="@{/assets/admin/img/profiles/avatar-06.jpg}">
@@ -144,7 +144,7 @@
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
 <span class="avatar flex-shrink-0">
 <img alt="" th:src="@{/assets/admin/img/profiles/avatar-17.jpg}">
@@ -157,7 +157,7 @@
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
 <span class="avatar flex-shrink-0">
 <img alt="" th:src="@{/assets/admin/img/profiles/avatar-13.jpg}">
@@ -172,7 +172,7 @@
                         </ul>
                     </div>
                     <div class="topnav-dropdown-footer">
-                        <a th:href="@{/activities}">View all Notifications</a>
+                        <a th:href="@{/admin/activities}">View all Notifications</a>
                     </div>
                 </div>
             </li>
@@ -193,10 +193,10 @@
                             </div>
                         </div>
                         <hr class="m-0">
-                        <a class="dropdown-item" th:href="@{/profile}"> <i class="me-2" data-feather="user"></i> My Profile</a>
-                        <a class="dropdown-item" th:href="@{/generalsettings}"><i class="me-2" data-feather="settings"></i>Settings</a>
+                        <a class="dropdown-item" th:href="@{/admin/profile}"> <i class="me-2" data-feather="user"></i> My Profile</a>
+                        <a class="dropdown-item" th:href="@{/admin/generalsettings}"><i class="me-2" data-feather="settings"></i>Settings</a>
                         <hr class="m-0">
-                        <a class="dropdown-item logout pb-0" th:href="@{/signin}"><img th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img">Logout</a>
+                        <a class="dropdown-item logout pb-0" th:href="@{/admin/signin}"><img th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img">Logout</a>
                     </div>
                 </div>
             </li>
@@ -206,9 +206,9 @@
         <div class="dropdown mobile-user-menu">
             <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" th:href="@{/profile}">My Profile</a>
-                <a class="dropdown-item" th:href="@{/generalsettings}">Settings</a>
-                <a class="dropdown-item" th:href="@{/signin}">Logout</a>
+                <a class="dropdown-item" th:href="@{/admin/profile}">My Profile</a>
+                <a class="dropdown-item" th:href="@{/admin/generalsettings}">Settings</a>
+                <a class="dropdown-item" th:href="@{/admin/signin}">Logout</a>
             </div>
         </div>
 
@@ -220,212 +220,212 @@
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
                     <li>
-                        <a th:href="@{/index}"><img th:src="@{/assets/admin/img/icons/dashboard.svg}" alt="img"><span> Dashboard</span> </a>
+                        <a th:href="@{/admin/index}"><img th:src="@{/assets/admin/img/icons/dashboard.svg}" alt="img"><span> Dashboard</span> </a>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img"><span> Product</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/productlist}">Product List</a></li>
-                            <li><a th:href="@{/addproduct}">Add Product</a></li>
-                            <li><a th:href="@{/categorylist}">Category List</a></li>
-                            <li><a th:href="@{/addcategory}">Add Category</a></li>
-                            <li><a th:href="@{/subcategorylist}">Sub Category List</a></li>
-                            <li><a th:href="@{/subaddcategory}">Add Sub Category</a></li>
-                            <li><a th:href="@{/brandlist}">Brand List</a></li>
-                            <li><a th:href="@{/addbrand}">Add Brand</a></li>
-                            <li><a th:href="@{/importproduct}">Import Products</a></li>
-                            <li><a th:href="@{/barcode}">Print Barcode</a></li>
+                            <li><a th:href="@{/admin/productlist}">Product List</a></li>
+                            <li><a th:href="@{/admin/addproduct}">Add Product</a></li>
+                            <li><a th:href="@{/admin/categorylist}">Category List</a></li>
+                            <li><a th:href="@{/admin/addcategory}">Add Category</a></li>
+                            <li><a th:href="@{/admin/subcategorylist}">Sub Category List</a></li>
+                            <li><a th:href="@{/admin/subaddcategory}">Add Sub Category</a></li>
+                            <li><a th:href="@{/admin/brandlist}">Brand List</a></li>
+                            <li><a th:href="@{/admin/addbrand}">Add Brand</a></li>
+                            <li><a th:href="@{/admin/importproduct}">Import Products</a></li>
+                            <li><a th:href="@{/admin/barcode}">Print Barcode</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/sales1.svg}" alt="img"><span> Sales</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/saleslist}">Sales List</a></li>
-                            <li><a th:href="@{/pos}">POS</a></li>
-                            <li><a th:href="@{/pos}">New Sales</a></li>
-                            <li><a th:href="@{/salesreturnlists}">Sales Return List</a></li>
-                            <li><a th:href="@{/createsalesreturns}">New Sales Return</a></li>
+                            <li><a th:href="@{/admin/saleslist}">Sales List</a></li>
+                            <li><a th:href="@{/admin/pos}">POS</a></li>
+                            <li><a th:href="@{/admin/pos}">New Sales</a></li>
+                            <li><a th:href="@{/admin/salesreturnlists}">Sales Return List</a></li>
+                            <li><a th:href="@{/admin/createsalesreturns}">New Sales Return</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/purchase1.svg}" alt="img"><span> Purchase</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/purchaselist}">Purchase List</a></li>
-                            <li><a th:href="@{/addpurchase}">Add Purchase</a></li>
-                            <li><a th:href="@{/importpurchase}">Import Purchase</a></li>
+                            <li><a th:href="@{/admin/purchaselist}">Purchase List</a></li>
+                            <li><a th:href="@{/admin/addpurchase}">Add Purchase</a></li>
+                            <li><a th:href="@{/admin/importpurchase}">Import Purchase</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/expense1.svg}" alt="img"><span> Expense</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/expenselist}">Expense List</a></li>
-                            <li><a th:href="@{/createexpense}">Add Expense</a></li>
-                            <li><a th:href="@{/expensecategory}">Expense Category</a></li>
+                            <li><a th:href="@{/admin/expenselist}">Expense List</a></li>
+                            <li><a th:href="@{/admin/createexpense}">Add Expense</a></li>
+                            <li><a th:href="@{/admin/expensecategory}">Expense Category</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/quotation1.svg}" alt="img"><span> Quotation</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/quotationList}">Quotation List</a></li>
-                            <li><a th:href="@{/addquotation}">Add Quotation</a></li>
+                            <li><a th:href="@{/admin/quotationList}">Quotation List</a></li>
+                            <li><a th:href="@{/admin/addquotation}">Add Quotation</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/transfer1.svg}" alt="img"><span> Transfer</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/transferlist}">Transfer List</a></li>
-                            <li><a th:href="@{/addtransfer}">Add Transfer </a></li>
-                            <li><a th:href="@{/importtransfer}">Import Transfer </a></li>
+                            <li><a th:href="@{/admin/transferlist}">Transfer List</a></li>
+                            <li><a th:href="@{/admin/addtransfer}">Add Transfer </a></li>
+                            <li><a th:href="@{/admin/importtransfer}">Import Transfer </a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/return1.svg}" alt="img"><span> Return</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/salesreturnlist}">Sales Return List</a></li>
-                            <li><a th:href="@{/createsalesreturn}">Add Sales Return </a></li>
-                            <li><a th:href="@{/purchasereturnlist}">Purchase Return List</a></li>
-                            <li><a th:href="@{/createpurchasereturn}">Add Purchase Return </a></li>
+                            <li><a th:href="@{/admin/salesreturnlist}">Sales Return List</a></li>
+                            <li><a th:href="@{/admin/createsalesreturn}">Add Sales Return </a></li>
+                            <li><a th:href="@{/admin/purchasereturnlist}">Purchase Return List</a></li>
+                            <li><a th:href="@{/admin/createpurchasereturn}">Add Purchase Return </a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img"><span> People</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/customerlist}">Customer List</a></li>
-                            <li><a th:href="@{/addcustomer}" class="active">Add Customer </a></li>
-                            <li><a th:href="@{/supplierlist}">Supplier List</a></li>
-                            <li><a th:href="@{/addsupplier}">Add Supplier </a></li>
-                            <li><a th:href="@{/userlist}">User List</a></li>
-                            <li><a th:href="@{/adduser}">Add User</a></li>
-                            <li><a th:href="@{/storelist}">Store List</a></li>
-                            <li><a th:href="@{/addstore}">Add Store</a></li>
+                            <li><a th:href="@{/admin/customerlist}">Customer List</a></li>
+                            <li><a th:href="@{/admin/addcustomer}" class="active">Add Customer </a></li>
+                            <li><a th:href="@{/admin/supplierlist}">Supplier List</a></li>
+                            <li><a th:href="@{/admin/addsupplier}">Add Supplier </a></li>
+                            <li><a th:href="@{/admin/userlist}">User List</a></li>
+                            <li><a th:href="@{/admin/adduser}">Add User</a></li>
+                            <li><a th:href="@{/admin/storelist}">Store List</a></li>
+                            <li><a th:href="@{/admin/addstore}">Add Store</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/places.svg}" alt="img"><span> Places</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/newcountry}">New Country</a></li>
-                            <li><a th:href="@{/countrieslist}">Countries list</a></li>
-                            <li><a th:href="@{/newstate}">New State </a></li>
-                            <li><a th:href="@{/statelist}">State list</a></li>
+                            <li><a th:href="@{/admin/newcountry}">New Country</a></li>
+                            <li><a th:href="@{/admin/countrieslist}">Countries list</a></li>
+                            <li><a th:href="@{/admin/newstate}">New State </a></li>
+                            <li><a th:href="@{/admin/statelist}">State list</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a th:href="@{/components}"><i data-feather="layers"></i><span> Components</span> </a>
+                        <a th:href="@{/admin/components}"><i data-feather="layers"></i><span> Components</span> </a>
                     </li>
                     <li>
-                        <a th:href="@{/blankpage}"><i data-feather="file"></i><span> Blank Page</span> </a>
+                        <a th:href="@{/admin/blankpage}"><i data-feather="file"></i><span> Blank Page</span> </a>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><i data-feather="alert-octagon"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/error-404}">404 Error </a></li>
-                            <li><a th:href="@{/error-500}">500 Error </a></li>
+                            <li><a th:href="@{/admin/error-404}">404 Error </a></li>
+                            <li><a th:href="@{/admin/error-500}">500 Error </a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><i data-feather="box"></i> <span>Elements </span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/sweetalerts}">Sweet Alerts</a></li>
-                            <li><a th:href="@{/tooltip}">Tooltip</a></li>
-                            <li><a th:href="@{/popover}">Popover</a></li>
-                            <li><a th:href="@{/ribbon}">Ribbon</a></li>
-                            <li><a th:href="@{/clipboard}">Clipboard</a></li>
-                            <li><a th:href="@{/drag-drop}">Drag & Drop</a></li>
-                            <li><a th:href="@{/rangeslider}">Range Slider</a></li>
-                            <li><a th:href="@{/rating}">Rating</a></li>
-                            <li><a th:href="@{/toastr}">Toastr</a></li>
-                            <li><a th:href="@{/text-editor}">Text Editor</a></li>
-                            <li><a th:href="@{/counter}">Counter</a></li>
-                            <li><a th:href="@{/scrollbar}">Scrollbar</a></li>
-                            <li><a th:href="@{/spinner}">Spinner</a></li>
-                            <li><a th:href="@{/notification}">Notification</a></li>
-                            <li><a th:href="@{/lightbox}">Lightbox</a></li>
-                            <li><a th:href="@{/stickynote}">Sticky Note</a></li>
-                            <li><a th:href="@{/timeline}">Timeline</a></li>
-                            <li><a th:href="@{/form-wizard}">Form Wizard</a></li>
+                            <li><a th:href="@{/admin/sweetalerts}">Sweet Alerts</a></li>
+                            <li><a th:href="@{/admin/tooltip}">Tooltip</a></li>
+                            <li><a th:href="@{/admin/popover}">Popover</a></li>
+                            <li><a th:href="@{/admin/ribbon}">Ribbon</a></li>
+                            <li><a th:href="@{/admin/clipboard}">Clipboard</a></li>
+                            <li><a th:href="@{/admin/drag-drop}">Drag & Drop</a></li>
+                            <li><a th:href="@{/admin/rangeslider}">Range Slider</a></li>
+                            <li><a th:href="@{/admin/rating}">Rating</a></li>
+                            <li><a th:href="@{/admin/toastr}">Toastr</a></li>
+                            <li><a th:href="@{/admin/text-editor}">Text Editor</a></li>
+                            <li><a th:href="@{/admin/counter}">Counter</a></li>
+                            <li><a th:href="@{/admin/scrollbar}">Scrollbar</a></li>
+                            <li><a th:href="@{/admin/spinner}">Spinner</a></li>
+                            <li><a th:href="@{/admin/notification}">Notification</a></li>
+                            <li><a th:href="@{/admin/lightbox}">Lightbox</a></li>
+                            <li><a th:href="@{/admin/stickynote}">Sticky Note</a></li>
+                            <li><a th:href="@{/admin/timeline}">Timeline</a></li>
+                            <li><a th:href="@{/admin/form-wizard}">Form Wizard</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><i data-feather="bar-chart-2"></i> <span> Charts </span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/chart-apex}">Apex Charts</a></li>
-                            <li><a th:href="@{/chart-js}">Chart Js</a></li>
-                            <li><a th:href="@{/chart-morris}">Morris Charts</a></li>
-                            <li><a th:href="@{/chart-flot}">Flot Charts</a></li>
-                            <li><a th:href="@{/chart-peity}">Peity Charts</a></li>
+                            <li><a th:href="@{/admin/chart-apex}">Apex Charts</a></li>
+                            <li><a th:href="@{/admin/chart-js}">Chart Js</a></li>
+                            <li><a th:href="@{/admin/chart-morris}">Morris Charts</a></li>
+                            <li><a th:href="@{/admin/chart-flot}">Flot Charts</a></li>
+                            <li><a th:href="@{/admin/chart-peity}">Peity Charts</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><i data-feather="award"></i><span> Icons </span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/icon-fontawesome}">Fontawesome Icons</a></li>
-                            <li><a th:href="@{/icon-feather}">Feather Icons</a></li>
-                            <li><a th:href="@{/icon-ionic}">Ionic Icons</a></li>
-                            <li><a th:href="@{/icon-material}">Material Icons</a></li>
-                            <li><a th:href="@{/icon-pe7}">Pe7 Icons</a></li>
-                            <li><a th:href="@{/icon-simpleline}">Simpleline Icons</a></li>
-                            <li><a th:href="@{/icon-themify}">Themify Icons</a></li>
-                            <li><a th:href="@{/icon-weather}">Weather Icons</a></li>
-                            <li><a th:href="@{/icon-typicon}">Typicon Icons</a></li>
-                            <li><a th:href="@{/icon-flag}">Flag Icons</a></li>
+                            <li><a th:href="@{/admin/icon-fontawesome}">Fontawesome Icons</a></li>
+                            <li><a th:href="@{/admin/icon-feather}">Feather Icons</a></li>
+                            <li><a th:href="@{/admin/icon-ionic}">Ionic Icons</a></li>
+                            <li><a th:href="@{/admin/icon-material}">Material Icons</a></li>
+                            <li><a th:href="@{/admin/icon-pe7}">Pe7 Icons</a></li>
+                            <li><a th:href="@{/admin/icon-simpleline}">Simpleline Icons</a></li>
+                            <li><a th:href="@{/admin/icon-themify}">Themify Icons</a></li>
+                            <li><a th:href="@{/admin/icon-weather}">Weather Icons</a></li>
+                            <li><a th:href="@{/admin/icon-typicon}">Typicon Icons</a></li>
+                            <li><a th:href="@{/admin/icon-flag}">Flag Icons</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/form-basic-inputs}">Basic Inputs </a></li>
-                            <li><a th:href="@{/form-input-groups}">Input Groups </a></li>
-                            <li><a th:href="@{/form-horizontal}">Horizontal Form </a></li>
-                            <li><a th:href="@{/form-vertical}"> Vertical Form </a></li>
-                            <li><a th:href="@{/form-mask}">Form Mask </a></li>
-                            <li><a th:href="@{/form-validation}">Form Validation </a></li>
-                            <li><a th:href="@{/form-select2}">Form Select2 </a></li>
-                            <li><a th:href="@{/form-fileupload}">File Upload </a></li>
+                            <li><a th:href="@{/admin/form-basic-inputs}">Basic Inputs </a></li>
+                            <li><a th:href="@{/admin/form-input-groups}">Input Groups </a></li>
+                            <li><a th:href="@{/admin/form-horizontal}">Horizontal Form </a></li>
+                            <li><a th:href="@{/admin/form-vertical}"> Vertical Form </a></li>
+                            <li><a th:href="@{/admin/form-mask}">Form Mask </a></li>
+                            <li><a th:href="@{/admin/form-validation}">Form Validation </a></li>
+                            <li><a th:href="@{/admin/form-select2}">Form Select2 </a></li>
+                            <li><a th:href="@{/admin/form-fileupload}">File Upload </a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><i data-feather="layout"></i> <span> Table </span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/tables-basic}">Basic Tables </a></li>
-                            <li><a th:href="@{/data-tables}">Data Table </a></li>
+                            <li><a th:href="@{/admin/tables-basic}">Basic Tables </a></li>
+                            <li><a th:href="@{/admin/data-tables}">Data Table </a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img"><span> Application</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/chat}">Chat</a></li>
-                            <li><a th:href="@{/calendar}">Calendar</a></li>
-                            <li><a th:href="@{/email}">Email</a></li>
+                            <li><a th:href="@{/admin/chat}">Chat</a></li>
+                            <li><a th:href="@{/admin/calendar}">Calendar</a></li>
+                            <li><a th:href="@{/admin/email}">Email</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/time.svg}" alt="img"><span> Report</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/purchaseorderreport}">Purchase order report</a></li>
-                            <li><a th:href="@{/inventoryreport}">Inventory Report</a></li>
-                            <li><a th:href="@{/salesreport}">Sales Report</a></li>
-                            <li><a th:href="@{/invoicereport}">Invoice Report</a></li>
-                            <li><a th:href="@{/purchasereport}">Purchase Report</a></li>
-                            <li><a th:href="@{/supplierreport}">Supplier Report</a></li>
-                            <li><a th:href="@{/customerreport}">Customer Report</a></li>
+                            <li><a th:href="@{/admin/purchaseorderreport}">Purchase order report</a></li>
+                            <li><a th:href="@{/admin/inventoryreport}">Inventory Report</a></li>
+                            <li><a th:href="@{/admin/salesreport}">Sales Report</a></li>
+                            <li><a th:href="@{/admin/invoicereport}">Invoice Report</a></li>
+                            <li><a th:href="@{/admin/purchasereport}">Purchase Report</a></li>
+                            <li><a th:href="@{/admin/supplierreport}">Supplier Report</a></li>
+                            <li><a th:href="@{/admin/customerreport}">Customer Report</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img"><span> Users</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/newuser}">New User </a></li>
-                            <li><a th:href="@{/userlists}">Users List</a></li>
+                            <li><a th:href="@{/admin/newuser}">New User </a></li>
+                            <li><a th:href="@{/admin/userlists}">Users List</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/settings.svg}" alt="img"><span> Settings</span> <span class="menu-arrow"></span></a>
                         <ul>
-                            <li><a th:href="@{/generalsettings}">General Settings</a></li>
-                            <li><a th:href="@{/emailsettings}">Email Settings</a></li>
-                            <li><a th:href="@{/paymentsettings}">Payment Settings</a></li>
-                            <li><a th:href="@{/currencysettings}">Currency Settings</a></li>
-                            <li><a th:href="@{/grouppermissions}">Group Permissions</a></li>
-                            <li><a th:href="@{/taxrates}">Tax Rates</a></li>
+                            <li><a th:href="@{/admin/generalsettings}">General Settings</a></li>
+                            <li><a th:href="@{/admin/emailsettings}">Email Settings</a></li>
+                            <li><a th:href="@{/admin/paymentsettings}">Payment Settings</a></li>
+                            <li><a th:href="@{/admin/currencysettings}">Currency Settings</a></li>
+                            <li><a th:href="@{/admin/grouppermissions}">Group Permissions</a></li>
+                            <li><a th:href="@{/admin/taxrates}">Tax Rates</a></li>
                         </ul>
                     </li>
                 </ul>
