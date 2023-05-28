@@ -1,0 +1,18 @@
+.splide__arrow--prev,
+.splide__arrow--next{
+    background-color: rgba(0,0,0,0.7)!important;
+
+}
+
+.splide__arrow--prev svg,
+.splide__arrow--next svg {
+    fill: #fff;
+}
+
+.splide__pagination__page {
+    background-color: #fff!important;
+}
+
+.splide__pagination__page.is-active {
+    background-color: #fcaf17!important;
+}

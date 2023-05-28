@@ -1,0 +1,7 @@
+<label class="cursor-pointer" th:fragment="radioText(name,value,text)">
+  <input type="radio" th:value="${value}" th:name="${name}" class="hidden peer"/>
+  <div
+          class="hover:bg-secondary transition-all hover:text-primary peer-checked:bg-primary peer-checked:text-white px-8 py-2.5 lg:p-2.5 font-medium rounded-md bg-slate-200 text-slate-500 flex items-center justify-center">
+    [(${text})]
+  </div>
+</label>
