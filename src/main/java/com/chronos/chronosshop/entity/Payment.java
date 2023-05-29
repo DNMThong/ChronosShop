@@ -21,8 +21,9 @@ public class Payment {
     @Column(name = "payment_method_name")
     private String paymentMethodName;
 
-    @Column(name = "user_id")
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "subtotal")
     private Long subtotal;
@@ -39,6 +40,10 @@ public class Payment {
     @Column(name = "status")
     private String status;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "payment_date")
     private Date paymentDate;
+
+    @OneToOne(mappedBy = "payment")
+    private Order order;
 }

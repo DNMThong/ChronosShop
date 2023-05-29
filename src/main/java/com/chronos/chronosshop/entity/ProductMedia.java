@@ -20,8 +20,9 @@ public class ProductMedia {
     @Column(name = "media_id")
     private int mediaId;
 
-    @Column(name = "product_id")
-    private Integer productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     @Column(name = "file_path")
     private String filePath;
@@ -29,6 +30,7 @@ public class ProductMedia {
     @Column(name = "file_type")
     private String fileType;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
     private Date createTime;
 }

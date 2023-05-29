@@ -3,6 +3,7 @@ package com.chronos.chronosshop.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -28,9 +29,14 @@ public class AddressShipping {
     @Column(name = "recipient_address")
     private String recipientAddress;
 
-    @Column(name = "user_id")
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "status")
     private String status;
+
+    @OneToMany(mappedBy = "addressShipping")
+    List<Order> orders;
+
 }
