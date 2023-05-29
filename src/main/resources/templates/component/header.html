@@ -1,5 +1,5 @@
 <!--    Header   -->
-<div class="w-full py-5 lg:container" th:fragment="header(femaleCategories, maleCategories, kidCategories)">
+<div class="w-full py-5 container text-textColor" th:fragment="header(femaleCategories, maleCategories, kidCategories)">
   <div class="w-full">
     <div class="mb-3 grid h-[40x] w-full grid-cols-3 gap-5 sm:h-full sm:grid-cols-2">
       <!-- mobile Nav -->
@@ -27,7 +27,7 @@
 
       <!--    > mobile Nav    -->
       <div class="hidden items-center gap-3 sm:col-span-2 sm:grid-cols-4 md:col-span-1 md:grid">
-        <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/logo.svg?1684217224299" alt="" srcset="" class="block w-full max-w-[80px] object-cover" />
+        <img th:src="@{/assets/images/1.png}" alt="" srcset="" class="block w-full max-w-[120px] object-cover" />
         <form action="" class="col-span-3 flex w-full items-center">
           <input type="text" name="" id="" class="focus:border-primary w-full rounded-l-md rounded-r-none border-2 border-gray-300 border-r-transparent px-5 py-2.5 outline-none" />
           <button type="submit" class="border-primary bg-primary text-textColor rounded-r-lg border-2 px-5 py-2.5 font-medium transition-all">
@@ -77,7 +77,7 @@
 
     <div class="relative z-20 items-center justify-between bg-white sm:flex">
       <!--    Mega Menu    -->
-      <div id="megaMenu" class="flex -translate-x-full flex-col items-start justify-start sm:translate-x-0 sm:flex-row sm:items-center w-full absolute">
+      <div id="megaMenu" class="hidden sm:flex -translate-x-full flex-col items-start justify-start sm:translate-x-0 sm:flex-row sm:items-center w-full absolute">
         <div class="group w-full sm:w-fit">
           <div class="relative cursor-pointer px-2 py-1 sm:px-4 sm:py-2">
             <div class="flex w-full items-center justify-between text-lg font-medium sm:w-fit md:text-sm lg:text-base">
@@ -191,8 +191,8 @@
           </div>
 
           <ul class="top-12 z-10 hidden w-full flex-col gap-1 rounded-lg border border-gray-200 bg-white group-hover:flex sm:absolute sm:w-[300px]">
-            <li href="" class="text-md flex-1 px-4 py-2 text-left text-gray-400">Ưu đãi và chính sách</li>
-            <li href="" class="text-md px-4 py-2 text-left text-gray-400">Câu chuyện và nhân vật</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Ưu đãi và chính sách</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Câu chuyện và nhân vật</li>
           </ul>
         </div>
         <div class="group w-full sm:w-fit">
@@ -201,17 +201,18 @@
             <div class="bg-primary group-hover:animate-slide absolute left-0 right-0 hidden h-1 w-full rounded-md after:absolute after:h-4 after:w-28 after:bg-transparent after:content-[''] group-hover:block"></div>
           </div>
           <ul class="top-12 z-10 hidden w-full flex-col gap-1 rounded-lg border border-gray-200 bg-white group-hover:flex sm:absolute sm:w-[300px]">
-            <li href="" class="text-md flex-1 px-4 py-2 text-left text-gray-400">Em đẹp</li>
-            <li href="" class="text-md flex-1 px-4 py-2 text-left text-gray-400">Em đẹp</li>
-            <li href="" class="text-md flex-1 px-4 py-2 text-left text-gray-400">Em đẹp</li>
-            <li href="" class="text-md flex-1 px-4 py-2 text-left text-gray-400">Em đẹp</li>
-            <li href="" class="text-md px-4 py-2 text-left text-gray-400">Câu chuyện và nhân vật</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Em đẹp</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Chàng bảnh bao</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Bé khỏe đẹp</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Làm đẹp</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Du lịch</li>
+            <li href="" class="text-sm px-4 py-2 text-left text-black opacity-50">Đồng phục</li>
           </ul>
         </div>
       </div>
       <!--    End Mega Mnu       -->
 
-      <div class="relative ml-auto flex flex-shrink-0 items-center gap-3 self-end">
+      <div class="relative ml-auto flex flex-shrink-0 items-center gap-3 self-end font-medium text-textColor">
         <div class="group relative hidden items-center gap-2 sm:flex md:gap-3">
           <div class="group relative hidden items-center gap-2 sm:flex md:gap-3">
             <div class="flex cursor-pointer items-center gap-1">
@@ -228,139 +229,139 @@
 
             <!--   Giỏ hàng trống     -->
             <div class="absolute left-1/2 top-full hidden max-h-[450px] w-[450px] -translate-x-1/2 flex-col gap-5 rounded-lg border border-purple-400 bg-white p-3 group-hover:flex">
-              <div class="justify-cent flex flex-col items-center">
-                <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/blank_cart.svg?1684745686241" alt="cart" class="mx-auto block h-[100px] w-[100px]" />
-                <a class="mb-5 block w-full text-center font-medium">Giỏ hàng trống đi shopping thôi nào</a>
-              </div>
+<!--              <div class="justify-cent flex flex-col items-center">-->
+<!--                <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/blank_cart.svg?1684745686241" alt="cart" class="mx-auto block h-[100px] w-[100px]" />-->
+<!--                <a class="mb-5 block w-full text-center font-medium">Giỏ hàng trống đi shopping thôi nào</a>-->
+<!--              </div>-->
 
               <!--          Giỏ hàng có sân phẩm              -->
-              <!--                        <div class="flex h-full flex-col items-center gap-5">-->
-              <!--                            <div class="flex h-full max-h-[380px] flex-col gap-3 overflow-y-auto">-->
-              <!--                                <div class="gap-3border-b flex items-center border-b-gray-300 pb-3">-->
-              <!--                                    <div class="w-1/4 self-start p-1">-->
-              <!--                                        <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />-->
-              <!--                                    </div>-->
-              <!--                                    <div class="flex flex-1 flex-col gap-3">-->
-              <!--                                        <div class="flex items-center justify-between gap-5">-->
-              <!--                                            <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>-->
-              <!--                                            <span>-->
-              <!--                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>-->
-              <!--                </span>-->
-              <!--                                        </div>-->
-              <!--                                        <p class="text-primary font-medium">2130000</p>-->
-              <!--                                        <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>-->
-              <!--                                        <div class="flex items-center justify-between">-->
-              <!--                                            <div class="flex items-center">-->
-              <!--                                                <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>-->
-              <!--                                                <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />-->
-              <!--                                                <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>-->
-              <!--                                            </div>-->
-              <!--                                            <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>-->
-              <!--                                        </div>-->
-              <!--                                    </div>-->
-              <!--                                </div>-->
-              <!--                                <div class="gap-3border-b flex items-center border-b-gray-300 pb-3">-->
-              <!--                                    <div class="w-1/4 self-start p-1">-->
-              <!--                                        <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />-->
-              <!--                                    </div>-->
-              <!--                                    <div class="flex flex-1 flex-col gap-3">-->
-              <!--                                        <div class="flex items-center justify-between gap-5">-->
-              <!--                                            <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>-->
-              <!--                                            <span>-->
-              <!--                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>-->
-              <!--                </span>-->
-              <!--                                        </div>-->
-              <!--                                        <p class="text-primary font-medium">2130000</p>-->
-              <!--                                        <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>-->
-              <!--                                        <div class="flex items-center justify-between">-->
-              <!--                                            <div class="flex items-center">-->
-              <!--                                                <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>-->
-              <!--                                                <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />-->
-              <!--                                                <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>-->
-              <!--                                            </div>-->
-              <!--                                            <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>-->
-              <!--                                        </div>-->
-              <!--                                    </div>-->
-              <!--                                </div>-->
-              <!--                                <div class="gap-3border-b flex items-center border-b-gray-300 pb-3">-->
-              <!--                                    <div class="w-1/4 self-start p-1">-->
-              <!--                                        <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />-->
-              <!--                                    </div>-->
-              <!--                                    <div class="flex flex-1 flex-col gap-3">-->
-              <!--                                        <div class="flex items-center justify-between gap-5">-->
-              <!--                                            <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>-->
-              <!--                                            <span>-->
-              <!--                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>-->
-              <!--                </span>-->
-              <!--                                        </div>-->
-              <!--                                        <p class="text-primary font-medium">2130000</p>-->
-              <!--                                        <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>-->
-              <!--                                        <div class="flex items-center justify-between">-->
-              <!--                                            <div class="flex items-center">-->
-              <!--                                                <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>-->
-              <!--                                                <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />-->
-              <!--                                                <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>-->
-              <!--                                            </div>-->
-              <!--                                            <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>-->
-              <!--                                        </div>-->
-              <!--                                    </div>-->
-              <!--                                </div>-->
-              <!--                                <div class="gap-3border-b flex items-center border-b-gray-300 pb-3">-->
-              <!--                                    <div class="w-1/4 self-start p-1">-->
-              <!--                                        <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />-->
-              <!--                                    </div>-->
-              <!--                                    <div class="flex flex-1 flex-col gap-3">-->
-              <!--                                        <div class="flex items-center justify-between gap-5">-->
-              <!--                                            <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>-->
-              <!--                                            <span>-->
-              <!--                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>-->
-              <!--                </span>-->
-              <!--                                        </div>-->
-              <!--                                        <p class="text-primary font-medium">2130000</p>-->
-              <!--                                        <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>-->
-              <!--                                        <div class="flex items-center justify-between">-->
-              <!--                                            <div class="flex items-center">-->
-              <!--                                                <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>-->
-              <!--                                                <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />-->
-              <!--                                                <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>-->
-              <!--                                            </div>-->
-              <!--                                            <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>-->
-              <!--                                        </div>-->
-              <!--                                    </div>-->
-              <!--                                </div>-->
-              <!--                                <div class="gap-3border-b flex items-center border-b-gray-300 pb-3">-->
-              <!--                                    <div class="w-1/4 self-start p-1">-->
-              <!--                                        <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />-->
-              <!--                                    </div>-->
-              <!--                                    <div class="flex flex-1 flex-col gap-3">-->
-              <!--                                        <div class="flex items-center justify-between gap-5">-->
-              <!--                                            <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>-->
-              <!--                                            <span>-->
-              <!--                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>-->
-              <!--                </span>-->
-              <!--                                        </div>-->
-              <!--                                        <p class="text-primary font-medium">2130000</p>-->
-              <!--                                        <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>-->
-              <!--                                        <div class="flex items-center justify-between">-->
-              <!--                                            <div class="flex items-center">-->
-              <!--                                                <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>-->
-              <!--                                                <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />-->
-              <!--                                                <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>-->
-              <!--                                            </div>-->
-              <!--                                            <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>-->
-              <!--                                        </div>-->
-              <!--                                    </div>-->
-              <!--                                </div>-->
-              <!--                            </div>-->
-              <!--                            <div class="flex items-center justify-end">-->
-              <!--                                <p class="text-sm font-light">Tổng cộng &nbsp;<span class="text-sm font-semibold text-red-500">299000đ</span></p>-->
-              <!--                            </div>-->
-              <!--                        </div>-->
+                                      <div class="flex h-full flex-col items-center gap-5">
+                                          <div class="flex h-full max-h-[380px] flex-col gap-3 overflow-y-auto w-full">
+                                              <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
+                                                  <div class="w-1/4 self-start p-1">
+                                                      <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />
+                                                  </div>
+                                                  <div class="flex flex-1 flex-col gap-3">
+                                                      <div class="flex items-center justify-between gap-5">
+                                                          <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>
+                                                          <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>
+                              </span>
+                                                      </div>
+                                                      <p class="text-primary font-medium">2130000</p>
+                                                      <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>
+                                                      <div class="flex items-center justify-between">
+                                                          <div class="flex items-center">
+                                                              <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>
+                                                              <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />
+                                                              <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                          </div>
+                                                          <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
+                                                  <div class="w-1/4 self-start p-1">
+                                                      <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />
+                                                  </div>
+                                                  <div class="flex flex-1 flex-col gap-3">
+                                                      <div class="flex items-center justify-between gap-5">
+                                                          <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>
+                                                          <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>
+                              </span>
+                                                      </div>
+                                                      <p class="text-primary font-medium">2130000</p>
+                                                      <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>
+                                                      <div class="flex items-center justify-between">
+                                                          <div class="flex items-center">
+                                                              <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>
+                                                              <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />
+                                                              <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                          </div>
+                                                          <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
+                                                  <div class="w-1/4 self-start p-1">
+                                                      <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />
+                                                  </div>
+                                                  <div class="flex flex-1 flex-col gap-3">
+                                                      <div class="flex items-center justify-between gap-5">
+                                                          <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>
+                                                          <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>
+                              </span>
+                                                      </div>
+                                                      <p class="text-primary font-medium">2130000</p>
+                                                      <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>
+                                                      <div class="flex items-center justify-between">
+                                                          <div class="flex items-center">
+                                                              <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>
+                                                              <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />
+                                                              <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                          </div>
+                                                          <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
+                                                  <div class="w-1/4 self-start p-1">
+                                                      <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />
+                                                  </div>
+                                                  <div class="flex flex-1 flex-col gap-3">
+                                                      <div class="flex items-center justify-between gap-5">
+                                                          <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>
+                                                          <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>
+                              </span>
+                                                      </div>
+                                                      <p class="text-primary font-medium">2130000</p>
+                                                      <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>
+                                                      <div class="flex items-center justify-between">
+                                                          <div class="flex items-center">
+                                                              <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>
+                                                              <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />
+                                                              <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                          </div>
+                                                          <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
+                                                  <div class="w-1/4 self-start p-1">
+                                                      <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt="" class="h-full w-full" />
+                                                  </div>
+                                                  <div class="flex flex-1 flex-col gap-3">
+                                                      <div class="flex items-center justify-between gap-5">
+                                                          <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>
+                                                          <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>
+                              </span>
+                                                      </div>
+                                                      <p class="text-primary font-medium">2130000</p>
+                                                      <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>
+                                                      <div class="flex items-center justify-between">
+                                                          <div class="flex items-center">
+                                                              <span class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>
+                                                              <input type="text" class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none" value="1" />
+                                                              <span class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                          </div>
+                                                          <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">2130000đ</span></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="flex items-center justify-end">
+                                              <p class="text-sm font-light">Tổng cộng &nbsp;<span class="text-sm font-semibold text-red-500">299000đ</span></p>
+                                          </div>
+                                      </div>
             </div>
           </div>
         </div>
 
-        <!--    Chưa Login                -->
+        <!--    Chưa Login      -->
         <!--                <div class="flex items-center gap-1">-->
         <!--          <span>-->
         <!--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"-->
@@ -378,18 +379,19 @@
         <!--                </div>-->
 
         <!--    Đã login    -->
-        <div class="group relative cursor-pointer">
+        <div class="group relative cursor-pointer hidden sm:block">
           <span class="flex items-center gap-1 px-3 py-1.5">
             <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_danhmuc_1_child_3_image.png?1684488034940" alt="" class="h-6 w-6 rounded-full object-cover" />
-            <span class="text-xl font-medium">Tài khoản</span>
+            <span class="font-medium">Nguyễn Nghĩa</span>
           </span>
           <ul class="absolute left-0 top-full hidden w-[200px] rounded-lg border border-gray-200 bg-white p-3 text-black group-hover:block">
             <li class="text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Nguyễn Nghĩa</a></li>
             <li class="mb-2 mt-2 block border border-t-gray-200"></li>
-            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Nguyễn Nghĩa</a></li>
-            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Nguyễn Nghĩa</a></li>
-            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Nguyễn Nghĩa</a></li>
-            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Nguyễn Nghĩa</a></li>
+            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Tài khoản của tôi</a></li>
+            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Đổi mật khẩu</a></li>
+            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Số địa chỉ</a></li>
+            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Đã xem gần đây</a></li>
+            <li class="hover:text-primary block"><a href="" class="block px-2 py-0.5 font-medium">Sản phẩm yêu thích</a></li>
             <li class="mb-2 mt-2 block border border-t-gray-200"></li>
             <li class="hover:text-primary block">
               <a href="" class="flex items-center gap-3 px-2 py-0.5 font-medium">

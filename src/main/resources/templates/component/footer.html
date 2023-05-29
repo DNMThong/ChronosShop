@@ -1,60 +1,51 @@
-<footer class="bg-[#2a2a86] py-5 w-full" th:fragment="footer">
-  <div class="container grid grid-cols-4 gap-5 text-white">
+<footer class="w-full bg-[#2a2a86] py-5" th:fragment="footer">
+  <div class="container grid grid-cols-1 gap-5 text-white sm:grid-cols-4">
     <div class="flex flex-col gap-3">
       <p>“Đặt sự hài lòng của khách hàng là ưu tiên số 1 trong mọi suy nghĩ hành động của mình” là sứ mệnh, là triết lý, chiến lược.. luôn cùng YODY tiến bước</p>
       <form action="" class="mt-5 flex flex-col gap-2">
         <h5 class="text-uppercase">ĐĂNG KÝ NHẬN THÔNG TIN</h5>
-        <div class="grid grid-cols-3 items-center items-stretch border border-white rounded-lg overflow-hidden">
-          <input type="text"
-                 class="px-5 py-2 5 col-span-2 outline-primary"
-                 placeholder="Nhập email đăng ký của bạn">
-          <button class="px-5 py-2.5 text-center font-semibold bg-primary">Đăng ký</button>
+        <div class="grid grid-cols-3 items-center items-stretch overflow-hidden rounded-lg border border-white">
+          <input type="text" class="5 outline-primary col-span-2 px-5 py-2" placeholder="Nhập email đăng ký của bạn" />
+          <button class="bg-primary px-5 py-2.5 text-center font-semibold">Đăng ký</button>
         </div>
       </form>
-      <div class="flex items-center gap-2 mt-2">
+      <div class="mt-2 hidden items-center gap-2 sm:flex">
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_1.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_1.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_2.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
-
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_2.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_3.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
-
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_3.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_4.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
-
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_4.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_5.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
-
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_5.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_6.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_6.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_7.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
-
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_7.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
         <a href="">
-          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_8.png?1684488034940"
-               alt="" class="w-[32px] h-[32px] object-cover">
-
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/social_8.png?1684488034940" alt="" class="h-[32px] w-[32px] object-cover" />
         </a>
       </div>
     </div>
     <div class="flex flex-col gap-5">
-      <h5 class="">Về Chronos</h5>
-      <ul class="flex flex-col gap-2 text-sm">
+      <h5 class="flex items-center justify-between sm:block sm:text-left">
+        <span>Về Chronos</span>
+        <span class="inline-block sm:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4" fill="#fff">
+            <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+          </svg>
+        </span>
+      </h5>
+      <ul class="hidden flex-col gap-2 text-sm sm:flex">
         <li>
           <a href="#">Giới thiệu</a>
         </li>
@@ -76,12 +67,18 @@
         <li>
           <a href="#">Ưu đãi Outlet</a>
         </li>
-
       </ul>
     </div>
     <div class="flex flex-col gap-5">
-      <h5 class="">HỖ TRỢ KHÁCH HÀNG</h5>
-      <ul class="flex flex-col gap-2 text-sm">
+      <h5 class="flex items-center justify-between sm:block sm:text-left">
+        <span>Hỗ trợ khách hàng</span>
+        <span class="inline-block sm:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4" fill="#fff">
+            <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+          </svg>
+        </span>
+      </h5>
+      <ul class="sm:flex hidden flex-col gap-2 text-sm">
         <li>
           <a href="#">Hướng dẫn chọn size</a>
         </li>
@@ -103,53 +100,49 @@
         <li>
           <a href="#">Chính sách bảo mật thông tin khách hàng</a>
         </li>
-
       </ul>
     </div>
     <div class="flex flex-col gap-5">
-      <h5 class="">CÔNG TY CP THỜI TRANG YODY</h5>
-      <ul class="flex flex-col gap-2 text-sm">
+      <h5 class="flex items-center justify-between sm:block sm:text-left">
+        <span>Công ty thời trang Yody</span>
+        <span class="inline-block sm:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4" fill="#fff">
+            <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+          </svg>
+        </span>
+      </h5>
+      <ul class="sm:flex hidden flex-col gap-2 text-sm">
         <li>
-          <a href="#" class="flex items-center gap-2 w-full">
-            <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940"
-                 alt="">Công ty cổ phần Thời trang YODY</a>
+          <a href="#" class="flex w-full items-center gap-2"> <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940" alt="" />Công ty cổ phần Thời trang YODY</a>
         </li>
         <li>
-          <a href="#" class="flex items-center gap-2"><img
-                  src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940"
-                  alt="">Địa chỉ: Đường An Định - Phường Việt Hòa - Thành phố Hải Dương - Hải Dương</a>
+          <a href="#" class="flex items-center gap-2"><img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940" alt="" />Địa chỉ: Đường An Định - Phường Việt Hòa - Thành phố Hải Dương - Hải Dương</a>
         </li>
         <li>
-          <a href="#" class="flex items-center gap-2"><img
-                  src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940"
-                  alt="">Tìm cửa hàng gần bạn nhất</a>
+          <a href="#" class="flex items-center gap-2"><img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940" alt="" />Tìm cửa hàng gần bạn nhất</a>
         </li>
         <li>
-          <a href="#" class="flex items-center gap-2"><img
-                  src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940"
-                  alt="">Liên hệ đặt hàng: 024 999 86 999</a>
+          <a href="#" class="flex items-center gap-2"><img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/map.svg?1684488034940" alt="" />Liên hệ đặt hàng: 024 999 86 999</a>
         </li>
         <li>
-          <a href="#"
-             class="flex w-full">Thắc mắc đơn hàng: 024 999 86 999 Góp ý khiếu nại: 1800 2086</a>
+          <a href="#" class="flex w-full">Thắc mắc đơn hàng: 024 999 86 999 Góp ý khiếu nại: 1800 2086</a>
         </li>
         <li>
-          <a href="#"
-             class="flex w-full">Email: chamsockhachhang@yody.vn</a>
-        </li>
-
-        <li class="flex items-center gap-3">
-          <a href="">
-            <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/logo_bct.png?1684488034940"
-                 alt="">
-          </a>
-
-          <a href="" class="">
-            <img src="https://images.dmca.com/Badges/_dmca_premi_badge_5.png?ID=d3a2c2c5-a581-451b-b7ff-ff08fee58d6a"
-                 alt="">
-          </a>
+          <a class="">Email: chamsockhachhang@yody.vn</a>
         </li>
       </ul>
+      <li class="flex items-center gap-3">
+        <a href="">
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/logo_bct.png?1684488034940" alt="" />
+        </a>
+
+        <a href="" class="">
+          <img src="https://images.dmca.com/Badges/_dmca_premi_badge_5.png?ID=d3a2c2c5-a581-451b-b7ff-ff08fee58d6a" alt="" />
+        </a>
+      </li>
     </div>
+
+    <div class="h-1 w-full bg-gray-300 sm:col-span-4"></div>
+    <p class="py-5 text-center sm:col-span-4">© YODY - Bản quyền thuộc về Công ty cổ phần thời trang YODY</p>
   </div>
 </footer>

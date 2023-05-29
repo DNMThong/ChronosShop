@@ -16,14 +16,14 @@ import java.util.List;
 @RequestMapping("test")
 public class TestController {
 
-//    CategoryService categoryService;
+    CategoryService categoryService;
 
-//    List<Category> categoryList = null;
+    List<Category> categoryList = null;
 
-//    @Autowired
-//    public TestController(CategoryService categoryService) {
-//        this.categoryService = categoryService;
-//    }
+    @Autowired
+    public TestController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
 
     @RequestMapping("")
@@ -37,31 +37,33 @@ public class TestController {
     }
 
     @RequestMapping("login")
-    public String login(Model model) {
-        return "page/login-page";};
+    public String login(Model model) { return "page/login-page";}
+
+    @RequestMapping("cart")
+    public String cart() {return "page/cart-page";}
 
     @RequestMapping("sign-up")
     public String signUp(Model model) {
 
         return "page/sign-up-page";}
 
-//    @ModelAttribute("femaleCategories")
-//    public List<Category> getFemaleCategory() {
-//        categoryList = categoryService.findCategoriesByName("Nữ");
-//        return categoryList;
-//    }
+    @ModelAttribute("femaleCategories")
+    public List<Category> getFemaleCategory() {
+        categoryList = categoryService.findCategoriesByName("Nữ");
+        return categoryList;
+    }
 
-//    @ModelAttribute("maleCategories")
-//    public List<Category> getMaleCategory() {
-//        categoryList = categoryService.findCategoriesByName("Nam");
-//        return categoryList;
-//    }
+    @ModelAttribute("maleCategories")
+    public List<Category> getMaleCategory() {
+        categoryList = categoryService.findCategoriesByName("Nam");
+        return categoryList;
+    }
 
-//    @ModelAttribute("kidCategories")
-//    public List<Category> getKidCategory() {
-//        categoryList = categoryService.findCategoriesByName("Trẻ em");
-//        return categoryList;
-//    }
+    @ModelAttribute("kidCategories")
+    public List<Category> getKidCategory() {
+        categoryList = categoryService.findCategoriesByName("Trẻ em");
+        return categoryList;
+    }
 
     @RequestMapping("addcategory")
     public String addcategory() {

@@ -1,29 +1,40 @@
 package com.chronos.chronosshop.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonTypeId;
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
-import java.util.Objects;
+import java.util.List;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
 @Entity
+@Table(name = "Category")
 public class Category {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private int categoryId;
+    String id;
 
     @Column(name = "category_name")
-    private String categoryName;
+    String name;
 
     @Column(name = "category_url")
-    private String categoryUrl;
+    String url;
 
-    @Column(name = "category_parent_id")
-    private Integer categoryParentId;
+
+    @OneToMany(mappedBy = "parentCategory", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Category> subCategories;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_parent_id")
+    @JsonBackReference
+    private Category parentCategory;
+
 }
