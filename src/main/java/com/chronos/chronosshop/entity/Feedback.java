@@ -28,15 +28,20 @@ public class Feedback {
     @Column(name = "feedback_text")
     private String feedbackText;
 
-    @Column(name = "order_id")
-    private String orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @Column(name = "rating")
     private Integer rating;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
     private Date createTime;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_time")
     private Date updateTime;
+
+
 }

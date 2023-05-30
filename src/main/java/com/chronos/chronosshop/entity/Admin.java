@@ -36,12 +36,15 @@ public class Admin {
     @Column(name = "status")
     private String status;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
     private Date createTime;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_time")
     private Date updateTime;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "last_login")
     private Date lastLogin;
 }

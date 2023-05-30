@@ -1,11 +1,10 @@
 package com.chronos.chronosshop.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -41,15 +40,32 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
     private Date createdDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
     private Date updatedDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "last_login")
     private Date lastLogin;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "status")
     private String status;
+
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
+
+    @OneToMany(mappedBy = "user")
+    List<AddressShipping> addressShippingList;
+
+    @OneToMany(mappedBy = "user")
+    List<Payment> payments;
+
+    @OneToMany(mappedBy = "user")
+    List<Order> orders;
+
 }

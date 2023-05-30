@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -18,25 +19,37 @@ public class Order {
     @Column(name = "order_id")
     private String orderId;
 
-    @Column(name = "user_id")
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "ship_id")
-    private Integer shipId;
+    @ManyToOne
+    @JoinColumn(name = "ship_id")
+    private AddressShipping addressShipping;
 
-    @Column(name = "coupon_id")
-    private String couponId;
+    @ManyToOne
+    @JoinColumn(name = "coupon_id")
+    private Coupon coupon;
 
     @Column(name = "status")
     private String status;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
     private Date createTime;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_time")
     private Date updateTime;
 
-    @Column(name = "payment_id")
-    private String paymentId;
+    @OneToOne
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
+
+    @OneToMany(mappedBy = "order")
+    private List<Feedback> feedbacks;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrderDetail> orderDetails;
 
 }

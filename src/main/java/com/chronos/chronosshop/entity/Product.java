@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -37,16 +38,28 @@ public class Product {
     @Column(name = "sold_record")
     private Integer soldRecord;
 
-    @Column(name = "category_id")
-    private Integer categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @Column(name = "status")
     private String status;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
     private Date createTime;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_time")
     private Date updateTime;
+
+    @OneToMany(mappedBy = "product")
+    private List<OrderDetail> orderDetails;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductMedia> productMediaList;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductVariant> productVariants;
 
 }

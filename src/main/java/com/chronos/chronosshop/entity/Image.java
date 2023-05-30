@@ -34,4 +34,7 @@ public class Image {
 
     @Column(name = "image6")
     private String image6;
+
+    @OneToOne(mappedBy = "image")
+    ProductVariant productVariant;
 }

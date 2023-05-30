@@ -20,11 +20,13 @@ public class ProductVariant {
     @Column(name = "product_color_id")
     private int productColorId;
 
-    @Column(name = "product_id")
-    private Integer productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-    @Column(name = "product_sku")
-    private String productSku;
+    @OneToOne
+    @JoinColumn(name = "product_sku")
+    private Image image;
 
     @Column(name = "product_colorName")
     private String productColorName;
@@ -38,6 +40,7 @@ public class ProductVariant {
     @Column(name = "image1")
     private String image1;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
     private Date createTime;
 }
