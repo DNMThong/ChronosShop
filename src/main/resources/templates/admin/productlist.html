@@ -484,9 +484,16 @@
                                 <td th:text="${item.getPriceOld()}"></td>
                                 <td th:text="${#numbers.formatDecimal(item.getPriceNew(),0, 'COMMA', 0, 'POINT')}"></td>
                                 <td th:text="${item.getMaterial()}"></td>
-                                <td >
-                                    <span class="badges bg-lightgreen"
-                                    th:text="${item.getStatus()}"></span>
+                                <td th:switch="${item.getStatus()}" >
+                                    <span th:case="'Còn hàng'" th:text="${item.getStatus()}" class="badges bg-lightgreen"
+                                    >
+                                    </span>
+                                    <span th:case="'Đã xóa'" th:text="${item.getStatus()}" class="badges bg-danger"
+                                    >
+                                    </span>
+                                    <span th:case="'Hết hàng'" th:text="${item.getStatus()}" class="badges bg-warning"
+                                    >
+                                    </span>
                                 </td>
                                 <td>
                                     <a class="me-3" th:href="@{/admin/addproduct-variant}">

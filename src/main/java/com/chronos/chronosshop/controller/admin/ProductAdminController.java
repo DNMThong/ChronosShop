@@ -38,7 +38,7 @@ public class ProductAdminController {
     public String productDelete(@PathVariable("id") Integer id) {
         Product product = productRepository.getById(id);
         if(product!=null){
-            product.setStatus("Hết hàng");
+            product.setStatus("Đã xóa");
             productRepository.save(product);
         }
         return "redirect:/admin/productlist";
