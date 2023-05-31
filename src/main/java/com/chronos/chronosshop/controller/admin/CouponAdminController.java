@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("admin")
-public class UserAdminController {
-    @GetMapping("adduser")
-    public String addUser(){
-        return"admin/adduser";
+public class CouponAdminController {
+    @GetMapping("addcoupon")
+    public String addCoupon(){
+        return "admin/addcoupon";
     }
-    @GetMapping("userlists")
-    public String userList(){
-        return"admin/userlists";
+    @GetMapping("couponlist")
+    public String couponList(){
+        return "admin/couponlist";
     }
 }

@@ -3,6 +3,8 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -26,4 +28,7 @@ public class Category {
 
     @Column(name = "category_parent_id")
     private Integer categoryParentId;
+
+    @OneToMany(mappedBy = "category")
+    List<Product> products;
 }

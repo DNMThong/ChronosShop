@@ -37,8 +37,9 @@ public class Product {
     @Column(name = "sold_record")
     private Integer soldRecord;
 
-    @Column(name = "category_id")
-    private Integer categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @Column(name = "status")
     private String status;
@@ -49,4 +50,13 @@ public class Product {
     @Column(name = "update_time")
     private Date updateTime;
 
+    public Product( String productName, Integer priceOld, Integer priceNew, String material, String description, Category category, String status) {
+        this.productName = productName;
+        this.priceOld = priceOld;
+        this.priceNew = priceNew;
+        this.material = material;
+        this.description = description;
+        this.category = category;
+        this.status = status;
+    }
 }

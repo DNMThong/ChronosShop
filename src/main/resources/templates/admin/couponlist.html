@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta
@@ -26,6 +26,8 @@
     <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}" />
 
     <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}" />
+
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}" />
 
     <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}" />
 
@@ -383,17 +385,14 @@
         <div class="content">
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Danh sách sản phẩm</h4>
-                    <h6>Quản lí sản phẩm của bạn</h6>
+                    <h4>Danh sách phiếu mua hàng</h4>
+                    <h6>Quản lí phiếu mua hàng</h6>
                 </div>
                 <div class="page-btn">
-                    <a th:href="@{/admin/addproduct}" class="btn btn-added"
-                    ><img
-                            th:src="@{/assets/admin/img/icons/plus.svg}"
-                            alt="img"
-                            class="me-1"
-                    />Thêm sản phẩm mới</a
-                    >
+                    <a th:href="@{/admin/addcoupon}" class="btn btn-added">
+                        <img th:src="@{/assets/admin/img/icons/plus.svg}" alt="img" class="me-2" />
+                        Thêm phiếu mua hàng
+                    </a>
                 </div>
             </div>
 
@@ -457,45 +456,37 @@
                                         <span class="checkmarks"></span>
                                     </label>
                                 </th>
+                                <th>Tên phiếu mua hàng</th>
+                                <th>Giảm giá</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày hết khuyến mãi</th>
+                                <th>Đối tượng khuyễn mãi</th>
 
-                                <th>Tên sản phẩm</th>
-                                <th>Danh mục</th>
-                                <th>Giá mới</th>
-                                <th>Giá cũ</th>
-                                <th>Chất liệu</th>
-                                <th>Trạng thái</th>
-                                <th>Lựa chọn</th>
-
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="item:${products}">
+                            <tr>
                                 <td>
                                     <label class="checkboxs">
                                         <input type="checkbox" />
                                         <span class="checkmarks"></span>
                                     </label>
                                 </td>
-                                <td th:text="${item.getProductName()}" >
+                                <td class="">
 
+                                    <a href="javascript:void(0);">Cháy hàng 5/5</a>
                                 </td>
+                                <td>20%</td>
+                                <td>2022-5-5</td>
+                                <td><span class="badges bg-lightgreen">20220-6-5</span></td>
 
-                                <td th:text="${item.getCategory().getCategoryName()}"></td>
-                                <td th:text="${item.getPriceOld()}"></td>
-                                <td th:text="${#numbers.formatDecimal(item.getPriceNew(),0, 'COMMA', 0, 'POINT')}"></td>
-                                <td th:text="${item.getMaterial()}"></td>
-                                <td >
-                                    <span class="badges bg-lightgreen"
-                                    th:text="${item.getStatus()}"></span>
-                                </td>
+                                <td>Tất cả mọi người</td>
                                 <td>
-                                    <a class="me-3" th:href="@{/admin/addproduct-variant}">
-                                        <img th:src="@{/assets/admin/img/icons/color.svg}" alt="img" />
-                                    </a>
-                                    <a class="me-3" th:href="@{'/admin/editproduct/'+${item.getProductId()}}">
+                                    <a class="me-3" th:href="@{/admin/editquotation}">
                                         <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img" />
                                     </a>
-                                    <a class="confirm-text" th:href="@{'/admin/productlist/delete/'+${item.getProductId()}}">
+                                    <a class="me-3 confirm-text" href="javascript:void(0);">
                                         <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img" />
                                     </a>
                                 </td>
@@ -519,6 +510,9 @@
 <script th:src="@{/assets/admin/js/dataTables.bootstrap4.min.js}"></script>
 
 <script th:src="@{/assets/admin/js/bootstrap.bundle.min.js}"></script>
+
+<script th:src="@{/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
 
 <script th:src="@{/assets/admin/plugins/select2/js/select2.min.js}"></script>
 

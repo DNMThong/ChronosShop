@@ -1,61 +1,70 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
- <meta name="description" content="POS - Bootstrap Admin Template">
- <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
- <meta name="author" content="Dreamguys - Bootstrap Admin Template">
- <meta name="robots" content="noindex, nofollow">
+ <meta charset="utf-8" />
+ <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1.0, user-scalable=0"
+ />
+ <meta name="description" content="POS - Bootstrap Admin Template" />
+ <meta
+         name="keywords"
+         content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects"
+ />
+ <meta name="author" content="Dreamguys - Bootstrap Admin Template" />
+ <meta name="robots" content="noindex, nofollow" />
  <title>Jassa admin template</title>
 
- <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/admin/img/favicon.png}">
+ <link
+         rel="shortcut icon"
+         type="image/x-icon"
+         th:href="@{/assets/admin/img/favicon.png}"
+ />
 
- <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}">
+ <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}" />
 
- <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}">
+ <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}" />
 
- <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}">
+ <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}" />
 
- <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}">
+ <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}" />
 
- <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}">
+ <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}" />
 
- <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}">
- <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}">
+ <link
+         rel="stylesheet"
+         th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}"
+ />
+ <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}" />
 
- <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}">
+ <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}" />
 </head>
 <body>
 <div id="global-loader">
- <div class="whirly-loader"> </div>
+ <div class="whirly-loader"></div>
 </div>
 
 <div class="main-wrapper">
-
  <div class="header">
-
   <div class="header-left active">
    <a th:href="@{/admin/index}" class="logo">
-    <img th:src="@{/assets/admin/img/logo.png}" alt="">
+    <img th:src="@{/assets/admin/img/logo.png}" alt="" />
    </a>
    <a th:href="@{/admin/index}" class="logo-small">
-    <img th:src="@{/assets/admin/img/logo-small.png}" alt="">
+    <img th:src="@{/assets/admin/img/logo-small.png}" alt="" />
    </a>
-   <a id="toggle_btn" href="javascript:void(0);">
-   </a>
+   <a id="toggle_btn" href="javascript:void(0);"> </a>
   </div>
 
   <a id="mobile_btn" class="mobile_btn" href="#sidebar">
-<span class="bar-icon">
-<span></span>
-<span></span>
-<span></span>
-</span>
+          <span class="bar-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
   </a>
 
   <ul class="nav user-menu">
-
    <li class="nav-item">
     <div class="top-nav-search">
      <a href="javascript:void(0);" class="responsive-search">
@@ -63,41 +72,53 @@
      </a>
      <form action="#">
       <div class="searchinputs">
-       <input type="text" placeholder="Search Here ...">
+       <input type="text" placeholder="Search Here ..." />
        <div class="search-addon">
-        <span><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"></span>
+                    <span
+                    ><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"
+                    /></span>
        </div>
       </div>
-      <a class="btn" id="searchdiv"><img th:src="@{/assets/admin/img/icons/search.svg}" alt="img"></a>
+      <a class="btn" id="searchdiv"
+      ><img th:src="@{/assets/admin/img/icons/search.svg}" alt="img"
+      /></a>
      </form>
     </div>
    </li>
 
-
    <li class="nav-item dropdown has-arrow flag-nav">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
-     <img th:src="@{/assets/admin/img/flags/us1.png}" alt="" height="20">
+    <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="javascript:void(0);"
+            role="button"
+    >
+     <img th:src="@{/assets/admin/img/flags/us1.png}" alt="" height="20" />
     </a>
     <div class="dropdown-menu dropdown-menu-right">
      <a href="javascript:void(0);" class="dropdown-item">
-      <img th:src="@{/assets/admin/img/flags/us.png}" alt="" height="16"> English
+      <img th:src="@{/assets/admin/img/flags/us.png}" alt="" height="16" /> English
      </a>
      <a href="javascript:void(0);" class="dropdown-item">
-      <img th:src="@{/assets/admin/img/flags/fr.png}" alt="" height="16"> French
+      <img th:src="@{/assets/admin/img/flags/fr.png}" alt="" height="16" /> French
      </a>
      <a href="javascript:void(0);" class="dropdown-item">
-      <img th:src="@{/assets/admin/img/flags/es.png}" alt="" height="16"> Spanish
+      <img th:src="@{/assets/admin/img/flags/es.png}" alt="" height="16" /> Spanish
      </a>
      <a href="javascript:void(0);" class="dropdown-item">
-      <img th:src="@{/assets/admin/img/flags/de.png}" alt="" height="16"> German
+      <img th:src="@{/assets/admin/img/flags/de.png}" alt="" height="16" /> German
      </a>
     </div>
    </li>
 
-
    <li class="nav-item dropdown">
-    <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-     <img th:src="@{/assets/admin/img/icons/notification-bing.svg}" alt="img"> <span class="badge rounded-pill">4</span>
+    <a
+            href="javascript:void(0);"
+            class="dropdown-toggle nav-link"
+            data-bs-toggle="dropdown"
+    >
+     <img th:src="@{/assets/admin/img/icons/notification-bing.svg}" alt="img" />
+     <span class="badge rounded-pill">4</span>
     </a>
     <div class="dropdown-menu notifications">
      <div class="topnav-dropdown-header">
@@ -109,12 +130,20 @@
        <li class="notification-message">
         <a th:href="@{/admin/activities}">
          <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-02.jpg}">
-</span>
+                        <span class="avatar flex-shrink-0">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-02.jpg}" />
+                        </span>
           <div class="media-body flex-grow-1">
-           <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
-           <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+           <p class="noti-details">
+            <span class="noti-title">John Doe</span> added new
+            task
+            <span class="noti-title"
+            >Patient appointment booking</span
+            >
+           </p>
+           <p class="noti-time">
+            <span class="notification-time">4 mins ago</span>
+           </p>
           </div>
          </div>
         </a>
@@ -122,12 +151,20 @@
        <li class="notification-message">
         <a th:href="@{/admin/activities}">
          <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-03.jpg}">
-</span>
+                        <span class="avatar flex-shrink-0">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-03.jpg}" />
+                        </span>
           <div class="media-body flex-grow-1">
-           <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
-           <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+           <p class="noti-details">
+            <span class="noti-title">Tarah Shropshire</span>
+            changed the task name
+            <span class="noti-title"
+            >Appointment booking with payment gateway</span
+            >
+           </p>
+           <p class="noti-time">
+            <span class="notification-time">6 mins ago</span>
+           </p>
           </div>
          </div>
         </a>
@@ -135,12 +172,22 @@
        <li class="notification-message">
         <a th:href="@{/admin/activities}">
          <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-06.jpg}">
-</span>
+                        <span class="avatar flex-shrink-0">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-06.jpg}" />
+                        </span>
           <div class="media-body flex-grow-1">
-           <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
-           <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+           <p class="noti-details">
+            <span class="noti-title">Misty Tison</span> added
+            <span class="noti-title">Domenic Houston</span> and
+            <span class="noti-title">Claire Mapes</span> to
+            project
+            <span class="noti-title"
+            >Doctor available module</span
+            >
+           </p>
+           <p class="noti-time">
+            <span class="notification-time">8 mins ago</span>
+           </p>
           </div>
          </div>
         </a>
@@ -148,12 +195,20 @@
        <li class="notification-message">
         <a th:href="@{/admin/activities}">
          <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-17.jpg}">
-</span>
+                        <span class="avatar flex-shrink-0">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-17.jpg}" />
+                        </span>
           <div class="media-body flex-grow-1">
-           <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
-           <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+           <p class="noti-details">
+            <span class="noti-title">Rolland Webber</span>
+            completed task
+            <span class="noti-title"
+            >Patient and Doctor video conferencing</span
+            >
+           </p>
+           <p class="noti-time">
+            <span class="notification-time">12 mins ago</span>
+           </p>
           </div>
          </div>
         </a>
@@ -161,12 +216,18 @@
        <li class="notification-message">
         <a th:href="@{/admin/activities}">
          <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-13.jpg}">
-</span>
+                        <span class="avatar flex-shrink-0">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-13.jpg}" />
+                        </span>
           <div class="media-body flex-grow-1">
-           <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
-           <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+           <p class="noti-details">
+            <span class="noti-title">Bernardo Galaviz</span>
+            added new task
+            <span class="noti-title">Private chat module</span>
+           </p>
+           <p class="noti-time">
+            <span class="notification-time">2 days ago</span>
+           </p>
           </div>
          </div>
         </a>
@@ -180,254 +241,139 @@
    </li>
 
    <li class="nav-item dropdown has-arrow main-drop">
-    <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
-<span class="user-img"><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
-<span class="status online"></span></span>
+    <a
+            href="javascript:void(0);"
+            class="dropdown-toggle nav-link userset"
+            data-bs-toggle="dropdown"
+    >
+              <span class="user-img"
+              ><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="" />
+                <span class="status online"></span
+                ></span>
     </a>
     <div class="dropdown-menu menu-drop-user">
      <div class="profilename">
       <div class="profileset">
-<span class="user-img"><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
-<span class="status online"></span></span>
+                  <span class="user-img"
+                  ><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="" />
+                    <span class="status online"></span
+                    ></span>
        <div class="profilesets">
         <h6>John Doe</h6>
         <h5>Admin</h5>
        </div>
       </div>
-      <hr class="m-0">
-      <a class="dropdown-item" th:href="@{/admin/profile}"> <i class="me-2" data-feather="user"></i> My Profile</a>
-      <a class="dropdown-item" th:href="@{/admin/generalsettings}"><i class="me-2" data-feather="settings"></i>Settings</a>
-      <hr class="m-0">
-      <a class="dropdown-item logout pb-0" th:href="@{/admin/signin}"><img th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img">Logout</a>
+      <hr class="m-0" />
+      <a class="dropdown-item" th:href="@{/admin/profile}">
+       <i class="me-2" data-feather="user"></i> My Profile</a
+      >
+      <a class="dropdown-item" th:href="@{/admin/generalsettings}"
+      ><i class="me-2" data-feather="settings"></i>Settings</a
+      >
+      <hr class="m-0" />
+      <a class="dropdown-item logout pb-0" th:href="@{/admin/signin}"
+      ><img
+              th:src="@{/assets/admin/img/icons/log-out.svg}"
+              class="me-2"
+              alt="img"
+      />Logout</a
+      >
      </div>
     </div>
    </li>
   </ul>
 
-
   <div class="dropdown mobile-user-menu">
-   <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+   <a
+           href="javascript:void(0);"
+           class="nav-link dropdown-toggle"
+           data-bs-toggle="dropdown"
+           aria-expanded="false"
+   ><i class="fa fa-ellipsis-v"></i
+   ></a>
    <div class="dropdown-menu dropdown-menu-right">
     <a class="dropdown-item" th:href="@{/admin/profile}">My Profile</a>
     <a class="dropdown-item" th:href="@{/admin/generalsettings}">Settings</a>
     <a class="dropdown-item" th:href="@{/admin/signin}">Logout</a>
    </div>
   </div>
-
  </div>
-
 
  <div class="sidebar" id="sidebar">
   <div class="sidebar-inner slimscroll">
    <div id="sidebar-menu" class="sidebar-menu">
     <ul>
-     <li>
-      <a th:href="@{/admin/index}"><img th:src="@{/assets/admin/img/icons/dashboard.svg}" alt="img"><span> Dashboard</span> </a>
-     </li>
      <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img"><span> Product</span> <span class="menu-arrow"></span></a>
+      <a href="javascript:void(0);"
+      ><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img" /><span>
+                    Sản phẩm</span
+      >
+       <span class="menu-arrow"></span
+       ></a>
       <ul>
-       <li><a th:href="@{/admin/productlist}">Product List</a></li>
-       <li><a th:href="@{/admin/addproduct}">Add Product</a></li>
-       <li><a th:href="@{/admin/categorylist}">Category List</a></li>
-       <li><a th:href="@{/admin/addcategory}">Add Category</a></li>
-       <li><a th:href="@{/admin/subcategorylist}">Sub Category List</a></li>
-       <li><a th:href="@{/admin/subaddcategory}">Add Sub Category</a></li>
-       <li><a th:href="@{/admin/brandlist}">Brand List</a></li>
-       <li><a th:href="@{/admin/addbrand}">Add Brand</a></li>
-       <li><a th:href="@{/admin/importproduct}">Import Products</a></li>
-       <li><a th:href="@{/admin/barcode}">Print Barcode</a></li>
+       <li><a th:href="@{/admin/productlist}">Danh sách sản phẩm</a></li>
+       <li><a th:href="@{/admin/addproduct}">Thêm sản phẩm</a></li>
       </ul>
      </li>
      <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/sales1.svg}" alt="img"><span> Sales</span> <span class="menu-arrow"></span></a>
+      <a href="javascript:void(0);"
+      ><img th:src="@{/assets/admin/img/icons/category.svg}" alt="img" /><span>
+                    Danh mục</span
+      >
+       <span class="menu-arrow"></span
+       ></a>
       <ul>
-       <li><a th:href="@{/admin/saleslist}">Sales List</a></li>
-       <li><a th:href="@{/admin/pos}">POS</a></li>
-       <li><a th:href="@{/admin/pos}">New Sales</a></li>
-       <li><a th:href="@{/admin/salesreturnlists}">Sales Return List</a></li>
-       <li><a th:href="@{/admin/createsalesreturns}">New Sales Return</a></li>
+       <li>
+        <a th:href="@{/admin/categorylist}"
+        >Danh sách các loại</a
+        >
+       </li>
+       <li><a th:href="@{/admin/addcategory}">Thêm loại</a></li>
+       <li>
+        <a th:href="@{/admin/subcategorylist}">Danh sách doanh mục phụ</a>
+       </li>
+       <li><a th:href="@{/admin/editsubcategory}">Thêm danh mục phụ</a></li>
       </ul>
      </li>
      <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/purchase1.svg}" alt="img"><span> Purchase</span> <span class="menu-arrow"></span></a>
+      <a href="javascript:void(0);"
+      ><img th:src="@{/assets/admin/img/icons/coupon.svg}" alt="img" /><span>
+                    Phiếu mua hàng</span
+      >
+       <span class="menu-arrow"></span
+       ></a>
       <ul>
-       <li><a th:href="@{/admin/purchaselist}">Purchase List</a></li>
-       <li><a th:href="@{/admin/addpurchase}">Add Purchase</a></li>
-       <li><a th:href="@{/admin/importpurchase}">Import Purchase</a></li>
+       <li>
+        <a th:href="@{/admin/couponlist}">Danh sách phiếu mua hàng </a>
+       </li>
+       <li><a th:href="@{/admin/addcoupon}">Thêm phiếu mua hàng</a></li>
+      </ul>
+     </li>
+
+     <li class="submenu">
+      <a href="javascript:void(0);"
+      ><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img" /><span>
+                    Người dùng</span
+      >
+       <span class="menu-arrow"></span
+       ></a>
+      <ul>
+       <li><a th:href="@{/admin/adduser}">Thêm người dùng</a></li>
+       <li><a th:href="@{/admin/userlists}">Danh sách người dùng</a></li>
       </ul>
      </li>
      <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/expense1.svg}" alt="img"><span> Expense</span> <span class="menu-arrow"></span></a>
+      <a href="javascript:void(0);"
+      ><img th:src="@{/assets/admin/img/icons/time.svg}" alt="img" /><span>
+                    Báo cáo</span
+      >
+       <span class="menu-arrow"></span
+       ></a>
       <ul>
-       <li><a th:href="@{/admin/expenselist}">Expense List</a></li>
-       <li><a th:href="@{/admin/createexpense}">Add Expense</a></li>
-       <li><a th:href="@{/admin/expensecategory}">Expense Category</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/quotation1.svg}" alt="img"><span> Quotation</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/quotationList}">Quotation List</a></li>
-       <li><a th:href="@{/admin/addquotation}">Add Quotation</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/transfer1.svg}" alt="img"><span> Transfer</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/transferlist}">Transfer List</a></li>
-       <li><a th:href="@{/admin/addtransfer}">Add Transfer </a></li>
-       <li><a th:href="@{/admin/importtransfer}">Import Transfer </a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/return1.svg}" alt="img"><span> Return</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/salesreturnlist}">Sales Return List</a></li>
-       <li><a th:href="@{/admin/createsalesreturn}">Add Sales Return </a></li>
-       <li><a th:href="@{/admin/purchasereturnlist}">Purchase Return List</a></li>
-       <li><a th:href="@{/admin/createpurchasereturn}">Add Purchase Return </a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img"><span> People</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/customerlist}">Customer List</a></li>
-       <li><a th:href="@{/admin/addcustomer}">Add Customer </a></li>
-       <li><a th:href="@{/admin/supplierlist}">Supplier List</a></li>
-       <li><a th:href="@{/admin/addsupplier}">Add Supplier </a></li>
-       <li><a th:href="@{/admin/userlist}" class="active">User List</a></li>
-       <li><a th:href="@{/admin/adduser}">Add User</a></li>
-       <li><a th:href="@{/admin/storelist}">Store List</a></li>
-       <li><a th:href="@{/admin/addstore}">Add Store</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/places.svg}" alt="img"><span> Places</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/newcountry}">New Country</a></li>
-       <li><a th:href="@{/admin/countrieslist}">Countries list</a></li>
-       <li><a th:href="@{/admin/newstate}">New State </a></li>
-       <li><a th:href="@{/admin/statelist}">State list</a></li>
-      </ul>
-     </li>
-     <li>
-      <a th:href="@{/admin/components}"><i data-feather="layers"></i><span> Components</span> </a>
-     </li>
-     <li>
-      <a th:href="@{/admin/blankpage}"><i data-feather="file"></i><span> Blank Page</span> </a>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><i data-feather="alert-octagon"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/error-404}">404 Error </a></li>
-       <li><a th:href="@{/admin/error-500}">500 Error </a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><i data-feather="box"></i> <span>Elements </span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/sweetalerts}">Sweet Alerts</a></li>
-       <li><a th:href="@{/admin/tooltip}">Tooltip</a></li>
-       <li><a th:href="@{/admin/popover}">Popover</a></li>
-       <li><a th:href="@{/admin/ribbon}">Ribbon</a></li>
-       <li><a th:href="@{/admin/clipboard}">Clipboard</a></li>
-       <li><a th:href="@{/admin/drag-drop}">Drag & Drop</a></li>
-       <li><a th:href="@{/admin/rangeslider}">Range Slider</a></li>
-       <li><a th:href="@{/admin/rating}">Rating</a></li>
-       <li><a th:href="@{/admin/toastr}">Toastr</a></li>
-       <li><a th:href="@{/admin/text-editor}">Text Editor</a></li>
-       <li><a th:href="@{/admin/counter}">Counter</a></li>
-       <li><a th:href="@{/admin/scrollbar}">Scrollbar</a></li>
-       <li><a th:href="@{/admin/spinner}">Spinner</a></li>
-       <li><a th:href="@{/admin/notification}">Notification</a></li>
-       <li><a th:href="@{/admin/lightbox}">Lightbox</a></li>
-       <li><a th:href="@{/admin/stickynote}">Sticky Note</a></li>
-       <li><a th:href="@{/admin/timeline}">Timeline</a></li>
-       <li><a th:href="@{/admin/form-wizard}">Form Wizard</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><i data-feather="bar-chart-2"></i> <span> Charts </span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/chart-apex}">Apex Charts</a></li>
-       <li><a th:href="@{/admin/chart-js}">Chart Js</a></li>
-       <li><a th:href="@{/admin/chart-morris}">Morris Charts</a></li>
-       <li><a th:href="@{/admin/chart-flot}">Flot Charts</a></li>
-       <li><a th:href="@{/admin/chart-peity}">Peity Charts</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><i data-feather="award"></i><span> Icons </span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/icon-fontawesome}">Fontawesome Icons</a></li>
-       <li><a th:href="@{/admin/icon-feather}">Feather Icons</a></li>
-       <li><a th:href="@{/admin/icon-ionic}">Ionic Icons</a></li>
-       <li><a th:href="@{/admin/icon-material}">Material Icons</a></li>
-       <li><a th:href="@{/admin/icon-pe7}">Pe7 Icons</a></li>
-       <li><a th:href="@{/admin/icon-simpleline}">Simpleline Icons</a></li>
-       <li><a th:href="@{/admin/icon-themify}">Themify Icons</a></li>
-       <li><a th:href="@{/admin/icon-weather}">Weather Icons</a></li>
-       <li><a th:href="@{/admin/icon-typicon}">Typicon Icons</a></li>
-       <li><a th:href="@{/admin/icon-flag}">Flag Icons</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/form-basic-inputs}">Basic Inputs </a></li>
-       <li><a th:href="@{/admin/form-input-groups}">Input Groups </a></li>
-       <li><a th:href="@{/admin/form-horizontal}">Horizontal Form </a></li>
-       <li><a th:href="@{/admin/form-vertical}"> Vertical Form </a></li>
-       <li><a th:href="@{/admin/form-mask}">Form Mask </a></li>
-       <li><a th:href="@{/admin/form-validation}">Form Validation </a></li>
-       <li><a th:href="@{/admin/form-select2}">Form Select2 </a></li>
-       <li><a th:href="@{/admin/form-fileupload}">File Upload </a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><i data-feather="layout"></i> <span> Table </span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/tables-basic}">Basic Tables </a></li>
-       <li><a th:href="@{/admin/data-tables}">Data Table </a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img"><span> Application</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/chat}">Chat</a></li>
-       <li><a th:href="@{/admin/calendar}">Calendar</a></li>
-       <li><a th:href="@{/admin/email}">Email</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/time.svg}" alt="img"><span> Report</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/purchaseorderreport}">Purchase order report</a></li>
-       <li><a th:href="@{/admin/inventoryreport}">Inventory Report</a></li>
-       <li><a th:href="@{/admin/salesreport}">Sales Report</a></li>
-       <li><a th:href="@{/admin/invoicereport}">Invoice Report</a></li>
-       <li><a th:href="@{/admin/purchasereport}">Purchase Report</a></li>
-       <li><a th:href="@{/admin/supplierreport}">Supplier Report</a></li>
-       <li><a th:href="@{/admin/customerreport}">Customer Report</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img"><span> Users</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/newuser}">New User </a></li>
-       <li><a th:href="@{/admin/userlists}">Users List</a></li>
-      </ul>
-     </li>
-     <li class="submenu">
-      <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/settings.svg}" alt="img"><span> Settings</span> <span class="menu-arrow"></span></a>
-      <ul>
-       <li><a th:href="@{/admin/generalsettings}">General Settings</a></li>
-       <li><a th:href="@{/admin/emailsettings}">Email Settings</a></li>
-       <li><a th:href="@{/admin/paymentsettings}">Payment Settings</a></li>
-       <li><a th:href="@{/admin/currencysettings}">Currency Settings</a></li>
-       <li><a th:href="@{/admin/grouppermissions}">Group Permissions</a></li>
-       <li><a th:href="@{/admin/taxrates}">Tax Rates</a></li>
+       <li>
+        <a th:href="@{/admin/purchaseorderreport}">Báo cáo đơn đặt hàng</a>
+       </li>
+       <li><a th:href="@{/admin/invoicereport}">Báo cáo hóa đơn</a></li>
       </ul>
      </li>
     </ul>
@@ -439,11 +385,17 @@
   <div class="content">
    <div class="page-header">
     <div class="page-title">
-     <h4>User List</h4>
-     <h6>Manage your User</h6>
+     <h4>Danh sách người dùng</h4>
+     <h6>Quản lí người dùng</h6>
     </div>
     <div class="page-btn">
-     <a th:href="@{/admin/adduser}" class="btn btn-added"><img th:src="@{/assets/admin/img/icons/plus.svg}" alt="img" class="me-2">Add User</a>
+     <a th:href="@{/admin/adduser}" class="btn btn-added"
+     ><img
+             th:src="@{/assets/admin/img/icons/plus.svg}"
+             alt="img"
+             class="me-2"
+     />Thêm người dùng</a
+     >
     </div>
    </div>
 
@@ -453,469 +405,117 @@
       <div class="search-set">
        <div class="search-path">
         <a class="btn btn-filter" id="filter_search">
-         <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img">
-         <span><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"></span>
+         <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img" />
+         <span
+         ><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"
+         /></span>
         </a>
        </div>
        <div class="search-input">
         <a class="btn btn-searchset">
-         <img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img">
+         <img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img" />
         </a>
        </div>
       </div>
       <div class="wordset">
        <ul>
         <li>
-         <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"></a>
+         <a
+                 data-bs-toggle="tooltip"
+                 data-bs-placement="top"
+                 title="pdf"
+         ><img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"
+         /></a>
         </li>
         <li>
-         <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"></a>
+         <a
+                 data-bs-toggle="tooltip"
+                 data-bs-placement="top"
+                 title="excel"
+         ><img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"
+         /></a>
         </li>
         <li>
-         <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"></a>
+         <a
+                 data-bs-toggle="tooltip"
+                 data-bs-placement="top"
+                 title="print"
+         ><img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"
+         /></a>
         </li>
        </ul>
       </div>
      </div>
 
-     <div class="card" id="filter_inputs">
-      <div class="card-body pb-0">
-       <div class="row">
-        <div class="col-lg-2 col-sm-6 col-12">
-         <div class="form-group">
-          <input type="text" placeholder="Enter User Name">
-         </div>
-        </div>
-        <div class="col-lg-2 col-sm-6 col-12">
-         <div class="form-group">
-          <input type="text" placeholder="Enter Phone">
-         </div>
-        </div>
-        <div class="col-lg-2 col-sm-6 col-12">
-         <div class="form-group">
-          <input type="text" placeholder="Enter Email">
-         </div>
-        </div>
-        <div class="col-lg-2 col-sm-6 col-12">
-         <div class="form-group">
-          <select class="select">
-           <option>Disable</option>
-           <option>Enable</option>
-          </select>
-         </div>
-        </div>
-        <div class="col-lg-1 col-sm-6 col-12 ms-auto">
-         <div class="form-group">
-          <a class="btn btn-filters ms-auto"><img th:src="@{/assets/admin/img/icons/search-whites.svg}" alt="img"></a>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
+
 
      <div class="table-responsive">
-      <table class="table  datanew">
+      <table class="table datanew">
        <thead>
        <tr>
         <th>
          <label class="checkboxs">
-          <input type="checkbox">
+          <input type="checkbox" />
           <span class="checkmarks"></span>
          </label>
         </th>
-        <th>Profile</th>
-        <th>First name </th>
-        <th>Last name </th>
-        <th>User name </th>
-        <th>Phone</th>
-        <th>email</th>
-        <th>Status</th>
-        <th>Action</th>
+        <th>Ảnh</th>
+        <th>Tên người dùng</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>Giới tính</th>
+        <th>Ngày sinh</th>
+        <th>Mật khẩu</th>
+        <th>Ngày tạo </th>
+        <th>Ngày cập nhật  </th>
+        <th>Ngày đăng nhập cuối  </th>
+        <th>Trạng thái </th>
+        <th>Lựa chọn</th>
        </tr>
        </thead>
        <tbody>
        <tr>
         <td>
          <label class="checkboxs">
-          <input type="checkbox">
+          <input type="checkbox" />
           <span class="checkmarks"></span>
          </label>
         </td>
         <td class="productimgname">
          <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer1.jpg}" alt="product">
+          <img
+                  th:src="@{/assets/admin/img/customer/customer1.jpg}"
+                  alt="product"
+          />
          </a>
         </td>
         <td>Thomas</td>
-        <td>Thomas </td>
-        <td>Thomas21 </td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="42362a2d2f233102273a232f322e276c212d2f">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user1" class="check">
-          <label for="user1" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer2.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Benjamin</td>
-        <td>Franklin </td>
-        <td>504Benjamin </td>
-        <td>123-456-888</td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e685939592898b8394a6839e878b968a83c885898b">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user2" class="check" checked="">
-          <label for="user2" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer3.jpg}" alt="product">
-         </a>
-        </td>
-        <td>James</td>
-        <td>James </td>
-        <td>James 524 </td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef4fff3fbeddefbe6fff3eef2fbb0fdf1f3">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user3" class="check" checked="">
-          <label for="user3" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer4.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Bruklin</td>
-        <td>Bruklin </td>
-        <td>Bruklin2022</td>
-        <td>123-456-888</td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="781a0a0d13141116381d00191508141d561b1715">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user4" class="check" checked="">
-          <label for="user4" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer5.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Franklin</td>
-        <td>Jacob </td>
-        <td>BeverlyWIN25</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aceec9dac9dec0d5ecc9d4cdc1dcc0c982cfc3c1">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user5" class="check">
-          <label for="user5" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer6.jpg}" alt="product">
-         </a>
-        </td>
-        <td>B. Huber	</td>
-        <td>Jacob </td>
-        <td>BeverlyWIN25</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b330e191e093b1e031a160b171e55181416">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user6" class="check">
-          <label for="user6" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer7.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Alwin</td>
-        <td>Alwin </td>
-        <td>Alwin243</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0764727473686a627547627f666a776b622964686a">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user7" class="check">
-          <label for="user7" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
+        <td>Thomas</td>
+        <td>Thomas21</td>
+        <td>+12163547758</td>
 
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
+        <td>2020-2-2</td>
+        <td>Thomas21</td>
+        <td>2020-2-2</td>
+        <td>2020-2-2</td>
+        <td>2020-2-2</td>
+
         <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer8.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Fred john</td>
-        <td>john </td>
-        <td>FredJ25</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad0d5d2d4fadfc2dbd7cad6df94d9d5d7">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user15" class="check">
-          <label for="user15" class="checktoggle">checkbox</label>
+         <div
+                 class="status-toggle d-flex justify-content-between align-items-center"
+         >
+          <input type="checkbox" id="user1" class="check" />
+          <label for="user1" class="checktoggle"
+          >checkbox</label
+          >
          </div>
         </td>
         <td>
          <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
+          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img" />
          </a>
          <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer1.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Rasmussen	</td>
-        <td>Gothic </td>
-        <td>Cras56</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a685b49574f49495f547a5f425b574a565f14595557">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user9" class="check" checked="">
-          <label for="user9" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer2.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Grace	</td>
-        <td>Halena </td>
-        <td>Grace2022</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c3d5d3d4cfcdc5d2e0c5d8c1cdd0ccc58ec3cfcd">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user10" class="check" checked="">
-          <label for="user10" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer3.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Rasmussen	</td>
-        <td>Gothic </td>
-        <td>Cras56</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="702211031d050303151e301508111d001c155e131f1d">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user19" class="check" checked="">
-          <label for="user19" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-         </a>
-        </td>
-       </tr>
-       <tr>
-        <td>
-         <label class="checkboxs">
-          <input type="checkbox">
-          <span class="checkmarks"></span>
-         </label>
-        </td>
-        <td class="productimgname">
-         <a href="javascript:void(0);" class="product-img">
-          <img th:src="@{/assets/admin/img/customer/customer4.jpg}" alt="product">
-         </a>
-        </td>
-        <td>Grace	</td>
-        <td>Halena </td>
-        <td>Grace2022</td>
-        <td>+12163547758 </td>
-        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e5d4b4d4a51535b4c7e5b465f534e525b105d5153">[email&#160;protected]</a></td>
-        <td>
-         <div class="status-toggle d-flex justify-content-between align-items-center">
-          <input type="checkbox" id="user18" class="check" checked="">
-          <label for="user18" class="checktoggle">checkbox</label>
-         </div>
-        </td>
-        <td>
-         <a class="me-3" th:href="@{/admin/edituser}">
-          <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-         </a>
-         <a class="me-3 confirm-text" href="javascript:void(0);">
-          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
+          <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img" />
          </a>
         </td>
        </tr>
@@ -924,18 +524,29 @@
      </div>
     </div>
    </div>
-
   </div>
  </div>
 </div>
 
-
-<div class="modal fade" id="showpayment" tabindex="-1" aria-labelledby="showpayment" aria-hidden="true">
+<div
+        class="modal fade"
+        id="showpayment"
+        tabindex="-1"
+        aria-labelledby="showpayment"
+        aria-hidden="true"
+>
  <div class="modal-dialog modal-lg">
   <div class="modal-content">
    <div class="modal-header">
     <h5 class="modal-title">Show Payments</h5>
-    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+    >
+     <span aria-hidden="true">×</span>
+    </button>
    </div>
    <div class="modal-body">
     <div class="table-responsive">
@@ -944,26 +555,32 @@
       <tr>
        <th>Date</th>
        <th>Reference</th>
-       <th>Amount	</th>
-       <th>Paid By	</th>
-       <th>Paid By	</th>
+       <th>Amount</th>
+       <th>Paid By</th>
+       <th>Paid By</th>
       </tr>
       </thead>
       <tbody>
       <tr class="bor-b1">
-       <td>2022-03-07	</td>
+       <td>2022-03-07</td>
        <td>INV/SL0101</td>
-       <td>$ 1500.00	</td>
+       <td>$ 1500.00</td>
        <td>Cash</td>
        <td>
         <a class="me-2" href="javascript:void(0);">
-         <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img">
+         <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img" />
         </a>
-        <a class="me-2" href="javascript:void(0);" data-bs-target="#editpayment" data-bs-toggle="modal" data-bs-dismiss="modal">
-         <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
+        <a
+                class="me-2"
+                href="javascript:void(0);"
+                data-bs-target="#editpayment"
+                data-bs-toggle="modal"
+                data-bs-dismiss="modal"
+        >
+         <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img" />
         </a>
         <a class="me-2 confirm-text" href="javascript:void(0);">
-         <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
+         <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img" />
         </a>
        </td>
       </tr>
@@ -975,13 +592,25 @@
  </div>
 </div>
 
-
-<div class="modal fade" id="createpayment" tabindex="-1" aria-labelledby="createpayment" aria-hidden="true">
+<div
+        class="modal fade"
+        id="createpayment"
+        tabindex="-1"
+        aria-labelledby="createpayment"
+        aria-hidden="true"
+>
  <div class="modal-dialog modal-lg">
   <div class="modal-content">
    <div class="modal-header">
     <h5 class="modal-title">Create Payment</h5>
-    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+    >
+     <span aria-hidden="true">×</span>
+    </button>
    </div>
    <div class="modal-body">
     <div class="row">
@@ -989,9 +618,13 @@
       <div class="form-group">
        <label>Customer</label>
        <div class="input-group">
-        <input type="text" value="2022-03-07" class="datetimepicker">
+        <input
+                type="text"
+                value="2022-03-07"
+                class="datetimepicker"
+        />
         <a class="scanner-set input-group-text">
-         <img th:src="@{/assets/admin/img/icons/datepicker.svg}" alt="img">
+         <img th:src="@{/assets/admin/img/icons/datepicker.svg}" alt="img" />
         </a>
        </div>
       </div>
@@ -999,19 +632,19 @@
      <div class="col-lg-6 col-sm-12 col-12">
       <div class="form-group">
        <label>Reference</label>
-       <input type="text" value="INV/SL0101">
+       <input type="text" value="INV/SL0101" />
       </div>
      </div>
      <div class="col-lg-6 col-sm-12 col-12">
       <div class="form-group">
        <label>Received Amount</label>
-       <input type="text" value="1500.00">
+       <input type="text" value="1500.00" />
       </div>
      </div>
      <div class="col-lg-6 col-sm-12 col-12">
       <div class="form-group">
        <label>Paying Amount</label>
-       <input type="text" value="1500.00">
+       <input type="text" value="1500.00" />
       </div>
      </div>
      <div class="col-lg-6 col-sm-12 col-12">
@@ -1034,19 +667,37 @@
    </div>
    <div class="modal-footer">
     <button type="button" class="btn btn-submit">Submit</button>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+    >
+     Close
+    </button>
    </div>
   </div>
  </div>
 </div>
 
-
-<div class="modal fade" id="editpayment" tabindex="-1" aria-labelledby="editpayment" aria-hidden="true">
+<div
+        class="modal fade"
+        id="editpayment"
+        tabindex="-1"
+        aria-labelledby="editpayment"
+        aria-hidden="true"
+>
  <div class="modal-dialog modal-lg">
   <div class="modal-content">
    <div class="modal-header">
     <h5 class="modal-title">Edit Payment</h5>
-    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+    >
+     <span aria-hidden="true">×</span>
+    </button>
    </div>
    <div class="modal-body">
     <div class="row">
@@ -1054,9 +705,13 @@
       <div class="form-group">
        <label>Customer</label>
        <div class="input-group">
-        <input type="text" value="2022-03-07" class="datetimepicker">
+        <input
+                type="text"
+                value="2022-03-07"
+                class="datetimepicker"
+        />
         <a class="scanner-set input-group-text">
-         <img th:src="@{/assets/admin/img/icons/datepicker.svg}" alt="img">
+         <img th:src="@{/assets/admin/img/icons/datepicker.svg}" alt="img" />
         </a>
        </div>
       </div>
@@ -1064,19 +719,19 @@
      <div class="col-lg-6 col-sm-12 col-12">
       <div class="form-group">
        <label>Reference</label>
-       <input type="text" value="INV/SL0101">
+       <input type="text" value="INV/SL0101" />
       </div>
      </div>
      <div class="col-lg-6 col-sm-12 col-12">
       <div class="form-group">
        <label>Received Amount</label>
-       <input type="text" value="1500.00">
+       <input type="text" value="1500.00" />
       </div>
      </div>
      <div class="col-lg-6 col-sm-12 col-12">
       <div class="form-group">
        <label>Paying Amount</label>
-       <input type="text" value="1500.00">
+       <input type="text" value="1500.00" />
       </div>
      </div>
      <div class="col-lg-6 col-sm-12 col-12">
@@ -1099,14 +754,23 @@
    </div>
    <div class="modal-footer">
     <button type="button" class="btn btn-submit">Submit</button>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+    >
+     Close
+    </button>
    </div>
   </div>
  </div>
 </div>
 
-
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script th:src="@{/assets/admin/js/jquery-3.6.0.min.js}"></script>
+<script
+        data-cfasync="false"
+        src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+></script>
+<script th:src="@{/assets/admin/js/jquery-3.6.0.min.js}"></script>
 
 <script th:src="@{/assets/admin/js/feather.min.js}"></script>
 
