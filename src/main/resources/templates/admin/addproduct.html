@@ -255,7 +255,7 @@
             </div>
 
             <div class="card">
-                <form class="card-body" th:action="@{/admin/addproduct/save}" method="post" id="formProduct" th:object="${product}" >
+                <form class="card-body" th:action="@{/admin/product/add}" method="post" id="formProduct" th:object="${product}" >
                     <div class="row">
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
@@ -369,16 +369,10 @@
     const formProduct = document.querySelector('#formProduct')
 
     formProduct.onsubmit = (event) => {
-        event.preventDefault();
         const formData = new FormData(formProduct);
         formData.append('description',quill.root.innerHTML)
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.open("POST", formProduct.action, true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-            }
-        };
         xhr.send(formData);
     }
 </script>

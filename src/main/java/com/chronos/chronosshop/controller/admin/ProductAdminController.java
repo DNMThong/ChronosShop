@@ -31,7 +31,8 @@ public class ProductAdminController {
     @PostMapping("/add")
     public String productSave(Product product) {
         productRepository.save(product);
-        return "redirect:/admin/productlist";
+
+        return "redirect:/admin/product/list";
     }
     @RequestMapping("/delete/{id}")
     public String productDelete(@PathVariable("id") Integer id) {
@@ -40,7 +41,7 @@ public class ProductAdminController {
             product.setStatus("Đã xóa");
             productRepository.save(product);
         }
-        return "redirect:/admin/productlist";
+        return "redirect:/admin/product/list";
     }
     @RequestMapping("/variant/add")
     public String addProductVariant() {
