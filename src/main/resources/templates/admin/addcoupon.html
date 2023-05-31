@@ -25,10 +25,6 @@
     <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}">
 
     <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}">
-
-    <link
-            href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-            rel="stylesheet" />
 </head>
 
 <body>
@@ -245,68 +241,57 @@
 
     <th:block th:replace="~{component/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
 
+
     <div class="page-wrapper">
         <div class="content">
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Thêm sản phẩm</h4>
-                    <h6>Tạo sản phẩm mới</h6>
+                    <h4>Thêm Coupon</h4>
+                    <h6>Tạo Coupon mới</h6>
                 </div>
             </div>
 
             <div class="card">
-                <form class="card-body" th:action="@{/admin/addproduct/save}" method="post" id="formProduct" th:object="${product}" >
+                <form class="card-body">
                     <div class="row">
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Tên sản phẩm</label>
-                                <input type="text" th:field="*{productName}">
+                                <label>Coupon ID</label>
+                                <input type="text" th:name="couponId">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Danh mục</label>
-                                <select th:field="*{category.categoryId}" class="select">
-                                    <option  th:each="category:${categoryList}" th:text="${category.getCategoryName()}" th:value="${category.getCategoryId()}"></option>
-                                </select>
+                                <label>Tên coupon</label>
+                                <input type="text" th:name="couponName">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Trạng thái</label>
-                                <select th:field="*{status}" class="select">
-                                    <option value="Còn hàng" >Còn hàng</option>
-                                    <option value="Hết hàng">Hết hàng</option>
-                                </select>
+                                <label>Discount</label>
+                                <input type="text" th:name="discount">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Vật liệu</label>
-                                <input th:name="material" type="text">
+                                <label>Discount For</label>
+                                <input type="text" th:name="discountFor">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Giá cũ</label>
-                                <input th:field="*{priceOld}" type="text">
+                                <label>Ngày bắt đầu khuyến mãi</label>
+                                <input class="form-control"  type="date">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Giá mới</label>
-                                <input th:field="*{priceNew}" type="text">
+                                <label>Ngày kết thúc khuyến mãi</label>
+                                <input class="form-control"  type="date">
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Thông tin chi tiết</label>
-                                <div id="editor" style="min-height: 150px;"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-submit me-2">Submit</button>
+                            <button type="submit" href="javascript:void(0);" class="btn btn-submit me-2">Submit</button>
                             <a th:href="@{/admin/productlist}" class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>
@@ -335,53 +320,6 @@
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
 
 <script th:src="@{/assets/admin/js/script.js}"></script>
-
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script>
-    var toolbarOptions = [
-        ["bold", "italic", "underline", "strike"], // toggled buttons
-        ["blockquote", "code-block"],
-
-        [{ header: 1 }, { header: 2 }], // custom button values
-        [{ list: "ordered" }, { list: "bullet" }],
-        [{ script: "sub" }, { script: "super" }], // superscript/subscript
-        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-        [{ direction: "rtl" }], // text direction
-
-        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        ["link", "image", "video", "formula"], // add's image support
-        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-        [{ font: [] }],
-        [{ align: [] }],
-
-        ["clean"], // remove formatting button
-    ];
-
-    var quill = new Quill("#editor", {
-        modules: {
-            toolbar: toolbarOptions,
-        },
-
-        theme: "snow",
-    });
-
-    const formProduct = document.querySelector('#formProduct')
-
-    formProduct.onsubmit = (event) => {
-        event.preventDefault();
-        const formData = new FormData(formProduct);
-        formData.append('description',quill.root.innerHTML)
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", formProduct.action, true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-            }
-        };
-        xhr.send(formData);
-    }
-</script>
 </body>
 
 </html>

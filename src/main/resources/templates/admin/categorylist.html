@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="description" content="POS - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
+    <meta name="keywords"
+          content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
     <title>Jassa admin template</title>
@@ -24,6 +26,7 @@
 
     <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}">
 </head>
+
 <body>
 <div id="global-loader">
     <div class="whirly-loader"> </div>
@@ -34,10 +37,10 @@
     <div class="header">
 
         <div class="header-left active">
-            <a th:href="@{/index}" class="logo">
+            <a th:href="@{/admin/index}" class="logo">
                 <img th:src="@{/assets/admin/img/logo.png}" alt="">
             </a>
-            <a th:href="@{/index}" class="logo-small">
+            <a th:href="@{/admin/index}" class="logo-small">
                 <img th:src="@{/assets/admin/img/logo-small.png}" alt="">
             </a>
             <a id="toggle_btn" href="javascript:void(0);">
@@ -45,11 +48,11 @@
         </div>
 
         <a id="mobile_btn" class="mobile_btn" href="#sidebar">
-<span class="bar-icon">
-<span></span>
-<span></span>
-<span></span>
-</span>
+                <span class="bar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
         </a>
 
         <ul class="nav user-menu">
@@ -73,7 +76,8 @@
 
 
             <li class="nav-item dropdown has-arrow flag-nav">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);"
+                   role="button">
                     <img th:src="@{/assets/admin/img/flags/us1.png}" alt="" height="20">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -95,7 +99,8 @@
 
             <li class="nav-item dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                    <img th:src="@{/assets/admin/img/icons/notification-bing.svg}" alt="img"> <span class="badge rounded-pill">4</span>
+                    <img th:src="@{/assets/admin/img/icons/notification-bing.svg}" alt="img"> <span
+                        class="badge rounded-pill">4</span>
                 </a>
                 <div class="dropdown-menu notifications">
                     <div class="topnav-dropdown-header">
@@ -105,66 +110,82 @@
                     <div class="noti-content">
                         <ul class="notification-list">
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-02.jpg}">
-</span>
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" th:src="@{/assets/admin/img/profiles/avatar-02.jpg}">
+                                            </span>
                                         <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
-                                            <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+                                            <p class="noti-details"><span class="noti-title">John Doe</span> added
+                                                new task <span class="noti-title">Patient appointment booking</span>
+                                            </p>
+                                            <p class="noti-time"><span class="notification-time">4 mins ago</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-03.jpg}">
-</span>
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" th:src="@{/assets/admin/img/profiles/avatar-03.jpg}">
+                                            </span>
                                         <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
-                                            <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+                                            <p class="noti-details"><span class="noti-title">Tarah Shropshire</span>
+                                                changed the task name <span class="noti-title">Appointment booking
+                                                        with payment gateway</span></p>
+                                            <p class="noti-time"><span class="notification-time">6 mins ago</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-06.jpg}">
-</span>
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" th:src="@{/assets/admin/img/profiles/avatar-06.jpg}">
+                                            </span>
                                         <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
-                                            <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+                                            <p class="noti-details"><span class="noti-title">Misty Tison</span>
+                                                added <span class="noti-title">Domenic Houston</span> and <span
+                                                        class="noti-title">Claire Mapes</span> to project <span
+                                                        class="noti-title">Doctor available module</span></p>
+                                            <p class="noti-time"><span class="notification-time">8 mins ago</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-17.jpg}">
-</span>
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" th:src="@{/assets/admin/img/profiles/avatar-17.jpg}">
+                                            </span>
                                         <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
-                                            <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+                                            <p class="noti-details"><span class="noti-title">Rolland Webber</span>
+                                                completed task <span class="noti-title">Patient and Doctor video
+                                                        conferencing</span></p>
+                                            <p class="noti-time"><span class="notification-time">12 mins ago</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="notification-message">
-                                <a th:href="@{/activities}">
+                                <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
-<span class="avatar flex-shrink-0">
-<img alt="" th:src="@{/assets/admin/img/profiles/avatar-13.jpg}">
-</span>
+                                            <span class="avatar flex-shrink-0">
+                                                <img alt="" th:src="@{/assets/admin/img/profiles/avatar-13.jpg}">
+                                            </span>
                                         <div class="media-body flex-grow-1">
-                                            <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
-                                            <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+                                            <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span>
+                                                added new task <span class="noti-title">Private chat module</span>
+                                            </p>
+                                            <p class="noti-time"><span class="notification-time">2 days ago</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </a>
@@ -172,31 +193,34 @@
                         </ul>
                     </div>
                     <div class="topnav-dropdown-footer">
-                        <a th:href="@{/activities}">View all Notifications</a>
+                        <a th:href="@{/admin/activities}">View all Notifications</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item dropdown has-arrow main-drop">
                 <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
-<span class="user-img"><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
-<span class="status online"></span></span>
+                        <span class="user-img"><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
+                            <span class="status online"></span></span>
                 </a>
                 <div class="dropdown-menu menu-drop-user">
                     <div class="profilename">
                         <div class="profileset">
-<span class="user-img"><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
-<span class="status online"></span></span>
+                                <span class="user-img"><img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
+                                    <span class="status online"></span></span>
                             <div class="profilesets">
                                 <h6>John Doe</h6>
                                 <h5>Admin</h5>
                             </div>
                         </div>
                         <hr class="m-0">
-                        <a class="dropdown-item" th:href="@{/profile}"> <i class="me-2" data-feather="user"></i> My Profile</a>
-                        <a class="dropdown-item" th:href="@{/generalsettings}"><i class="me-2" data-feather="settings"></i>Settings</a>
+                        <a class="dropdown-item" th:href="@{/admin/profile}"> <i class="me-2" data-feather="user"></i> My
+                            Profile</a>
+                        <a class="dropdown-item" th:href="@{/admin/generalsettings}"><i class="me-2"
+                                                                                        data-feather="settings"></i>Settings</a>
                         <hr class="m-0">
-                        <a class="dropdown-item logout pb-0" th:href="@{/signin}"><img th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img">Logout</a>
+                        <a class="dropdown-item logout pb-0" th:href="@{/admin/signin}"><img
+                                th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img">Logout</a>
                     </div>
                 </div>
             </li>
@@ -204,245 +228,29 @@
 
 
         <div class="dropdown mobile-user-menu">
-            <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+            <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+               aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" th:href="@{/profile}">My Profile</a>
-                <a class="dropdown-item" th:href="@{/generalsettings}">Settings</a>
-                <a class="dropdown-item" th:href="@{/signin}">Logout</a>
+                <a class="dropdown-item" th:href="@{/admin/profile}">My Profile</a>
+                <a class="dropdown-item" th:href="@{/admin/generalsettings}">Settings</a>
+                <a class="dropdown-item" th:href="@{/admin/signin}">Logout</a>
             </div>
         </div>
 
     </div>
 
-
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-inner slimscroll">
-            <div id="sidebar-menu" class="sidebar-menu">
-                <ul>
-                    <li>
-                        <a th:href="@{/index}"><img th:src="@{/assets/admin/img/icons/dashboard.svg}" alt="img"><span> Dashboard</span> </a>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img"><span> Product</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/productlist}">Product List</a></li>
-                            <li><a th:href="@{/addproduct}">Add Product</a></li>
-                            <li><a th:href="@{/categorylist}" class="active">Category List</a></li>
-                            <li><a th:href="@{/addcategory}">Add Category</a></li>
-                            <li><a th:href="@{/subcategorylist}">Sub Category List</a></li>
-                            <li><a th:href="@{/subaddcategory}">Add Sub Category</a></li>
-                            <li><a th:href="@{/brandlist}">Brand List</a></li>
-                            <li><a th:href="@{/addbrand}">Add Brand</a></li>
-                            <li><a th:href="@{/importproduct}">Import Products</a></li>
-                            <li><a th:href="@{/barcode}">Print Barcode</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/sales1.svg}" alt="img"><span> Sales</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/saleslist}">Sales List</a></li>
-                            <li><a th:href="@{/pos}">POS</a></li>
-                            <li><a th:href="@{/pos}">New Sales</a></li>
-                            <li><a th:href="@{/salesreturnlists}">Sales Return List</a></li>
-                            <li><a th:href="@{/createsalesreturns}">New Sales Return</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/purchase1.svg}" alt="img"><span> Purchase</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/purchaselist}">Purchase List</a></li>
-                            <li><a th:href="@{/addpurchase}">Add Purchase</a></li>
-                            <li><a th:href="@{/importpurchase}">Import Purchase</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/expense1.svg}" alt="img"><span> Expense</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/expenselist}">Expense List</a></li>
-                            <li><a th:href="@{/createexpense}">Add Expense</a></li>
-                            <li><a th:href="@{/expensecategory}">Expense Category</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/quotation1.svg}" alt="img"><span> Quotation</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/quotationList}">Quotation List</a></li>
-                            <li><a th:href="@{/addquotation}">Add Quotation</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/transfer1.svg}" alt="img"><span> Transfer</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/transferlist}">Transfer List</a></li>
-                            <li><a th:href="@{/addtransfer}">Add Transfer </a></li>
-                            <li><a th:href="@{/importtransfer}">Import Transfer </a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/return1.svg}" alt="img"><span> Return</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/salesreturnlist}">Sales Return List</a></li>
-                            <li><a th:href="@{/createsalesreturn}">Add Sales Return </a></li>
-                            <li><a th:href="@{/purchasereturnlist}">Purchase Return List</a></li>
-                            <li><a th:href="@{/createpurchasereturn}">Add Purchase Return </a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img"><span> People</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/customerlist}">Customer List</a></li>
-                            <li><a th:href="@{/addcustomer}">Add Customer </a></li>
-                            <li><a th:href="@{/supplierlist}">Supplier List</a></li>
-                            <li><a th:href="@{/addsupplier}">Add Supplier </a></li>
-                            <li><a th:href="@{/userlist}">User List</a></li>
-                            <li><a th:href="@{/adduser}">Add User</a></li>
-                            <li><a th:href="@{/storelist}">Store List</a></li>
-                            <li><a th:href="@{/addstore}">Add Store</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/places.svg}" alt="img"><span> Places</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/newcountry}">New Country</a></li>
-                            <li><a th:href="@{/countrieslist}">Countries list</a></li>
-                            <li><a th:href="@{/newstate}">New State </a></li>
-                            <li><a th:href="@{/statelist}">State list</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a th:href="@{/components}"><i data-feather="layers"></i><span> Components</span> </a>
-                    </li>
-                    <li>
-                        <a th:href="@{/blankpage}"><i data-feather="file"></i><span> Blank Page</span> </a>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><i data-feather="alert-octagon"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/error-404}">404 Error </a></li>
-                            <li><a th:href="@{/error-500}">500 Error </a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><i data-feather="box"></i> <span>Elements </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/sweetalerts}">Sweet Alerts</a></li>
-                            <li><a th:href="@{/tooltip}">Tooltip</a></li>
-                            <li><a th:href="@{/popover}">Popover</a></li>
-                            <li><a th:href="@{/ribbon}">Ribbon</a></li>
-                            <li><a th:href="@{/clipboard}">Clipboard</a></li>
-                            <li><a th:href="@{/drag-drop}">Drag & Drop</a></li>
-                            <li><a th:href="@{/rangeslider}">Range Slider</a></li>
-                            <li><a th:href="@{/rating}">Rating</a></li>
-                            <li><a th:href="@{/toastr}">Toastr</a></li>
-                            <li><a th:href="@{/text-editor}">Text Editor</a></li>
-                            <li><a th:href="@{/counter}">Counter</a></li>
-                            <li><a th:href="@{/scrollbar}">Scrollbar</a></li>
-                            <li><a th:href="@{/spinner}">Spinner</a></li>
-                            <li><a th:href="@{/notification}">Notification</a></li>
-                            <li><a th:href="@{/lightbox}">Lightbox</a></li>
-                            <li><a th:href="@{/stickynote}">Sticky Note</a></li>
-                            <li><a th:href="@{/timeline}">Timeline</a></li>
-                            <li><a th:href="@{/form-wizard}">Form Wizard</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><i data-feather="bar-chart-2"></i> <span> Charts </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/chart-apex}">Apex Charts</a></li>
-                            <li><a th:href="@{/chart-js}">Chart Js</a></li>
-                            <li><a th:href="@{/chart-morris}">Morris Charts</a></li>
-                            <li><a th:href="@{/chart-flot}">Flot Charts</a></li>
-                            <li><a th:href="@{/chart-peity}">Peity Charts</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><i data-feather="award"></i><span> Icons </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/icon-fontawesome}">Fontawesome Icons</a></li>
-                            <li><a th:href="@{/icon-feather}">Feather Icons</a></li>
-                            <li><a th:href="@{/icon-ionic}">Ionic Icons</a></li>
-                            <li><a th:href="@{/icon-material}">Material Icons</a></li>
-                            <li><a th:href="@{/icon-pe7}">Pe7 Icons</a></li>
-                            <li><a th:href="@{/icon-simpleline}">Simpleline Icons</a></li>
-                            <li><a th:href="@{/icon-themify}">Themify Icons</a></li>
-                            <li><a th:href="@{/icon-weather}">Weather Icons</a></li>
-                            <li><a th:href="@{/icon-typicon}">Typicon Icons</a></li>
-                            <li><a th:href="@{/icon-flag}">Flag Icons</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/form-basic-inputs}">Basic Inputs </a></li>
-                            <li><a th:href="@{/form-input-groups}">Input Groups </a></li>
-                            <li><a th:href="@{/form-horizontal}">Horizontal Form </a></li>
-                            <li><a th:href="@{/form-vertical}"> Vertical Form </a></li>
-                            <li><a th:href="@{/form-mask}">Form Mask </a></li>
-                            <li><a th:href="@{/form-validation}">Form Validation </a></li>
-                            <li><a th:href="@{/form-select2}">Form Select2 </a></li>
-                            <li><a th:href="@{/form-fileupload}">File Upload </a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><i data-feather="layout"></i> <span> Table </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/tables-basic}">Basic Tables </a></li>
-                            <li><a th:href="@{/data-tables}">Data Table </a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img"><span> Application</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/chat}">Chat</a></li>
-                            <li><a th:href="@{/calendar}">Calendar</a></li>
-                            <li><a th:href="@{/email}">Email</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/time.svg}" alt="img"><span> Report</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/purchaseorderreport}">Purchase order report</a></li>
-                            <li><a th:href="@{/inventoryreport}">Inventory Report</a></li>
-                            <li><a th:href="@{/salesreport}">Sales Report</a></li>
-                            <li><a th:href="@{/invoicereport}">Invoice Report</a></li>
-                            <li><a th:href="@{/purchasereport}">Purchase Report</a></li>
-                            <li><a th:href="@{/supplierreport}">Supplier Report</a></li>
-                            <li><a th:href="@{/customerreport}">Customer Report</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img"><span> Users</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/newuser}">New User </a></li>
-                            <li><a th:href="@{/userlists}">Users List</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="javascript:void(0);"><img th:src="@{/assets/admin/img/icons/settings.svg}" alt="img"><span> Settings</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                            <li><a th:href="@{/generalsettings}">General Settings</a></li>
-                            <li><a th:href="@{/emailsettings}">Email Settings</a></li>
-                            <li><a th:href="@{/paymentsettings}">Payment Settings</a></li>
-                            <li><a th:href="@{/currencysettings}">Currency Settings</a></li>
-                            <li><a th:href="@{/grouppermissions}">Group Permissions</a></li>
-                            <li><a th:href="@{/taxrates}">Tax Rates</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <th:block th:replace="~{component/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
 
     <div class="page-wrapper">
         <div class="content">
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Product Category list</h4>
-                    <h6>View/Search product Category</h6>
+                    <h4>Danh sách danh mục sản phẩm</h4>
+                    <h6>Xem tìm kiếm danh mục sản phẩm</h6>
                 </div>
                 <div class="page-btn">
-                    <a th:href="@{/addcategory}" class="btn btn-added">
-                        <img th:src="@{/assets/admin/img/icons/plus.svg}" class="me-1" alt="img">Add Category
+                    <a th:href="@{/admin/addcategory}" class="btn btn-added">
+                        <img th:src="@{/assets/admin/img/icons/plus.svg}" class="me-1" alt="img">Thêm danh mục
                     </a>
                 </div>
             </div>
@@ -458,59 +266,29 @@
                                 </a>
                             </div>
                             <div class="search-input">
-                                <a class="btn btn-searchset"><img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img"></a>
+                                <a class="btn btn-searchset"><img th:src="@{/assets/admin/img/icons/search-white.svg}"
+                                                                  alt="img"></a>
                             </div>
                         </div>
                         <div class="wordset">
                             <ul>
                                 <li>
-                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"></a>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img
+                                            th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"></a>
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"></a>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img
+                                            th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"></a>
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"></a>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img
+                                            th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="card" id="filter_inputs">
-                        <div class="card-body pb-0">
-                            <div class="row">
-                                <div class="col-lg-2 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <select class="select">
-                                            <option>Choose Category</option>
-                                            <option>Computers</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <select class="select">
-                                            <option>Choose Sub Category</option>
-                                            <option>Fruits</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <select class="select">
-                                            <option>Choose Sub Brand</option>
-                                            <option>Iphone</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-1 col-sm-6 col-12 ms-auto">
-                                    <div class="form-group">
-                                        <a class="btn btn-filters ms-auto"><img th:src="@{/assets/admin/img/icons/search-whites.svg}" alt="img"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="table-responsive">
                         <table class="table  datanew">
@@ -522,11 +300,11 @@
                                         <span class="checkmarks"></span>
                                     </label>
                                 </th>
-                                <th>Category name</th>
-                                <th>Category Code</th>
-                                <th>Description</th>
-                                <th>Created By</th>
-                                <th>Action</th>
+                                <th>Tên danh mục</th>
+                                <th>Đường dẫn</th>
+                                <th>Danh mục cha</th>
+                                <th>Tạo bởi</th>
+                                <th>Lựa chọn</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -538,316 +316,14 @@
                                     </label>
                                 </td>
                                 <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
+
                                     <a href="javascript:void(0);">Computers</a>
                                 </td>
-                                <td>CT001</td>
-                                <td>Computers Description</td>
+                                <td>/index</td>
+                                <td>1001</td>
                                 <td>Admin</td>
                                 <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Fruits</a>
-                                </td>
-                                <td>CT002</td>
-                                <td>Fruits Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Fruits</a>
-                                </td>
-                                <td>CT003</td>
-                                <td>Fruits Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Fruits</a>
-                                </td>
-                                <td>CT004</td>
-                                <td>Fruits Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT005</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT006</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT007</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT008</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT009</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT0010</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT008</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT009</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-                                    <a href="javascript:void(0);" class="product-img">
-                                        <img th:src="@{/assets/admin/img/product/noimage.png}" alt="product">
-                                    </a>
-                                    <a href="javascript:void(0);">Accessories</a>
-                                </td>
-                                <td>CT0010</td>
-                                <td>Accessories Description</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/editcategory}">
+                                    <a class="me-3" th:href="@{/admin/editcategory}">
                                         <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
                                     </a>
                                     <a class="me-3 confirm-text" href="javascript:void(0);">
@@ -884,4 +360,5 @@
 
 <script th:src="@{/assets/admin/js/script.js}"></script>
 </body>
+
 </html>

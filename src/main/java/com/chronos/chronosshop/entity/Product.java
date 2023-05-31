@@ -62,4 +62,13 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<ProductVariant> productVariants;
 
+    public Product( String productName, Integer priceOld, Integer priceNew, String material, String description, Category category, String status) {
+        this.productName = productName;
+        this.priceOld = priceOld;
+        this.priceNew = priceNew;
+        this.material = material;
+        this.description = description;
+        this.category = category;
+        this.status = status;
+    }
 }
