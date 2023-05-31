@@ -422,7 +422,7 @@
                                     <a class="me-3" th:href="@{'/admin/editproduct/'+${item.getProductId()}}">
                                         <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img" />
                                     </a>
-                                    <a class="confirm-text" th:href="@{'/admin/productlist/delete/'+${item.getProductId()}}">
+                                    <a class="btn-delete-product" th:href="@{'/admin/product/delete/'+${item.getProductId()}}">
                                         <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img" />
                                     </a>
                                 </td>
@@ -453,5 +453,28 @@
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
 
 <script th:src="@{/assets/admin/js/script.js}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.querySelectorAll('.btn-delete-product').forEach(item => {
+        item.onclick = (e) => {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Bạn có chắc muốn xóa sản phẩm này?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Xóa sản phẩm',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = item.href;
+                }
+            })
+        }
+    })
+</script>
 </body>
 </html>
