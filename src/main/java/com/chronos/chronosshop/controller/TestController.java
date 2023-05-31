@@ -42,6 +42,28 @@ public class TestController {
     @RequestMapping("cart")
     public String cart() {return "page/cart-page";}
 
+    @RequestMapping({"account", "account/account"})
+    public String account() {return "page/account-page";}
+
+    @RequestMapping("account/watched")
+    public String accountWatched() {return "page/account-watched-page";}
+
+    @RequestMapping("account/my-order")
+    public String accountMyOrdered() {return "page/account-myOrder-page";}
+
+
+    @RequestMapping("account/forgot-password")
+    public String accountForgotPassword() {return "page/account-forgotPassword-page";}
+
+    @RequestMapping("account/location-list")
+    public String accountLocationList() {return "page/account-locationList-page";}
+
+    @RequestMapping("account/favorite")
+    public String accountFavorite() {return "page/account-favorite-page";}
+
+    @RequestMapping("products/ao-so-mi")
+    public String products() {return "page/products-page";}
+
     @RequestMapping("sign-up")
     public String signUp(Model model) {
 

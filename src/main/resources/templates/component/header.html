@@ -27,7 +27,7 @@
 
       <!--    > mobile Nav    -->
       <div class="hidden items-center gap-3 sm:col-span-2 sm:grid-cols-4 md:col-span-1 md:grid">
-        <img th:src="@{/assets/images/1.png}" alt="" srcset="" class="block w-full max-w-[120px] object-cover" />
+          <a href=""><img th:src="@{/assets/images/1.png}" alt="" srcset="" class="block w-full max-w-[300px] max-h-[150px] h-[87.5px]   object-cover"  style="object-position: 0 -38px"/></a>
         <form action="" class="col-span-3 flex w-full items-center">
           <input type="text" name="" id="" class="focus:border-primary w-full rounded-l-md rounded-r-none border-2 border-gray-300 border-r-transparent px-5 py-2.5 outline-none" />
           <button type="submit" class="border-primary bg-primary text-textColor rounded-r-lg border-2 px-5 py-2.5 font-medium transition-all">
@@ -108,15 +108,15 @@
           <div th:if="${femaleCategories != null && !femaleCategories.isEmpty()}" class="z-10 hidden w-full grid-cols-4 flex-col items-start gap-5 rounded-lg border border-gray-300 bg-white p-5 group-hover:flex sm:absolute sm:left-0 sm:right-0 sm:top-12 sm:group-hover:grid">
             <div class="group/subitem flex w-full flex-col gap-3" th:each="femaleCategory : ${femaleCategories}">
               <h3 class="flex items-center justify-between text-lg font-bold sm:block" >
-                <span>[(${femaleCategory.name})]</span>
+                <span>[(${femaleCategory.categoryName})]</span>
                 <span class="inline-block sm:hidden">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4">
                     <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                   </svg>
                 </span>
               </h3>
-              <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex" th:if="${femaleCategory.subCategories != null && !femaleCategory.subCategories.isEmpty()}">
-                <li href="#v" class="text-md text-gray-400" th:each="subItem : ${femaleCategory.subCategories}">[(${subItem.name})]</li>
+              <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex" th:if="${femaleCategory.subcategory != null && !femaleCategory.subcategory.isEmpty()}">
+                <li href="#v" class="text-md text-gray-400" th:each="subItem : ${femaleCategory.subcategory}">[(${subItem.categoryName})]</li>
               </ul>
             </div>
           </div>
@@ -139,15 +139,15 @@
           <div th:if="${maleCategories != null && !maleCategories.isEmpty()}" class="z-10 hidden w-full grid-cols-4 flex-col items-start gap-5 rounded-lg border border-gray-300 bg-white p-5 group-hover:flex sm:absolute sm:left-0 sm:right-0 sm:top-12 sm:group-hover:grid">
             <div class="group/subitem flex w-full flex-col gap-3" th:each="maleCategory : ${maleCategories}">
               <h3 class="flex items-center justify-between text-lg font-bold sm:block" >
-                <span>[(${maleCategory.name})]</span>
+                <span>[(${maleCategory.categoryName})]</span>
                 <span class="inline-block sm:hidden">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4">
                     <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                   </svg>
                 </span>
               </h3>
-              <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex" th:if="${maleCategory.subCategories != null && !maleCategory.subCategories.isEmpty()}">
-                <li href="#v" class="text-md text-gray-400" th:each="subItem : ${maleCategory.subCategories}">[(${subItem.name})]</li>
+              <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex" th:if="${maleCategory.subcategory != null && !maleCategory.subcategory.isEmpty()}">
+                <li href="#v" class="text-md text-gray-400" th:each="subItem : ${maleCategory.subcategory}">[(${subItem.categoryName})]</li>
               </ul>
             </div>
           </div>
@@ -170,15 +170,15 @@
           <div th:if="${kidCategories != null && !kidCategories.isEmpty()}" class="z-10 hidden w-full grid-cols-4 flex-col items-start gap-5 rounded-lg border border-gray-300 bg-white p-5 group-hover:flex sm:absolute sm:left-0 sm:right-0 sm:top-12 sm:group-hover:grid">
             <div class="group/subitem flex w-full flex-col gap-3" th:each="kidCategory : ${kidCategories}">
               <h3 class="flex items-center justify-between text-lg font-bold sm:block" >
-                <span>[(${kidCategory.name})]</span>
+                <span>[(${kidCategory.categoryName})]</span>
                 <span class="inline-block sm:hidden">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4">
                     <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                   </svg>
                 </span>
               </h3>
-              <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex" th:if="${kidCategory.subCategories != null && !kidCategory.subCategories.isEmpty()}">
-                <li href="#v" class="text-md text-gray-400" th:each="subItem : ${kidCategory.subCategories}">[(${subItem.name})]</li>
+              <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex" th:if="${kidCategory.subcategory != null && !kidCategory.subcategory.isEmpty()}">
+                <li href="#v" class="text-md text-gray-400" th:each="subItem : ${kidCategory.subcategory}">[(${subItem.categoryName})]</li>
               </ul>
             </div>
           </div>
