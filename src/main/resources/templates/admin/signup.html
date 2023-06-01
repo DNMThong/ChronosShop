@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<meta name="description" content="POS - Bootstrap Admin Template">
-<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
-<meta name="author" content="Dreamguys - Bootstrap Admin Template">
-<meta name="robots" content="noindex, nofollow">
-<title>Login - Pos admin template</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="POS - Bootstrap Admin Template">
+        <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Jassa admin template</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
+        <div th:replace="~{component/link/linkAndscript :: head}">
+        </div>
+    </head>
 <body class="account-page">
 
 <div class="main-wrapper">
@@ -26,7 +20,7 @@
 <div class="login-content">
 <div class="login-userset">
 <div class="login-logo">
-<img src="assets/img/logo.png" alt="img">
+<img th:src="@{/assets/admin/img/logo.png}" alt="img">
 </div>
 <div class="login-userheading">
 <h3>Create an Account</h3>
@@ -36,14 +30,14 @@
 <label>Full Name</label>
 <div class="form-addons">
 <input type="text" placeholder="Enter your full name">
-<img src="assets/img/icons/users1.svg" alt="img">
+<img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img">
 </div>
 </div>
 <div class="form-login">
 <label>Email</label>
 <div class="form-addons">
 <input type="text" placeholder="Enter your email address">
-<img src="assets/img/icons/mail.svg" alt="img">
+<img th:src="@{/assets/admin/img/icons/mail.svg}" alt="img">
 </div>
 </div>
 <div class="form-login">
@@ -66,13 +60,13 @@
 <ul>
 <li>
 <a href="javascript:void(0);">
-<img src="assets/img/icons/google.png" class="me-2" alt="google">
+<img th:src="@{/assets/admin/img/icons/google.png}" class="me-2" alt="google">
 Sign Up using Google
 </a>
 </li>
 <li>
  <a href="javascript:void(0);">
-<img src="assets/img/icons/facebook.png" class="me-2" alt="google">
+<img th:src="@{/assets/admin/img/icons/facebook.png}" class="me-2" alt="google">
 Sign Up using Facebook
 </a>
 </li>
@@ -81,19 +75,14 @@ Sign Up using Facebook
 </div>
 </div>
 <div class="login-img">
-<img src="assets/img/login.jpg" alt="img">
+<img th:src="@{/assets/admin/img/login.jpg}" alt="img">
 </div>
 </div>
 </div>
 </div>
 
 
-<script src="assets/js/jquery-3.6.0.min.js"></script>
-
-<script src="assets/js/feather.min.js"></script>
-
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-
-<script src="assets/js/script.js"></script>
+<div th:replace="~{component/link/linkAndscript :: script}">
+</div>
 </body>
 </html>

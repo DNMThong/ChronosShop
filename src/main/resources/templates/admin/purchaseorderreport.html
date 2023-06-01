@@ -15,31 +15,8 @@
  <meta name="robots" content="noindex, nofollow" />
  <title>Jassa admin template</title>
 
- <link
-         rel="shortcut icon"
-         type="image/x-icon"
-         th:href="@{/assets/admin/img/favicon.png}"
- />
-
- <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}" />
-
- <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}" />
-
- <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}" />
-
- <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}" />
-
- <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}" />
-
- <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}" />
-
- <link
-         rel="stylesheet"
-         th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}"
- />
- <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}" />
-
- <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}" />
+ <div th:replace="~{component/link/linkAndscript :: head}">
+ </div>
 </head>
 <body>
 <div id="global-loader">
@@ -642,28 +619,7 @@
  </div>
 </div>
 
-<script th:src="@{/assets/admin/js/jquery-3.6.0.min.js}"></script>
-
-<script th:src="@{/assets/admin/js/feather.min.js}"></script>
-
-<script th:src="@{/assets/admin/js/jquery.slimscroll.min.js}"></script>
-
-<script th:src="@{/assets/admin/js/jquery.dataTables.min.js}"></script>
-<script th:src="@{/assets/admin/js/dataTables.bootstrap4.min.js}"></script>
-
-<script th:src="@{/assets/admin/js/bootstrap.bundle.min.js}"></script>
-
-<script th:src="@{/assets/admin/js/moment.min.js}"></script>
-<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
-
-<script th:src="@{/assets/admin/plugins/select2/js/select2.min.js}"></script>
-
-<script th:src="@{/assets/admin/js/moment.min.js}"></script>
-<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
-
-<script th:src="@{/assets/admin/plugins/sweetalert/sweetalert2.all.min.js}"></script>
-<script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
-
-<script th:src="@{/assets/admin/js/script.js}"></script>
+<div th:replace="~{component/link/linkAndscript :: script}">
+</div>
 </body>
 </html>
