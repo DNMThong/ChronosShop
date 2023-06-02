@@ -1,4 +1,11 @@
-<div th:fragment="head">
+<th:block th:fragment="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="POS - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+
     <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/admin/img/favicon.png}">
 
     <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}">
@@ -17,7 +24,7 @@
     <link
             href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
             rel="stylesheet"/>
-</div>
+</th:block>
 
 <div th:fragment="script">
     <script th:src="@{/assets/admin/js/jquery-3.6.0.min.js}"></script>
