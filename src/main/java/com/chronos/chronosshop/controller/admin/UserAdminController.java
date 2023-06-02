@@ -14,11 +14,11 @@ public class UserAdminController {
     UserService userService;
     @GetMapping("/add")
     public String addUser(){
-        return"admin/adduser";
+        return"page/admin/adduser";
     }
     @GetMapping("/list")
     public String getAllUser(Model model){
         model.addAttribute("listUser", userService.listAll());
-        return"admin/userlists";
+        return"page/admin/userlists";
     }
 }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Chronos admin</title>
+    <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+</head>
+
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"> </div>
+</div>
+
+<div class="main-wrapper">
+
+    <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+
+    <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Danh sách danh mục sản phẩm</h4>
+                    <h6>Xem tìm kiếm danh mục sản phẩm</h6>
+                </div>
+                <div class="page-btn">
+                    <a th:href="@{/templates/page/admin/addcategory}" class="btn btn-added">
+                        <img th:src="@{/assets/admin/img/icons/plus.svg}" class="me-1" alt="img">Thêm danh mục
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-top">
+                        <div class="search-set">
+                            <div class="search-path">
+                                <a class="btn btn-filter" id="filter_search">
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img">
+                                    <span><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"></span>
+                                </a>
+                            </div>
+                            <div class="search-input">
+                                <a class="btn btn-searchset"><img th:src="@{/assets/admin/img/icons/search-white.svg}"
+                                                                  alt="img"></a>
+                            </div>
+                        </div>
+                        <div class="wordset">
+                            <ul>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img
+                                            th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"></a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img
+                                            th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"></a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img
+                                            th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="table-responsive">
+                        <table class="table  datanew">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <label class="checkboxs">
+                                        <input type="checkbox" id="select-all">
+                                        <span class="checkmarks"></span>
+                                    </label>
+                                </th>
+                                <th>Tên danh mục</th>
+                                <th>Đường dẫn</th>
+                                <th>Danh mục cha</th>
+                                <th>Tạo bởi</th>
+                                <th>Lựa chọn</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <label class="checkboxs">
+                                        <input type="checkbox">
+                                        <span class="checkmarks"></span>
+                                    </label>
+                                </td>
+                                <td class="productimgname">
+
+                                    <a href="javascript:void(0);">Computers</a>
+                                </td>
+                                <td>/index</td>
+                                <td>1001</td>
+                                <td>Admin</td>
+                                <td>
+                                    <a class="me-3" th:href="@{/templates/page/admin/editcategory}">
+                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
+                                    </a>
+                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+</body>
+
+</html>

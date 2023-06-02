@@ -28,14 +28,14 @@ public class SubCategoryAdminController {
         }
         model.addAttribute("listCategory", list);
         model.addAttribute("sumCountProduct", total);
-        return "admin/subcategory/subCategoryList";
+        return "page/admin/subcategory/subCategoryList";
     }
 
     @GetMapping("/add")
     public String subcategoryAdd(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("listCategoryParent", categoryRepository.listCategoryParent());
-        return "admin/subcategory/addSubcategory";
+        return "page/admin/subcategory/addSubcategory";
     }
 
     @PostMapping("/save")
@@ -54,7 +54,7 @@ public class SubCategoryAdminController {
         model.addAttribute("listCategoryParent", categoryRepository.listCategoryParent());
         Category category = categoryService.get(subCategoryId);
         model.addAttribute("category", category);
-        return "admin/subcategory/editSubcategory";
+        return "page/admin/subcategory/editSubcategory";
     }
 
     @GetMapping("/delete/{subCategoryId}")

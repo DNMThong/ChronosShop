@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-
 <head>
-    <title>Chronos admin</title>
+
+    <title>Danh sách danh mục phụ</title>
     <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
 </head>
-
 <body>
 <div id="global-loader">
-    <div class="whirly-loader"> </div>
+    <div class="whirly-loader"></div>
 </div>
-
 <div class="main-wrapper">
-
     <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
 
     <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
-
     <div class="page-wrapper">
         <div class="content">
             <div class="page-header">
@@ -25,7 +21,7 @@
                     <h6>Xem tìm kiếm danh mục sản phẩm</h6>
                 </div>
                 <div class="page-btn">
-                    <a th:href="@{/admin/addcategory}" class="btn btn-added">
+                    <a th:href="@{/templates/page/admin/addcategory}" class="btn btn-added">
                         <img th:src="@{/assets/admin/img/icons/plus.svg}" class="me-1" alt="img">Thêm danh mục</a>
                 </div>
             </div>
@@ -47,6 +43,7 @@
                                 </a>
                             </div>
                         </div>
+                        <div>Tổng sản phẩm: [[${sumCountProduct}]]</div>
                         <div class="wordset">
                             <ul>
                                 <li>
@@ -73,7 +70,7 @@
                             <tr>
                                 <th>Tên danh mục</th>
                                 <th>Đường dẫn</th>
-                                <th>Số lượng</th>
+                                <th>Số sản phẩm</th>
                                 <th>Lựa chọn</th>
                             </tr>
                             </thead>
@@ -82,12 +79,14 @@
                                 <tr>
                                     <td th:text="${category.getCategoryName()}"></td>
                                     <td th:text="${category.getCategoryUrl()}"></td>
-                                    <td th:text="${category.getSumProductByCategoryParent()}"></td>
+                                    <td th:text="${category.getProducts().size()}"></td>
                                     <td>
-                                        <a class="me-3" th:href="@{'/admin/category/edit/' + ${category.getCategoryId()}}">
+                                        <a class="me-3"
+                                           th:href="@{'/admin/subcategory/edit/' + ${category.getCategoryId()}}">
                                             <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
                                         </a>
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
+                                        <a class="me-3 confirm-text"
+                                           th:href="@{'/admin/subcategory/delete/' + ${category.getCategoryId()}}">
                                             <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
                                         </a>
                                     </td>
@@ -101,8 +100,6 @@
         </div>
     </div>
 </div>
-
 <div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
 </body>
-
 </html>

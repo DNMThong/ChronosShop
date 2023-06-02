@@ -20,13 +20,13 @@ public class CategoryAdminController {
     @GetMapping("")
     public String categoryAll(Model model) {
         model.addAttribute("listCategory", categoryRepository.listCategoryParent());
-        return "admin/category/categoryList";
+        return "page/admin/category/categoryList";
     }
 
     @GetMapping("/add")
     public String categoryAdd(Model model) {
         model.addAttribute("category", new Category());
-        return "admin/category/addCategory";
+        return "page/admin/category/addCategory";
     }
 
     @PostMapping("/save")
@@ -44,6 +44,6 @@ public class CategoryAdminController {
     public String edit(@PathVariable("categoryId") Integer categoryId, Model model) {
         Category category = categoryService.get(categoryId);
         model.addAttribute("category", category);
-        return "admin/category/editCategory";
+        return "page/admin/category/editCategory";
     }
 }

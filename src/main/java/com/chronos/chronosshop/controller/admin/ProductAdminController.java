@@ -35,13 +35,13 @@ public class ProductAdminController {
     @GetMapping("/list")
     public String productList( Model model) {
         model.addAttribute("products", productService.listAll());
-        return "admin/productlist";
+        return "page/admin/productlist";
     }
     @GetMapping("/add")
     public String addProduct( Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("title","Thêm");
-        return "admin/addproduct";
+        return "page/admin/addproduct";
     }
     @PostMapping("/add")
     public String productSave(Product product,RedirectAttributes redirectAttributes) {
@@ -57,7 +57,7 @@ public class ProductAdminController {
         if (product!=null){
             model.addAttribute("product",product);
             model.addAttribute("title","Cập nhật");
-            return "admin/addproduct";
+            return "page/admin/addproduct";
         }
         redirectAttributes.addFlashAttribute("message","Không tìm thấy sản phẩm");
         return "redirect:/admin/product/list";

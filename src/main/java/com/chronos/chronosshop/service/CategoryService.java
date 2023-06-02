@@ -3,6 +3,7 @@ package com.chronos.chronosshop.service;
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +32,9 @@ public class CategoryService {
 
     public void delete(Integer id) {
         repository.deleteById(id);
+    }
+
+    public List<Category> findCategoriesByName(String name) {
+        return repository.findByNameContainsIgnoreCase(name);
     }
 }
