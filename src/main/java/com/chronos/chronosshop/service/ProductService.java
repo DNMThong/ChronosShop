@@ -16,7 +16,7 @@ public class ProductService {
 
     public List<Product> listAll() {
         // tạo câu @Query SELECT * FROM Product ORDER BY createTime DESC;
-        return null;
+        return  repository.findAll();
     }
 
     public void save(Product product) {

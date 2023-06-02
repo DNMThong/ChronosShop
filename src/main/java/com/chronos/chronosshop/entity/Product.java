@@ -4,8 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +13,9 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
+
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -70,5 +71,12 @@ public class Product {
         this.description = description;
         this.category = category;
         this.status = status;
+    }
+
+    public List<ProductVariant> getDistinctVariants() {
+        List<ProductVariant> variants = null;
+        HashMap<String, ProductVariant> map = new HashMap<>();
+        productVariants.forEach(vari -> map.put(vari.getProductColorName(), vari));
+        return new ArrayList<>(map.values());
     }
 }

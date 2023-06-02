@@ -1,8 +1,10 @@
 package com.chronos.chronosshop.controller;
 
 import com.chronos.chronosshop.entity.Category;
+import com.chronos.chronosshop.entity.Product;
 import com.chronos.chronosshop.repository.CategoryRepository;
 import com.chronos.chronosshop.service.CategoryService;
+import com.chronos.chronosshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,16 +20,23 @@ public class TestController {
 
     CategoryService categoryService;
 
+    ProductService productService;
+
     List<Category> categoryList = null;
 
     @Autowired
-    public TestController(CategoryService categoryService) {
+    public TestController(CategoryService categoryService, ProductService productService) {
         this.categoryService = categoryService;
+        this.productService = productService;
     }
 
 
     @RequestMapping("")
-    public String index() {
+    public String index(Model model) {
+        List<Product> productList = productService.listAll();
+//        System.out.println(productList);
+        model.addAttribute("productList", productList);
+//        System.out.println(productList.get(0).getProductVariants() == null || productList.get(0).getProductVariants().size() <= 0 ? "Null" : productList.get(0).getProductVariants().get(0).getImage1());
         return "page/home-page";
     }
 

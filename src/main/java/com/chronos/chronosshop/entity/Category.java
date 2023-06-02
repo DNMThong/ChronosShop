@@ -1,18 +1,15 @@
 package com.chronos.chronosshop.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
-
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
 public class Category {
     @Id

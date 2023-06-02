@@ -13,7 +13,6 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-@Table(name = "product_variant", schema = "dbo", catalog = "ChronosShoppingOnline")
 public class ProductVariant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
