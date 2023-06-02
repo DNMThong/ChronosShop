@@ -13,25 +13,23 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repository;
 
-    // NHÌN THẤY TRANG ADMIN NTN ĐÃ RỒI MỚI LÀM ĐC
+    public List<Category> listAll() {
+        return repository.findAll();
+    }
 
-//    public List<Category> listAll() {
-//        return repository.findAll();
-//    }
-//
-//    public void save(Category category) {
-//        repository.save(category);
-//    }
-//
-//    public Category get(Integer id) {
-//        Optional<Category> result = repository.findById(id);
-//        if (result.isPresent()) {
-//            return result.get();
-//        }
-//        return null;
-//    }
-//
-//    public void delete(Integer id) {
-//        repository.deleteById(id);
-//    }
+    public void save(Category category) {
+        repository.save(category);
+    }
+
+    public Category get(Integer id) {
+        Optional<Category> result = repository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
+    }
+
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }
