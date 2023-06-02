@@ -3,6 +3,8 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
+
 import java.sql.Date;
 import java.util.*;
 
@@ -12,6 +14,7 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
+@Service
 @Entity
 
 public class Product {

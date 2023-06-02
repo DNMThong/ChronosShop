@@ -3,6 +3,9 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.sql.Date;
 import java.util.Objects;
 
@@ -12,6 +15,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
+@Service
 @Entity
 public class ProductVariant {
     @Id
