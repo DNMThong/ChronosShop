@@ -1,48 +1,49 @@
 package com.chronos.chronosshop.controller.admin;
 
 import com.chronos.chronosshop.entity.Category;
+import com.chronos.chronosshop.repository.CategoryRepository;
 import com.chronos.chronosshop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.swing.plaf.multi.MultiMenuItemUI;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin/category")
 public class CategoryAdminController {
     @Autowired
-    CategoryService categoryService;
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryService categoryService;
+
+    @GetMapping("")
+    public String categoryAll(Model model) {
+        model.addAttribute("listCategory", categoryRepository.listCategoryParent());
+        return "admin/category/categoryList";
+    }
+
     @GetMapping("/add")
-    public String addCategoryGet(Model model) {
-        return "admin/addcategory";
+    public String categoryAdd(Model model) {
+        model.addAttribute("category", new Category());
+        return "admin/category/addCategory";
     }
 
-    @PostMapping("/add")
-    public String addCategoryPost(Model model,Category category) {
-        Boolean isSuccess = categoryService.save(category);
-        if(isSuccess) {
-            model.addAttribute("show",true);
-            model.addAttribute("type","success");
-            model.addAttribute("message","Thêm danh mục thành công");
-        }else {
-            model.addAttribute("show",true);
-            model.addAttribute("type","error");
-            model.addAttribute("message","Thêm danh mục thất bại");
+    @PostMapping("/save")
+    public String saveCategory(@ModelAttribute("category") Category category, RedirectAttributes ra) {
+        try {
+            categoryService.save(category);
+            return "redirect:/admin/category";
+        } catch (Exception e) {
+            ra.addFlashAttribute("messageFail", "Tạo danh mục mới thất bại!!!");
+            return "redirect:/admin/category/add";
         }
-
-        return "admin/addcategory";
     }
 
-    @RequestMapping("/list")
-    public String categoryList(Model model) {
-        List<Category> categories = categoryService.listAll();
-        model.addAttribute("categories",categories);
-        return "admin/categorylist";
+    @GetMapping("/edit/{categoryId}")
+    public String edit(@PathVariable("categoryId") Integer categoryId, Model model) {
+        Category category = categoryService.get(categoryId);
+        model.addAttribute("category", category);
+        return "admin/category/editCategory";
     }
 }

@@ -3,7 +3,6 @@ package com.chronos.chronosshop.service;
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +10,6 @@ import java.util.Optional;
 
 @Service
 public class CategoryService {
-
-    CategoryRepository  categoryRepository;
-
     @Autowired
     private CategoryRepository repository;
 
@@ -21,16 +17,8 @@ public class CategoryService {
         return repository.findAll();
     }
 
-    public boolean save(Category category) {
-        try {
-            repository.save(category);
-            return true;
-        } catch (DataAccessException e) {
-            return false;
-        }
-    }
-    public List<Category> getAll() {
-        return categoryRepository.findAll();
+    public void save(Category category) {
+        repository.save(category);
     }
 
     public Category get(Integer id) {
@@ -43,12 +31,5 @@ public class CategoryService {
 
     public void delete(Integer id) {
         repository.deleteById(id);
-    }
-
-    public List<Category> listCategoryParent() {
-        return repository.findCategoryParent();
-    }
-    public List<Category> findCategoriesByName(String name) {
-        return categoryRepository.findByNameContainsIgnoreCase(name);
     }
 }
