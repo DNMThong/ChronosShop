@@ -28,7 +28,7 @@ public class ProductVariant {
     @JoinColumn(name = "product_sku")
     private Image image;
 
-    @Column(name = "product_colorName")
+    @Column(name = "product_color_name")
     private String productColorName;
 
     @Column(name = "product_size")

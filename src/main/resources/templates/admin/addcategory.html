@@ -25,6 +25,9 @@
     <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}">
 
     <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/toastify/toastify.css}">
+
 </head>
 
 <body>
@@ -239,11 +242,11 @@
 
     </div>
 
-
     <th:block th:replace="~{component/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
 
     <div class="page-wrapper">
         <div class="content">
+            <div class="toastify" data-duration="5000ms" th:attr="data-type=${type},data-show=${show},data-text=${message}"></div>
             <div class="page-header">
                 <div class="page-title">
                     <h4>Danh mục sản phẩm</h4>
@@ -252,18 +255,18 @@
             </div>
 
             <div class="card">
-                <form action="" method="" class="card-body">
+                <form action="/admin/category/add" method="post" class="card-body">
                     <div class="row">
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Tên danh mục</label>
-                                <input type="text">
+                                <label for="categoryName">Tên danh mục</label>
+                                <input type="text" th:name="categoryName" id="categoryName">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Slug</label>
-                                <input type="text">
+                                <label for="categoryUrl">Đường dẫn</label>
+                                <input type="text" th:name="categoryUrl" id="categoryUrl">
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -296,6 +299,9 @@
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
 
 <script th:src="@{/assets/admin/js/script.js}"></script>
+
+<script th:src="@{/assets/admin/plugins/toastify/toastify.js}"></script>
+
 </body>
 
 </html>

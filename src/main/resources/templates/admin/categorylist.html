@@ -25,6 +25,7 @@
     <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}">
 
     <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}">
+
 </head>
 
 <body>
@@ -300,37 +301,34 @@
                                         <span class="checkmarks"></span>
                                     </label>
                                 </th>
-                                <th>Tên danh mục</th>
+                                <th>Id</th>
+                                <th>Tên</th>
                                 <th>Đường dẫn</th>
                                 <th>Danh mục cha</th>
-                                <th>Tạo bởi</th>
                                 <th>Lựa chọn</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox">
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td class="productimgname">
-
-                                    <a href="javascript:void(0);">Computers</a>
-                                </td>
-                                <td>/index</td>
-                                <td>1001</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a class="me-3" th:href="@{/admin/editcategory}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
-                                    </a>
-                                    <a class="me-3 confirm-text" href="javascript:void(0);">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr th:each="category : ${categories}">
+                                    <td>
+                                        <label class="checkboxs">
+                                            <input type="checkbox">
+                                            <span class="checkmarks"></span>
+                                        </label>
+                                    </td>
+                                    <td th:text="${category.categoryId}"></td>
+                                    <td th:text="${category.categoryName}"></td>
+                                    <td th:text="${category.categoryUrl}"></td>
+                                    <td th:text="${category.categoryParent==null?'':category.categoryParent.categoryName}"></td>
+                                    <td>
+                                        <a class="me-3" th:href="@{/admin/edit/{id}(id=${category.categoryId})}">
+                                            <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
+                                        </a>
+                                        <a class="me-3 confirm-text" th:href="@{/admin/delete/{id}(id=${category.categoryId})}">
+                                            <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -359,6 +357,9 @@
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
 
 <script th:src="@{/assets/admin/js/script.js}"></script>
+
+
+
 </body>
 
 </html>

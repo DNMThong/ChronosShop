@@ -12,7 +12,6 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-@Table(name = "order_detail", schema = "dbo", catalog = "ChronosShoppingOnline")
 public class OrderDetail {
     @Id
     @Column(name = "detail_id")
