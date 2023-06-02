@@ -2,13 +2,13 @@ tailwind.config = {
     theme: {
         container: {
             center: true,
-            padding: {
-                DEFAULT: "1rem",
-                sm: "1rem",
-                lg: "2rem",
-                xl: "2rem",
-                "2xl": "6rem",
-            },
+            // padding: {
+            //     DEFAULT: "1rem",
+            //     sm: "1rem",
+            //     lg: "2rem",
+            //     xl: "2rem",
+            //     "2xl": "6rem",
+            // },
         },
         extend: {
             colors: {

@@ -11,6 +11,9 @@ import java.util.Optional;
 
 @Service
 public class CategoryService {
+
+    CategoryRepository  categoryRepository;
+
     @Autowired
     private CategoryRepository repository;
 
@@ -25,6 +28,9 @@ public class CategoryService {
         } catch (DataAccessException e) {
             return false;
         }
+    }
+    public List<Category> getAll() {
+        return categoryRepository.findAll();
     }
 
     public Category get(Integer id) {
@@ -41,5 +47,8 @@ public class CategoryService {
 
     public List<Category> listCategoryParent() {
         return repository.findCategoryParent();
+    }
+    public List<Category> findCategoriesByName(String name) {
+        return categoryRepository.findByNameContainsIgnoreCase(name);
     }
 }

@@ -1,0 +1,62 @@
+<div class="container mb-5" th:fragment="cart-content">
+  <div class="flex w-full flex-col gap-10">
+    <h3 class="flex items-center gap-3">
+      <span class="text-xl font-bold">Giỏ hàng</span>
+      <span class="text-lg font-semibold opacity-60">(3) Sản phẩm</span>
+    </h3>
+    <div class="grid grid-cols-7 gap-5">
+      <div class="col-span-5">
+        <div class="flex flex-col">
+          <div class="h-[ overflow-y-auto text-sm">
+            <div class="grid grid-cols-6 text-left text-sm font-medium">
+              <div class="px-6 py-4">Sản phẩm</div>
+              <div class="col-span-2 px-6 py-4"></div>
+              <div class="px-6 py-4">Đơn giá</div>
+              <div class="px-6 py-4">Số lượng</div>
+              <div class="px-6 py-4 text-right">Tổng tiền</div>
+            </div>
+            <div class="grid grid-cols-6 border-b font-medium dark:border-neutral-500">
+              <div class="px-6 py-4 font-medium">
+                <span class="block w-20">
+                  <img src="https://bizweb.dktcdn.net/thumb/compact/100/438/408/products/sqm5005-den-8.jpg" alt="" class="h-full w-full object-cover" />
+                </span>
+              </div>
+              <div class="col-span-2 flex px-6 py-4">
+                <div class="flex h-full flex-1 flex-col self-stretch">
+                  <a href="" class="hover:text-primary">Quần Short Thun Nam Thể Thao Năng Động</a>
+                  <span class="mt-auto block">Den/31</span>
+                </div>
+              </div>
+              <div class="px-6 py-4">299.000đ</div>
+              <div class="px-6 py-4">
+                <div action="" class="m-0 flex w-[120px] flex-1 rounded-xl border border-gray-300">
+                  <span class="inline-block cursor-pointer border-r border-gray-300 px-3 py-1.5 text-xl font-medium">-</span>
+                  <input type="text" class="block w-full px-3 py-1.5 text-center outline-none" />
+                  <span class="inline-block cursor-pointer border-l border-gray-300 px-3 py-1.5 text-xl font-medium">+</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-end justify-between px-6 py-4">
+                <span> 299.000đ </span>
+
+                <a href="" class="inline-block self-end"
+                ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6 w-6 opacity-70">
+                  <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 flex flex-col text-sm">
+        <div class="mb-5 flex flex-col">
+          <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/banner-cart-promotion.png?1685174295403" alt="" class="h-full w-full object-cover" />
+          <span class="bg-[#FEECC7] px-2 py-1 text-center">Dùng mã giảm giá của YODY trong bước tiếp theo</span>
+        </div>
+        <p class="mb-5 flex items-center justify-between px-5 text-center font-medium">Tổng đơn hàng (tạm tính): <span>299.000đ</span></p>
+        <div class="px-5">
+          <button class="w-full rounded-lg bg-yellow-400 px-3 py-1.5 text-center text-lg font-medium text-white">Đặt hàng (3)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

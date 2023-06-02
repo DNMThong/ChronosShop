@@ -11,6 +11,7 @@
     <link th:href="@{https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css}" rel="stylesheet"/>
 </head>
 <body>
+<header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
 <div class="container">
     <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-10">
         <div class="xl:col-span-2 mx-auto col-span-1">
@@ -131,8 +132,9 @@
             </div>
         </div>
     </div>
+    <div class="mb-10"></div>
 </div>
-
+<footer th:replace="~{component/footer :: footer}"></footer>
 <script th:src="@{/assets/user/js/productItem.js}" type="text/javascript"></script>
 </body>
 </html>
