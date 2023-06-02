@@ -1,6 +1,6 @@
 package com.chronos.chronosshop.entity;
 
-import lombok.*;
+import  lombok.*;
 
 import jakarta.persistence.*;
 

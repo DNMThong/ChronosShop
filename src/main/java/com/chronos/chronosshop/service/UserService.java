@@ -16,7 +16,7 @@ public class UserService {
 
     public List<User> listAll() {
         // tạo câu @Query SELECT * FROM User;
-        return null;
+        return repository.findAll();
     }
 
     public void save(User user) {
