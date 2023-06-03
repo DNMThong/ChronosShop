@@ -4,7 +4,6 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -30,7 +29,7 @@ public class Feedback {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Orders order;
 
     @Column(name = "rating")
     private Integer rating;

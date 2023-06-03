@@ -5,7 +5,6 @@ import lombok.*;
 import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -14,14 +13,14 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-public class Order {
+public class Orders {
     @Id
     @Column(name = "order_id")
     private String orderId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users user;
 
     @ManyToOne
     @JoinColumn(name = "ship_id")

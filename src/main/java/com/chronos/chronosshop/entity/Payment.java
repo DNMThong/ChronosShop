@@ -4,7 +4,6 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -23,7 +22,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users user;
 
     @Column(name = "subtotal")
     private Long subtotal;
@@ -45,5 +44,5 @@ public class Payment {
     private Date paymentDate;
 
     @OneToOne(mappedBy = "payment")
-    private Order order;
+    private Orders order;
 }
