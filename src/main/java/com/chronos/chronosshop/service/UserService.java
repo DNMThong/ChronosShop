@@ -21,6 +21,7 @@ public class UserService {
 
     public void save(Users user) {
         repository.save(user);
+
     }
 
     public Users get(String id) {

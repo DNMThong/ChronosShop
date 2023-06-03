@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -38,5 +37,6 @@ public class AddressShipping {
 
     @OneToMany(mappedBy = "addressShipping")
     List<Orders> orders;
+
 
 }
