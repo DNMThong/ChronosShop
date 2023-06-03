@@ -30,7 +30,7 @@ public class Feedback {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Orders order;
 
     @Column(name = "rating")
     private Integer rating;

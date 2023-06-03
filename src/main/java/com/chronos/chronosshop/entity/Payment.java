@@ -23,7 +23,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users user;
 
     @Column(name = "subtotal")
     private Long subtotal;
@@ -45,5 +45,5 @@ public class Payment {
     private Date paymentDate;
 
     @OneToOne(mappedBy = "payment")
-    private Order order;
+    private Orders order;
 }

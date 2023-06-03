@@ -37,5 +37,5 @@ public class Coupon {
     private String discountFor;
 
     @OneToMany(mappedBy = "coupon")
-    private List<Order> orders;
+    private List<Orders> orders;
 }
