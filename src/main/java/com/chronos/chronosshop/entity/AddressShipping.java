@@ -31,12 +31,12 @@ public class AddressShipping {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users user;
 
     @Column(name = "status")
     private String status;
 
     @OneToMany(mappedBy = "addressShipping")
-    List<Order> orders;
+    List<Orders> orders;
 
 }
