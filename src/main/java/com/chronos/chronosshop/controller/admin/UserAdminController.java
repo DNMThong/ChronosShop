@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/user")
+@RequestMapping("/admin/users")
 public class UserAdminController {
     @Autowired
     UserService userService;
@@ -18,7 +18,6 @@ public class UserAdminController {
     }
     @GetMapping("/list")
     public String getAllUser(Model model){
-        model.addAttribute("listUser", userService.listAll());
         return"page/admin/userlists";
     }
 }
