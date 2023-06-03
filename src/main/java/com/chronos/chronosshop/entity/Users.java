@@ -55,8 +55,8 @@ public class Users {
     @Column(name = "status")
     private String status;
 
-    @OneToOne(mappedBy = "user")
-    private Cart cart;
+    @OneToMany(mappedBy = "user")
+    List<Cart> carts;
 
     @OneToMany(mappedBy = "user")
     List<AddressShipping> addressShippingList;
