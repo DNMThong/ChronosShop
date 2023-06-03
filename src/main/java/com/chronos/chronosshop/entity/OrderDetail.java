@@ -3,7 +3,6 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
