@@ -3,7 +3,6 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +11,6 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-@Table(name = "order_detail", schema = "dbo", catalog = "ChronosShoppingOnline")
 public class OrderDetail {
     @Id
     @Column(name = "detail_id")
@@ -20,18 +18,15 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Orders orders;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "product_color_id")
+    private ProductVariant productVariant;
 
     @Column(name = "product_price")
     private Integer productPrice;
 
     @Column(name = "quantity")
     private Integer quantity;
-
-    @Column(name = "total")
-    private Long total;
 }

@@ -54,9 +54,6 @@ public class Product {
     private Date updateTime;
 
     @OneToMany(mappedBy = "product")
-    private List<OrderDetail> orderDetails;
-
-    @OneToMany(mappedBy = "product")
     private List<ProductMedia> productMediaList;
 
     @OneToMany(mappedBy = "product")

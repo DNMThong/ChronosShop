@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.sql.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +13,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-public class User {
+public class Users {
     @Id
     @Column(name = "user_id")
     private String userId;
@@ -56,16 +55,16 @@ public class User {
     @Column(name = "status")
     private String status;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "users")
     private Cart cart;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     List<AddressShipping> addressShippingList;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     List<Payment> payments;
 
-    @OneToMany(mappedBy = "user")
-    List<Order> orders;
+    @OneToMany(mappedBy = "users")
+    List<Orders> orders;
 
 }

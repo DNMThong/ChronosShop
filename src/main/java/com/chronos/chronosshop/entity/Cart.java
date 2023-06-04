@@ -3,7 +3,6 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -20,17 +19,15 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users users;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "product_color_id")
+    private ProductVariant productVariant;
 
     @Column(name = "quantity")
     private Integer quantity;
 
     @Column(name = "status")
     private String status;
-
-
 }

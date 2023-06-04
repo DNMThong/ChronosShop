@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, users-scalable=0">
-    <meta name="description" content="POS - Bootstrap Admin Template">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, users-scalable=0"/>
+    <meta name="description" content="POS - Bootstrap Admin Template"/>
     <meta name="keywords"
-          content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
-    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Danh sách danh mục sản phẩm</title>
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/admin/img/favicon.png}">
-    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}">
-    <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}">
-    <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}">
-    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}">
-    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}">
-    <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}">
+          content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects"/>
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template"/>
+    <meta name="robots" content="noindex, nofollow"/>
+    <title>Danh sách mã giảm giá</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/admin/img/favicon.png}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}"/>
 </head>
 <body>
 <div id="global-loader">
@@ -26,10 +27,10 @@
     <div class="header">
         <div class="header-left active">
             <a th:href="@{/admin/index}" class="logo">
-                <img th:src="@{/assets/admin/img/logo.png}" alt="">
+                <img th:src="@{/assets/admin/img/logo.png}" alt=""/>
             </a>
             <a th:href="@{/admin/index}" class="logo-small">
-                <img th:src="@{/assets/admin/img/logo-small.png}" alt="">
+                <img th:src="@{/assets/admin/img/logo-small.png}" alt=""/>
             </a>
             <a id="toggle_btn" href="javascript:void(0);"></a>
         </div>
@@ -48,37 +49,37 @@
                     </a>
                     <form action="#">
                         <div class="searchinputs">
-                            <input type="text" placeholder="Search Here ...">
+                            <input type="text" placeholder="Search Here ..."/>
                             <div class="search-addon">
                     <span>
-                      <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img">
+                      <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"/>
                     </span>
                             </div>
                         </div>
                         <a class="btn" id="searchdiv">
-                            <img th:src="@{/assets/admin/img/icons/search.svg}" alt="img">
+                            <img th:src="@{/assets/admin/img/icons/search.svg}" alt="img"/>
                         </a>
                     </form>
                 </div>
             </li>
             <li class="nav-item dropdown has-arrow flag-nav">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
-                    <img th:src="@{/assets/admin/img/flags/us1.png}" alt="" height="20">
+                    <img th:src="@{/assets/admin/img/flags/us1.png}" alt="" height="20"/>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img th:src="@{/assets/admin/img/flags/us.png}" alt="" height="16"> English </a>
+                        <img th:src="@{/assets/admin/img/flags/us.png}" alt="" height="16"/> English </a>
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img th:src="@{/assets/admin/img/flags/fr.png}" alt="" height="16"> French </a>
+                        <img th:src="@{/assets/admin/img/flags/fr.png}" alt="" height="16"/> French </a>
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img th:src="@{/assets/admin/img/flags/es.png}" alt="" height="16"> Spanish </a>
+                        <img th:src="@{/assets/admin/img/flags/es.png}" alt="" height="16"/> Spanish </a>
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img th:src="@{/assets/admin/img/flags/de.png}" alt="" height="16"> German </a>
+                        <img th:src="@{/assets/admin/img/flags/de.png}" alt="" height="16"/> German </a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                    <img th:src="@{/assets/admin/img/icons/notification-bing.svg}" alt="img">
+                    <img th:src="@{/assets/admin/img/icons/notification-bing.svg}" alt="img"/>
                     <span class="badge rounded-pill">4</span>
                 </a>
                 <div class="dropdown-menu notifications">
@@ -92,7 +93,7 @@
                                 <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
                         <span class="avatar flex-shrink-0">
-                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-02.jpg}">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-02.jpg}"/>
                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details">
@@ -110,7 +111,7 @@
                                 <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
                         <span class="avatar flex-shrink-0">
-                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-03.jpg}">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-03.jpg}"/>
                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details">
@@ -128,7 +129,7 @@
                                 <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
                         <span class="avatar flex-shrink-0">
-                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-06.jpg}">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-06.jpg}"/>
                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details">
@@ -148,7 +149,7 @@
                                 <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
                         <span class="avatar flex-shrink-0">
-                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-17.jpg}">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-17.jpg}"/>
                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details">
@@ -166,7 +167,7 @@
                                 <a th:href="@{/admin/activities}">
                                     <div class="media d-flex">
                         <span class="avatar flex-shrink-0">
-                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-13.jpg}">
+                          <img alt="" th:src="@{/assets/admin/img/profiles/avatar-13.jpg}"/>
                         </span>
                                         <div class="media-body flex-grow-1">
                                             <p class="noti-details">
@@ -190,7 +191,7 @@
             <li class="nav-item dropdown has-arrow main-drop">
                 <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
               <span class="users-img">
-                <img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
+                <img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt=""/>
                 <span class="status online"></span>
               </span>
                 </a>
@@ -198,7 +199,7 @@
                     <div class="profilename">
                         <div class="profileset">
                   <span class="users-img">
-                    <img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt="">
+                    <img th:src="@{/assets/admin/img/profiles/avator1.jpg}" alt=""/>
                     <span class="status online"></span>
                   </span>
                             <div class="profilesets">
@@ -206,14 +207,14 @@
                                 <h5>Admin</h5>
                             </div>
                         </div>
-                        <hr class="m-0">
+                        <hr class="m-0"/>
                         <a class="dropdown-item" th:href="@{/admin/profile}">
                             <i class="me-2" data-feather="users"></i> My Profile </a>
                         <a class="dropdown-item" th:href="@{/admin/generalsettings}">
                             <i class="me-2" data-feather="settings"></i>Settings </a>
-                        <hr class="m-0">
+                        <hr class="m-0"/>
                         <a class="dropdown-item logout pb-0" th:href="@{/admin/signin}">
-                            <img th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img">Logout </a>
+                            <img th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img"/>Logout </a>
                     </div>
                 </div>
             </li>
@@ -235,12 +236,13 @@
         <div class="content">
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Danh sách danh mục sản phẩm</h4>
-                    <h6>Xem tìm kiếm danh mục sản phẩm</h6>
+                    <h4>Danh sách phiếu mua hàng</h4>
+                    <h6>Quản lí phiếu mua hàng</h6>
                 </div>
                 <div class="page-btn">
-                    <a th:href="@{/admin/category/add}" class="btn btn-added">
-                        <img th:src="@{/assets/admin/img/icons/plus.svg}" class="me-1" alt="img">Thêm danh mục</a>
+                    <a th:href="@{/admin/coupon/add}" class="btn btn-added">
+                        <img th:src="@{/assets/admin/img/icons/plus.svg}" alt="img" class="me-2"/> Thêm phiếu mua hàng
+                    </a>
                 </div>
             </div>
             <div class="card">
@@ -249,15 +251,15 @@
                         <div class="search-set">
                             <div class="search-path">
                                 <a class="btn btn-filter" id="filter_search">
-                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img">
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img"/>
                                     <span>
-                        <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img">
+                        <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"/>
                       </span>
                                 </a>
                             </div>
                             <div class="search-input">
                                 <a class="btn btn-searchset">
-                                    <img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img">
+                                    <img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img"/>
                                 </a>
                             </div>
                         </div>
@@ -265,44 +267,51 @@
                             <ul>
                                 <li>
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf">
-                                        <img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img">
+                                        <img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"/>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel">
-                                        <img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img">
+                                        <img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"/>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="tooltip" data-bs-placement="top" title="print">
-                                        <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img">
+                                        <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"/>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table  datanew">
+                        <table class="table datanew">
                             <thead>
                             <tr>
-                                <th>Tên danh mục</th>
-                                <th>Đường dẫn</th>
-                                <th>Số lượng</th>
-                                <th>Lựa chọn</th>
+                                <th>Mã giảm giá</th>
+                                <th>Chi tiết</th>
+                                <th>Giảm giá</th>
+                                <th>Đối tượng khuyễn mãi</th>
+                                <th>Ngày tạo</th>
+                                <th>Hạn sử dụng mã</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <th:block th:each="category : ${listCategory}">
+                            <th:block th:each="coupon : ${listCoupon}">
                                 <tr>
-                                    <td th:text="${category.getCategoryName()}"></td>
-                                    <td th:text="${category.getCategoryUrl()}"></td>
-                                    <td th:text="${category.getSumProductByCategoryParent()}"></td>
+                                    <td th:text="${coupon.getCouponId()}"></td>
+                                    <td th:text="${coupon.getCouponName()}"></td>
+                                    <td th:text="${coupon.getDiscount()}"></td>
+                                    <td>[[${coupon.getDiscountForByAdmin()}]] [[${coupon.getPidOrOrder()}]]</td>
+                                    <td th:text="${#dates.format(coupon.getCreateTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                    <td th:text="${#dates.format(coupon.getExpiresTime(), 'dd-MM-yyyy HH:mm')}"></td>
                                     <td>
-                                        <a class="me-3" th:href="@{'/admin/category/edit/' + ${category.getCategoryId()}}">
-                                            <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
+                                        <a class="me-3" th:href="@{'/admin/coupon/edit/' + ${coupon.getCouponId()}}">
+                                            <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img"/>
                                         </a>
-                                        <a class="me-3 confirm-text" th:href="@{'/admin/category/delete/' + ${category.getCategoryId()}}">
-                                            <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
+                                        <a class="me-3 confirm-text"
+                                           th:href="@{'/admin/coupon/delete/' + ${coupon.getCouponId()}}">
+                                            <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img"/>
                                         </a>
                                     </td>
                                 </tr>
@@ -321,6 +330,8 @@
 <script th:src="@{/assets/admin/js/jquery.dataTables.min.js}"></script>
 <script th:src="@{/assets/admin/js/dataTables.bootstrap4.min.js}"></script>
 <script th:src="@{/assets/admin/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
 <script th:src="@{/assets/admin/plugins/select2/js/select2.min.js}"></script>
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalert2.all.min.js}"></script>
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>

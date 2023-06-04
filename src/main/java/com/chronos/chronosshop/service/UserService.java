@@ -1,7 +1,6 @@
 package com.chronos.chronosshop.service;
 
-import com.chronos.chronosshop.entity.Image;
-import com.chronos.chronosshop.entity.User;
+import com.chronos.chronosshop.entity.Users;
 import com.chronos.chronosshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +13,17 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public List<User> listAll() {
+    public List<Users> listAll() {
         // tạo câu @Query SELECT * FROM User;
         return null;
     }
 
-    public void save(User user) {
-        repository.save(user);
+    public void save(Users users) {
+        repository.save(users);
     }
 
-    public User get(String id) {
-        Optional<User> result = repository.findById(id);
+    public Users get(String id) {
+        Optional<Users> result = repository.findById(id);
         if (result.isPresent()) {
             return result.get();
         }

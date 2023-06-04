@@ -1,18 +1,31 @@
 package com.chronos.chronosshop.controller.admin;
 
+import com.chronos.chronosshop.repository.OrderRepository;
+import com.chronos.chronosshop.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin/report")
 public class ReportAdminController {
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private OrderRepository orderRepository;
+
     @GetMapping("/invoice")
-    public String invoiceReport(){
-        return "admin/invoicereport";
+    public String invoiceReport(Model model) {
+        model.addAttribute("listOrder", orderRepository.findAll());
+        return "admin/report/invoiceReport";
     }
-    @GetMapping("/purchaseorder")
-    public String purchaseOrderReport(){
-        return "admin/purchaseorderreport";
+
+    @GetMapping("/invoice/{orderId}")
+    public String detail(@PathVariable("orderId") String orderId, Model model) {
+        model.addAttribute("order", orderService.get(orderId));
+        return "admin/report/sales-details";
     }
 }

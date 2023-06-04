@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -13,7 +12,6 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-@Table(name = "address_shipping", schema = "dbo", catalog = "ChronosShoppingOnline")
 public class AddressShipping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,12 +29,11 @@ public class AddressShipping {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Users users;
 
     @Column(name = "status")
     private String status;
 
     @OneToMany(mappedBy = "addressShipping")
-    List<Order> orders;
-
+    List<Orders> orders;
 }

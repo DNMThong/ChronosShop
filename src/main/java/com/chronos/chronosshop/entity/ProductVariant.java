@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -13,7 +14,6 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-@Table(name = "product_variant", schema = "dbo", catalog = "ChronosShoppingOnline")
 public class ProductVariant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class ProductVariant {
     @JoinColumn(name = "product_sku")
     private Image image;
 
-    @Column(name = "product_colorName")
+    @Column(name = "product_color_name")
     private String productColorName;
 
     @Column(name = "product_size")
