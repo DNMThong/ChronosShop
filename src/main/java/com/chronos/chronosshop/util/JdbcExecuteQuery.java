@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -46,5 +50,11 @@ public class JdbcExecuteQuery {
     private String formatDateTime(LocalDateTime dateTime) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dateTime.format(formatter);
+    }
+
+    public static Timestamp createTimestamp(String datetime, String pattern) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat(pattern);
+        java.util.Date parsedDate = dateFormat.parse(datetime);
+        return new Timestamp(parsedDate.getTime());
     }
 }

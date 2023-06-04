@@ -22,7 +22,7 @@ public class ReportAdminController {
         model.addAttribute("listOrder", orderRepository.findAll());
         return "admin/report/invoiceReport";
     }
-
+// đang xác nhận, đang giao hàng, hoàn thành,
     @GetMapping("/invoice/{orderId}")
     public String detail(@PathVariable("orderId") String orderId, Model model) {
         model.addAttribute("order", orderService.get(orderId));
