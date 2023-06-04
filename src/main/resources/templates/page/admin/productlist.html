@@ -16,13 +16,14 @@
 
     <div class="page-wrapper">
         <div class="content">
+            <div class="toastify" data-duration="5000ms" th:if="${show}" th:attr="data-type=${type},data-show=${show},data-text=${message}"></div>
             <div class="page-header">
                 <div class="page-title">
                     <h4>Danh sách sản phẩm</h4>
                     <h6>Quản lí sản phẩm của bạn</h6>
                 </div>
                 <div class="page-btn">
-                    <a th:href="@{/admin/addproduct}" class="btn btn-added"
+                    <a th:href="@{/admin/product/add}" class="btn btn-added"
                     ><img
                             th:src="@{/assets/admin/img/icons/plus.svg}"
                             alt="img"
@@ -38,7 +39,7 @@
                         <div class="search-set">
                             <div class="search-path">
                                 <a class="btn btn-filter" id="filter_search">
-                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img"/>
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img" />
                                     <span
                                     ><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"
                                     /></span>
@@ -81,16 +82,20 @@
                     </div>
 
 
+
                     <div class="table-responsive">
+                        <!--                        <div th:if="${msg}" class="alert alert-success text-center">-->
+                        <!--                            [[${msg}]]-->
+                        <!--                        </div>-->
                         <table class="table datanew">
                             <thead>
                             <tr>
-                                <th>
-                                    <label class="checkboxs">
-                                        <input type="checkbox" id="select-all"/>
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </th>
+                                <!--                                <th>-->
+                                <!--                                    <label class="checkboxs">-->
+                                <!--                                        <input type="checkbox" id="select-all" />-->
+                                <!--                                        <span class="checkmarks"></span>-->
+                                <!--                                    </label>-->
+                                <!--                                </th>-->
 
                                 <th>Tên sản phẩm</th>
                                 <th>Danh mục</th>
@@ -104,13 +109,13 @@
                             </thead>
                             <tbody>
                             <tr th:each="item:${products}">
-                                <td>
-                                    <label class="checkboxs">
-                                        <input type="checkbox"/>
-                                        <span class="checkmarks"></span>
-                                    </label>
-                                </td>
-                                <td th:text="${item.getProductName()}">
+                                <!--                                <td>-->
+                                <!--                                    <label class="checkboxs">-->
+                                <!--                                        <input type="checkbox" />-->
+                                <!--                                        <span class="checkmarks"></span>-->
+                                <!--                                    </label>-->
+                                <!--                                </td>-->
+                                <td th:text="${item.getProductName()}" >
 
                                 </td>
 
@@ -118,9 +123,8 @@
                                 <td th:text="${item.getPriceOld()}"></td>
                                 <td th:text="${#numbers.formatDecimal(item.getPriceNew(),0, 'COMMA', 0, 'POINT')}"></td>
                                 <td th:text="${item.getMaterial()}"></td>
-                                <td th:switch="${item.getStatus()}">
-                                    <span th:case="'Còn hàng'" th:text="${item.getStatus()}"
-                                          class="badges bg-lightgreen"
+                                <td th:switch="${item.getStatus()}" >
+                                    <span th:case="'Còn hàng'" th:text="${item.getStatus()}" class="badges bg-lightgreen"
                                     >
                                     </span>
                                     <span th:case="'Đã xóa'" th:text="${item.getStatus()}" class="badges bg-danger"
@@ -131,15 +135,14 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <a class="me-3" th:href="@{/admin/addproduct-variant}">
-                                        <img th:src="@{/assets/admin/img/icons/color.svg}" alt="img"/>
+                                    <a class="me-3" th:href="@{'/admin/product/variant/add/'+${item.getProductId()}}">
+                                        <img th:src="@{/assets/admin/img/icons/color.svg}" alt="img" />
                                     </a>
-                                    <a class="me-3" th:href="@{'/admin/editproduct/'+${item.getProductId()}}">
-                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img"/>
+                                    <a class="me-3" th:href="@{'/admin/product/edit/'+${item.getProductId()}}">
+                                        <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img" />
                                     </a>
-                                    <a class="btn-delete-product"
-                                       th:href="@{'/admin/product/delete/'+${item.getProductId()}}">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img"/>
+                                    <a class="btn-delete-product" th:href="@{'/admin/product/delete/'+${item.getProductId()}}">
+                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img" />
                                     </a>
                                 </td>
                             </tr>

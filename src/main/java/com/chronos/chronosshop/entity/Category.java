@@ -7,12 +7,10 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
 public class Category {
     @Id
@@ -35,4 +33,12 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private List<Product> products;
+
+    public int getSumProductByCategoryParent() {
+        int total = 0;
+        for (Category list : subcategory) {
+            total += list.getProducts().size();
+        }
+        return total;
+    }
 }

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReportAdminController {
     @GetMapping("/invoice")
     public String invoiceReport(){
-        return "admin/invoicereport";
+        return "page/admin/invoicereport";
     }
     @GetMapping("/purchaseorder")
     public String purchaseOrderReport(){
-        return "admin/purchaseorderreport";
+        return "page/admin/purchaseorderreport";
     }
 }

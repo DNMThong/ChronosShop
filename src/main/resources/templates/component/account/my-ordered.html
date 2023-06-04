@@ -1,0 +1,30 @@
+<!-- Đơn hàng của tôi, có đơn - không có đơn -->
+<div class="" th:fragment="myOrdered">
+  <p class="mb-2 flex w-full items-center justify-between px-10 py-2 text-xl font-medium">
+    <span class="text-primary">Đơn hàng của tôi</span>
+    <a href="" class="rounded-lg px-5 py-1.5 text-center text-lg text-gray-500 transition-all hover:bg-yellow-500">0 đơn hàng</a>
+  </p>
+  <div class="flex flex-col text-sm">
+    <div class="grid grid-cols-12 gap-x-3 border-y border-gray-300 bg-blue-100 px-10 py-2 font-medium">
+      <div class="col-span-2">Mã đơn hàng</div>
+      <div class="col-span-2">Ngày mua</div>
+      <div class="col-span-2">Địa chỉ</div>
+      <div class="col-span-2">Giá trị đơn hàng</div>
+      <div class="col-span-2 text-center">Trạng thái thanh toán</div>
+      <div class="col-span-2 text-center">Trạng thái vận chuyển</div>
+    </div>
+    <!-- Không có đơn hàng -->
+    <p class="px-10 mt-3">Không có đơn hàng nào.</p>
+
+    <!-- Có đơn hàng -->
+    <!--  <div class="grid grid-cols-12 border-b border-gray-300 px-10 py-2 font-medium gap-x-3">-->
+    <!--      <div class="col-span-2">OD10179</div>-->
+    <!--      <div class="col-span-2">29/05/2023</div>-->
+    <!--      <div class="col-span-2">139 Đinh Bộ Lĩnh, phường 12, Quận Bình Thạnh, TP Hồ Chí Minh</div>-->
+    <!--      <div class="col-span-2">299.999đ</div>-->
+    <!--      <div class="col-span-2 text-center">Đã thanh toán</div>-->
+    <!--      <div class="col-span-2 text-center">Đang vận chuyển</div>-->
+    <!--    </div>-->
+  </div>
+</div>
+<!-- end Đơn hàng của tôi, có đơn - không có đơn -->

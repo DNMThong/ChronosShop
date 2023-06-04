@@ -2,10 +2,16 @@
 
   <div class="header-left active">
     <a th:href="@{/admin/index}" class="logo">
-      <img th:src="@{/assets/admin/img/logo.png}" alt="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 200 60">
+        <text x="4" y="50" fill="#f1b243" font-family="Arial" font-size="40">Chronos</text>
+        <text x="0" y="50" fill="#2a2a81" font-family="Arial" font-size="40">Chronos</text>
+      </svg>
     </a>
     <a th:href="@{/admin/index}" class="logo-small">
-      <img th:src="@{/assets/admin/img/logo-small.png}" alt="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="70" height="20" viewBox="0 0 200 60">
+        <text x="4" y="50" fill="#f1b243" font-family="Arial" font-size="40">Chronos</text>
+        <text x="0" y="50" fill="#2a2a81" font-family="Arial" font-size="40">Chronos</text>
+      </svg>
     </a>
     <a id="toggle_btn" href="javascript:void(0);">
     </a>
@@ -181,7 +187,7 @@
           <a class="dropdown-item" th:href="@{/admin/profile}"> <i class="me-2" data-feather="user"></i> My
             Profile</a>
           <a class="dropdown-item" th:href="@{/admin/generalsettings}"><i class="me-2"
-                                                                          data-feather="settings"></i>Settings</a>
+                                                                                         data-feather="settings"></i>Settings</a>
           <hr class="m-0">
           <a class="dropdown-item logout pb-0" th:href="@{/admin/signin}"><img
                   th:src="@{/assets/admin/img/icons/log-out.svg}" class="me-2" alt="img">Logout</a>

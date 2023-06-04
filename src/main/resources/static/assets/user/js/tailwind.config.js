@@ -5,9 +5,9 @@ tailwind.config = {
             padding: {
                 DEFAULT: "1rem",
                 sm: "1rem",
-                lg: "2rem",
-                xl: "2rem",
-                "2xl": "6rem",
+                lg: "4rem",
+                xl: "4rem",
+                "2xl": "8rem",
             },
         },
         extend: {

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CouponAdminController {
     @GetMapping("/add")
     public String addCoupon(){
-        return "admin/addcoupon";
+        return "page/admin/addcoupon";
     }
     @GetMapping("/list")
     public String couponList(){
-        return "admin/couponlist";
+        return "page/admin/couponlist";
     }
 }

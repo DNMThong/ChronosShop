@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(event) {
     const toastify = document.querySelector('.toastify')
-    const isShow = toastify.dataset.show==='true'
-    setupToastify(isShow)
+    if(toastify) {
+        const isShow = toastify.dataset.show==='true'
+        setupToastify(isShow)
+    }
 });
 
 const setupToastify = (show) => {

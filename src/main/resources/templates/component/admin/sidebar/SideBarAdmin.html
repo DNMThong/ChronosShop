@@ -1,81 +1,89 @@
 <div class="sidebar" id="sidebar" th:fragment="sliderbarAdmin">
-  <div class="sidebar-inner slimscroll">
-    <div id="sidebar-menu" class="sidebar-menu">
-      <ul>
-        <li class="submenu">
-          <a href="javascript:void(0);"
-          ><img th:src="@{/assets/admin/img/icons/product.svg}" alt="img" /><span>
-                        Sản phẩm</span
-          >
-            <span class="menu-arrow"></span
-            ></a>
-          <ul>
-            <li><a th:href="@{/admin/product/list}">Danh sách sản phẩm</a></li>
-            <li><a th:href="@{/admin/product/add}">Thêm sản phẩm</a></li>
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="javascript:void(0);"
-          ><img th:src="@{/assets/admin/img/icons/category.svg}" alt="img" /><span>
-                        Danh mục</span
-          >
-            <span class="menu-arrow"></span
-            ></a>
-          <ul>
-            <li>
-              <a th:href="@{/admin/category/list}"
-              >Danh sách các loại</a
-              >
-            </li>
-            <li><a th:href="@{/admin/category/add}">Thêm loại</a></li>
-            <li>
-              <a th:href="@{/admin/subcategory/list}">Danh sách doanh mục phụ</a>
-            </li>
-            <li><a th:href="@{/admin/subcategory/add}">Thêm danh mục phụ</a></li>
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="javascript:void(0);"
-          ><img th:src="@{/assets/admin/img/icons/coupon.svg}" alt="img" /><span>
-                        Phiếu mua hàng</span
-          >
-            <span class="menu-arrow"></span
-            ></a>
-          <ul>
-            <li>
-              <a th:href="@{/admin/coupon/list}">Danh sách phiếu mua hàng </a>
-            </li>
-            <li><a th:href="@{/admin/coupon/add}">Thêm phiếu mua hàng</a></li>
-          </ul>
-        </li>
-
-        <li class="submenu">
-          <a href="javascript:void(0);"
-          ><img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img" /><span>
-                        Người dùng</span
-          >
-            <span class="menu-arrow"></span
-            ></a>
-          <ul>
-            <li><a th:href="@{/admin/user/add}">Thêm người dùng</a></li>
-            <li><a th:href="@{/admin/user/list}">Danh sách người dùng</a></li>
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="javascript:void(0);"
-          ><img th:src="@{/assets/admin/img/icons/time.svg}" alt="img" /><span>
-                        Báo cáo</span
-          >
-            <span class="menu-arrow"></span
-            ></a>
-          <ul>
-            <li>
-              <a th:href="@{/admin/report/purchaseorder}">Báo cáo đơn đặt hàng</a>
-            </li>
-            <li><a th:href="@{/admin/report/invoice}">Báo cáo hóa đơn</a></li>
-          </ul>
-        </li>
-      </ul>
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="submenu">
+                    <a href="javascript:void(0);">
+                        <img th:src="@{/assets/admin/img/icons/product.svg}" alt="img"/>
+                        <span> Sản phẩm</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a th:href="@{/admin/product/list}">Danh sách sản phẩm</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/product/add}">Thêm sản phẩm</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);">
+                        <img th:src="@{/assets/admin/img/icons/category.svg}" alt="img"/>
+                        <span> Danh mục</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a th:href="@{/admin/category}">Danh sách các loại</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/subcategory}">Danh sách doanh mục phụ</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/category/add}">Thêm loại</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/subcategory/add}">Thêm danh mục phụ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);">
+                        <img th:src="@{/assets/admin/img/icons/coupon.svg}" alt="img"/>
+                        <span> Phiếu mua hàng</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a th:href="@{/admin/coupon/list}">Danh sách phiếu mua hàng </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/coupon/add}">Thêm phiếu mua hàng</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);">
+                        <img th:src="@{/assets/admin/img/icons/users1.svg}" alt="img"/>
+                        <span> Người dùng</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a th:href="@{/admin/users/add}">Thêm người dùng</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/users/list}">Danh sách người dùng</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);">
+                        <img th:src="@{/assets/admin/img/icons/time.svg}" alt="img"/>
+                        <span> Báo cáo</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a th:href="@{/admin/report/purchaseorder}">Báo cáo đơn đặt hàng</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/report/invoice}">Báo cáo hóa đơn</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
