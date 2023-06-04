@@ -1,0 +1,7 @@
+.card-product .card__options input[name^="option-"]:checked+label.card__option {
+    border: 1px solid yellow;
+}
+
+.card-product .card__option {
+    border: 1px solid transparent
+}
