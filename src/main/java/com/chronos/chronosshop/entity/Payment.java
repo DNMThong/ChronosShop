@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -40,7 +41,7 @@ public class Payment {
     private String status;
 
     @Column(name = "payment_date")
-    private Timestamp paymentDate;
+    private LocalDateTime paymentDate;
 
     @OneToOne(mappedBy = "payment")
     private Orders orders;

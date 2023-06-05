@@ -96,8 +96,8 @@
                                     <td th:text="${coupon.getCouponName()}"></td>
                                     <td th:text="${coupon.getDiscount()}"></td>
                                     <td>[[${coupon.getDiscountForByAdmin()}]] [[${coupon.getPidOrOrder()}]]</td>
-                                    <td th:text="${#dates.format(coupon.getCreateTime(), 'dd-MM-yyyy HH:mm')}"></td>
-                                    <td th:text="${#dates.format(coupon.getExpiresTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(coupon.getCreateTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(coupon.getExpiresTime(), 'dd-MM-yyyy HH:mm')}"></td>
                                     <td>
                                         <a class="me-3" th:href="@{'/admin/coupon/edit/' + ${coupon.getCouponId()}}">
                                             <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img"/>

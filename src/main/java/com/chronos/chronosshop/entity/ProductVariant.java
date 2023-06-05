@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -40,7 +41,6 @@ public class ProductVariant {
     @Column(name = "image1")
     private String image1;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 }

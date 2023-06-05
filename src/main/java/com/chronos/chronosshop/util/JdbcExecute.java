@@ -4,15 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import static com.chronos.chronosshop.util.DateUtil.formatLocalDateTime;
 
 @Service
-public class JdbcExecuteQuery {
+public class JdbcExecute {
     @Autowired
     private JdbcTemplate template;
 
@@ -24,8 +21,8 @@ public class JdbcExecuteQuery {
                 "@position = N'Administrator', " +
                 "@password = N'" + password + "', " +
                 "@status = N'Active', " +
-                "@create_time = '" + formatDateTime(LocalDateTime.now()) + "', " +
-                "@update_time = '" + formatDateTime(LocalDateTime.now()) + "', " +
+                "@create_time = '" + formatLocalDateTime(LocalDateTime.now()) + "', " +
+                "@update_time = '" + formatLocalDateTime(LocalDateTime.now()) + "', " +
                 "@last_login = null;";
         template.execute(sql);
     }
@@ -39,22 +36,10 @@ public class JdbcExecuteQuery {
                 "@birthday = null, " +
                 "@image = null, " +
                 "@password = '" + password + "', " +
-                "@created_date = '" + formatDateTime(LocalDateTime.now()) + "', " +
-                "@updated_date = '" + formatDateTime(LocalDateTime.now()) + "', " +
+                "@created_date = '" + formatLocalDateTime(LocalDateTime.now()) + "', " +
+                "@updated_date = '" + formatLocalDateTime(LocalDateTime.now()) + "', " +
                 "@last_login = null, " +
                 "@status = N'Hoạt động';";
         template.execute(sql);
-    }
-
-
-    private String formatDateTime(LocalDateTime dateTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return dateTime.format(formatter);
-    }
-
-    public static Timestamp createTimestamp(String datetime, String pattern) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat(pattern);
-        java.util.Date parsedDate = dateFormat.parse(datetime);
-        return new Timestamp(parsedDate.getTime());
     }
 }

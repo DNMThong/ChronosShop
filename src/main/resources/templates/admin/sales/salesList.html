@@ -92,8 +92,8 @@
                                     <td th:text="${order.getOrderId()}"></td>
                                     <td th:text="${order.getUsers().getUsername()}"></td>
                                     <td style="text-align: end">[[${#numbers.formatDecimal(order.getPayment().getTotal(), 0, 'COMMA', 0, 'POINT')}]]₫&emsp;</td>
-                                    <td th:text="${#dates.format(order.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
-                                    <td th:text="${#dates.format(order.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(order.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(order.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>
                                     <td th:switch="${order.getStatus()}">
                                         <span th:case="'Đang xác nhận'" th:text="${order.getStatus()}" class="badges bg-info"></span>
                                         <span th:case="'Đang giao hàng'" th:text="${order.getStatus()}" class="badges bg-warning-subtle"></span>

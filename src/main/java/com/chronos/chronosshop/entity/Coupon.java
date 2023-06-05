@@ -5,6 +5,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -32,15 +33,15 @@ public class Coupon {
     private String pidOrOrder;
 
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private LocalDateTime createTime;
 
     @Column(name = "expires_time")
-    private Timestamp expiresTime;
+    private LocalDateTime expiresTime;
 
     @OneToMany(mappedBy = "coupon")
     private List<Orders> orders;
 
-    public Coupon(String couponId, String couponName, String discount, String discountFor, String pidOrOrder, Timestamp createTime, Timestamp expiresTime) {
+    public Coupon(String couponId, String couponName, String discount, String discountFor, String pidOrOrder, LocalDateTime createTime, LocalDateTime expiresTime) {
         this.couponId = couponId;
         this.couponName = couponName;
         this.discount = discount;

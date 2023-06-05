@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,13 +46,11 @@ public class Product {
     @Column(name = "status")
     private String status;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     @OneToMany(mappedBy = "product")
     private List<ProductMedia> productMediaList;

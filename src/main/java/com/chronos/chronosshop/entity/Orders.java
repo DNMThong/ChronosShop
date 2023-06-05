@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -36,10 +37,10 @@ public class Orders {
     private String status;
 
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private LocalDateTime createTime;
 
     @Column(name = "update_time")
-    private Timestamp updateTime;
+    private LocalDateTime updateTime;
 
     @OneToOne
     @JoinColumn(name = "payment_id")
