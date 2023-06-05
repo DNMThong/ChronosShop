@@ -1,5 +1,6 @@
 package com.chronos.chronosshop.entity;
 
+import com.chronos.chronosshop.util.DateUtil;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -66,6 +67,11 @@ public class Users {
 
     @OneToMany(mappedBy = "user")
     List<Orders> orders;
+
+    public String getFormatDate(Date date) {
+        return DateUtil.toString(date);
+    }
+
 
 
 }
