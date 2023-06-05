@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <title>Chronos admin</title>
+  <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+</head>
+
+<body>
+<div id="global-loader">
+  <div class="whirly-loader"> </div>
+</div>
+
+<div class="main-wrapper">
+
+  <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+
+  <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="page-header">
+        <div class="page-title">
+          <h4>Thêm sản phẩm biến thể</h4>
+          <h6>Tạo sản phẩm biến thể mới</h6>
+        </div>
+      </div>
+
+      <div class="card">
+        <form class="card-body" th:action="@{/admin/product/variant/add}" method="post" id="formProduct" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Id Sản phẩm</label>
+                <input type="text" disabled  th:value="${idProduct}"   >
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Màu sản phẩm</label>
+                <input type="text">
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Số lượng tồn kho</label>
+                <input type="text" >
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Kích thước</label>
+                <select  class="select">
+                  <option th:each="size:${sizeProduct}" th:value="${size}" th:text="${size}"></option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <div class="form-group">
+                  <label>Ảnh</label>
+                  <input class="form-control" type="file" name="image" accept="image/*" >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Ngày tạo</label>
+                <input class="form-control"  type="date">
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <button type="submit" class="btn btn-submit me-2">Submit</button>
+              <a th:href="@{/admin/productlist}" class="btn btn-cancel">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+
+<!-- <script>
+  var toolbarOptions = [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    ["link", "image", "video", "formula"], // add's image support
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"], // remove formatting button
+  ];
+
+  var quill = new Quill("#editor", {
+    modules: {
+      toolbar: toolbarOptions,
+    },
+
+    theme: "snow",
+  });
+
+  const formProduct = document.querySelector('#formProduct')
+
+  formProduct.onsubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(formProduct);
+    formData.append('description',quill.root.innerHTML)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", formProduct.action, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send(formData);
+  }
+</script> -->
+</body>
+
+</html>

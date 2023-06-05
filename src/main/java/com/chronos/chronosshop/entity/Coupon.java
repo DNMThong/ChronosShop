@@ -5,7 +5,6 @@ import lombok.*;
 import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -37,5 +36,6 @@ public class Coupon {
     private String discountFor;
 
     @OneToMany(mappedBy = "coupon")
-    private List<Order> orders;
+    private List<Orders> orders;
+
 }

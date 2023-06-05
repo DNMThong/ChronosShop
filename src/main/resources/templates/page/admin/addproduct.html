@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Chronos admin</title>
+    <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"> </div>
+</div>
+
+<div class="main-wrapper">
+
+    <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+
+    <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>[[${title}]] sản phẩm</h4>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <form class="card-body" th:action="@{/admin/product/add}" method="post" id="formProduct" th:object="${product}" >
+                    <div class="row">
+                        <input type="hidden" th:field="*{productId}">
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Tên sản phẩm</label>
+                                <input type="text" th:field="*{productName}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Danh mục</label>
+                                <select th:field="*{category.categoryId}" class="select">
+                                    <option  th:each="category:${categoryList}" th:text="${category.getCategoryName()}" th:value="${category.getCategoryId()}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <select th:field="*{status}" class="select">
+                                    <option value="Còn hàng" >Còn hàng</option>
+                                    <option value="Hết hàng">Hết hàng</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Vật liệu</label>
+                                <input th:field="*{material}" type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Giá cũ</label>
+                                <input th:field="*{priceOld}" type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Giá mới</label>
+                                <input th:field="*{priceNew}" type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Thông tin chi tiết</label>
+                                <div   id="editor" style="min-height: 150px;">
+                                    [(*{description})]
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn btn-submit me-2">Submit</button>
+                            <a th:href="@{/admin/product/list}" class="btn btn-cancel">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<script>
+    var toolbarOptions = [
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        ["blockquote", "code-block"],
+
+        [{ header: 1 }, { header: 2 }], // custom button values
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["link", "image", "video", "formula"], // add's image support
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        [{ font: [] }],
+        [{ align: [] }],
+
+        ["clean"], // remove formatting button
+    ];
+
+    var quill = new Quill("#editor", {
+        modules: {
+            toolbar: toolbarOptions,
+        },
+
+        theme: "snow",
+    });
+
+    const formProduct = document.querySelector('#formProduct')
+
+    formProduct.onsubmit = (event) => {
+        const formData = new FormData(formProduct);
+        formData.append('description',quill.root.innerHTML)
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", formProduct.action, true);
+        xhr.send(formData);
+    }
+</script>
+</body>
+
+</html>

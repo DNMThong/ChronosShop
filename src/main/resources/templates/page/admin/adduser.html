@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Chronos admin</title>
+    <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+</head>
+
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"> </div>
+</div>
+
+<div class="main-wrapper">
+
+    <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+
+    <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Quản lý người dùng</h4>
+                    <h6>Thêm/Sửa thông tin người dùng</h6>
+                </div>
+            </div>
+
+            <div class="card">
+                <form action="" method="" class="card-body">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>ID Người dùng</label>
+                                <input th:name="userId" type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Tên người dùng</label>
+                                <input th:name="username" type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input th:name="email" type="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <div class="pass-group">
+                                    <input th:nam="password" type="password" class="pass-input">
+                                    <span class="fas toggle-password fa-eye-slash"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input th:name="phone" type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Sinh nhật</label>
+                                <input th:name="birthday" type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="inlineRadio1" value="option1"
+                                           th:name="gender">
+                                    <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="inlineRadio2" value="option2"
+                                           th:name="gender">
+                                    <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <select th:name="status" class="select">
+                                    <option>Select</option>
+                                    <option>Owner</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn btn-submit me-2">Submit</button>
+                            <a th:href="@{/admin/userlist}" class="btn btn-cancel">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+</body>
+
+</html>

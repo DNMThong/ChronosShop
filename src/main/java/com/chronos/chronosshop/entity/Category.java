@@ -1,11 +1,12 @@
 package com.chronos.chronosshop.entity;
 
+import  lombok.*;
+
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -32,5 +33,12 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private List<Product> products;
-}
 
+    public int getSumProductByCategoryParent() {
+        int total = 0;
+        for (Category list : subcategory) {
+            total += list.getProducts().size();
+        }
+        return total;
+    }
+}

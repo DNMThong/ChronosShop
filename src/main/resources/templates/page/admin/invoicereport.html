@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Chronos admin</title>
+    <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+</head>
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"></div>
+</div>
+
+<div class="main-wrapper">
+    <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+
+    <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Báo cáo hóa đơn</h4>
+                    <h6>Quản lí hóa đơn</h6>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-top">
+                        <div class="search-set">
+                            <div class="search-path">
+                                <a class="btn btn-filter" id="filter_search">
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img"/>
+                                    <span
+                                    ><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"
+                                    /></span>
+                                </a>
+                            </div>
+                            <div class="search-input">
+                                <a class="btn btn-searchset"
+                                ><img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img"
+                                /></a>
+                            </div>
+                        </div>
+                        <div class="wordset">
+                            <ul>
+                                <li>
+                                    <a
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="pdf"
+                                    ><img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"
+                                    /></a>
+                                </li>
+                                <li>
+                                    <a
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="excel"
+                                    ><img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"
+                                    /></a>
+                                </li>
+                                <li>
+                                    <a
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="print"
+                                    ><img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"
+                                    /></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="table-responsive">
+                        <table class="table datanew">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <label class="checkboxs">
+                                        <input type="checkbox" id="select-all"/>
+                                        <span class="checkmarks"></span>
+                                    </label>
+                                </th>
+                                <th>Mã hóa đơn</th>
+                                <th>Mã người dùng</th>
+                                <th>Mã vận chuyển</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Mã giảm giá</th>
+                                <th>Mã thanh toán</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <label class="checkboxs">
+                                        <input type="checkbox"/>
+                                        <span class="checkmarks"></span>
+                                    </label>
+                                </td>
+                                <td>INV001</td>
+                                <td>Thomas21</td>
+                                <td>12</td>
+                                <td>29-03-2022</td>
+                                <td>1500.00</td>
+                                <td>CO2</td>
+                                <td>PM1</td>
+                                <td><span class="badges bg-lightgreen">Paid</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+</body>
+</html>

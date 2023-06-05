@@ -9,5 +9,8 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+    @Query("select p from Product p order by p.updateTime desc ")
+    List<Product> findAllOrderByUpdateTime();
+
 
 }
