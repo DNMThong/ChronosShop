@@ -40,6 +40,18 @@
                 </li>
                 <li class="submenu">
                     <a href="javascript:void(0);">
+                        <img th:src="@{/assets/admin/img/icons/sales1.svg}" alt="img"/>
+                        <span>Danh sách</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a th:href="@{/admin/sales/invoice}">Danh sách hóa đơn</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);">
                         <img th:src="@{/assets/admin/img/icons/coupon.svg}" alt="img"/>
                         <span> Phiếu mua hàng</span>
                         <span class="menu-arrow"></span>
@@ -65,21 +77,6 @@
                         </li>
                         <li>
                             <a th:href="@{/admin/users/list}">Danh sách người dùng</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="javascript:void(0);">
-                        <img th:src="@{/assets/admin/img/icons/time.svg}" alt="img"/>
-                        <span> Báo cáo</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a th:href="@{/admin/report/purchaseorder}">Báo cáo đơn đặt hàng</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/admin/report/invoice}">Báo cáo hóa đơn</a>
                         </li>
                     </ul>
                 </li>

@@ -10,22 +10,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/report")
-public class ReportAdminController {
+@RequestMapping("/admin/sales")
+public class SalesAdminController {
     @Autowired
     private OrderService orderService;
     @Autowired
     private OrderRepository orderRepository;
 
     @GetMapping("/invoice")
-    public String invoiceReport(Model model) {
+    public String invoiceSalesList(Model model) {
         model.addAttribute("listOrder", orderRepository.findAll());
-        return "admin/report/invoiceReport";
+        return "admin/sales/salesList";
     }
-// đang xác nhận, đang giao hàng, hoàn thành,
+
+    // đang xác nhận, đang giao hàng, hoàn thành,
     @GetMapping("/invoice/{orderId}")
     public String detail(@PathVariable("orderId") String orderId, Model model) {
         model.addAttribute("order", orderService.get(orderId));
-        return "admin/report/sales-details";
+        return "admin/sales/sales-details";
     }
 }

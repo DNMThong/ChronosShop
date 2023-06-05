@@ -16,7 +16,7 @@ public class TestController {
     }
 
     @RequestMapping("/login")
-    public String login() {return "page/login-page";};
+    public String login() {return "page/login-page";}
 
     @RequestMapping("/addcategory")
     public String addcategory() {

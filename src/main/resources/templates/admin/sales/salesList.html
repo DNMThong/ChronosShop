@@ -8,12 +8,13 @@
           content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects"/>
     <meta name="author" content="Dreamguys - Bootstrap Admin Template"/>
     <meta name="robots" content="noindex, nofollow"/>
-    <title>Danh sách mã giảm giá</title>
+    <title>Danh sách hóa đơn bán hàng online</title>
     <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/admin/img/favicon.png}"/>
     <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}"/>
-    <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}"/>
@@ -29,13 +30,8 @@
         <div class="content">
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Danh sách phiếu mua hàng</h4>
-                    <h6>Quản lí phiếu mua hàng</h6>
-                </div>
-                <div class="page-btn">
-                    <a th:href="@{/admin/coupon/add}" class="btn btn-added">
-                        <img th:src="@{/assets/admin/img/icons/plus.svg}" alt="img" class="me-2"/> Thêm phiếu mua hàng
-                    </a>
+                    <h4>Danh sách hóa đơn</h4>
+                    <h6>Quản lí hóa đơn</h6>
                 </div>
             </div>
             <div class="card">
@@ -46,8 +42,8 @@
                                 <a class="btn btn-filter" id="filter_search">
                                     <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img"/>
                                     <span>
-                        <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"/>
-                      </span>
+                                                <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"/>
+                                            </span>
                                 </a>
                             </div>
                             <div class="search-input">
@@ -80,35 +76,41 @@
                         <table class="table datanew">
                             <thead>
                             <tr>
-                                <th>Mã giảm giá</th>
-                                <th>Chi tiết</th>
-                                <th>Giảm giá</th>
-                                <th>Đối tượng khuyễn mãi</th>
+                                <th>Mã hóa đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Giá trị đơn hàng</th>
                                 <th>Ngày tạo</th>
-                                <th>Hạn sử dụng mã</th>
-                                <th>Action</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Trạng thái</th>
+                                <th>Thanh toán</th>
+                                <th>Lựa chọn</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <th:block th:each="coupon : ${listCoupon}">
+                            <th:block th:each="order : ${listOrder}">
                                 <tr>
-                                    <td th:text="${coupon.getCouponId()}"></td>
-                                    <td th:text="${coupon.getCouponName()}"></td>
-                                    <td th:text="${coupon.getDiscount()}"></td>
-                                    <td>[[${coupon.getDiscountForByAdmin()}]] [[${coupon.getPidOrOrder()}]]</td>
-                                    <td th:text="${#dates.format(coupon.getCreateTime(), 'dd-MM-yyyy HH:mm')}"></td>
-                                    <td th:text="${#dates.format(coupon.getExpiresTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                    <td th:text="${order.getOrderId()}"></td>
+                                    <td th:text="${order.getUsers().getUsername()}"></td>
+                                    <td style="text-align: end">[[${#numbers.formatDecimal(order.getPayment().getTotal(), 0, 'COMMA', 0, 'POINT')}]]₫&emsp;</td>
+                                    <td th:text="${#dates.format(order.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:text="${#dates.format(order.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:switch="${order.getStatus()}">
+                                        <span th:case="'Đang xác nhận'" th:text="${order.getStatus()}" class="badges bg-info"></span>
+                                        <span th:case="'Đang giao hàng'" th:text="${order.getStatus()}" class="badges bg-warning-subtle"></span>
+                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    </td>
+                                    <td th:switch="${order.getPayment().getStatus()}">
+                                        <span th:case="'Đang chờ'" th:text="${order.getStatus()}" class="badges bg-info"></span>
+                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    </td>
                                     <td>
-                                        <a class="me-3" th:href="@{'/admin/coupon/edit/' + ${coupon.getCouponId()}}">
-                                            <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img"/>
-                                        </a>
-                                        <a class="me-3 confirm-text"
-                                           th:href="@{'/admin/coupon/delete/' + ${coupon.getCouponId()}}">
-                                            <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img"/>
+                                        <a class="me-3"
+                                           th:href="@{'/admin/sales/invoice/' + ${order.getOrderId()}}">
+                                            <img th:src="@{/assets/admin/img/icons/purchase1.svg}" alt="img">
                                         </a>
                                     </td>
-                                </tr>
                             </th:block>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -126,6 +128,8 @@
 <script th:src="@{/assets/admin/js/moment.min.js}"></script>
 <script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
 <script th:src="@{/assets/admin/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalert2.all.min.js}"></script>
 <script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
 <script th:src="@{/assets/admin/js/script.js}"></script>
