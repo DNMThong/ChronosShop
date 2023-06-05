@@ -45,8 +45,8 @@ public class TestController {
         return "page/productItem";
     }
 
-    @RequestMapping("login")
-    public String login(Model model) { return "page/login-page";}
+//    @RequestMapping("login")
+//    public String login(Model model) { return "page/login-page";}
 
     @RequestMapping("cart")
     public String cart() {return "page/cart-page";}

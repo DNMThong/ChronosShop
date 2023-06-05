@@ -1,6 +1,5 @@
 package com.chronos.chronosshop.service;
 
-import com.chronos.chronosshop.entity.Image;
 import com.chronos.chronosshop.entity.Users;
 import com.chronos.chronosshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +34,9 @@ public class UserService {
     public void delete(String id) {
         // CHECK POSITION NẾU LÀ OWNER và MANAGER THÌ CHO PHÉP XOÁ, NGƯỢC LẠI THÌ KHÔNG CHO
         repository.deleteById(id);
+    }
+
+    public Users getUserByEmail(String email) {
+        return  repository.getUserByEmail(email);
     }
 }
