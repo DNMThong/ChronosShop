@@ -2,18 +2,19 @@
 <div th:fragment="content" class="mx-auto h-full w-full bg-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/bg_login.jpg?1684745686241')] bg-cover bg-no-repeat  bg-bottom py-20 shadow-md">
   <div class="mx-auto container">
     <div class="mx-auto mb-10 flex w-full max-w-[600px] flex-col items-center justify-center rounded-md border border-gray-300 bg-white px-10 py-10">
-      <form action="" class="flex w-full flex-col items-center justify-center">
+      <form th:action="@{/account/login}" method="post"
+            class="flex w-full flex-col items-center justify-center">
         <h6 class="mb-7 text-center text-sm font-light">Chào mừng bạn đến với Chronos</h6>
         <h3 class="mb-5 flex items-center gap-3 text-center text-2xl font-medium uppercase">
           <span class="text-textColor">Đăng</span>
           <span class="text-primary">Nhập</span>
         </h3>
         <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
-          <input type="text" name="" id="email" class="rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-gray-400" placeholder="Email" />
+          <input type="text" name="email" id="email" class="rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-gray-400" placeholder="Email" />
           <p class="hidden px-3 py-1 text-red-500">Vui lòng nhập họ và tên</p>
         </div>
         <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
-          <input type="text" name="" id="password" class="relative rounded-lg border border-gray-300 px-4 py-2.5 outline-none after:absolute after:right-5 after:top-1/2 after:z-10 after:-translate-y-1/2 after:content-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/eye.svg?1684745686241')] focus:border-gray-400" placeholder="Mật khẩu" />
+          <input type="text" name="password" id="password" class="relative rounded-lg border border-gray-300 px-4 py-2.5 outline-none after:absolute after:right-5 after:top-1/2 after:z-10 after:-translate-y-1/2 after:content-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/eye.svg?1684745686241')] focus:border-gray-400" placeholder="Mật khẩu" />
           <p class="hidden px-3 py-1 text-red-500">Vui lòng nhập họ và tên</p>
         </div>
         <button class="w-3/4 rounded-lg bg-yellow-400 px-5 py-2.5 text-center text-xl font-semibold text-white">Đăng ký</button>

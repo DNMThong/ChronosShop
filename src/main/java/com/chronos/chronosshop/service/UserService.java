@@ -34,4 +34,8 @@ public class UserService {
         // CHECK POSITION NẾU LÀ OWNER và MANAGER THÌ CHO PHÉP XOÁ, NGƯỢC LẠI THÌ KHÔNG CHO
         repository.deleteById(id);
     }
+
+    public Users getUserByEmail(String email) {
+        return  repository.getUserByEmail(email);
+    }
 }

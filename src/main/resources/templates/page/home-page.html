@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="~{component/html-head :: headTitle('Trang chủ')}"></head>
+<head th:replace="~{component/html-head :: headTitle('Trang chủ', ~{::link})}">
+
+
+    <link rel="stylesheet"
+          th:href="@{https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/user/css/homePage.css}">
+    <link rel="stylesheet" th:href="@{/assets/user/css/cardStyle.css}">
+</head>
 <body>
 <header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
 
@@ -12,238 +19,184 @@
             <ul class="splide__list">
                 <li class="splide__slide">
                     <img
+                            alt=""
                             class="w-full h-full object-cover"
-                            src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/slider_1.jpg?1685095474730"
-                            alt="" />
+                            src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/slider_1.jpg?1685095474730"/>
                 </li>
                 <li class="splide__slide">
                     <img
+                            alt=""
                             class="w-full h-full object-cover"
-                            src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/slider_1.jpg?1685095474730"
-                            alt="" />
+                            src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/slider_1.jpg?1685095474730"/>
                 </li>
                 <li class="splide__slide">
                     <img
+                            alt=""
                             class="w-full h-full object-cover"
-                            src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/slider_1.jpg?1685095474730"
-                            alt="" />
+                            src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/slider_1.jpg?1685095474730"/>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-        <!--    Banner  -->
-        <div class="container">
-            <div class="bg-no-repeat bg-contain h-[300px] bg-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/banner-home-khuyen-mai.png?1684398883028')]"></div>
-        </div>
+<!--    Banner  -->
+<div class="container">
+    <div class="bg-no-repeat bg-contain h-[300px] bg-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/banner-home-khuyen-mai.png?1684398883028')]"></div>
+</div>
 
 
-        <!--    Collection  -->
-        <div class="container">
-            <div class="w-full relative after:content-[''] after:absolute after:w-full after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-primary after:rounded-md after:mt-2 ">
-                <h2 class="font-bold uppercase">Bộ sưu tập</h2>
-                <div class="mt-3 flex items-center">
-                    <div class="w-full">
-                        <img
-                                alt=""
-                                src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_bst_3_image.jpg?1684399184335"
-                        />
-                    </div>
-                    <div class="w-full">
-                        <img
-                                alt=""
-                                src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_bst_1_image.jpg?1684399184335"
-                        />
-                    </div>
-                    <div class="w-full">
-                        <img
-                                alt=""
-                                src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_bst_3_image.jpg?1684399184335"
-                        />
-                    </div>
-                </div>
+<!--    Collection  -->
+<div class="container">
+    <div class="w-full relative after:content-[''] after:absolute after:w-full after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-primary after:rounded-md after:mt-2 ">
+        <h2 class="font-bold uppercase">Bộ sưu tập</h2>
+        <div class="mt-3 flex items-center">
+            <div class="w-full">
+                <img
+                        alt=""
+                        src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_bst_3_image.jpg?1684399184335"
+                />
             </div>
-        </div>
-
-        <!--    Collection Link  -->
-
-        <div class="container mt-5">
-            <div class="flex items-center justify-center gap-10">
-                <div class="px-4 py-1.5 border-2 border-transparent border-b-primary w-full max-w-[150px] text-center cursor-pointer active hover:text-primary">
-                    <h5 class="text-center font-medium text-lg text-primary">Nữ</h5>
-                </div>
-                <div class="px-4 py-1.5 border-2 border-transparent border-b-primary w-full max-w-[150px] text-center cursor-pointer hover:text-primary">
-                    <h5 class="text-center font-medium text-lg">Nam</h5>
-                </div>
-                <div class="px-4 py-1.5 border-2 border-transparent border-b-primary w-full max-w-[150px] text-center cursor-pointer hover:text-primary">
-                    <h5 class="text-center font-medium text-lg">Trẻ em</h5>
-                </div>
+            <div class="w-full">
+                <img
+                        alt=""
+                        src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_bst_1_image.jpg?1684399184335"
+                />
             </div>
-
-            <div class="flex items-center flex-nowrap overflow-auto mt-5">
-                <div class="flex flex-col items-center justify-center w-fit px-10 py-1.5">
-                    <div class="w-[90px] h-[90px] rounded-full">
-                        <img alt=""
-                             class="h-full w-full" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_danhmuc_1_child_3_image.png?1684488034940"/>
-                    </div>
-                    <h2 class="mt-5 text-center font-medium">Áo Polo</h2>
-                </div>
-
-                <div class="flex flex-col items-center justify-center w-fit px-10 py-1.5">
-                    <div class="w-[90px] h-[90px] rounded-full">
-                        <img alt=""
-                             class="h-full w-full" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_danhmuc_1_child_3_image.png?1684488034940"/>
-                    </div>
-                    <h2 class="mt-5 text-center font-medium">Áo Polo</h2>
-                </div>
-                <div class="flex flex-col items-center justify-center w-fit px-10 py-1.5">
-                    <div class="w-[90px] h-[90px] rounded-full">
-                        <img alt=""
-                             class="h-full w-full" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_danhmuc_1_child_3_image.png?1684488034940"/>
-                    </div>
-                    <h2 class="mt-5 text-center font-medium">Áo Polo</h2>
-                </div>
-            </div>
-
-        </div>
-
-
-        <!--    List Product With Content   -->
-<div class="container mb-[100px] mt-5 grid h-[550px] grid-cols-5 gap-x-5 gap-y-3">
-    <h3 class="col-span-5">Best</h3>
-    <div class="h-full">
-        <img alt="" class="h-[500px] w-full rounded-md object-cover" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_3_image_desktop.jpg?1684399184335" />
-    </div>
-    <div class="col-span-4">
-        <div class="grid h-[500px] grid-cols-2 items-stretch gap-4 overflow-auto sm:grid-flow-col sm:grid-cols-none">
-            <div class="group relative col-span-1 flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm sm:w-[255px]">
-                <div class="card__top">
-                    <img alt="" class="h-[350px] w-full object-cover" src="https://bizweb.dktcdn.net/thumb/large/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-                </div>
-                <div class="card__body mt-2 p-3">
-                    <h3 class="card__title from-neutral-600">Dép Trẻ em chống trơn trượt</h3>
-                    <p class="mt-2 font-medium">139000đ</p>
-                    <div class="mt-3 flex items-center gap-3">
-            <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                    </div>
-                </div>
-                <div class="absolute top-0 w-fit rounded-r-md bg-[rgba(0,0,0,0.3)] px-3 py-1">
-                    <span class="text-sm font-medium text-white">Đã bán 7</span>
-                </div>
-                <div class="bg-primary absolute right-2 top-0 rounded-b-md px-3 py-1">
-                    <span class="text-sm font-medium text-white">Mới</span>
-                </div>
-                <div class="bg-primary group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">
-                    <span>Đặt hàng</span>
-                </div>
-            </div>
-            <div class="group relative col-span-1 flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm sm:w-[255px]">
-                <div class="card__top">
-                    <img alt="" class="h-[350px] w-full object-cover" src="https://bizweb.dktcdn.net/thumb/large/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-                </div>
-                <div class="card__body mt-2 p-3">
-                    <h3 class="card__title from-neutral-600">Dép Trẻ em chống trơn trượt</h3>
-                    <p class="mt-2 font-medium">139000đ</p>
-                    <div class="mt-3 flex items-center gap-3">
-            <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                    </div>
-                </div>
-                <div class="absolute top-0 w-fit rounded-r-md bg-[rgba(0,0,0,0.3)] px-3 py-1">
-                    <span class="text-sm font-medium text-white">Đã bán 7</span>
-                </div>
-                <div class="bg-primary absolute right-2 top-0 rounded-b-md px-3 py-1">
-                    <span class="text-sm font-medium text-white">Mới</span>
-                </div>
-                <div class="bg-primary group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">
-                    <span>Đặt hàng</span>
-                </div>
-            </div>
-            <div class="group relative col-span-1 flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm sm:w-[255px]">
-                <div class="card__top">
-                    <img alt="" class="h-[350px] w-full object-cover" src="https://bizweb.dktcdn.net/thumb/large/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-                </div>
-                <div class="card__body mt-2 p-3">
-                    <h3 class="card__title from-neutral-600">Dép Trẻ em chống trơn trượt</h3>
-                    <p class="mt-2 font-medium">139000đ</p>
-                    <div class="mt-3 flex items-center gap-3">
-            <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                    </div>
-                </div>
-                <div class="absolute top-0 w-fit rounded-r-md bg-[rgba(0,0,0,0.3)] px-3 py-1">
-                    <span class="text-sm font-medium text-white">Đã bán 7</span>
-                </div>
-                <div class="bg-primary absolute right-2 top-0 rounded-b-md px-3 py-1">
-                    <span class="text-sm font-medium text-white">Mới</span>
-                </div>
-                <div class="bg-primary group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">
-                    <span>Đặt hàng</span>
-                </div>
-            </div>
-            <div class="group relative col-span-1 flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm sm:w-[255px]">
-                <div class="card__top">
-                    <img alt="" class="h-[350px] w-full object-cover" src="https://bizweb.dktcdn.net/thumb/large/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-                </div>
-                <div class="card__body mt-2 p-3">
-                    <h3 class="card__title from-neutral-600">Dép Trẻ em chống trơn trượt</h3>
-                    <p class="mt-2 font-medium">139000đ</p>
-                    <div class="mt-3 flex items-center gap-3">
-            <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                        <span class="h-8 w-8">
-              <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-            </span>
-                    </div>
-                </div>
-                <div class="absolute top-0 w-fit rounded-r-md bg-[rgba(0,0,0,0.3)] px-3 py-1">
-                    <span class="text-sm font-medium text-white">Đã bán 7</span>
-                </div>
-                <div class="bg-primary absolute right-2 top-0 rounded-b-md px-3 py-1">
-                    <span class="text-sm font-medium text-white">Mới</span>
-                </div>
-                <div class="bg-primary group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">
-                    <span>Đặt hàng</span>
-                </div>
+            <div class="w-full">
+                <img
+                        alt=""
+                        src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_bst_3_image.jpg?1684399184335"
+                />
             </div>
         </div>
     </div>
 </div>
 
-<div class="container mb-[100px] mt-5 grid h-[550px] grid-cols-5 gap-x-5 gap-y-3">
-    <h3 class="col-span-5">Test</h3>
-    <div class="h-full">
-        <img alt="" class="h-[500px] w-full rounded-md object-cover" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_3_image_desktop.jpg?1684399184335" />
+
+<!--    List Product With Content   -->
+<div class="container mb-[100px] mt-5 grid md:h-[550px] h-full grid-cols-5 gap-x-5 gap-y-3">
+    <h3 class="col-span-5 flex justify-between items-center">
+        <a href="" class="inline-block font-medium text-lg">Hàng mới về</a>
+        <a href="" class="flex items-center gap-2 text-sm font-medium text-gray-500">
+            <span>Xem thêm</span>
+            <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </span>
+        </a>
+    </h3>
+    <div class="col-span-full md:col-span-1 md:h-full">
+        <img alt="" class="hidden h-[500px] w-full rounded-md object-cover md:block" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_3_image_desktop.jpg?1684399184335" />
+        <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_3_image_mobile.jpg?1685958460142" alt="" srcset="" class="block h-full w-full md:hidden" />
     </div>
-    <div class="col-span-4" th:if="${productList != null && !productList.isEmpty()}">
-        <div class="grid h-[500px] grid-cols-2 items-stretch gap-4 overflow-auto sm:grid-flow-col sm:grid-cols-none">
-            <div th:each="product : ${productList}" th:insert="/component/card/card :: card(product)"> </div>
+    <div class="col-span-full md:col-span-4"
+         th:if="${newestProducts != null && !newestProducts.isEmpty()}">
+        <div class="grid h-[500px] grid-flow-col grid-cols-none items-stretch gap-5 overflow-auto md:gap-4">
+            <th:block th:each="product : ${newestProducts}" th:insert="/component/card/card :: card(product)"></th:block>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mb-[100px] mt-5 grid md:h-[550px] h-full grid-cols-5 gap-x-5 gap-y-3">
+    <h3 class="col-span-5 flex justify-between items-center">
+        <a href="" class="inline-block font-medium text-lg">Hàng mới về</a>
+        <a href="" class="flex items-center gap-2 text-sm font-medium text-gray-500">
+            <span>Xem thêm</span>
+            <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </span>
+        </a>
+    </h3>
+    <div class="col-span-full md:col-span-1 md:h-full">
+        <img alt="" class="hidden h-[500px] w-full rounded-md object-cover md:block" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_3_image_desktop.jpg?1684399184335" />
+        <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_3_image_mobile.jpg?1685958460142" alt="" srcset="" class="block h-full w-full md:hidden" />
+    </div>
+    <div class="col-span-full md:col-span-4"
+         th:if="${newestProducts != null && !newestProducts.isEmpty()}">
+        <div class="grid h-[500px] grid-flow-col grid-cols-none items-stretch gap-10 overflow-auto md:gap-4">
+            <th:block th:each="product : ${newestProducts}" th:insert="/component/card/card :: card(product)"></th:block>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mb-[100px] mt-5 grid md:h-[550px] h-full grid-cols-5 gap-x-5 gap-y-3">
+    <h3 class="col-span-5 flex justify-between items-center">
+        <a href="" class="inline-block font-medium text-lg">Chronos Sport</a>
+        <a href="" class="flex items-center gap-2 text-sm font-medium text-gray-500">
+            <span>Xem thêm</span>
+            <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </span>
+        </a>
+    </h3>
+    <div class="col-span-full md:col-span-1 md:h-full">
+        <img alt="" class="hidden h-[500px] w-full rounded-md object-cover md:block" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_4_image_desktop.jpg?1685958460142" />
+        <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_4_image_mobile.jpg?1685958460142" alt="" srcset="" class="block h-full w-full md:hidden" />
+    </div>
+    <div class="col-span-full md:col-span-4"
+         th:if="${sportProducts != null && !sportProducts.isEmpty()}">
+        <div class="grid h-[500px] grid-flow-col grid-cols-none items-stretch gap-10 overflow-auto md:gap-4">
+            <th:block th:each="product : ${sportProducts}" th:insert="/component/card/card :: card(product)"></th:block>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mb-[100px] mt-5 grid md:h-[550px] h-full grid-cols-5 gap-x-5 gap-y-3">
+    <h3 class="col-span-5 flex justify-between items-center">
+        <a href="" class="flex font-medium text-lg items-center gap-2">
+            <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/fire-icon-new.png?1685771608191" alt="" class="w-6 h-6 object-cover">
+            <span>Áo Polo Yody</span>
+        </a>
+        <a href="" class="flex items-center gap-2 text-sm font-medium text-gray-500">
+            <span>Xem thêm</span>
+            <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </span>
+        </a>
+    </h3>
+    <div class="col-span-full md:col-span-1 md:h-full">
+        <img alt="" class="hidden h-[500px] w-full rounded-md object-cover md:block" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_4_image_desktop.jpg?1685958460142" />
+        <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_4_image_mobile.jpg?1685958460142" alt="" srcset="" class="block h-full w-full md:hidden" />
+    </div>
+    <div class="col-span-full md:col-span-4"
+         th:if="${polos != null && !polos.isEmpty()}">
+        <div class="grid h-[500px] grid-flow-col grid-cols-none items-stretch gap-10 overflow-auto md:gap-4">
+            <th:block th:each="product : ${polos}" th:insert="/component/card/card :: card(product)"></th:block>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mb-[100px] mt-5 grid md:h-[550px] h-full grid-cols-5 gap-x-5 gap-y-3">
+    <h3 class="col-span-5 flex justify-between items-center">
+        <a href="" class="inline-block font-medium text-lg">Chronos Jeans</a>
+        <a href="" class="flex items-center gap-2 text-sm font-medium text-gray-500">
+            <span>Xem thêm</span>
+            <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </span>
+        </a>
+    </h3>
+    <div class="col-span-full md:col-span-1 md:h-full">
+        <img alt="" class="hidden h-[500px] w-full rounded-md object-cover md:block" src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_4_image_desktop.jpg?1685958460142" />
+        <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/home_preivew_sanpham_4_image_mobile.jpg?1685958460142" alt="" srcset="" class="block h-full w-full md:hidden" />
+    </div>
+    <div class="col-span-full md:col-span-4"
+         th:if="${jeans != null && !jeans.isEmpty()}">
+        <div class="grid h-[500px] grid-flow-col grid-cols-none items-stretch gap-10 overflow-auto md:gap-4">
+            <th:block th:each="product : ${jeans}" th:insert="/component/card/card :: card(product)"></th:block>
 
         </div>
     </div>
@@ -252,7 +205,9 @@
 
 <footer th:replace="~{component/footer :: footer}"></footer>
 
-        <script th:src="@{/assets/users/js/header.js}"></script>
-        <script th:src="@{/assets/users/js/homePage.js}" type="text/javascript"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js}"></script>
+<script th:src="@{/assets/user/js/header.js}"></script>
+<script th:src="@{/assets/user/js/homePage.js}" type="text/javascript"></script>
+<script th:src="@{/assets/user/js/card.js}"></script>
 </body>
 </html>
