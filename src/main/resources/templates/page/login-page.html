@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{component/html-head :: headTitle('Đăng nhập')}"></head>
+<head th:replace="~{component/html-head :: headTitle('Đăng nhập', ~{})}"></head>
 <body>
 <header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
 <div th:replace="~{component/login-content :: content}"></div>

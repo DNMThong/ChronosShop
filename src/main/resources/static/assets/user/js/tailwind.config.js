@@ -19,6 +19,7 @@ tailwind.config = {
             animation: {
                 slide: "slide 0.5s ease-in-out",
                 swipeUp: "swipeUp 0.5s linear",
+                scaleUp: "scaleUp 0.2s linear"
             },
             keyframes: {
                 slide: {
@@ -32,6 +33,10 @@ tailwind.config = {
                     "70%": { top: "60%", opacity: "0.6" },
                     "100%": { top: "50%", opacity: "1" },
                 },
+                scaleUp: {
+                    "from": {transform: "scale(1)"},
+                    "to": {transform: "scale(1.2)"}
+                }
             },
         }
     }

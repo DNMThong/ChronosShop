@@ -1,18 +1,27 @@
-<div class="group relative col-span-1 flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm sm:w-[255px]" th:fragment="card(product)" th:if="${product != null}">
+<a  th:href="@{'/product/' + product.productId}"
+    class="card-product cursor-pointer group relative col-span-1 flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm sm:w-[255px]"
+    th:fragment="card(product)"
+    th:if="${product != null}">
     <div class="card__top">
-        <img alt="" class="h-[340px] w-full object-cover" th:src="${product.getProductVariants().size() > 0 ? product.getProductVariants().get(0).getImage1() : '' }" th:alt="${product.getProductName()}"/>
+        <img alt="" class="h-[340px] w-full object-cover group-hover:animate-scaleUp group-hover:scale-[1.2]" th:src="${product.getProductVariants().size() > 0 ? product.getProductVariants().get(0).getImage1() : '' }" th:alt="${product.getProductName()}"/>
     </div>
-    <div class="card__body mt-2 flex flex-col gap-2 p-3">
+    <div class="card__body mt-2 flex flex-col gap-2 p-3 relative z-10 bg-white">
         <h3 class="card__title from-neutral-600 block truncate">[(${product.productName})]</h3>
         <p class="font-medium">[(${product.priceNew})]</p>
-        <div class="flex items-center gap-3 w-full overflow-x-auto">
-            <span class="h-8 w-8 flex-shrink-0" th:each="variant : ${product.getDistinctVariants()}">
-              <img alt="" class="h-full w-full rounded-full object-cover" th:src="${variant.getImage1()}"/>
-            </span>
+        <div class="flex items-center gap-3 w-full overflow-x-auto card__options">
+            <th:block th:each="variant, iterStart : ${product.getDistinctVariants()}">
+                <input type="radio" class="hidden"
+                       th:checked="${iterStart.index == 0}"
+                       th:attr="name=${'option-' + variant.product.productId},id=${variant.productColorId}">
+                <label th:attr="for=${variant.productColorId}" class="rounded-full h-8 w-8 card__option cursor-pointer">
+                    <img alt="" class="h-full w-full rounded-full object-cover"
+                         th:src="${variant.getImage1()}" />
+                </label>
+            </th:block>
         </div>
     </div>
     <div class="absolute top-0 w-fit rounded-r-md bg-[rgba(0,0,0,0.3)] px-3 py-1">
-        <span class="text-sm font-medium text-white">Đã bán 7</span>
+        <span class="text-sm font-medium text-white">Đã bán [[${product.soldRecord}]]</span>
     </div>
     <div class="bg-primary absolute right-2 top-0 rounded-b-md px-3 py-1">
         <span class="text-sm font-medium text-white">Mới</span>
@@ -20,4 +29,4 @@
     <div class="bg-primary group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">
         <span>Đặt hàng</span>
     </div>
-</div>
+</a>
