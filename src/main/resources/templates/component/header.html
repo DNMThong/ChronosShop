@@ -287,47 +287,51 @@
 
                         <!--   Giỏ hàng trống     -->
                         <div
-                                class="absolute left-1/2 top-full hidden max-h-[450px] w-[450px] -translate-x-1/2 flex-col gap-5 rounded-lg border border-purple-400 bg-white p-3 group-hover:flex">
-                            <!--              <div class="justify-cent flex flex-col items-center">-->
-                            <!--                <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/blank_cart.svg?1684745686241" alt="cart" class="mx-auto block h-[100px] w-[100px]" />-->
-                            <!--                <a class="mb-5 block w-full text-center font-medium">Giỏ hàng trống đi shopping thôi nào</a>-->
-                            <!--              </div>-->
+                            class="absolute left-1/2 top-full hidden max-h-[450px] w-[450px] -translate-x-1/2 flex-col gap-5 rounded-lg border border-purple-400 bg-white p-3 group-hover:flex">
+                            <div th:if="${user == null}"
+                                class="justify-cent flex flex-col items-center">
+                                <img src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/blank_cart.svg?1684745686241" alt="cart" class="mx-auto block h-[100px] w-[100px]" />
+                                <a class="mb-5 block w-full text-center font-medium">Giỏ hàng trống đi shopping thôi nào</a>
+                            </div>
 
                             <!--          Giỏ hàng có sân phẩm              -->
-                            <div class="flex h-full flex-col items-center gap-5">
+                            <div th:if="${user != null && user.carts != null && user.carts.size() > 0}"
+                                    class="flex h-full flex-col items-center gap-5">
                                 <div class="flex h-full max-h-[380px] flex-col gap-3 overflow-y-auto w-full">
-                                    <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
-                                        <div class="w-1/4 self-start p-1">
-                                            <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt=""
-                                                 class="h-full w-full" />
-                                        </div>
-                                        <div class="flex flex-1 flex-col gap-3">
-                                            <div class="flex items-center justify-between gap-5">
-                                                <h4 class="text-sm font-medium">Quần Short Thun Nam Thể Thao Năng động</h4>
-                                                <span>
+                                    <th:block th:each="cartItem : ${user.carts}">
+                                        <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
+                                            <div class="w-1/4 self-start p-1">
+                                                <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt=""
+                                                     class="h-full w-full" />
+                                            </div>
+                                            <div class="flex flex-1 flex-col gap-3">
+                                                <div class="flex items-center justify-between gap-5">
+                                                    <h4 class="text-sm font-medium">[[${cartItem.cartId}]]</h4>
+                                                    <span>
                                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4">
                                              <path
                                                      d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" />
                                           </svg>
                                        </span>
-                                            </div>
-                                            <p class="text-primary font-medium">2130000</p>
-                                            <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center">
+                                                </div>
+                                                <p class="text-primary font-medium">2130000</p>
+                                                <p class="px-3 text-sm font-normal"><span>Đen</span> / <span>32</span></p>
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center">
                                           <span
                                                   class="flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>
-                                                    <input type="text"
-                                                           class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none"
-                                                           value="1" />
-                                                    <span
-                                                            class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                        <input type="text"
+                                                               class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none"
+                                                               value="1" />
+                                                        <span
+                                                                class="flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                    </div>
+                                                    <div class="flex items-center">Tổng cộng: &nbsp;<span
+                                                            class="font-medium text-red-500">2130000đ</span></div>
                                                 </div>
-                                                <div class="flex items-center">Tổng cộng: &nbsp;<span
-                                                        class="font-medium text-red-500">2130000đ</span></div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </th:block>
                                     <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
                                         <div class="w-1/4 self-start p-1">
                                             <img src="https://bizweb.dktcdn.net/100/438/408/products/sqm5005-den-8.jpg?v=1682132354033" alt=""

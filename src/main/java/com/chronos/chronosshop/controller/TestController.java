@@ -1,10 +1,14 @@
 package com.chronos.chronosshop.controller;
 
+import com.chronos.chronosshop.entity.Cart;
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.entity.Product;
+import com.chronos.chronosshop.entity.Users;
 import com.chronos.chronosshop.repository.CategoryRepository;
+import com.chronos.chronosshop.service.CartService;
 import com.chronos.chronosshop.service.CategoryService;
 import com.chronos.chronosshop.service.ProductService;
+import com.chronos.chronosshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +26,21 @@ public class TestController {
 
     ProductService productService;
 
+    UserService userService;
+
+    CartService cartService;
+
     List<Category> categoryList = null;
 
     @Autowired
-    public TestController(CategoryService categoryService, ProductService productService) {
+    public TestController(CategoryService categoryService,
+                          ProductService productService,
+                          UserService userService,
+                          CartService cartService) {
         this.categoryService = categoryService;
         this.productService = productService;
+        this.userService = userService;
+        this.cartService = cartService;
     }
 
 
@@ -77,9 +90,7 @@ public class TestController {
     public String products() {return "page/products-page";}
 
     @RequestMapping("sign-up")
-    public String signUp(Model model) {
-
-        return "page/sign-up-page";}
+    public String signUp(Model model) {return "page/sign-up-page";}
 
     @ModelAttribute("femaleCategories")
     public List<Category> getFemaleCategory() {
@@ -97,6 +108,12 @@ public class TestController {
     public List<Category> getKidCategory() {
         categoryList = categoryService.findCategoriesByName("Trẻ em");
         return categoryList;
+    }
+
+    @ModelAttribute("user")
+    public Users getUser() {
+        System.out.println(userService.getUserByEmail("tranhamy@gmail.com").getEmail());
+        return userService.getUserByEmail("tranhamy@gmail.com");
     }
 
     @RequestMapping("addcategory")
