@@ -23,7 +23,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users users;
+    private Users user;
 
     @Column(name = "subtotal")
     private Long subtotal;

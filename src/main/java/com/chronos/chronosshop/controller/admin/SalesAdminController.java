@@ -20,13 +20,13 @@ public class SalesAdminController {
     @GetMapping("/invoice")
     public String invoiceSalesList(Model model) {
         model.addAttribute("listOrder", orderRepository.findAll());
-        return "admin/sales/salesList";
+        return "page/admin/sales/salesList";
     }
 
     // đang xác nhận, đang giao hàng, hoàn thành,
     @GetMapping("/invoice/{orderId}")
     public String detail(@PathVariable("orderId") String orderId, Model model) {
         model.addAttribute("order", orderService.get(orderId));
-        return "admin/sales/sales-details";
+        return "page/admin/sales/sales-details";
     }
 }

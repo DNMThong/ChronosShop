@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 @Setter
 @ToString
 @Entity
+@Table(name = "order_detail")
 public class OrderDetail {
     @Id
     @Column(name = "detail_id")
@@ -18,7 +19,7 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Orders orders;
+    private Orders order;
 
     @ManyToOne
     @JoinColumn(name = "product_color_id")

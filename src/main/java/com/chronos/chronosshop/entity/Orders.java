@@ -23,7 +23,7 @@ public class Orders {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users users;
+    private Users user;
 
     @ManyToOne
     @JoinColumn(name = "ship_id")
@@ -46,10 +46,10 @@ public class Orders {
     @JoinColumn(name = "payment_id")
     private Payment payment;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "order")
     private List<Feedback> feedbacks;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
 
 }

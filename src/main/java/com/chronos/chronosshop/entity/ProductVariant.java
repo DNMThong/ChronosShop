@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -19,6 +18,7 @@ import java.util.Objects;
 @ToString
 @Service
 @Entity
+@Table(name = "product_variant")
 public class ProductVariant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

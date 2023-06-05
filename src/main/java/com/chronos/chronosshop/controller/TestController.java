@@ -2,7 +2,6 @@ package com.chronos.chronosshop.controller;
 
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.entity.Product;
-import com.chronos.chronosshop.repository.CategoryRepository;
 import com.chronos.chronosshop.service.CategoryService;
 import com.chronos.chronosshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -42,7 +40,7 @@ public class TestController {
 
     @RequestMapping("productItem")
     public String productItem() {
-        return "page/productItem";
+        return "product-item";
     }
 
     @RequestMapping("login")

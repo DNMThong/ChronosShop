@@ -21,13 +21,13 @@ public class CouponAdminController {
     @GetMapping("")
     public String couponList(Model model) {
         model.addAttribute("listCoupon", couponService.listAll());
-        return "admin/coupon/couponList";
+        return "page/admin/coupon/couponList";
     }
 
     @GetMapping("/add")
     public String addCoupon(Model model) {
         model.addAttribute("coupon", new Coupon());
-        return "admin/coupon/addCoupon";
+        return "page/admin/coupon/addCoupon";
     }
 
     @PostMapping("/save")
@@ -56,7 +56,7 @@ public class CouponAdminController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "admin/coupon/addCoupon";
+        return "page/admin/coupon/addCoupon";
     }
 
     @GetMapping("/delete/{couponId}")
