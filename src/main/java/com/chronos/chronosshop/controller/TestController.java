@@ -35,7 +35,10 @@ public class TestController {
     public String index(Model model) {
         List<Product> productList = productService.listAll();
 //        System.out.println(productList);
-        model.addAttribute("productList", productList);
+        model.addAttribute("newestProducts", productService.getListNewestProduct(8));
+        model.addAttribute("sportProducts", productService.getListProductContainName("sport"));
+        model.addAttribute("polos", productService.getListProductContainName("polo"));
+        model.addAttribute("jeans", productService.getListProductContainName("Jeans"));
 //        System.out.println(productList.get(0).getProductVariants() == null || productList.get(0).getProductVariants().size() <= 0 ? "Null" : productList.get(0).getProductVariants().get(0).getImage1());
         return "page/home-page";
     }
