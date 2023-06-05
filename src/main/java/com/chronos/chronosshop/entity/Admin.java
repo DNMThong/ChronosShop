@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Data
@@ -36,15 +37,12 @@ public class Admin {
     @Column(name = "status")
     private String status;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "update_time")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "last_login")
-    private Date lastLogin;
+    private LocalDateTime lastLogin;
 }

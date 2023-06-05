@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+    <meta name="description" content="POS - Bootstrap Admin Template"/>
+    <meta name="keywords"
+          content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects"/>
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template"/>
+    <meta name="robots" content="noindex, nofollow"/>
+    <title>Chi tiết hoá đơn [[${order.getOrderId}]]</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/admin/img/favicon.png}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}"/>
+</head>
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"></div>
+</div>
+<div class="main-wrapper">
+    <th:block th:replace="~{component/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Hoá đơn chi tiết</h4>
+                    <h6>Xem chi tiết bán hàng</h6>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-sales-split">
+                        <h2>Hoá đơn chi tiết : [[${order.getOrderId}]]</h2>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="invoice-box table-height"
+                         style="max-width: 1600px; width: 100%; overflow: auto; margin: 15px auto; padding: 0; font-size: 14px; line-height: 24px; color: #555">
+                        <table cellpadding="0" cellspacing="0"
+                               style="width: 100%; line-height: inherit; text-align: left">
+                            <tbody>
+                            <tr class="top">
+                                <td colspan="6" style="padding: 5px; vertical-align: top">
+                                    <table style="width: 100%; line-height: inherit; text-align: left">
+                                        <tbody>
+                                        <tr>
+                                            <td style="padding: 5px; vertical-align: top; text-align: left; padding-bottom: 20px">
+                                                <font style="vertical-align: inherit; margin-bottom: 25px">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #7367f0; font-weight: 600; line-height: 35px">Thông
+                                                        tin khách hàng</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">
+                                                        Tên khách hàng : [[${order.getUsers().getUsername()}]]
+                                                    </font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">
+                                                        SĐT : [[${order.getUsers().getPhone()}]]
+                                                    </font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">
+                                                        <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400"
+                                                        >Email : [[${order.getUsers().getEmail()}]]</font>
+                                                    </font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">Giới
+                                                        tính : [[${order.getUsers().getGender() == true ? 'Nam' :
+                                                        'Nữ'}]]</font>
+                                                </font>
+                                                <br/>
+                                            </td>
+                                            <td style="padding: 5px; vertical-align: top; text-align: left; padding-bottom: 20px">
+                                                <font style="vertical-align: inherit; margin-bottom: 25px">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #7367f0; font-weight: 600; line-height: 35px">Chi
+                                                        tiết hoá đơn</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">Mã
+                                                        thanh toán :</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">Ngày khởi tạo :</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">Cập nhật lần cuối :</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">Phương thức thanh toán :</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">Trạng
+                                                        thái thanh toán : </font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">Trạng
+                                                        thái hoá đơn : </font>
+                                                </font>
+                                                <br/>
+                                            </td>
+                                            <td style="padding: 5px; vertical-align: top; text-align: right; padding-bottom: 20px">
+                                                <font style="vertical-align: inherit; margin-bottom: 25px">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #7367f0; font-weight: 600; line-height: 35px">&nbsp;</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">[[${order.getPayment().getPaymentId()}]]</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">[[${#temporals.format(order.getCreateTime(), 'dd-MM-yyyy HH:mm:ss')}]]</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">[[${#temporals.format(order.getUpdateTime(), 'dd-MM-yyyy HH:mm:ss')}]]</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #000; font-weight: 400">[[${order.getPayment().getPaymentMethodName()}]]</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #2e7d32; font-weight: 400">[[${order.getPayment().getStatus()}]]</font>
+                                                </font>
+                                                <br/>
+                                                <font style="vertical-align: inherit">
+                                                    <font style="vertical-align: inherit; font-size: 14px; color: #2e7d32; font-weight: 400">[[${order.getStatus()}]]</font>
+                                                </font>
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="heading" style="background: #f3f2f7">
+                                <td style="padding: 5px; vertical-align: middle; font-weight: 600; color: #5e5873; font-size: 14px; padding: 10px">
+                                    Mã sản phẩm
+                                </td>
+                                <td style="padding: 5px; vertical-align: middle; font-weight: 600; color: #5e5873; font-size: 14px; padding: 10px">
+                                    Tên sản phẩm
+                                </td>
+                                <td style="padding: 5px; text-align: end; vertical-align: middle; font-weight: 600; color: #5e5873; font-size: 14px; padding: 10px">
+                                    Loại
+                                </td>
+                                <td style="padding: 5px; text-align: end; vertical-align: middle; font-weight: 600; color: #5e5873; font-size: 14px; padding: 10px">
+                                    Giá
+                                </td>
+                                <td style="padding: 5px; text-align: center; vertical-align: middle; font-weight: 600; color: #5e5873; font-size: 14px; padding: 10px">
+                                    Số lượng
+                                </td>
+                                <td style="padding: 5px; text-align: end; vertical-align: middle; font-weight: 600; color: #5e5873; font-size: 14px; padding: 10px">
+                                    Tổng
+                                </td>
+                            </tr>
+                            <th:block th:each="orderDetail : ${order.getOrderDetails()}">
+                                <tr class="details" style="border-bottom: 1px solid #e9ecef">
+                                    <td style="padding: 10px; vertical-align: top"
+                                        th:text="${orderDetail.getProductVariant().getImage().getProductSku()}"></td>
+                                    <td style="padding: 10px; vertical-align: top"
+                                        th:text="${orderDetail.getProductVariant().getProduct().getProductName()}"></td>
+                                    <td style="padding: 10px; vertical-align: top; text-align: end">
+                                        [[${orderDetail.getProductVariant().getProductColorName()}]]/[[${orderDetail.getProductVariant().getProductSize()}]]
+                                    </td>
+                                    <td style="padding: 10px; vertical-align: top; text-align: end"
+                                        th:text="${#numbers.formatDecimal(orderDetail.getProductPrice(), 0, 'COMMA', 0, 'POINT')}"></td>
+                                    <td style="padding: 10px; vertical-align: top; text-align: center"
+                                        th:text="${orderDetail.getQuantity()}"></td>
+                                    <td style="padding: 10px; vertical-align: top; text-align: end"
+                                        th:text="${#numbers.formatDecimal(orderDetail.getProductPrice()*orderDetail.getQuantity(), 0, 'COMMA', 0, 'POINT')}"></td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                        <div class="row">
+                            <div class="col-lg-6"></div>
+                            <div class="col-lg-6">
+                                <div class="total-order w-100 max-widthauto m-auto mb-4">
+                                    <ul>
+                                        <li>
+                                            <h4>Tổng tiền hàng</h4>
+                                            <h5>₫ [[${#numbers.formatDecimal(order.getPayment().getSubtotal(), 0, 'COMMA', 0, 'POINT')}]]</h5>
+                                        </li>
+                                        <li th:if="${order.getCoupon() != null}">
+                                            <h4>Giảm giá</h4>
+                                            <h5 th:if="${order.getCoupon() != null}">₫ [[${#numbers.formatDecimal(#strings.substringBefore(order.getCoupon().getDiscount(), 'kVND'))}]]</h5>
+                                        </li>
+                                        <li>
+                                            <h4>Phí giao hàng</h4>
+                                            <h5>₫ [[${#numbers.formatDecimal(order.getPayment().getSubtotalFee(), 0, 'COMMA', 0, 'POINT')}]]</h5>
+                                        </li>
+                                        <li class="total">
+                                            <h4>Thành tiền</h4>
+                                            <h5>₫ [[${#numbers.formatDecimal(order.getPayment().getTotal(), 0, 'COMMA', 0, 'POINT')}]]</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>-->
+<script th:src="@{/assets/admin/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/assets/admin/js/feather.min.js}"></script>
+<script th:src="@{/assets/admin/js/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/assets/admin/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/assets/admin/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
+<script th:src="@{/assets/admin/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
+<script th:src="@{/assets/admin/plugins/sweetalert/sweetalert2.all.min.js}"></script>
+<script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
+<script th:src="@{/assets/admin/js/script.js}"></script>
+</body>
+</html>

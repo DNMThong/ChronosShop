@@ -3,7 +3,8 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,7 +23,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users user;
+    private Users users;
 
     @Column(name = "subtotal")
     private Long subtotal;
@@ -39,10 +40,9 @@ public class Payment {
     @Column(name = "status")
     private String status;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "payment_date")
-    private Date paymentDate;
+    private LocalDateTime paymentDate;
 
     @OneToOne(mappedBy = "payment")
-    private Orders order;
+    private Orders orders;
 }

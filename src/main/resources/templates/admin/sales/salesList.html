@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, users-scalable=0"/>
+    <meta name="description" content="POS - Bootstrap Admin Template"/>
+    <meta name="keywords"
+          content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects"/>
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template"/>
+    <meta name="robots" content="noindex, nofollow"/>
+    <title>Danh sách hóa đơn bán hàng online</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/admin/img/favicon.png}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/animate.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/bootstrap-datetimepicker.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/select2/css/select2.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/dataTables.bootstrap4.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/fontawesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/plugins/fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/style.css}"/>
+</head>
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"></div>
+</div>
+<div class="main-wrapper">
+    <th:block th:replace="~{component/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Danh sách hóa đơn</h4>
+                    <h6>Quản lí hóa đơn</h6>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-top">
+                        <div class="search-set">
+                            <div class="search-path">
+                                <a class="btn btn-filter" id="filter_search">
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img"/>
+                                    <span>
+                                                <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"/>
+                                            </span>
+                                </a>
+                            </div>
+                            <div class="search-input">
+                                <a class="btn btn-searchset">
+                                    <img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="wordset">
+                            <ul>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf">
+                                        <img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel">
+                                        <img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print">
+                                        <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table datanew">
+                            <thead>
+                            <tr>
+                                <th>Mã hóa đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Giá trị đơn hàng</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Trạng thái</th>
+                                <th>Thanh toán</th>
+                                <th>Lựa chọn</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="order : ${listOrder}">
+                                <tr>
+                                    <td th:text="${order.getOrderId()}"></td>
+                                    <td th:text="${order.getUsers().getUsername()}"></td>
+                                    <td style="text-align: end">[[${#numbers.formatDecimal(order.getPayment().getTotal(), 0, 'COMMA', 0, 'POINT')}]]₫&emsp;</td>
+                                    <td th:text="${#temporals.format(order.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(order.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:switch="${order.getStatus()}">
+                                        <span th:case="'Đang xác nhận'" th:text="${order.getStatus()}" class="badges bg-info"></span>
+                                        <span th:case="'Đang giao hàng'" th:text="${order.getStatus()}" class="badges bg-warning-subtle"></span>
+                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    </td>
+                                    <td th:switch="${order.getPayment().getStatus()}">
+                                        <span th:case="'Đang chờ'" th:text="${order.getStatus()}" class="badges bg-info"></span>
+                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    </td>
+                                    <td>
+                                        <a class="me-3"
+                                           th:href="@{'/admin/sales/invoice/' + ${order.getOrderId()}}">
+                                            <img th:src="@{/assets/admin/img/icons/purchase1.svg}" alt="img">
+                                        </a>
+                                    </td>
+                            </th:block>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/assets/admin/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/assets/admin/js/feather.min.js}"></script>
+<script th:src="@{/assets/admin/js/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/assets/admin/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/assets/admin/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
+<script th:src="@{/assets/admin/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
+<script th:src="@{/assets/admin/plugins/sweetalert/sweetalert2.all.min.js}"></script>
+<script th:src="@{/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
+<script th:src="@{/assets/admin/js/script.js}"></script>
+</body>
+</html>

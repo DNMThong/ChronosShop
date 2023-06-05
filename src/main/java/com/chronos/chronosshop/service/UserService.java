@@ -1,6 +1,5 @@
 package com.chronos.chronosshop.service;
 
-import com.chronos.chronosshop.entity.Image;
 import com.chronos.chronosshop.entity.Users;
 import com.chronos.chronosshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,11 @@ public class UserService {
 
     public List<Users> listAll() {
         // tạo câu @Query SELECT * FROM User;
-        return repository.findAll();
+        return null;
     }
 
-    public void save(Users user) {
-        repository.save(user);
-
+    public void save(Users users) {
+        repository.save(users);
     }
 
     public Users get(String id) {

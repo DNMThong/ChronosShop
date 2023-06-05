@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -31,7 +32,7 @@ public class Users {
     private Boolean gender;
 
     @Column(name = "birthday")
-    private Date birthday;
+    private LocalDateTime birthday;
 
     @Column(name = "image")
     private String image;
@@ -39,33 +40,28 @@ public class Users {
     @Column(name = "password")
     private String password;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "created_date")
-    private Date createdDate;
+    private LocalDateTime createdDate;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "updated_date")
-    private Date updatedDate;
+    private LocalDateTime updatedDate;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "last_login")
-    private Date lastLogin;
+    private LocalDateTime lastLogin;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "status")
     private String status;
 
-    @OneToMany(mappedBy = "user")
-    List<Cart> carts;
+    @OneToOne(mappedBy = "users")
+    private Cart cart;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     List<AddressShipping> addressShippingList;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     List<Payment> payments;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     List<Orders> orders;
-
 
 }
