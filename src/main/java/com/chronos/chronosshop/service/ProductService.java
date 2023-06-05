@@ -3,10 +3,13 @@ package com.chronos.chronosshop.service;
 import com.chronos.chronosshop.entity.Image;
 import com.chronos.chronosshop.entity.Product;
 import com.chronos.chronosshop.repository.ProductRepository;
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,5 +56,13 @@ public class ProductService {
                 save(product);
             }else
                 throw  new RuntimeException("Không tìm thấy sản phẩm với id: "+id);
+    }
+
+    public List<Product> getListNewestProduct(Integer limit) {
+        return repository.findNewestProducts().subList(0, limit);
+    }
+
+    public List<Product> getListProductContainName(String name) {
+        return repository.findProductsByName(name);
     }
 }

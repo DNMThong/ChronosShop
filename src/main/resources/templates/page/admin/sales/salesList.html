@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Danh sách hóa đơn bán hàng online</title>
+    <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+</head>
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"></div>
+</div>
+<div class="main-wrapper">
+    <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+    <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Danh sách hóa đơn</h4>
+                    <h6>Quản lí hóa đơn</h6>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-top">
+                        <div class="search-set">
+                            <div class="search-path">
+                                <a class="btn btn-filter" id="filter_search">
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img"/>
+                                    <span>
+                                                <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"/>
+                                            </span>
+                                </a>
+                            </div>
+                            <div class="search-input">
+                                <a class="btn btn-searchset">
+                                    <img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="wordset">
+                            <ul>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf">
+                                        <img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel">
+                                        <img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print">
+                                        <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table datanew">
+                            <thead>
+                            <tr>
+                                <th>Mã hóa đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Giá trị đơn hàng</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Trạng thái</th>
+                                <th>Thanh toán</th>
+                                <th>Lựa chọn</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="order : ${listOrder}">
+                                <tr>
+                                    <td th:text="${order.getOrderId()}"></td>
+                                    <td th:text="${order.getUser().getUsername()}"></td>
+                                    <td style="text-align: end">[[${#numbers.formatDecimal(order.getPayment().getTotal(), 0, 'COMMA', 0, 'POINT')}]]₫&emsp;</td>
+                                    <td th:text="${#temporals.format(order.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(order.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>
+                                    <td th:switch="${order.getStatus()}">
+                                        <span th:case="'Đang xác nhận'" th:text="${order.getStatus()}" class="badges bg-info"></span>
+                                        <span th:case="'Đang giao hàng'" th:text="${order.getStatus()}" class="badges bg-warning-subtle"></span>
+                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    </td>
+                                    <td th:switch="${order.getPayment().getStatus()}">
+                                        <span th:case="'Đang chờ'" th:text="${order.getStatus()}" class="badges bg-info"></span>
+                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    </td>
+                                    <td>
+                                        <a class="me-3"
+                                           th:href="@{'/admin/sales/invoice/' + ${order.getOrderId()}}">
+                                            <img th:src="@{/assets/admin/img/icons/purchase1.svg}" alt="img">
+                                        </a>
+                                    </td>
+                            </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+</body>
+</html>

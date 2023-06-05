@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -13,13 +14,19 @@ public class OrderService {
     private OrderRepository repository;
 
     public List<Orders> listAll() {
-        // tạo câu @Query SELECT * FROM Order WHERE userId = '?';
+        return repository.findAll();
+    }
+
+    public Orders get(String id) {
+        Optional<Orders> result = repository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
         return null;
     }
 
-    public void save(Orders order) {
-        repository.save(order);
-
+    public void save(Orders orders) {
+        repository.save(orders);
     }
 
     public void delete(String id) {

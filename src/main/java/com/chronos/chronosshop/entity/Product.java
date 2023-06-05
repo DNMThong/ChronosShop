@@ -3,10 +3,10 @@ package com.chronos.chronosshop.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Service;
-
 import java.sql.Date;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -14,11 +14,8 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
-@Service
 @Entity
-
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -49,16 +46,11 @@ public class Product {
     @Column(name = "status")
     private String status;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "update_time")
-    private Date updateTime;
-
-    @OneToMany(mappedBy = "product")
-    private List<OrderDetail> orderDetails;
+    private LocalDateTime updateTime;
 
     @OneToMany(mappedBy = "product")
     private List<ProductMedia> productMediaList;
@@ -74,12 +66,5 @@ public class Product {
         this.description = description;
         this.category = category;
         this.status = status;
-    }
-
-    public List<ProductVariant> getDistinctVariants() {
-        List<ProductVariant> variants = null;
-        HashMap<String, ProductVariant> map = new HashMap<>();
-        productVariants.forEach(vari -> map.put(vari.getProductColorName(), vari));
-        return new ArrayList<>(map.values());
     }
 }

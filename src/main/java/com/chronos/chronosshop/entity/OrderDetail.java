@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 @Setter
 @ToString
 @Entity
-@Table(name = "order_detail", schema = "dbo", catalog = "ChronosShoppingOnline")
+@Table(name = "order_detail")
 public class OrderDetail {
     @Id
     @Column(name = "detail_id")
@@ -22,15 +22,12 @@ public class OrderDetail {
     private Orders order;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "product_color_id")
+    private ProductVariant productVariant;
 
     @Column(name = "product_price")
     private Integer productPrice;
 
     @Column(name = "quantity")
     private Integer quantity;
-
-    @Column(name = "total")
-    private Long total;
 }

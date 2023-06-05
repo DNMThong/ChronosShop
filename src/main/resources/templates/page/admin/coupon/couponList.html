@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Danh sách mã giảm giá</title>
+    <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+</head>
+<body>
+<div id="global-loader">
+    <div class="whirly-loader"></div>
+</div>
+<div class="main-wrapper">
+    <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+
+    <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Danh sách phiếu mua hàng</h4>
+                    <h6>Quản lí phiếu mua hàng</h6>
+                </div>
+                <div class="page-btn">
+                    <a th:href="@{/admin/coupon/add}" class="btn btn-added">
+                        <img th:src="@{/assets/admin/img/icons/plus.svg}" alt="img" class="me-2"/> Thêm phiếu mua hàng
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-top">
+                        <div class="search-set">
+                            <div class="search-path">
+                                <a class="btn btn-filter" id="filter_search">
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img"/>
+                                    <span>
+                        <img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"/>
+                      </span>
+                                </a>
+                            </div>
+                            <div class="search-input">
+                                <a class="btn btn-searchset">
+                                    <img th:src="@{/assets/admin/img/icons/search-white.svg}" alt="img"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="wordset">
+                            <ul>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf">
+                                        <img th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel">
+                                        <img th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print">
+                                        <img th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table datanew">
+                            <thead>
+                            <tr>
+                                <th>Mã giảm giá</th>
+                                <th>Chi tiết</th>
+                                <th>Giảm giá</th>
+                                <th>Đối tượng khuyễn mãi</th>
+                                <th>Ngày tạo</th>
+                                <th>Hạn sử dụng mã</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="coupon : ${listCoupon}">
+                                <tr>
+                                    <td th:text="${coupon.getCouponId()}"></td>
+                                    <td th:text="${coupon.getCouponName()}"></td>
+                                    <td th:text="${coupon.getDiscount()}"></td>
+                                    <td>[[${coupon.getDiscountForByAdmin()}]] [[${coupon.getPidOrOrder()}]]</td>
+                                    <td th:text="${#temporals.format(coupon.getCreateTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(coupon.getExpiresTime(), 'dd-MM-yyyy HH:mm')}"></td>
+                                    <td>
+                                        <a class="me-3" th:href="@{'/admin/coupon/edit/' + ${coupon.getCouponId()}}">
+                                            <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img"/>
+                                        </a>
+                                        <a class="me-3 confirm-text"
+                                           th:href="@{'/admin/coupon/delete/' + ${coupon.getCouponId()}}">
+                                            <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+</body>
+</html>

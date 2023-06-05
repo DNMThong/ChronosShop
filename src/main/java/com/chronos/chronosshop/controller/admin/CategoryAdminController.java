@@ -46,4 +46,10 @@ public class CategoryAdminController {
         model.addAttribute("category", category);
         return "page/admin/category/editCategory";
     }
+
+    @GetMapping("/delete/{categoryId}")
+    public String delete(@PathVariable("categoryId") Integer subCategoryId) {
+        categoryService.delete(subCategoryId);
+        return "redirect:/admin/category";
+    }
 }

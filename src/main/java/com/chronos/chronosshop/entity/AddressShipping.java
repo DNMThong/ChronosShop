@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-@Table(name = "address_shipping", schema = "dbo", catalog = "ChronosShoppingOnline")
+@Table(name = "address_shipping")
 public class AddressShipping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

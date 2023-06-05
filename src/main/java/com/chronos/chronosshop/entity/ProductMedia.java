@@ -4,6 +4,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Data
@@ -30,7 +31,6 @@ public class ProductMedia {
     @Column(name = "file_type")
     private String fileType;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 }

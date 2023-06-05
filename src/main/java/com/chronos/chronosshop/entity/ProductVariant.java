@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -17,7 +19,7 @@ import java.util.Objects;
 @ToString
 @Service
 @Entity
-@Table(name = "product_variant", schema = "dbo", catalog = "ChronosShoppingOnline")
+@Table(name = "product_variant")
 public class ProductVariant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +46,9 @@ public class ProductVariant {
     @Column(name = "image1")
     private String image1;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
+
+    @OneToMany(mappedBy = "productVariant")
+    List<Cart> carts;
 }
