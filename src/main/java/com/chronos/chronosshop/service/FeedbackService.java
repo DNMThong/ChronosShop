@@ -1,7 +1,10 @@
 package com.chronos.chronosshop.service;
 
+import com.chronos.chronosshop.entity.Coupon;
 import com.chronos.chronosshop.entity.Feedback;
 import com.chronos.chronosshop.repository.FeedbackRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,29 +12,57 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FeedbackService {
+public class FeedbackService implements IFeedbackService {
+    private static final Logger logger = LoggerFactory.getLogger(IFeedbackService.class);
     @Autowired
     private FeedbackRepository repository;
 
-    // PHẦN NÀY SẼ LÀM CUỐI CÙNG TRONG JAVA 5
+    @Override
+    public boolean save(Feedback feedback) {
+        try {
+            repository.save(feedback);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
 
-//    public List<Feedback> listAll() {
-//        return repository.findAll();
-//    }
-//
-//    public void save(Feedback feedback) {
-//        repository.save(feedback);
-//    }
-//
-//    public Feedback get(Integer id) {
-//        Optional<Feedback> result = repository.findById(id);
-//        if (result.isPresent()) {
-//            return result.get();
-//        }
-//        return null;
-//    }
-//
-//    public void delete(Integer id) {
-//        repository.deleteById(id);
-//    }
+    @Override
+    public boolean update(Feedback feedback) {
+        try {
+            repository.save(feedback);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        try {
+            repository.deleteById(id);
+            repository.flush();
+            return true;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public List<Feedback> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Feedback findById(Integer id) {
+        Optional<Feedback> feedback = repository.findById(id);
+        return feedback.orElse(null);
+    }
+
+
 }

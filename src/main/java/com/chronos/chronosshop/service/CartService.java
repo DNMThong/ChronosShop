@@ -1,7 +1,10 @@
 package com.chronos.chronosshop.service;
 
+import com.chronos.chronosshop.entity.Admin;
 import com.chronos.chronosshop.entity.Cart;
 import com.chronos.chronosshop.repository.CartRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,21 +12,56 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CartService {
+public class CartService implements  ICartService{
+    private static final Logger logger = LoggerFactory.getLogger(CartService.class);
     @Autowired
     private CartRepository repository;
 
-    public List<Cart> listAllByUserId() {
-        // tạo câu @Query SELECT * FROM Cart WHERE userId = '?';
+
+    @Override
+    public boolean save(Cart cart) {
+        try {
+            repository.save(cart);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean update(Cart cart) {
+        try {
+            repository.save(cart);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        try {
+            repository.deleteById(id);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public List<Cart> findAll() {
         return repository.findAll();
     }
 
-    public void save(Cart cart) {
-        // LÀM THẾ NÀO ĐÓ ĐỂ KHI NGƯỜI DÙNG TĂNG SỐ LƯỢNG LÊN THÌ SẼ CẬP NHẬT SỐ LƯỢNG VÀO TRONG DATABASE
-        repository.save(cart);
-    }
-
-    public void delete(Integer id) {
-        repository.deleteById(id);
+    @Override
+    public Cart findById(Integer id) {
+        Optional<Cart> cart = repository.findById(id);
+        return cart.orElse(null);
     }
 }
