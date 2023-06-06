@@ -46,7 +46,7 @@ public class TestController {
 
     @RequestMapping("")
     public String index(Model model) {
-        List<Product> productList = productService.listAll();
+        List<Product> productList = productService.findAll();
 //        System.out.println(productList);
         model.addAttribute("newestProducts", productService.getListNewestProduct(8));
         model.addAttribute("sportProducts", productService.getListProductContainName("sport"));
