@@ -34,7 +34,7 @@ public class ProductAdminController {
 
     @GetMapping("/list")
     public String productList( Model model) {
-        model.addAttribute("products", productService.listAll());
+        model.addAttribute("products", productService.findAll());
         return "page/admin/productlist";
     }
     @GetMapping("/add")
@@ -53,7 +53,7 @@ public class ProductAdminController {
     }
     @GetMapping("/edit/{id}")
     public String productUpdate(@PathVariable("id") Integer id,Model model,RedirectAttributes redirectAttributes) {
-        Product product = productService.getOneProduct(id);
+        Product product = productService.findById(id);
         if (product!=null){
             model.addAttribute("product",product);
             model.addAttribute("title","Cập nhật");
