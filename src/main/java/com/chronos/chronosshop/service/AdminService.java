@@ -9,28 +9,33 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AdminService {
+public class AdminService implements IAdminService{
     @Autowired
     private AdminRepository repository;
 
-    public List<Admin> listAll() {
-        return repository.findAll();
+
+    @Override
+    public boolean save(Admin admin) {
+        return false;
     }
 
-    public void save(Admin admin) {
-        repository.save(admin);
+    @Override
+    public boolean update(Admin admin) {
+        return false;
     }
 
-    public Admin get(String id) {
-        Optional<Admin> result = repository.findById(id);
-        if (result.isPresent()) {
-            return result.get();
-        }
+    @Override
+    public boolean delete(String s) {
+        return false;
+    }
+
+    @Override
+    public List<Admin> findAll() {
         return null;
     }
 
-    public void delete(String id) {
-        // CHECK POSITION NẾU LÀ OWNER THÌ CHO PHÉP XOÁ, NGƯỢC LẠI THÌ KHÔNG CHO
-        repository.deleteById(id);
+    @Override
+    public Admin findById(String s) {
+        return null;
     }
 }

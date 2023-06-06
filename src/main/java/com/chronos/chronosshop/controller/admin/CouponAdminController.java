@@ -23,7 +23,6 @@ public class CouponAdminController {
         model.addAttribute("listCoupon", couponService.listAll());
         return "page/admin/coupon/couponList";
     }
-
     @GetMapping("/add")
     public String addCoupon(Model model) {
         model.addAttribute("coupon", new Coupon());

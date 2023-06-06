@@ -2,6 +2,8 @@ package com.chronos.chronosshop.service;
 
 import com.chronos.chronosshop.entity.AddressShipping;
 import com.chronos.chronosshop.repository.AddressShippingRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,28 +11,58 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AddressShippingService {
+public class AddressShippingService implements IAddressShippingService{
+    private static final Logger logger = LoggerFactory.getLogger(AddressShippingService.class);
     @Autowired
     private AddressShippingRepository repository;
 
-    public List<AddressShipping> listAllByUserId() {
-        // tạo câu @Query SELECT * FROM AddressShipping WHERE userId = '?';
-        return null;
-    }
 
-    public void save(AddressShipping addressShipping) {
-        repository.save(addressShipping);
-    }
 
-    public AddressShipping get(Integer id) {
-        Optional<AddressShipping> result = repository.findById(id);
-        if (result.isPresent()) {
-            return result.get();
+
+    @Override
+    public boolean save(AddressShipping addressShipping) {
+        try {
+            repository.save(addressShipping);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
         }
-        return null;
     }
 
-    public void delete(Integer id) {
-        repository.deleteById(id);
+    @Override
+    public boolean update(AddressShipping addressShipping) {
+        try {
+            repository.save(addressShipping);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        try {
+            repository.deleteById(id);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public List<AddressShipping> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public AddressShipping findById(Integer id) {
+        Optional<AddressShipping> addressShipping = repository.findById(id);
+        return addressShipping.orElse(null);
     }
 }

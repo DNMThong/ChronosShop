@@ -15,7 +15,8 @@ import jakarta.persistence.*;
 public class OrderDetail {
     @Id
     @Column(name = "detail_id")
-    private String detailId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long detailId;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
