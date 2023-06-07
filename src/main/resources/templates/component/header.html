@@ -336,9 +336,10 @@
                             <div class="flex h-full flex-col items-center gap-5"
                                  th:if="${user != null && user.carts != null && user.carts.size() > 0}">
                                 <div class="flex h-full max-h-[380px] flex-col gap-3 overflow-y-auto w-full">
+
                                     <th:block
                                             th:each="cartItem : ${user.carts}">
-                                        <div class="gap-3 border-b flex items-center border-b-gray-300 pb-3">
+                                        <form method="post" class="cartItem gap-3 border-b flex items-center border-b-gray-300 pb-3">
                                             <div class="w-1/4 self-start p-1">
                                                 <img alt=""
                                                      class="h-full w-full object-cover"
@@ -363,18 +364,21 @@
                                                 </p>
                                                 <div class="flex items-center justify-between">
                                                     <div class="flex items-center cart__quantity">
-                                                      <span class="btn-cart btn__minus flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center">-</span>
+                                                        <button th:formaction="@{'/test/cart/' + ${cartItem.cartId} + '/update-quantity'}" class="btn-cart btn__minus flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center cursor-pointer">-</button>
                                                         <input class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none"
+                                                               name="quantity"
+                                                               th:id="${cartItem.cartId}"
                                                                th:value="${cartItem.quantity}"
-                                                               type="text"/>
-                                                        <span class="btn-cart btn__add flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center">+</span>
+                                                               type="text"
+                                                               onchange="this.form.submit()"
+                                                        />
+                                                        <button th:formaction="@{'/test/cart/' + ${cartItem.cartId} + '/update-quantity'}" class="btn-cart btn__add flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center cursor-pointer">+</button>
                                                     </div>
-                                                    <div class="flex items-center">Tổng cộng: &nbsp;<span
-                                                            class="font-medium text-red-500">[[${cartItem.productVariant.product.priceNew} * ${cartItem.quantity}]]</span>
+                                                    <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">[[${cartItem.productVariant.product.priceNew} * ${cartItem.quantity}]]</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </th:block>
 
                                 </div>

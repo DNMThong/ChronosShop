@@ -12,11 +12,11 @@ import com.chronos.chronosshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("test")
@@ -66,6 +66,15 @@ public class TestController {
 
     @RequestMapping("cart")
     public String cart() {return "page/cart-page";}
+
+    @PostMapping("cart/{id}/update-quantity")
+    public String updateQuantity(@PathVariable("id") Optional<Integer> id, @RequestParam("quantity") Optional<String> quantity) {
+        Cart cart = cartService.findById(id.orElse(null));
+        cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
+        cartService.save(cart);
+        System.out.println("quantity ~ " + quantity);
+        return "redirect:/test";
+    }
 
     @RequestMapping({"account", "account/account"})
     public String account() {return "page/account-page";}

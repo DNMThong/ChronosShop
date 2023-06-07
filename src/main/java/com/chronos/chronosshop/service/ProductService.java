@@ -32,10 +32,12 @@ public class ProductService implements IProductService{
                 throw  new RuntimeException("Không tìm thấy sản phẩm với id: "+id);
     }
 
+    @Override
     public List<Product> getListNewestProduct(Integer limit) {
         return repository.findNewestProducts().subList(0, limit);
     }
 
+    @Override
     public List<Product> getListProductContainName(String name) {
         return repository.findProductsByName(name);
     }
