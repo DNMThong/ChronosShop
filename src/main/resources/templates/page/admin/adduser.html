@@ -4,6 +4,7 @@
 <head>
     <title>Chronos admin</title>
     <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+    <link rel="stylesheet" th:href="@{/assets/admin/css/DateTimePicker.css}">
 </head>
 
 <body>
@@ -78,7 +79,10 @@
                                 <label>Sinh nhật</label>
                                 <input
                                        th:field="*{birthday}"
-                                       type="date" class="form-control">
+                                       type="date"
+                                       class="form-control"
+                                />
+<!--                                <div id="dtBox"></div>-->
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
@@ -132,9 +136,17 @@
         </div>
     </div>
 </div>
-
-
 <div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+<script th:src="@{/assets/admin/js/DateTimePicker.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dtBox').DateTimePicker({
+            setButtonContent: 'Chọn',
+            clearButtonContent: 'Xoá',
+            dateTimeFormat: 'dd-MM-yyyy',
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -91,13 +91,13 @@
                                         <td th:text="${user.password}">
                                         <td th:text="${user.phone}">
                                         <td th:text="${user.gender} == true ? 'Nam' : 'Nữ'"></td>
-                                        <td th:text="${user.getFormatDate(user.birthday)}">
+                                        <td th:text="${#dates.format(user.birthday, 'dd-MM-yyyy')}">
                                         <td>
                                             <img th:src="@{|${user.image}|}"/>
                                         </td>
-                                        <td th:text="${user.getFormatDate(user.createdDate)}">
-                                        <td th:text="${user.getFormatDate(user.updatedDate)}">
-                                        <td th:text="${user.getFormatDate(user.lastLogin)}">
+                                        <td th:text="${#temporals.format(user.createdDate,'dd-MM-yyyy HH:mm:ss')}">
+                                        <td th:text="${#temporals.format(user.updatedDate,'dd-MM-yyyy HH:mm:ss')}">
+                                        <td th:text="${#temporals.format(user.lastLogin,'dd-MM-yyyy HH:mm:ss')}">
                                         <td>
                                             <span class="bg-lightgreen badges"
                                                   th:class="${user.status} == 'Hoạt động' ? 'bg-lightgreen badges' : 'bg-lightred badges'"

@@ -26,8 +26,8 @@ public class AccountController {
 
     @PostMapping("login")
     public String doLogin(@RequestParam("email") String email, @RequestParam("password") String password) {
-        Users user = userService.getUserByEmail(email);
-        System.out.println(user.getEmail());
+//        Users user = userService.getUserByEmail(email);
+//        System.out.println(user.getEmail());
         return "page/login-page";
     }
 }
