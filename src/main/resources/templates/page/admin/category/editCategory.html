@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-
 <head>
-    <title>Chronos admin</title>
+    <title>Chỉnh sửa danh mục sản phẩm</title>
     <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
 </head>
-
 <body>
 <div id="global-loader">
-    <div class="whirly-loader"> </div>
+    <div class="whirly-loader"></div>
 </div>
-
 <div class="main-wrapper">
-
     <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
-
     <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
-
     <div class="page-wrapper">
         <div class="content">
             <div class="page-header">
@@ -47,14 +41,9 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
-
-
-
 <div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
 </body>
-
 </html>
