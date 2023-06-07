@@ -20,10 +20,9 @@ public class CouponAdminController {
 
     @GetMapping("")
     public String couponList(Model model) {
-        model.addAttribute("listCoupon", couponService.listAll());
+        model.addAttribute("listCoupon", couponService.findAll());
         return "page/admin/coupon/couponList";
     }
-
     @GetMapping("/add")
     public String addCoupon(Model model) {
         model.addAttribute("coupon", new Coupon());
@@ -51,7 +50,7 @@ public class CouponAdminController {
     @GetMapping("/edit/{couponId}")
     public String edit(@PathVariable("couponId") String couponId, Model model) {
         try {
-            Coupon coupon = couponService.get(couponId);
+            Coupon coupon = couponService.findById(couponId);
             model.addAttribute("coupon", coupon);
         } catch (Exception e) {
             e.printStackTrace();

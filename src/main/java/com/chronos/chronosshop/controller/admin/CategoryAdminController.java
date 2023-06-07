@@ -42,7 +42,7 @@ public class CategoryAdminController {
 
     @GetMapping("/edit/{categoryId}")
     public String edit(@PathVariable("categoryId") Integer categoryId, Model model) {
-        Category category = categoryService.get(categoryId);
+        Category category = categoryService.findById(categoryId);
         model.addAttribute("category", category);
         return "page/admin/category/editCategory";
     }
