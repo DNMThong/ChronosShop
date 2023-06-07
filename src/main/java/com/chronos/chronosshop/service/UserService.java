@@ -1,7 +1,10 @@
 package com.chronos.chronosshop.service;
 
+import com.chronos.chronosshop.entity.ProductVariant;
 import com.chronos.chronosshop.entity.Users;
 import com.chronos.chronosshop.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,33 +12,60 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements IUserService{
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private UserRepository repository;
 
-    public List<Users> listAll() {
-        // tạo câu @Query SELECT * FROM User;
-        return null;
-    }
-
-    public void save(Users users) {
-        repository.save(users);
-    }
-
-    public Users get(String id) {
-        Optional<Users> result = repository.findById(id);
-        if (result.isPresent()) {
-            return result.get();
-        }
-        return null;
-    }
-
-    public void delete(String id) {
-        // CHECK POSITION NẾU LÀ OWNER và MANAGER THÌ CHO PHÉP XOÁ, NGƯỢC LẠI THÌ KHÔNG CHO
-        repository.deleteById(id);
-    }
 
     public Users getUserByEmail(String email) {
         return  repository.getUserByEmail(email);
+    }
+
+    @Override
+    public boolean save(Users users) {
+        try {
+            repository.save(users);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean update(Users users) {
+        try {
+            repository.save(users);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(String id) {
+        try {
+            repository.deleteById(id);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public List<Users> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Users findById(String id) {
+        Optional<Users> users = repository.findById(id);
+        return users.orElse(null);
     }
 }

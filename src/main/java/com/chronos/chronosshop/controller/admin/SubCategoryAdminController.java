@@ -52,7 +52,7 @@ public class SubCategoryAdminController {
     @GetMapping("/edit/{subCategoryId}")
     public String edit(@PathVariable("subCategoryId") Integer subCategoryId, Model model) {
         model.addAttribute("listCategoryParent", categoryRepository.listCategoryParent());
-        Category category = categoryService.get(subCategoryId);
+        Category category = categoryService.findById(subCategoryId);
         model.addAttribute("category", category);
         return "page/admin/subcategory/editSubcategory";
     }

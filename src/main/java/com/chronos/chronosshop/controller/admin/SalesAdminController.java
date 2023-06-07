@@ -26,7 +26,7 @@ public class SalesAdminController {
     // đang xác nhận, đang giao hàng, hoàn thành,
     @GetMapping("/invoice/{orderId}")
     public String detail(@PathVariable("orderId") String orderId, Model model) {
-        model.addAttribute("order", orderService.get(orderId));
+        model.addAttribute("order", orderService.findById(orderId));
         return "page/admin/sales/sales-details";
     }
 }
