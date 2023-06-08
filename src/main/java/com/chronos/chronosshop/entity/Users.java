@@ -67,5 +67,6 @@ public class Users {
     @OneToMany(mappedBy = "user")
     List<Orders> orders;
 
-
+    @Column(name = "isDelete")
+    private Boolean isDelete;
 }

@@ -52,4 +52,7 @@ public class Orders {
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
 
+    @Column(name = "isDelete")
+    private Boolean isDelete;
+
 }

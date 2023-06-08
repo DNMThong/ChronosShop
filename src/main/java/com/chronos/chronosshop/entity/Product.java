@@ -58,6 +58,9 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<ProductVariant> productVariants;
 
+    @Column(name = "isDelete")
+    private Boolean isDelete;
+
     public Product( String productName, Integer priceOld, Integer priceNew, String material, String description, Category category, String status) {
         this.productName = productName;
         this.priceOld = priceOld;
