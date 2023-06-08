@@ -306,17 +306,18 @@
                     <div class="group relative hidden items-center gap-2 sm:flex md:gap-3">
                         <div class="flex cursor-pointer items-center gap-1">
                             <div class="relative">
-                           <span>
-                              <svg class="h-4 w-4 lg:h-6 lg:w-6"
-                                   viewBox="0 0 576 512"
-                                   xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                         d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
-                              </svg>
-                           </span>
-                                <span
-                                        class="absolute right-0 top-0 flex h-5 w-5 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-red-500 p-2 text-center text-white">
-                              0 </span>
+                               <span>
+                                  <svg class="h-4 w-4 lg:h-6 lg:w-6"
+                                       viewBox="0 0 576 512"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                     <path
+                                             d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                                  </svg>
+                               </span>
+                                    <span
+                                            th:text="${user != null && user.carts != null} ? ${user.carts.size()} : '0'"
+                                            class="absolute right-0 top-0 flex h-5 w-5 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-red-500 p-2 text-center text-white">
+                                   </span>
                             </div>
                             <span class="hidden px-2 py-1 md:block">Giỏ hàng</span>
                         </div>
@@ -333,7 +334,7 @@
                             </div>
 
                             <!--          Giỏ hàng có sân phẩm              -->
-                            <div class="flex h-full flex-col items-center gap-5"
+                            <div class="cart__list flex h-full flex-col items-center gap-5"
                                  th:if="${user != null && user.carts != null && user.carts.size() > 0}">
                                 <div class="flex h-full max-h-[380px] flex-col gap-3 overflow-y-auto w-full">
 
@@ -348,16 +349,16 @@
                                             <div class="flex flex-1 flex-col gap-3">
                                                 <div class="flex items-center justify-between gap-5">
                                                     <h4 class="text-sm font-medium">[[${cartItem.productVariant.product.productName}]]</h4>
-                                                    <span>
+                                                    <a th:href="@{|/test/cart/delete/${cartItem.cartId}/${cartItem.product.productId}|}" class="cursor-pointer">
                                                       <svg class="h-4 w-4"
                                                            viewBox="0 0 448 512"
                                                            xmlns="http://www.w3.org/2000/svg">
                                                          <path
                                                                  d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"/>
                                                       </svg>
-                                                   </span>
+                                                   </a>
                                                 </div>
-                                                <p class="text-primary font-medium">[[${cartItem.productVariant.product.priceNew}]]</p>
+                                                <p class="text-primary font-medium cartItem__price-new">[[${cartItem.productVariant.product.priceNew}]]</p>
                                                 <p class="px-3 text-sm font-normal">
                                                     <span>[[${cartItem.productVariant.productColorName}]]</span> /
                                                     <span>[[${cartItem.productVariant.productSize}]]</span>
@@ -370,11 +371,10 @@
                                                                th:id="${cartItem.cartId}"
                                                                th:value="${cartItem.quantity}"
                                                                type="text"
-                                                               onchange="this.form.submit()"
                                                         />
                                                         <button th:formaction="@{'/test/cart/' + ${cartItem.cartId} + '/update-quantity'}" class="btn-cart btn__add flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center cursor-pointer">+</button>
                                                     </div>
-                                                    <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500">[[${cartItem.productVariant.product.priceNew} * ${cartItem.quantity}]]</span>
+                                                    <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500 cartItem__total">[[${cartItem.productVariant.product.priceNew} * ${cartItem.quantity}]]</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -384,10 +384,11 @@
                                 </div>
                                 <div class="flex items-center justify-end">
                                     <p class="text-sm font-light">Tổng cộng &nbsp;<span
-                                            class="text-sm font-semibold text-red-500">299000đ</span>
+                                            class="text-sm font-semibold text-red-500 cart__total">299000đ</span>
                                     </p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

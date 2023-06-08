@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -61,19 +62,29 @@ public class TestController {
         return "page/product-item";
     }
 
-//    @RequestMapping("login")
-//    public String login(Model model) { return "page/login-page";}
+    @RequestMapping("login")
+    public String login(Model model) { return "page/login-page";}
 
     @RequestMapping("cart")
     public String cart() {return "page/cart-page";}
 
     @PostMapping("cart/{id}/update-quantity")
     public String updateQuantity(@PathVariable("id") Optional<Integer> id, @RequestParam("quantity") Optional<String> quantity) {
+        System.out.println("quantity ~ " + quantity);
         Cart cart = cartService.findById(id.orElse(null));
         cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
         cartService.save(cart);
-        System.out.println("quantity ~ " + quantity);
         return "redirect:/test";
+
+//        Cart cart = cartService.findById(id.orElse(null));
+//        cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
+//        cartService.save(cart);
+//        System.out.println("quantity ~ " + quantity);
+//
+//        ModelAndView modelAndView = new ModelAndView("component/cart/cart-content");
+//        modelAndView.addObject("cartItem", cart); // Thêm các đối tượng cần thiết cho fragment vào ModelAndView
+//
+//        return modelAndView;
     }
 
     @RequestMapping({"account", "account/account"})

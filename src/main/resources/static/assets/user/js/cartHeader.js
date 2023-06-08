@@ -1,6 +1,19 @@
 const cartBtns = document.querySelectorAll(".btn-cart")
 const cartItems = document.querySelectorAll("form.cartItem")
 
+
+cartItems.forEach(function (cartItem) {
+    const input = cartItem.querySelector("input")
+    if (input) {
+        input.addEventListener("change", function (ev) {
+            updateCartQuantity(cartItem, input, this.id)
+            cartItem.querySelector(".cartItem__total").innerHTML = (cartItem.querySelector(".cartItem__price-new").innerHTML * input.value) + ""
+            getParentEl("cart__list", cartItem).querySelector(".cart__total").innerHTML = calculateCartTotal();
+        })
+
+    }
+})
+
 if (cartBtns.length > 0) {
     cartBtns.forEach((cartBtn) => {
         cartBtn.addEventListener("click", (ev) => {
@@ -16,10 +29,28 @@ if (cartBtns.length > 0) {
                     }
                     break;
                 }
+
             }
             input.setAttribute("value", input.value);
+            const cartItem = getParentEl("cartItem", cartBtn)
+            cartItem.querySelector(".cartItem__total").innerHTML = cartItem.querySelector(".cartItem__price-new").innerHTML * input.value
+            getParentEl("cart__list", cartItem).querySelector(".cart__total").innerHTML = calculateCartTotal();
         });
     });
+}
+
+function calculateCartTotal() {
+    return Array.from(cartItems).reduce((total, cartItem) => {
+        return parseInt(cartItem.querySelector(".cartItem__total").innerHTML) + total
+    }, 0)
+}
+
+function getParentEl(parentClass, el) {
+    while (el) {
+        if (el.classList.contains(parentClass)) return el;
+        el = el.parentElement;
+    }
+    return null;
 }
 
 
@@ -43,8 +74,7 @@ function updateCartQuantity(cartItem, input, cartId) {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
             // Xử lý phản hồi từ máy chủ (nếu cần)
             // Ví dụ: cập nhật lại nội dung trang web
-            cartItem.innerHTML = xhr.responseText
-            console.log(xhr.responseText);
+            console.log(xhr.status);
         }
     };
 
@@ -60,4 +90,3 @@ cartItems.forEach(cartItem => {
         updateCartQuantity(cartItem, input, id)
     })
 })
-
