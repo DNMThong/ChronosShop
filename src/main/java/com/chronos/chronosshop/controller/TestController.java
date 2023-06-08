@@ -45,7 +45,7 @@ public class TestController {
     }
 
 
-    @RequestMapping("")
+    @GetMapping("")
     public String index(Model model) {
         List<Product> productList = productService.findAll();
 //        System.out.println(productList);
@@ -57,15 +57,15 @@ public class TestController {
         return "page/home-page";
     }
 
-    @RequestMapping("productItem")
+    @GetMapping("productItem")
     public String productItem() {
         return "page/product-item";
     }
 
-    @RequestMapping("login")
+    @GetMapping("login")
     public String login(Model model) { return "page/login-page";}
 
-    @RequestMapping("cart")
+    @GetMapping("cart")
     public String cart() {return "page/cart-page";}
 
     @PostMapping("cart/{id}/update-quantity")
@@ -87,6 +87,13 @@ public class TestController {
 //        return modelAndView;
     }
 
+    @GetMapping("cart/delete/{cartId}")
+    public String deleteCartItem(@PathVariable("cartId") Optional<Integer> cartId) {
+        System.out.println("cartId ~ " + cartId);
+        cartId.ifPresent(integer -> cartService.delete(integer));
+        return "redirect:/test";
+    }
+
     @RequestMapping({"account", "account/account"})
     public String account() {return "page/account-page";}
 
@@ -97,7 +104,7 @@ public class TestController {
     public String accountMyOrdered() {return "page/account-myOrder-page";}
 
 
-    @RequestMapping("account/forgot-password")
+    @RequestMapping("account/change-password")
     public String accountForgotPassword() {return "page/account-forgotPassword-page";}
 
     @RequestMapping("account/location-list")

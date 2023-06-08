@@ -1,5 +1,7 @@
 const cartBtns = document.querySelectorAll(".btn-cart")
 const cartItems = document.querySelectorAll("form.cartItem")
+const cartDeleteBtns = document.querySelectorAll(".cartItem__delete-btn")
+console.log(cartItems)
 
 
 cartItems.forEach(function (cartItem) {
@@ -13,6 +15,15 @@ cartItems.forEach(function (cartItem) {
 
     }
 })
+
+// if (cartDeleteBtns) {
+//     cartDeleteBtns.forEach(cartItemBtn => cartItemBtn.addEventListener("click", function (ev) {
+//         ev.preventDefault()
+//         const cartItem = getParentEl("cartItem", this)
+//         deleteCartItem(cartItem, cartItem.querySelector("input").id)
+//         getParentEl("cart__list", cartItem).querySelector(".cart__total").innerHTML = calculateCartTotal();
+//     }))
+// }
 
 if (cartBtns.length > 0) {
     cartBtns.forEach((cartBtn) => {
@@ -51,6 +62,41 @@ function getParentEl(parentClass, el) {
         el = el.parentElement;
     }
     return null;
+}
+
+function deleteCartItem(cartItem, cartId) {
+
+    // Tạo đối tượng XMLHttpRequest
+    const xhr = new XMLHttpRequest();
+
+    // Xác định phương thức và URL yêu cầu
+    xhr.open("GET", "/test/cart/delete/" + cartId);
+
+    // Thiết lập tiêu đề yêu cầu (nếu cần)
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // Xử lý sự kiện khi yêu cầu hoàn thành
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            // Xử lý phản hồi từ máy chủ (nếu cần)
+            // Ví dụ: cập nhật lại nội dung trang web
+
+            console.log(xhr.status);
+        }
+    };
+
+    // Gửi yêu cầu với dữ liệu form
+    xhr.send();
+}
+
+function updateCartList(cartItemDeleted) {
+    const _cartItems = cartItems
+    for (let i = 0; i < _cartItems.length; i++) {
+        if (i + 1 !== parseInt(cartItemDeleted))
+            _cartItems[i] = null
+    }
+    return _cartItems;
+    // return Array.from(cartItems).filter((item, index) => ((index + 1) !== parseInt(cartItemDeleted)))
 }
 
 

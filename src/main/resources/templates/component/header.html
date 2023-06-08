@@ -349,8 +349,8 @@
                                             <div class="flex flex-1 flex-col gap-3">
                                                 <div class="flex items-center justify-between gap-5">
                                                     <h4 class="text-sm font-medium">[[${cartItem.productVariant.product.productName}]]</h4>
-                                                    <a th:href="@{|/test/cart/delete/${cartItem.cartId}/${cartItem.product.productId}|}" class="cursor-pointer">
-                                                      <svg class="h-4 w-4"
+                                                    <a th:href="@{|/test/cart/delete/${cartItem.cartId}|}" class="cartItem__delete-btn cursor-pointer group/deleteBtn">
+                                                      <svg class="h-4 w-4 group-hover/deleteBtn:text-red-600"
                                                            viewBox="0 0 448 512"
                                                            xmlns="http://www.w3.org/2000/svg">
                                                          <path
@@ -421,23 +421,23 @@
                   </span>
                     <ul
                             class="absolute left-0 top-full hidden w-[200px] rounded-lg border border-gray-200 bg-white p-3 text-black group-hover:block">
-                        <li class="text-primary block"><a
+                        <li class="text-primary block"><a href="/test/account"
                                 class="block px-2 py-0.5 font-medium">[[${user.username}]]</a>
                         </li>
                         <li class="mb-2 mt-2 block border border-t-gray-200"></li>
-                        <li class="hover:text-primary block"><a
+                        <li class="hover:text-primary block"><a href="/test/account"
                                 class="block px-2 py-0.5 font-medium">Tài khoản của tôi</a>
                         </li>
-                        <li class="hover:text-primary block"><a
+                        <li class="hover:text-primary block"><a href="/test/account/change-password"
                                 class="block px-2 py-0.5 font-medium">Đổi mật khẩu</a>
                         </li>
-                        <li class="hover:text-primary block"><a
+                        <li class="hover:text-primary block"><a href="/test/account/location-list"
                                 class="block px-2 py-0.5 font-medium">Số địa chỉ</a>
                         </li>
-                        <li class="hover:text-primary block"><a
+                        <li class="hover:text-primary block"><a href="/test/account/watched"
                                 class="block px-2 py-0.5 font-medium">Đã xem gần đây</a>
                         </li>
-                        <li class="hover:text-primary block"><a
+                        <li class="hover:text-primary block"><a href="/test/account/favorite"
                                 class="block px-2 py-0.5 font-medium">Sản phẩm yêu thích</a>
                         </li>
                         <li class="mb-2 mt-2 block border border-t-gray-200"></li>
