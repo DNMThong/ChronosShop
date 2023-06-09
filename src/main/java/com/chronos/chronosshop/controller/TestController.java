@@ -12,11 +12,12 @@ import com.chronos.chronosshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("test")
@@ -56,16 +57,42 @@ public class TestController {
         return "page/home-page";
     }
 
-    @RequestMapping("productItem")
+    @GetMapping("productItem")
     public String productItem() {
-        return "page/productItem";
+        return "page/product-item";
     }
 
-//    @RequestMapping("login")
-//    public String login(Model model) { return "page/login-page";}
+    @GetMapping("login")
+    public String login(Model model) { return "page/login-page";}
 
-    @RequestMapping("cart")
+    @GetMapping("cart")
     public String cart() {return "page/cart-page";}
+
+    @PostMapping("cart/{id}/update-quantity")
+    public String updateQuantity(@PathVariable("id") Optional<Integer> id, @RequestParam("quantity") Optional<String> quantity) {
+        System.out.println("quantity ~ " + quantity);
+        Cart cart = cartService.findById(id.orElse(null));
+        cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
+        cartService.save(cart);
+        return "redirect:/test";
+
+//        Cart cart = cartService.findById(id.orElse(null));
+//        cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
+//        cartService.save(cart);
+//        System.out.println("quantity ~ " + quantity);
+//
+//        ModelAndView modelAndView = new ModelAndView("component/cart/cart-content");
+//        modelAndView.addObject("cartItem", cart); // Thêm các đối tượng cần thiết cho fragment vào ModelAndView
+//
+//        return modelAndView;
+    }
+
+    @GetMapping("cart/delete/{cartId}")
+    public String deleteCartItem(@PathVariable("cartId") Optional<Integer> cartId) {
+        System.out.println("cartId ~ " + cartId);
+        cartId.ifPresent(integer -> cartService.delete(integer));
+        return "redirect:/test";
+    }
 
     @RequestMapping({"account", "account/account"})
     public String account() {return "page/account-page";}
@@ -77,7 +104,7 @@ public class TestController {
     public String accountMyOrdered() {return "page/account-myOrder-page";}
 
 
-    @RequestMapping("account/forgot-password")
+    @RequestMapping("account/change-password")
     public String accountForgotPassword() {return "page/account-forgotPassword-page";}
 
     @RequestMapping("account/location-list")

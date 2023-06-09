@@ -6,8 +6,10 @@ import com.chronos.chronosshop.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,15 +19,20 @@ public class UserService implements IUserService{
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncode;
+
 
     public Users getUserByEmail(String email) {
         return  repository.getUserByEmail(email);
     }
 
     @Override
-    public boolean save(Users users) {
+    public boolean save(Users user) {
         try {
-            repository.save(users);
+            user.setPassword(passwordEncode.encode(user.getPassword()));
+            user.setCreatedDate(LocalDateTime.now());
+            repository.save(user);
             repository.flush();
             return true;
         }catch (Exception e) {
@@ -35,9 +42,11 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public boolean update(Users users) {
+    public boolean update(Users user) {
         try {
-            repository.save(users);
+            user.setPassword(passwordEncode.encode(user.getPassword()));
+            user.setUpdatedDate(LocalDateTime.now());
+            repository.save(user);
             repository.flush();
             return true;
         }catch (Exception e) {
@@ -49,7 +58,9 @@ public class UserService implements IUserService{
     @Override
     public boolean delete(String id) {
         try {
-            repository.deleteById(id);
+            Users user = findById(id);
+            user.setStatus("Bị khóa");
+            update(user);
             repository.flush();
             return true;
         }catch (Exception e) {

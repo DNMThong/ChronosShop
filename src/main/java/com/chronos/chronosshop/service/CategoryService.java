@@ -19,7 +19,7 @@ public class CategoryService implements ICategoryService{
     private CategoryRepository repository;
 
 
-
+    @Override
     public List<Category> findCategoriesByName(String name) {
         return repository.findByNameContainsIgnoreCase(name);
     }
