@@ -1,9 +1,11 @@
 package com.chronos.chronosshop.controller.admin;
 
+import com.chronos.chronosshop.entity.Admin;
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.repository.CategoryRepository;
 import com.chronos.chronosshop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,8 @@ public class CategoryAdminController {
     private CategoryService categoryService;
 
     @GetMapping("")
-    public String categoryAll(Model model) {
+    public String categoryAll(@AuthenticationPrincipal Admin admin, Model model) {
+        System.out.println(admin.getImage());
         model.addAttribute("listCategory", categoryRepository.listCategoryParent());
         return "page/admin/category/categoryList";
     }
