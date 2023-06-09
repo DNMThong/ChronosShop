@@ -28,8 +28,5 @@ public class Cart {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "status")
-    private String status;
-
 
 }

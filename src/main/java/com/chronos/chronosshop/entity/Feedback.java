@@ -41,6 +41,6 @@ public class Feedback {
     @Column(name = "update_time")
     private LocalDateTime updateTime;
 
-    @Column(name = "isDelete")
-    private Boolean isDelete;
+    @Column(name = "deleted")
+    private Boolean deleted;
 }
