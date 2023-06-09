@@ -87,4 +87,7 @@ public class Admin implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Column(name = "isDelete")
+    private Boolean isDelete;
 }

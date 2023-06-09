@@ -9,11 +9,13 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, String> {
-
     @Query("Select u from Users u where u.email like ?1")
     Users getUserByEmail(String email);
 
     Optional<Users> findByEmail(String email);
     Optional<Users> findByEmailAndPasswordNotNull(String email);
 
+
+    @Query("select count(u) from Users u")
+    Integer countUser();
 }
