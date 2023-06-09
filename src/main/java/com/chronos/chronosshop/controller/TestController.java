@@ -45,6 +45,11 @@ public class TestController {
     }
 
 
+    @GetMapping("layout")
+    public String layoutDemo() {
+        return "page/products-page-v2";
+    }
+
     @GetMapping("")
     public String index(Model model) {
         List<Product> productList = productService.findAll();
