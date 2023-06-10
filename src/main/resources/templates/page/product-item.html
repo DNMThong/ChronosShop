@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css" th:href="@{/assets/user/css/style.css}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script th:src="@{/assets/user/js/tailwind.config.js}"></script>
-    <script th:src="@{https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js}"></script>
-    <link th:href="@{https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css}" rel="stylesheet"/>
+<head th:replace="~{component/html-head :: headTitle(${product.productName}, ~{::link})}">
+    <link th:href="@{'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css'}" rel="stylesheet"/>
 </head>
 <body>
 <header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
-<div class="container">
+<div class="container mt-10">
     <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-10">
         <div class="xl:col-span-2 mx-auto col-span-1">
-            <div th:replace="~{component/slide/SlideProduct :: slide}"></div>
+            <div th:replace="~{component/slide/SlideProduct :: slide(${variants.get(0).image})}"></div>
         </div>
-        <div class="col-span-1">
-            <h3 class="text-lg font-medium">Áo Polo Nam Cafe Thêu Ngực</h3>
+        <form id="product" th:action="@{'/addToCart/' + ${product.productId} + '?sku=' + ${variants.get(0).image.productSku} + '&colorId=' + ${variants.get(0).productColorId}}" method="post" class="col-span-1">
+            <h3 class="text-lg font-medium">[[${product.productName}]]</h3>
             <div class="flex items-center gap-4">
-                <p class="text-sm">APM5329-XLO</p>
+                <p class="text-sm product-sku">[[${variants.get(0).image.productSku}]]</p>
                 <span class="h-[12px] w-[1px] bg-slate-300"></span>
-                <p class="text-sm">Đã bán 17.5</p>
+                <p class="text-sm">[[${product.soldRecord}]]</p>
                 <span class="h-[12px] w-[1px] bg-slate-300"></span>
                 <div class="text-primary flex items-center gap-1">
                     <svg
@@ -79,29 +72,32 @@
                 </div>
             </div>
             <div class="flex gap-4">
-                <span class="text-lg font-medium text-red-600">189.500đ</span>
-                <span class="text-lg font-medium text-slate-400 line-through"
-                >189.500đ</span
+                <span class="text-lg font-medium text-red-600">[[${product.priceNew}]]</span>
+                <span th:if="${product.priceOld != null}"
+                        class="text-lg font-medium text-slate-400 line-through"
+                >[[${product.priceOld}]]</span
                 >
-                <span class="text-lg font-medium text-red-600">- 50%</span>
+                <th:block th:if="${product.priceOld != null}" th:with="percent = ${product.priceNew * 100} / ${product.priceOld}">
+                    <span class="text-lg font-medium text-red-600"  th:text="'- ' + ${#numbers.formatInteger(percent,0)} + '%'"></span>
+                </th:block>
             </div>
             <div class="h-[4px] w-full bg-gray-100 mt-5 md:hidden d-block"></div>
             <div class="flex flex-col gap-3 mt-5">
-                <p class="text-sm">Màu sắc: <span class="font-medium">Nâu</span></p>
+                <p class="text-sm">Màu sắc: <span class="font-medium product-color">[[${variants.get(0).getProductColorName()}]]</span></p>
                 <div class="flex gap-4">
-                    <th:block th:replace="~{component/radio/RadioImage :: radioImage('color','https://bizweb.dktcdn.net/100/438/408/products/apm5329-xmn-7.jpg?v=1675313492517')}"></th:block>
-                    <th:block th:replace="~{component/radio/RadioImage :: radioImage('color','https://bizweb.dktcdn.net/100/438/408/products/apm5329-xmn-7.jpg?v=1675313492517')}"></th:block>
-                    <th:block th:replace="~{component/radio/RadioImage :: radioImage('color','https://bizweb.dktcdn.net/100/438/408/products/apm5329-xmn-7.jpg?v=1675313492517')}"></th:block>
-                    <th:block th:replace="~{component/radio/RadioImage :: radioImage('color','https://bizweb.dktcdn.net/100/438/408/products/apm5329-xmn-7.jpg?v=1675313492517')}"></th:block>
+                    <th:block th:each="color, iterStat : ${product.getDistinctVariants()}">
+                        <a th:href="@{'/' + ${product.productId}+ '?sku=' + ${color.image.productSku}}" class="color-btn block h-[40px] w-[40px] relative z-10">
+                            <th:block th:replace="~{component/radio/RadioImage :: radioImage('color', ${color.productColorName}, ${color.image.productSku}, ${color.image1}, ${color.image.productSku == variants.get(0).image.productSku}, ${product.productId})}"/>
+                        </a>
+                    </th:block>
                 </div>
             </div>
             <div class="flex flex-col gap-3 mt-5">
                 <p class="text-sm">Kích thước: <span class="size-text"></span></p>
-                <div class="lg:grid lg:grid-cols-5 flex flex-wrap lg:w-[370px] w:full gap-3">
-                    <th:block th:replace="~{component/radio/RadioText :: radioText('size','M','M')}"></th:block>
-                    <th:block th:replace="~{component/radio/RadioText :: radioText('size','L','L')}"></th:block>
-                    <th:block th:replace="~{component/radio/RadioText :: radioText('size','XL','XL')}"></th:block>
-                    <th:block th:replace="~{component/radio/RadioText :: radioText('size','XXL','XXL')}"></th:block>
+                <div class="lg:grid lg:grid-cols-5 flex flex-wrap lg:w-[370px] w:full gap-3 product-sizes">
+                    <th:block th:each="vari : ${variants}">
+                        <th:block th:replace="~{component/radio/RadioText :: radioText('size',${vari.productSize},${vari.productSize}, ${vari.productColorId})}"></th:block>
+                    </th:block>
                 </div>
             </div>
             <div class="h-[4px] w-full bg-gray-100 mt-5 md:hidden d-block"></div>
@@ -115,6 +111,7 @@
                     <input
                             type="text"
                             value="1"
+                            name="quantity"
                             class="amount-value text-base font-medium lg:w-[50px] md:w-[50px] w-[70px] bg-white lg:px-2 py-1.5 md:px-2 px-4 border-t text-slate-600 border-b text-center outline-none"/>
                     <button class="amount-increment py-1.5 lg:px-4 md:px-4 px-6 border text-slate-600 rounded-e-md text-lg font-medium disabled:text-slate-300">
                         +
@@ -130,11 +127,12 @@
                 <th:block th:replace="~{component/other/PaymentPolicyItem :: paymentPolicyItem('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/ic_payment_freeship.svg?1684399184335','Đa dạng phương thức thanh toán (VNPay, Momo, COD)')}"></th:block>
                 <th:block th:replace="~{component/other/PaymentPolicyItem :: paymentPolicyItem('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/ic_payment_freeship.svg?1684399184335','Vận chuyển siêu tốc từ 1 đến 3 ngày')}"></th:block>
             </div>
-        </div>
+        </form>
     </div>
     <div class="mb-10"></div>
 </div>
 <footer th:replace="~{component/footer :: footer}"></footer>
+<script th:src="@{'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js'}"></script>
 <script th:src="@{/assets/user/js/productItem.js}" type="text/javascript"></script>
 </body>
 </html>

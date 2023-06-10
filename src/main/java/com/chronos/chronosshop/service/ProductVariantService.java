@@ -65,4 +65,9 @@ public class ProductVariantService implements IProductVariantService{
         Optional<ProductVariant> productVariant = repository.findById(id);
         return productVariant.orElse(null);
     }
+
+    @Override
+    public List<ProductVariant> getVariantBySku(String sku) {
+        return repository.findByProductSku(sku);
+    }
 }

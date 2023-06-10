@@ -83,9 +83,34 @@ amountValue.onchange = (e) => {
 };
 
 const radioSize = document.querySelectorAll("input[name='size']");
+const radioColor = document.querySelectorAll("input[name='color']")
+const colorTag = document.querySelectorAll("a.color-btn")
+const formProd = document.querySelector("form#product")
+
 
 radioSize.forEach((item) => {
     item.onchange = (e) => {
         document.querySelector(".size-text").innerText = item.value;
+        const pCI = item.id
+        const action = formProd.getAttribute("action").split("colorId", -1)
+        formProd.setAttribute("action", action[0] + "colorId=" + pCI)
     };
 });
+
+radioColor.forEach(item => {
+    item.onchange = (e) => {
+        const sku = item.getAttribute("data-sku")
+        const id = item.getAttribute("data-id")
+        document.querySelector(".product-sku").innerText = sku
+        document.querySelector(".product-color").innerText = item.getAttribute("data-name")
+    }
+})
+
+colorTag.forEach(c => {
+    c.onclick = (e) => {
+        console.log("click")
+        const link = c.getAttribute("href")
+        window.location.href = c.getAttribute("href")
+    }
+
+})

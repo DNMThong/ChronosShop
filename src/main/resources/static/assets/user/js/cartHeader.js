@@ -70,7 +70,7 @@ function deleteCartItem(cartItem, cartId) {
     const xhr = new XMLHttpRequest();
 
     // Xác định phương thức và URL yêu cầu
-    xhr.open("GET", "/test/cart/delete/" + cartId);
+    xhr.open("GET", "/cart/delete/" + cartId);
 
     // Thiết lập tiêu đề yêu cầu (nếu cần)
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -110,7 +110,7 @@ function updateCartQuantity(cartItem, input, cartId) {
     const xhr = new XMLHttpRequest();
 
     // Xác định phương thức và URL yêu cầu
-    xhr.open("POST", "/test/cart/" + cartId + "/update-quantity");
+    xhr.open("POST", "/cart/" + cartId + "/update-quantity");
 
     // Thiết lập tiêu đề yêu cầu (nếu cần)
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
