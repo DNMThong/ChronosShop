@@ -27,15 +27,15 @@ splide.mount();
 
 const amountIncrement = document.querySelector(".amount-increment");
 const amountValue = document.querySelector(".amount-value");
-const amountDencrement = document.querySelector(".amount-decrement");
+const amountDecrement = document.querySelector(".amount-decrement");
 
 amountIncrement.onclick = (e) => {
     const value = Number(amountValue.value) + 1;
     if (value <= 1) {
-        amountDencrement.disabled = true;
+        amountDecrement.disabled = true;
         amountValue.value = 1;
     } else {
-        amountDencrement.disabled = false;
+        amountDecrement.disabled = false;
         amountValue.value = value;
     }
     if (value >= 100) {
@@ -47,14 +47,14 @@ amountIncrement.onclick = (e) => {
     }
 };
 
-amountDencrement.onclick = (e) => {
+amountDecrement.onclick = (e) => {
     const value = Number(amountValue.value) - 1;
 
     if (value <= 1) {
-        amountDencrement.disabled = true;
+        amountDecrement.disabled = true;
         amountValue.value = 1;
     } else {
-        amountDencrement.disabled = false;
+        amountDecrement.disabled = false;
         amountValue.value = value;
     }
     if (value >= 100) {
@@ -69,7 +69,7 @@ amountDencrement.onclick = (e) => {
 amountValue.onchange = (e) => {
     const value = Number(amountValue.value);
     if (value <= 1) {
-        amountDencrement.disabled = true;
+        amountDecrement.disabled = true;
         amountValue.value = 1;
     } else {
         amountDencrement.disabled = false;

@@ -82,8 +82,13 @@ public class TestController {
             CartDto cartDto = new CartDto(user.getUserId(), colorId.get(), quantity.get());
             System.out.println(cartDto.toString());
             Cart cart = new Cart(user, productVariantService.findById(cartDto.getProductColorId()), cartDto.getQuantity());
-            cartService.save(cart);
-//            productCart.ifPresent(cart -> cartService.save(cart));
+            Cart cartExisted = cartService.findCartByProductColorIdAndUserId(cart.getProductVariant().getProductColorId(), cart.getUser().getUserId());
+            if (cartExisted != null) {
+                cartExisted.setQuantity(cartExisted.getQuantity() + cart.getQuantity());
+                cartService.update(cartExisted);
+            } else {
+                cartService.save(cart);
+            }
         }
         return "redirect:/" + id.get();
     }
@@ -127,7 +132,7 @@ public class TestController {
     public String deleteCartItem(@PathVariable("cartId") Optional<Integer> cartId) {
         System.out.println("cartId ~ " + cartId);
         cartId.ifPresent(integer -> cartService.delete(integer));
-        return "redirect:/test";
+        return "redirect:/";
     }
 
     @RequestMapping({"/account", "/account/account"})
