@@ -45,4 +45,7 @@ public class Payment {
 
     @OneToOne(mappedBy = "payment")
     private Orders orders;
+
+    @Column(name = "deleted")
+    private Boolean deleted;
 }

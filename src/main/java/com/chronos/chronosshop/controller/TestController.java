@@ -1,5 +1,6 @@
 package com.chronos.chronosshop.controller;
 
+import com.chronos.chronosshop.auth.Auth;
 import com.chronos.chronosshop.entity.Cart;
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.entity.Product;
@@ -10,6 +11,8 @@ import com.chronos.chronosshop.service.CategoryService;
 import com.chronos.chronosshop.service.ProductService;
 import com.chronos.chronosshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +35,9 @@ public class TestController {
     CartService cartService;
 
     List<Category> categoryList = null;
+
+    @Autowired
+    Auth auth;
 
     @Autowired
     public TestController(CategoryService categoryService,
@@ -59,6 +65,11 @@ public class TestController {
 
     @GetMapping("productItem")
     public String productItem() {
+        Users user = auth.getUserLogin();
+        if(user!=null) {
+            System.out.println(user.getUserId());
+            System.out.println(user.getEmail());
+        }
         return "page/product-item";
     }
 
@@ -185,4 +196,14 @@ public class TestController {
         return "admin/categorylist";
     }
 
+    @RequestMapping("/google")
+    public String loginGoogleSuccess(OAuth2AuthenticationToken auth2AuthenticationToken) {
+        OAuth2User oAuth2User = auth2AuthenticationToken.getPrincipal();
+//        oAuth2User.getAttributes().forEach((a,b) -> {
+//            System.out.println(a+" "+b);
+//        });
+        System.out.println(oAuth2User.getAuthorities());
+
+        return "index";
+    }
 }

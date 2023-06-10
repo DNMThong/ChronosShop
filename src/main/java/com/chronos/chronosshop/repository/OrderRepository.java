@@ -9,4 +9,6 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, String> {
+    @Query("select count(o) from Orders o where o.status = 'Hoàn thành' and YEAR(o.createTime) = ?1 GROUP BY YEAR(o.createTime)")
+    Integer countOrders(int year);
 }

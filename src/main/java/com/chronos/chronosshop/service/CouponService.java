@@ -1,6 +1,5 @@
 package com.chronos.chronosshop.service;
 
-import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.entity.Coupon;
 import com.chronos.chronosshop.repository.CouponRepository;
 import org.slf4j.Logger;
@@ -17,14 +16,13 @@ public class CouponService implements ICouponService {
     @Autowired
     private CouponRepository repository;
 
-
     @Override
     public boolean save(Coupon coupon) {
         try {
             repository.save(coupon);
             repository.flush();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }
@@ -36,7 +34,7 @@ public class CouponService implements ICouponService {
             repository.save(coupon);
             repository.flush();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }

@@ -4,7 +4,6 @@
 <body>
 <header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
 <div th:replace="~{component/login-content :: content}"></div>
-<span th:text="${a}"></span>
 <footer th:replace="~{component/footer :: footer}"></footer>
 <script th:src="@{/assets/user/js/header.js}" type="text/javascript"></script>
 <script th:src="@{/assets/user/js/loginPage.js}" type="text/javascript"></script>

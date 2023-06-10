@@ -8,10 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService implements IUserService{
@@ -30,6 +32,10 @@ public class UserService implements IUserService{
     @Override
     public boolean save(Users user) {
         try {
+            UUID uuid = UUID.randomUUID();
+            String randomId = uuid.toString().replaceAll("-","").substring(0,25);
+            user.setUserId(randomId);
+            user.setStatus("Hoạt động");
             user.setPassword(passwordEncode.encode(user.getPassword()));
             user.setCreatedDate(LocalDateTime.now());
             repository.save(user);
@@ -78,5 +84,18 @@ public class UserService implements IUserService{
     public Users findById(String id) {
         Optional<Users> users = repository.findById(id);
         return users.orElse(null);
+    }
+
+    @Override
+    public boolean saveUserFromGoogle(Users user) {
+        Optional<Users> users = repository.findById(user.getUserId());
+        if(users.isPresent()) {
+            return false;
+        }
+        user.setStatus("Hoạt động");
+        user.setCreatedDate(LocalDateTime.now());
+        repository.save(user);
+        repository.flush();
+        return true;
     }
 }
