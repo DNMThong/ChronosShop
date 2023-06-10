@@ -1,6 +1,8 @@
 package com.chronos.chronosshop.config;
 
 import com.chronos.chronosshop.service.UserDetailsServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableAutoConfiguration
 public class SecurityConfig {
 
     @Bean
@@ -35,24 +38,30 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .requestMatchers("/account/login").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/account/**").hasRole("USER")
-                .anyRequest().permitAll()
-                .and()
-                .formLogin()
+        http.authorizeHttpRequests(auth -> {
+                auth.requestMatchers("/account/sign-up").permitAll()
+                    .requestMatchers("/account/login").permitAll()
+                    .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
+                    .requestMatchers("/account/**").hasAnyAuthority("ROLE_USER","OIDC_USER")
+                    .anyRequest().permitAll();
+            })
+            .formLogin()
                 .loginPage("/account/login")
                 .loginProcessingUrl("/account/login")
                 .defaultSuccessUrl("/test/productItem")
                 .and()
-                .logout()
+            .oauth2Login()
+                .defaultSuccessUrl("/account/social?success=true")
+                .and()
+            .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/test/productItem")
                 .and()
-                .csrf().disable();
+            .exceptionHandling()
+                .accessDeniedHandler((request,response,accessDeniedException) -> response.sendRedirect("/test/productItem"))
+                .and()
+            .csrf().disable();
         return http.build();
     }
-
 
 }

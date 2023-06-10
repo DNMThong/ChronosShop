@@ -1,32 +1,31 @@
 
-
-
-<div th:fragment="content" class="mx-auto h-full w-full bg-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/bg_login.jpg?1684745686241')] bg-cover bg-no-repeat bg-bottom py-20 shadow-md">
+<div th:fragment="content(usersDto,field,success)" class="mx-auto h-full w-full bg-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/bg_login.jpg?1684745686241')] bg-cover bg-no-repeat bg-bottom py-20 shadow-md">
   <div class="container mx-auto">
     <div class="mx-auto mb-10 flex w-full max-w-[600px] flex-col items-center justify-center rounded-md border border-gray-300 bg-white px-10 py-10">
-      <form action="" class="flex w-full flex-col items-center justify-center">
+      <form action="/account/sign-up" method="post" th:object="${usersDto}" class="flex w-full flex-col items-center justify-center">
         <h6 class="mb-7 text-center text-sm font-light">Chào mừng bạn đến với Chronos</h6>
         <h3 class="mb-5 flex items-center gap-3 text-center text-2xl font-medium uppercase">
           <span class="text-textColor">Đăng</span>
           <span class="text-primary">Ký</span>
         </h3>
+        <p th:if="${success}" class="text-center text-sm w-3/4 p-3 bg-green-100 text-green-500 mb-7">Tạo tài khoản thành công</p>
         <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
-          <input type="text" name="" id="username" class="rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-gray-400" placeholder="Họ và tên" />
-          <p class="hidden px-3 py-1 text-red-500">Vui lòng nhập họ và tên</p>
+          <input type="text" th:field="*{fullname}" id="fullname" th:class="|rounded-lg border px-4 py-2.5 outline-none ${#fields.hasErrors('fullname')?'border-red-400 focus:border-red-500':'border-gray-300 focus:border-gray-400'}|" placeholder="Họ và tên" />
+          <p th:if="${#fields.hasErrors('fullname')}"  class="py-1 text-red-500 text-sm">[[${#fields.errors("fullname")[0]}]]</p>
         </div>
         <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
-          <input type="text" name="" id="fullName" class="rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-gray-400" placeholder="Số điện thoại" />
-          <p class="mb-7 hidden px-3 py-1 text-red-500">Vui lòng nhập họ và tên</p>
+          <input type="text" th:field="*{phone}" id="phone" th:class="|rounded-lg border px-4 py-2.5 outline-none ${#fields.hasErrors('phone')?'border-red-400 focus:border-red-500':'border-gray-300 focus:border-gray-400'}|" placeholder="Số điện thoại" />
+          <p th:if="${#fields.hasErrors('phone')}"  class="py-1 text-red-500 text-sm">[[${#fields.errors("phone")[0]}]]</p>
         </div>
         <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
-          <input type="text" name="" id="email" class="rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-gray-400" placeholder="Địa chỉ Email" />
-          <p class="hidden px-3 py-1 text-red-500">Vui lòng nhập họ và tên</p>
+          <input type="text" th:field="*{email}" id="email" th:class="|rounded-lg border px-4 py-2.5 outline-none ${#fields.hasErrors('email')?'border-red-400 focus:border-red-500':'border-gray-300 focus:border-gray-400'}|" placeholder="Địa chỉ Email" />
+          <p th:if="${#fields.hasErrors('email')}" class="py-1 text-red-500 text-sm">[[${#fields.errors("email")[0]}]]</p>
         </div>
         <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
-          <input type="text" name="" id="password" class="relative rounded-lg border border-gray-300 px-4 py-2.5 outline-none after:absolute after:right-5 after:top-1/2 after:z-10 after:-translate-y-1/2 after:content-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/eye.svg?1684745686241')] focus:border-gray-400" placeholder="Mật khẩu" />
-          <p class="hidden px-3 py-1 text-red-500">Vui lòng nhập họ và tên</p>
+          <input type="password" th:field="*{password}" id="password" th:class="|relative rounded-lg border px-4 py-2.5 outline-none after:absolute after:right-5 after:top-1/2 after:z-10 after:-translate-y-1/2 after:content-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/eye.svg?1684745686241')] focus:border-gray-400 ${#fields.hasErrors('password')?'border-red-400 focus:border-red-500':'border-gray-300 focus:border-gray-400'}|" placeholder="Mật khẩu" />
+          <p th:if="${#fields.hasErrors('password')}"  class="py-1 text-red-500 text-sm">[[${#fields.errors("password")[0]}]]</p>
         </div>
-        <button class="w-3/4 rounded-lg bg-yellow-400 px-5 py-2.5 text-center text-xl font-semibold text-white">Đăng ký</button>
+        <button type="submit" class="w-3/4 rounded-lg bg-yellow-400 px-5 py-2.5 text-center text-xl font-semibold text-white">Đăng ký</button>
       </form>
       <div class="relative my-10 border-t border-gray-200 px-48">
         <span class="absolute left-1/2 top-1/2 inline-block -translate-x-1/2 -translate-y-1/2 bg-white px-1.5 text-sm font-light">Hoặc đăng ký bằng</span>

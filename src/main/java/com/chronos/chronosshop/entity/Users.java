@@ -70,6 +70,9 @@ public class Users implements UserDetails {
     @OneToMany(mappedBy = "user")
     List<Orders> orders;
 
+    @Column(name = "deleted")
+    private Boolean deleted;
+
     public Users(String email,String password) {
         this.email = email;
         this.password = password;

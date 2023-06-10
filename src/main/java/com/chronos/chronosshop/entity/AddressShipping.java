@@ -38,5 +38,6 @@ public class AddressShipping {
     @OneToMany(mappedBy = "addressShipping")
     List<Orders> orders;
 
-
+    @Column(name = "deleted")
+    private Boolean deleted;
 }

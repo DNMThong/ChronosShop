@@ -51,6 +51,9 @@ public class Admin implements UserDetails {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
+    @Column(name = "deleted")
+    private Boolean deleted;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_ADMIN");
@@ -87,4 +90,5 @@ public class Admin implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoryService implements ICategoryService{
+public class CategoryService implements ICategoryService {
     private static final Logger logger = LoggerFactory.getLogger(CategoryService.class);
     @Autowired
     private CategoryRepository repository;
@@ -30,7 +30,7 @@ public class CategoryService implements ICategoryService{
             repository.save(category);
             repository.flush();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }
@@ -59,6 +59,7 @@ public class CategoryService implements ICategoryService{
             return false;
         }
     }
+
     @Override
     public List<Category> findAll() {
         return repository.findAll();

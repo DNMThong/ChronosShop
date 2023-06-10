@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-
     <title th:text="${coupon.couponId == null} ? 'Thêm mã giảm giá' : 'Chỉnh sửa mã giảm giá'"></title>
     <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
     <link rel="stylesheet" th:href="@{/assets/admin/css/DateTimePicker.css}">
@@ -13,7 +12,6 @@
 <div class="main-wrapper">
     <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
     <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
-
     <div class="page-wrapper">
         <div class="toastify" data-duration="5000ms" th:if="${show}"
              th:attr="data-type=${type},data-show=${show},data-text=${message}"></div>
@@ -30,7 +28,8 @@
                             <div class="form-group">
                                 <label>Coupon ID</label>
                                 <input type="text" th:field="*{couponId}" th:disabled="${coupon.getCouponId() != null}">
-                                <input type="hidden" th:disabled="${coupon.getCouponId() == null}" th:field="*{couponId}">
+                                <input type="hidden" th:disabled="${coupon.getCouponId() == null}"
+                                       th:field="*{couponId}">
                             </div>
                         </div>
                         <div class="col-lg-8 col-sm-6 col-12">
