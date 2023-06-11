@@ -1,6 +1,6 @@
 <a th:fragment="card(product)"
     th:if="${product != null}"
-    th:href="@{'/product/' + ${product.productId}}"
+    th:href="@{${product.productId}}"
     class="card-product cursor-pointer group relative col-span-1 flex h-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm md:w-[240px] w-[260px]">
     <div class="card__top">
         <img alt="" class="h-[340px] w-full object-cover group-hover:animate-scaleUp group-hover:scale-[1.2]" th:src="${product.getProductVariants().size() > 0 ? product.getProductVariants().get(0).getImage1() : '' }" th:alt="${product.getProductName()}"/>
@@ -9,9 +9,9 @@
         <h3 class="card__title from-neutral-600 block truncate">[(${product.productName})]</h3>
         <p class="font-medium">[(${product.priceNew})]</p>
         <div class="flex items-center gap-3 w-full overflow-x-auto card__options">
-            <th:block th:each="variant, iterStart : ${product.getDistinctVariants()}">
+            <th:block th:each="variant, iterStat : ${product.getDistinctVariants()}">
                 <input type="radio" class="hidden"
-                       th:checked="${iterStart.index == 0}"
+                       th:checked="${iterStat.index == 0}"
                        th:attr="name=${'option-' + variant.product.productId},id=${variant.productColorId}">
                 <label th:attr="for=${variant.productColorId}" class="rounded-full h-8 w-8 card__option cursor-pointer">
                     <img alt="" class="h-full w-full rounded-full object-cover"

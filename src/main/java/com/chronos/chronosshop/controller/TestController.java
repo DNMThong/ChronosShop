@@ -1,15 +1,10 @@
 package com.chronos.chronosshop.controller;
 
 import com.chronos.chronosshop.auth.Auth;
-import com.chronos.chronosshop.entity.Cart;
-import com.chronos.chronosshop.entity.Category;
-import com.chronos.chronosshop.entity.Product;
-import com.chronos.chronosshop.entity.Users;
+import com.chronos.chronosshop.entity.*;
+import com.chronos.chronosshop.entity.dto.CartDto;
 import com.chronos.chronosshop.repository.CategoryRepository;
-import com.chronos.chronosshop.service.CartService;
-import com.chronos.chronosshop.service.CategoryService;
-import com.chronos.chronosshop.service.ProductService;
-import com.chronos.chronosshop.service.UserService;
+import com.chronos.chronosshop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -23,12 +18,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("test")
 public class TestController {
 
     CategoryService categoryService;
 
     ProductService productService;
+
+    ProductVariantService productVariantService;
 
     UserService userService;
 
@@ -43,15 +39,17 @@ public class TestController {
     public TestController(CategoryService categoryService,
                           ProductService productService,
                           UserService userService,
-                          CartService cartService) {
+                          CartService cartService,
+                          ProductVariantService productVariantService) {
         this.categoryService = categoryService;
         this.productService = productService;
         this.userService = userService;
         this.cartService = cartService;
+        this.productVariantService = productVariantService;
     }
 
 
-    @RequestMapping("")
+    @RequestMapping("/")
     public String index(Model model) {
         List<Product> productList = productService.findAll();
 //        System.out.println(productList);
@@ -63,29 +61,61 @@ public class TestController {
         return "page/home-page";
     }
 
-    @GetMapping("productItem")
-    public String productItem() {
-        Users user = auth.getUserLogin();
-        if(user!=null) {
-            System.out.println(user.getUserId());
-            System.out.println(user.getEmail());
+    @GetMapping({"/{id}"})
+    public String productDetail(@PathVariable("id") Optional<Integer> id, @RequestParam(value = "sku", defaultValue = "") String sku, Model model) {
+        Product p = productService.findById(id.orElse(null));
+        if (sku == null || sku.isEmpty()) {
+            sku = p.getDistinctVariants().get(0).getImage().getProductSku();
         }
+        model.addAttribute("product", p);
+        model.addAttribute("variants", productVariantService.getVariantBySku(sku));
         return "page/product-item";
     }
 
-    @GetMapping("login")
-    public String login(Model model) { return "page/login-page";}
 
-    @GetMapping("cart")
-    public String cart() {return "page/cart-page";}
+    @PostMapping("/addToCart/{id}")
+    public String addToCart(@PathVariable("id") Optional<Integer> id, @RequestParam("sku") Optional<String> sku, @RequestParam("colorId") Optional<Integer> colorId, @RequestParam("quantity") Optional<Integer> quantity)
+    {
+        Users user = auth.getUserLogin();
+        System.out.println("login ~ " + user.getEmail());
+        if (user != null) {
+            CartDto cartDto = new CartDto(user.getUserId(), colorId.get(), quantity.get());
+            System.out.println(cartDto.toString());
+            Cart cart = new Cart(user, productVariantService.findById(cartDto.getProductColorId()), cartDto.getQuantity());
+            Cart cartExisted = cartService.findCartByProductColorIdAndUserId(cart.getProductVariant().getProductColorId(), cart.getUser().getUserId());
+            if (cartExisted != null) {
+                cartExisted.setQuantity(cartExisted.getQuantity() + cart.getQuantity());
+                cartService.update(cartExisted);
+            } else {
+                cartService.save(cart);
+            }
+        }
+        return "redirect:/" + id.get();
+    }
 
-    @PostMapping("cart/{id}/update-quantity")
+    @ModelAttribute("/productCart")
+    public Cart cartModel() {
+        return new Cart();
+    }
+
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "page/login-page";
+    }
+
+    @GetMapping("/cart")
+    public String cart() {
+        return "page/cart-page";
+    }
+
+    @PostMapping("/cart/{id}/update-quantity")
     public String updateQuantity(@PathVariable("id") Optional<Integer> id, @RequestParam("quantity") Optional<String> quantity) {
         System.out.println("quantity ~ " + quantity);
         Cart cart = cartService.findById(id.orElse(null));
         cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
         cartService.save(cart);
-        return "redirect:/test";
+        return "redirect:/";
 
 //        Cart cart = cartService.findById(id.orElse(null));
 //        cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
@@ -98,37 +128,53 @@ public class TestController {
 //        return modelAndView;
     }
 
-    @GetMapping("cart/delete/{cartId}")
+    @GetMapping("/cart/delete/{cartId}")
     public String deleteCartItem(@PathVariable("cartId") Optional<Integer> cartId) {
         System.out.println("cartId ~ " + cartId);
         cartId.ifPresent(integer -> cartService.delete(integer));
-        return "redirect:/test";
+        return "redirect:/";
     }
 
-    @RequestMapping({"account", "account/account"})
-    public String account() {return "page/account-page";}
+    @RequestMapping({"/account", "/account/account"})
+    public String account() {
+        return "page/account-page";
+    }
 
-    @RequestMapping("account/watched")
-    public String accountWatched() {return "page/account-watched-page";}
+    @RequestMapping("/account/watched")
+    public String accountWatched() {
+        return "page/account-watched-page";
+    }
 
-    @RequestMapping("account/my-order")
-    public String accountMyOrdered() {return "page/account-myOrder-page";}
+    @RequestMapping("/account/my-order")
+    public String accountMyOrdered() {
+        return "page/account-myOrder-page";
+    }
 
 
-    @RequestMapping("account/change-password")
-    public String accountForgotPassword() {return "page/account-forgotPassword-page";}
+    @RequestMapping("/account/change-password")
+    public String accountForgotPassword() {
+        return "page/account-forgotPassword-page";
+    }
 
-    @RequestMapping("account/location-list")
-    public String accountLocationList() {return "page/account-locationList-page";}
+    @RequestMapping("/account/location-list")
+    public String accountLocationList() {
+        return "page/account-locationList-page";
+    }
 
-    @RequestMapping("account/favorite")
-    public String accountFavorite() {return "page/account-favorite-page";}
+    @RequestMapping("/account/favorite")
+    public String accountFavorite() {
+        return "page/account-favorite-page";
+    }
 
-    @RequestMapping("products/ao-so-mi")
-    public String products() {return "page/products-page";}
+    @RequestMapping("/products/ao-so-mi")
+    public String products() {
+        return "page/products-page";
+    }
 
-    @RequestMapping("sign-up")
-    public String signUp(Model model) {return "page/sign-up-page";}
+    @RequestMapping("/sign-up")
+    public String signUp(Model model) {
+        return "page/sign-up-page";
+    }
 
     @ModelAttribute("femaleCategories")
     public List<Category> getFemaleCategory() {
@@ -150,60 +196,8 @@ public class TestController {
 
     @ModelAttribute("user")
     public Users getUser() {
-        System.out.println(userService.getUserByEmail("tranhamy@gmail.com").getEmail());
-        return userService.getUserByEmail("tranhamy@gmail.com");
+        return auth.getUserLogin();
     }
 
-    @RequestMapping("addcategory")
-    public String addcategory() {
-        return "admin/addcategory";
-    }
-    @RequestMapping("addbrand")
-    public String addbrand() {
-        return "admin/addbrand";
-    }
-    @RequestMapping("add-sales")
-    public String addsales() {
-        return "admin/add-sales";
-    }
-    @RequestMapping("addproduct")
-    public String addproduct() {
-        return "admin/addproduct";
-    }
-    @RequestMapping("addcustomer")
-    public String addcustomer() {
-        return "admin/addcustomer";
-    }
-    @RequestMapping("adduser")
-    public String adduser() {
-        return "admin/adduser";
-    }
-    @RequestMapping("brandlist")
-    public String brandlist() {
-        return "admin/brandlist";
-    }
 
-    @RequestMapping("activities")
-    public String activities() {
-        return "admin/activities";
-    }
-    @RequestMapping("productlist")
-    public String productlist() {
-        return "admin/productlist";
-    }
-    @RequestMapping("categorylist")
-    public String categorylist() {
-        return "admin/categorylist";
-    }
-
-    @RequestMapping("/google")
-    public String loginGoogleSuccess(OAuth2AuthenticationToken auth2AuthenticationToken) {
-        OAuth2User oAuth2User = auth2AuthenticationToken.getPrincipal();
-//        oAuth2User.getAttributes().forEach((a,b) -> {
-//            System.out.println(a+" "+b);
-//        });
-        System.out.println(oAuth2User.getAuthorities());
-
-        return "index";
-    }
 }

@@ -28,5 +28,9 @@ public class Cart {
     @Column(name = "quantity")
     private Integer quantity;
 
-
+    public Cart(Users user, ProductVariant productVariant, Integer quantity) {
+        this.user = user;
+        this.productVariant = productVariant;
+        this.quantity = quantity;
+    }
 }

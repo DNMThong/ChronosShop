@@ -64,4 +64,9 @@ public class CartService implements  ICartService{
         Optional<Cart> cart = repository.findById(id);
         return cart.orElse(null);
     }
+
+    @Override
+    public Cart findCartByProductColorIdAndUserId(int productColorId, String userId) {
+        return repository.findCartByProductVariant_ProductColorIdAndUser_UserId(productColorId, userId);
+    }
 }

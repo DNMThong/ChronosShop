@@ -1,10 +1,12 @@
 package com.chronos.chronosshop.service;
 
+import com.chronos.chronosshop.entity.Cart;
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.repository.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,8 @@ public class CategoryService implements ICategoryService {
     @Autowired
     private CategoryRepository repository;
 
+
+    @Override
     public List<Category> findCategoriesByName(String name) {
         return repository.findByNameContainsIgnoreCase(name);
     }
@@ -38,7 +42,7 @@ public class CategoryService implements ICategoryService {
             repository.save(category);
             repository.flush();
             return true;
-        } catch (Exception e) {
+        }catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }

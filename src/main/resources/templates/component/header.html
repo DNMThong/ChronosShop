@@ -1,6 +1,6 @@
-<div class="w-full py-5 container text-textColor"
+<div class="w-full py-5 text-textColor shadow-md bg-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/background-header.png?1686370735301')] bg-repeat-x"
      th:fragment="header(femaleCategories, maleCategories, kidCategories)">
-    <div class="w-full">
+    <div class="w-full container">
         <div class="mb-3 grid h-[40x] w-full grid-cols-3 gap-5 sm:h-full md:grid-cols-2">
             <!-- mobile Nav -->
             <div class="flex items-center justify-start md:hidden">
@@ -17,7 +17,7 @@
                   </span>
                 </button>
             </div>
-            <div class="place-center col-start-2 flex items-center justify-center md:hidden h-full">
+            <a href="/" class="cursor-pointer place-center col-start-2 flex items-center justify-center md:hidden h-full">
                <span class="inline-block h-full">
                   <svg height="40" viewBox="0 0 200 60"
                        width="200" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@
                </span>
                 <!-- <img th:src="@{/assets/images/1.png}" src="/assets/images/2.png" alt="" srcset=""
                    class="block h-[50px] w-full max-w-[120px] object-cover object-center" /> -->
-            </div>
+            </a>
             <div class="col-start-3 flex items-center justify-end md:hidden">
                 <button class="text-textColor px-3 py-1.5 font-medium transition-all"
                         type="submit">
@@ -44,7 +44,7 @@
 
             <!--    > mobile Nav    -->
             <div class="hidden items-center gap-3 sm:col-span-2 sm:grid-cols-4 md:col-span-1 md:grid">
-                <a class="flex items-center w-full">
+                <a href="/" class="flex items-center w-full">
                   <span class="inline-block h-full">
                      <svg class="flex items-center justify-center" height="60"
                           viewBox="0 0 200 60" width="150"
@@ -324,9 +324,9 @@
 
                         <!--   Giỏ hàng trống     -->
                         <div
-                                class="absolute left-1/2 top-full hidden max-h-[450px] w-[450px] -translate-x-1/2 flex-col gap-5 rounded-lg border border-purple-400 bg-white p-3 group-hover:flex">
+                                class="absolute left-1/2 z-50 top-full hidden max-h-[450px] w-[450px] -translate-x-1/2 flex-col gap-5 rounded-lg border border-purple-400 bg-white p-3 group-hover:flex">
                             <div class="justify-cent flex flex-col items-center"
-                                 th:if="${user == null}">
+                                 th:if="${user == null || user.carts == null || user.carts.size() <= 0}">
                                 <img alt="cart"
                                      class="mx-auto block h-[100px] w-[100px]"
                                      src="//bizweb.dktcdn.net/100/438/408/themes/904142/assets/blank_cart.svg?1684745686241"/>
@@ -341,15 +341,15 @@
                                     <th:block
                                             th:each="cartItem : ${user.carts}">
                                         <form method="post" class="cartItem gap-3 border-b flex items-center border-b-gray-300 pb-3">
-                                            <div class="w-1/4 self-start p-1">
+                                            <a th:href="'/' + ${cartItem.productVariant.product.productId}" class="block w-1/4 self-start p-1">
                                                 <img alt=""
                                                      class="h-full w-full object-cover"
                                                      th:src="@{${cartItem.productVariant.image1}}"/>
-                                            </div>
+                                            </a>
                                             <div class="flex flex-1 flex-col gap-3">
                                                 <div class="flex items-center justify-between gap-5">
                                                     <h4 class="text-sm font-medium">[[${cartItem.productVariant.product.productName}]]</h4>
-                                                    <a th:href="@{|/test/cart/delete/${cartItem.cartId}|}" class="cartItem__delete-btn cursor-pointer group/deleteBtn">
+                                                    <a th:href="@{|/cart/delete/${cartItem.cartId}|}" class="cartItem__delete-btn cursor-pointer group/deleteBtn">
                                                       <svg class="h-4 w-4 group-hover/deleteBtn:text-red-600"
                                                            viewBox="0 0 448 512"
                                                            xmlns="http://www.w3.org/2000/svg">
@@ -365,14 +365,14 @@
                                                 </p>
                                                 <div class="flex items-center justify-between">
                                                     <div class="flex items-center cart__quantity">
-                                                        <button th:formaction="@{'/test/cart/' + ${cartItem.cartId} + '/update-quantity'}" class="btn-cart btn__minus flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center cursor-pointer">-</button>
+                                                        <button th:formaction="@{'/cart/' + ${cartItem.cartId} + '/update-quantity'}" class="btn-cart btn__minus flex items-center justify-center rounded-l-2xl border border-gray-600 px-3 py-1 text-center cursor-pointer">-</button>
                                                         <input class="block w-10 border border-gray-600 border-x-transparent px-3 py-1 outline-none"
                                                                name="quantity"
                                                                th:id="${cartItem.cartId}"
                                                                th:value="${cartItem.quantity}"
                                                                type="text"
                                                         />
-                                                        <button th:formaction="@{'/test/cart/' + ${cartItem.cartId} + '/update-quantity'}" class="btn-cart btn__add flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center cursor-pointer">+</button>
+                                                        <button th:formaction="@{'/cart/' + ${cartItem.cartId} + '/update-quantity'}" class="btn-cart btn__add flex items-center justify-center rounded-r-2xl border border-gray-600 px-3 py-1 text-center cursor-pointer">+</button>
                                                     </div>
                                                     <div class="flex items-center">Tổng cộng: &nbsp;<span class="font-medium text-red-500 cartItem__total">[[${cartItem.productVariant.product.priceNew} * ${cartItem.quantity}]]</span>
                                                     </div>
@@ -404,10 +404,10 @@
               </span>
                     <span class="hidden flex-auto md:block">
                 <a class="px-2 py-1 text-textColor hover:text-primary"
-                   href="#a"> Đăng ký </a>
+                   href="/account/sign-up"> Đăng ký </a>
                 /
                 <a class="px-2 py-1 text-textColor hover:text-primary"
-                   href="#b"> Đăng nhập </a>
+                   href="/account/login"> Đăng nhập </a>
               </span>
                 </div>
 
@@ -417,27 +417,27 @@
                   <span class="flex items-center gap-2 px-3 py-1.5">
                      <img alt=""
                           class="h-6 w-6 rounded-full object-cover" th:src="${user.image}"/>
-                     <span class="font-medium">[[${user.username}]]</span>
+                     <span class="font-medium block truncate">[[${user.username}]]</span>
                   </span>
                     <ul
                             class="absolute left-0 top-full hidden w-[200px] rounded-lg border border-gray-200 bg-white p-3 text-black group-hover:block">
-                        <li class="text-primary block"><a href="/test/account"
-                                class="block px-2 py-0.5 font-medium">[[${user.username}]]</a>
+                        <li class="text-primary block"><a href="/account"
+                                class="block px-2 py-0.5 font-medium block truncate">[[${user.username}]]</a>
                         </li>
                         <li class="mb-2 mt-2 block border border-t-gray-200"></li>
-                        <li class="hover:text-primary block"><a href="/test/account"
+                        <li class="hover:text-primary block"><a href="/account"
                                 class="block px-2 py-0.5 font-medium">Tài khoản của tôi</a>
                         </li>
-                        <li class="hover:text-primary block"><a href="/test/account/change-password"
+                        <li class="hover:text-primary block"><a href="/account/change-password"
                                 class="block px-2 py-0.5 font-medium">Đổi mật khẩu</a>
                         </li>
-                        <li class="hover:text-primary block"><a href="/test/account/location-list"
+                        <li class="hover:text-primary block"><a href="/account/location-list"
                                 class="block px-2 py-0.5 font-medium">Số địa chỉ</a>
                         </li>
-                        <li class="hover:text-primary block"><a href="/test/account/watched"
+                        <li class="hover:text-primary block"><a href="/account/watched"
                                 class="block px-2 py-0.5 font-medium">Đã xem gần đây</a>
                         </li>
-                        <li class="hover:text-primary block"><a href="/test/account/favorite"
+                        <li class="hover:text-primary block"><a href="/account/favorite"
                                 class="block px-2 py-0.5 font-medium">Sản phẩm yêu thích</a>
                         </li>
                         <li class="mb-2 mt-2 block border border-t-gray-200"></li>

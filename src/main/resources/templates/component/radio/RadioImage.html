@@ -1,5 +1,5 @@
-<label class="cursor-pointer h-[40px] w-[40px] rounded-md" th:fragment="radioImage(name,image)">
-    <input type="radio" th:name="${name}" class="peer hidden" />
+<label class="cursor-pointer h-[40px] w-[40px] rounded-md" th:fragment="radioImage(inputName, name, sku, image, checked, id)">
+    <input type="radio" th:name="${inputName}" class="peer hidden" th:checked="${checked}" th:attr="data-name=${name},data-sku=${sku},data-id=${id}"/>
     <img
         th:src="${image}"
         class="transition-all peer-checked:border-primary hover:border-primary h-full w-full rounded-md object-cover hover:border-[2px] hover:p-[2px] peer-checked:border-[2px] peer-checked:p-[2px]"

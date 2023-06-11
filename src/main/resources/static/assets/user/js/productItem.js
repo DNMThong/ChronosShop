@@ -27,15 +27,15 @@ splide.mount();
 
 const amountIncrement = document.querySelector(".amount-increment");
 const amountValue = document.querySelector(".amount-value");
-const amountDencrement = document.querySelector(".amount-decrement");
+const amountDecrement = document.querySelector(".amount-decrement");
 
 amountIncrement.onclick = (e) => {
     const value = Number(amountValue.value) + 1;
     if (value <= 1) {
-        amountDencrement.disabled = true;
+        amountDecrement.disabled = true;
         amountValue.value = 1;
     } else {
-        amountDencrement.disabled = false;
+        amountDecrement.disabled = false;
         amountValue.value = value;
     }
     if (value >= 100) {
@@ -47,14 +47,14 @@ amountIncrement.onclick = (e) => {
     }
 };
 
-amountDencrement.onclick = (e) => {
+amountDecrement.onclick = (e) => {
     const value = Number(amountValue.value) - 1;
 
     if (value <= 1) {
-        amountDencrement.disabled = true;
+        amountDecrement.disabled = true;
         amountValue.value = 1;
     } else {
-        amountDencrement.disabled = false;
+        amountDecrement.disabled = false;
         amountValue.value = value;
     }
     if (value >= 100) {
@@ -69,7 +69,7 @@ amountDencrement.onclick = (e) => {
 amountValue.onchange = (e) => {
     const value = Number(amountValue.value);
     if (value <= 1) {
-        amountDencrement.disabled = true;
+        amountDecrement.disabled = true;
         amountValue.value = 1;
     } else {
         amountDencrement.disabled = false;
@@ -83,9 +83,34 @@ amountValue.onchange = (e) => {
 };
 
 const radioSize = document.querySelectorAll("input[name='size']");
+const radioColor = document.querySelectorAll("input[name='color']")
+const colorTag = document.querySelectorAll("a.color-btn")
+const formProd = document.querySelector("form#product")
+
 
 radioSize.forEach((item) => {
     item.onchange = (e) => {
         document.querySelector(".size-text").innerText = item.value;
+        const pCI = item.id
+        const action = formProd.getAttribute("action").split("colorId", -1)
+        formProd.setAttribute("action", action[0] + "colorId=" + pCI)
     };
 });
+
+radioColor.forEach(item => {
+    item.onchange = (e) => {
+        const sku = item.getAttribute("data-sku")
+        const id = item.getAttribute("data-id")
+        document.querySelector(".product-sku").innerText = sku
+        document.querySelector(".product-color").innerText = item.getAttribute("data-name")
+    }
+})
+
+colorTag.forEach(c => {
+    c.onclick = (e) => {
+        console.log("click")
+        const link = c.getAttribute("href")
+        window.location.href = c.getAttribute("href")
+    }
+
+})
