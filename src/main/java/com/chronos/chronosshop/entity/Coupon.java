@@ -41,8 +41,8 @@ public class Coupon {
     @OneToMany(mappedBy = "coupon")
     private List<Orders> orders;
 
-    @Column(name = "isDelete")
-    private Boolean isDelete;
+    @Column(name = "deleted")
+    private Boolean deleted;
 
     public Coupon(String couponId, String couponName, String discount, String discountFor, String pidOrOrder, LocalDateTime createTime, LocalDateTime expiresTime) {
         this.couponId = couponId;

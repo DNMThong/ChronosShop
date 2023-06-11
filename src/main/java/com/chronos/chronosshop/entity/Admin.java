@@ -46,6 +46,6 @@ public class Admin {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
-    @Column(name = "isDelete")
-    private Boolean isDelete;
+    @Column(name = "deleted")
+    private Boolean deleted;
 }
