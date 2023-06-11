@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserAdminController {
     @Autowired
     UserService userService;
+
     @GetMapping("/add")
     public String addUser(){
-        return"page/admin/adduser";
+        return "page/admin/adduser";
     }
-    @GetMapping("/list")
+    @GetMapping("/")
     public String getAllUser(Model model){
-        return"page/admin/userlists";
+        return "page/admin/userlists";
     }
 }

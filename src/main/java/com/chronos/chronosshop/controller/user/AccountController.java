@@ -1,5 +1,6 @@
 package com.chronos.chronosshop.controller.user;
 
+import com.chronos.chronosshop.auth.Auth;
 import com.chronos.chronosshop.entity.Users;
 import com.chronos.chronosshop.entity.dto.UsersDto;
 import com.chronos.chronosshop.service.UserService;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.Map;
@@ -31,13 +33,11 @@ public class AccountController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    Auth auth;
+
     @RequestMapping("/login")
     public String getLoginPage() {
-        return "page/login-page";
-    }
-
-    @RequestMapping("/login?error")
-    public String getLoginPageError() {
         return "page/login-page";
     }
 
@@ -45,6 +45,8 @@ public class AccountController {
     public String getSignUpPage(@ModelAttribute("usersDto") UsersDto usersDto) {
         return "page/sign-up-page";
     }
+
+
 
     @PostMapping("/sign-up")
     public String postSignUpPage(@ModelAttribute("usersDto") @Validated UsersDto usersDto,BindingResult bindingResult,Model model) {
@@ -71,7 +73,11 @@ public class AccountController {
             user.setUsername(String.valueOf(map.get("name")));
             userService.saveUserFromGoogle(user);
         }
-        return "redirect:/";
+        return "redirect:/login/success";
     }
+
+
+
+
 
 }

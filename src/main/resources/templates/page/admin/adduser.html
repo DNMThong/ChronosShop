@@ -32,12 +32,6 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>ID Người dùng</label>
-                                <input th:name="userId" type="text">
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
                                 <label>Tên người dùng</label>
                                 <input th:name="username" type="text">
                             </div>
@@ -88,14 +82,14 @@
                             <div class="form-group">
                                 <label>Trạng thái</label>
                                 <select th:name="status" class="select">
-                                    <option>Select</option>
-                                    <option>Owner</option>
+                                    <option value="Hoạt động">Hoạt động</option>
+                                    <option value="Bị khóa">Bị khóa</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-submit me-2">Submit</button>
-                            <a th:href="@{/admin/userlist}" class="btn btn-cancel">Cancel</a>
+                            <a th:href="@{/admin/users}" class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>
                 </form>

@@ -1,5 +1,6 @@
 package com.chronos.chronosshop.service;
 
+import com.chronos.chronosshop.auth.Auth;
 import com.chronos.chronosshop.entity.ProductVariant;
 import com.chronos.chronosshop.entity.Users;
 import com.chronos.chronosshop.repository.UserRepository;
@@ -23,6 +24,8 @@ public class UserService implements IUserService{
 
     @Autowired
     private BCryptPasswordEncoder passwordEncode;
+
+
 
 
     public Users getUserByEmail(String email) {
@@ -98,4 +101,42 @@ public class UserService implements IUserService{
         repository.flush();
         return true;
     }
+
+    @Override
+    public String linkTokenResetPassword(String email) {
+        UUID uuid = UUID.randomUUID();
+        String randomPassword = uuid.toString();
+        Optional<Users> optional = repository.findByEmailAndPasswordNotNull(email);
+        if(optional.isPresent()) {
+            Users user = optional.get();
+            user.setPassword(randomPassword);
+            user.setUpdatedDate(LocalDateTime.now());
+            repository.save(user);
+            return "tokenKey="+user.getUserId()+"&tokenValue="+randomPassword;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean changePassword(String id, String password) {
+        Optional<Users> optional = repository.findById(id);
+        if(optional.isPresent()) {
+            Users user = optional.get();
+            user.setPassword(password);
+           return update(user);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeNewPassword(String tokenKey, String tokenValue, String password) {
+        Optional<Users> optional = repository.findByUserIdAndPassword(tokenKey,tokenValue);
+        if(optional.isPresent()) {
+            Users user = optional.get();
+            user.setPassword(password);
+            return update(user);
+        }
+        return false;
+    }
+
 }

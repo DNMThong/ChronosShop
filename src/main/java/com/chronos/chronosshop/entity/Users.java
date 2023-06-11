@@ -103,7 +103,7 @@ public class Users implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !this.status.equals("Bị khóa");
+        return !this.status.equals("Bị khoá");
     }
 
     @Override
