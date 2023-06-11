@@ -25,7 +25,7 @@ public class Users implements UserDetails {
     private String userId;
 
     @Column(name = "username")
-    private String username;
+    private String fullname;
 
     @Column(name = "email")
     private String email;

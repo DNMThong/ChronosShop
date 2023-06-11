@@ -26,8 +26,6 @@ public class UserService implements IUserService{
     private BCryptPasswordEncoder passwordEncode;
 
 
-
-
     public Users getUserByEmail(String email) {
         return  repository.getUserByEmail(email);
     }
@@ -41,6 +39,7 @@ public class UserService implements IUserService{
             user.setStatus("Hoạt động");
             user.setPassword(passwordEncode.encode(user.getPassword()));
             user.setCreatedDate(LocalDateTime.now());
+            user.setDeleted(false);
             repository.save(user);
             repository.flush();
             return true;
@@ -55,6 +54,7 @@ public class UserService implements IUserService{
         try {
             user.setPassword(passwordEncode.encode(user.getPassword()));
             user.setUpdatedDate(LocalDateTime.now());
+            user.setDeleted(false);
             repository.save(user);
             repository.flush();
             return true;
@@ -68,8 +68,8 @@ public class UserService implements IUserService{
     public boolean delete(String id) {
         try {
             Users user = findById(id);
-            user.setStatus("Bị khóa");
-            update(user);
+            user.setDeleted(true);
+            repository.save(user);
             repository.flush();
             return true;
         }catch (Exception e) {
@@ -80,7 +80,7 @@ public class UserService implements IUserService{
 
     @Override
     public List<Users> findAll() {
-        return repository.findAll();
+        return repository.findByDeletedIsFalse();
     }
 
     @Override

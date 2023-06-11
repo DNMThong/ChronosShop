@@ -52,7 +52,7 @@ public class AccountController {
     public String postSignUpPage(@ModelAttribute("usersDto") @Validated UsersDto usersDto,BindingResult bindingResult,Model model) {
         if(!bindingResult.hasErrors()) {
             Users user = new Users();
-            user.setUsername(usersDto.getFullname());
+            user.setFullname(usersDto.getFullname());
             user.setEmail(usersDto.getEmail());
             user.setPhone(usersDto.getPhone());
             user.setPassword(usersDto.getPassword());
@@ -70,7 +70,7 @@ public class AccountController {
             Users user = new Users();
             user.setEmail(String.valueOf(map.get("email")));
             user.setUserId(String.valueOf(map.get("sub")));
-            user.setUsername(String.valueOf(map.get("name")));
+            user.setFullname(String.valueOf(map.get("name")));
             userService.saveUserFromGoogle(user);
         }
         return "redirect:/login/success";

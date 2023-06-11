@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<Users, String> {
     Integer countUser();
 
     Optional<Users> findByUserIdAndPassword(String id,String password);
+
+    List<Users> findByDeletedIsFalse();
 }
