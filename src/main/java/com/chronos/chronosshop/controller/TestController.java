@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.text.html.Option;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,12 +54,10 @@ public class TestController {
     @RequestMapping("/")
     public String index(Model model) {
         List<Product> productList = productService.findAll();
-//        System.out.println(productList);
         model.addAttribute("newestProducts", productService.getListNewestProduct(8));
         model.addAttribute("sportProducts", productService.getListProductContainName("sport"));
         model.addAttribute("polos", productService.getListProductContainName("polo"));
         model.addAttribute("jeans", productService.getListProductContainName("Jeans"));
-//        System.out.println(productList.get(0).getProductVariants() == null || productList.get(0).getProductVariants().size() <= 0 ? "Null" : productList.get(0).getProductVariants().get(0).getImage1());
         return "page/home-page";
     }
 
@@ -67,6 +67,10 @@ public class TestController {
         if (sku == null || sku.isEmpty()) {
             sku = p.getDistinctVariants().get(0).getImage().getProductSku();
         }
+
+        String[] a = {"a", "b", "c" };
+        String.join(", ", Arrays.asList(a));
+        String.join(",", a);
         model.addAttribute("product", p);
         model.addAttribute("variants", productVariantService.getVariantBySku(sku));
         return "page/product-item";
@@ -93,15 +97,16 @@ public class TestController {
         return "redirect:/" + id.get();
     }
 
+    @GetMapping("/order-detail")
+    public String orderDetail(Model model) {
+        Users user = auth.getUserLogin();
+        System.out.println("USER ID ~ " + user.getUserId());
+        return "page/order-detail-page";
+    }
+
     @ModelAttribute("/productCart")
     public Cart cartModel() {
         return new Cart();
-    }
-
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "page/login-page";
     }
 
     @GetMapping("/cart")
@@ -116,16 +121,6 @@ public class TestController {
         cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
         cartService.save(cart);
         return "redirect:/";
-
-//        Cart cart = cartService.findById(id.orElse(null));
-//        cart.setQuantity(Integer.parseInt(quantity.orElse(cart.getQuantity() + "") + ""));
-//        cartService.save(cart);
-//        System.out.println("quantity ~ " + quantity);
-//
-//        ModelAndView modelAndView = new ModelAndView("component/cart/cart-content");
-//        modelAndView.addObject("cartItem", cart); // Thêm các đối tượng cần thiết cho fragment vào ModelAndView
-//
-//        return modelAndView;
     }
 
     @GetMapping("/cart/delete/{cartId}")

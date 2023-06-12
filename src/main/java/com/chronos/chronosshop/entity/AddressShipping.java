@@ -40,4 +40,7 @@ public class AddressShipping {
 
     @Column(name = "deleted")
     private Boolean deleted;
+
+    @Column(name = "address_default")
+    private boolean addressDefault;
 }
