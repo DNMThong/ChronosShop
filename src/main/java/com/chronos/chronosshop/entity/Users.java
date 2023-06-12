@@ -25,7 +25,7 @@ public class Users implements UserDetails {
     private String userId;
 
     @Column(name = "username")
-    private String username;
+    private String fullname;
 
     @Column(name = "email")
     private String email;
@@ -103,7 +103,7 @@ public class Users implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !this.status.equals("Bị khóa");
+        return !this.status.equals("Bị khoá");
     }
 
     @Override

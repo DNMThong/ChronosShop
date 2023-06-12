@@ -9,17 +9,17 @@
           <span class="text-primary">Nhập</span>
         </h3>
         <p th:if="${param.error}" class="text-center text-sm w-3/4 p-3 bg-red-100 text-red-500 mb-7">Email của bạn hoặc mật khẩu không đúng, vui lòng thử lại.</p>
-        <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
+        <div class="mb-5 flex w-3/4 flex-col items-stretch gap-1">
           <input type="text" name="username" id="username" class="rounded-md border border-gray-300 px-4 py-2.5 outline-none focus:border-gray-400" placeholder="Email" />
           <p class="px-3 text-red-500 message"></p>
         </div>
-        <div class="mb-7 flex w-3/4 flex-col items-stretch gap-1">
+        <div class="mb-5 flex w-3/4 flex-col items-stretch gap-1">
           <input type="password" name="password" id="password" class="relative rounded-md border border-gray-300 px-4 py-2.5 outline-none after:absolute after:right-5 after:top-1/2 after:z-10 after:-translate-y-1/2 after:content-[url('https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/eye.svg?1684745686241')] focus:border-gray-400" placeholder="Mật khẩu" />
           <p class="px-3 py-1 text-red-500 message"></p>
         </div>
-        <button type="submit" class="w-3/4 rounded-lg bg-yellow-400 px-5 py-2.5 text-center text-xl font-semibold text-white">Đăng nhập</button>
+        <button type="submit" class="w-3/4 rounded-lg bg-primary px-5 py-2.5 text-center text-xl font-semibold text-white">Đăng nhập</button>
       </form>
-      <div class="text-center text-primary font-bold mt-10">Quên mật khẩu</div>
+      <a href="/forgot-password" class="text-center text-primary font-bold mt-10">Quên mật khẩu</a>
       <div class="relative my-10 border-t border-gray-200 px-48">
         <span class="absolute left-1/2 top-1/2 inline-block -translate-x-1/2 -translate-y-1/2 bg-white px-1.5 text-sm font-light">Hoặc đăng ký bằng</span>
       </div>
@@ -30,7 +30,7 @@
         <a href="/oauth2/authorization/facebook" class="flex w-1/4 items-center self-stretch rounded-md border border-gray-300">
           <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/ic_btn_facebook.svg?1684835187933" alt="" class="h-full w-full object-cover" />
         </a>
-        <p class="w-full text-center">Bạn chưa có tài khoản? <a href="" class="text-primary font-semibold">Đăng kí ngay!</a></p>
+        <p class="w-full text-center">Bạn chưa có tài khoản? <a href="/account/sign-up" class="text-primary font-semibold">Đăng kí ngay!</a></p>
       </div>
     </div>
   </div>

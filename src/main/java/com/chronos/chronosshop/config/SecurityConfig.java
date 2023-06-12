@@ -38,29 +38,29 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/account/sign-up").permitAll()
-                    .requestMatchers("/account/login").permitAll()
-                    .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                    .requestMatchers("/account/**").hasAnyAuthority("ROLE_USER","OIDC_USER")
-                    .anyRequest().permitAll();
-            })
-            .formLogin()
-                .loginPage("/account/login")
-                .loginProcessingUrl("/account/login")
-                .defaultSuccessUrl("/test/productItem")
-                .and()
-            .oauth2Login()
-                .defaultSuccessUrl("/account/social?success=true")
-                .and()
-            .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/test/productItem")
-                .and()
-            .exceptionHandling()
-                .accessDeniedHandler((request,response,accessDeniedException) -> response.sendRedirect("/test/productItem"))
-                .and()
-            .csrf().disable();
+//        http.authorizeHttpRequests(auth -> {
+//                auth.requestMatchers("/account/sign-up").permitAll()
+//                    .requestMatchers("/account/login").permitAll()
+//                    .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
+//                    .requestMatchers("/account/**").hasAnyAuthority("ROLE_USER","OIDC_USER")
+//                    .anyRequest().permitAll();
+//            })
+//            .formLogin()
+//                .loginPage("/account/login")
+//                .loginProcessingUrl("/account/login")
+//                .defaultSuccessUrl("/")
+//                .and()
+//            .oauth2Login()
+//                .defaultSuccessUrl("/account/social?success=true")
+//                .and()
+//            .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/account/login")
+//                .and()
+//            .exceptionHandling()
+//                .accessDeniedHandler((request,response,accessDeniedException) -> response.sendRedirect("/"))
+//                .and()
+//            .csrf().disable();
         return http.build();
     }
 
