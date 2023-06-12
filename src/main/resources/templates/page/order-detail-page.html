@@ -6,7 +6,6 @@
     <th:block th:insert="~{component/order-content :: orderContent(${user}, ${user.addressShippingList},  ${user.carts})}"></th:block>
 </div>
 
-<footer th:replace="~{component/footer :: footer}"></footer>
 <script th:src="@{/assets/user/js/orderDetailForm.js}" type="text/javascript"></script>
 </body>
 </html>

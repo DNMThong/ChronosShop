@@ -1,6 +1,7 @@
 package com.chronos.chronosshop.controller;
 
 import com.chronos.chronosshop.auth.Auth;
+import com.chronos.chronosshop.controller.user.UserAccountController;
 import com.chronos.chronosshop.entity.*;
 import com.chronos.chronosshop.entity.dto.CartDto;
 import com.chronos.chronosshop.repository.CategoryRepository;
@@ -19,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@ControllerAdvice
 @Controller
 public class TestController {
 
@@ -104,7 +106,12 @@ public class TestController {
         return "page/order-detail-page";
     }
 
-    @ModelAttribute("/productCart")
+    @PostMapping("order")
+    public String order() {
+        return "redirect:/";
+    }
+
+    @ModelAttribute("productCart")
     public Cart cartModel() {
         return new Cart();
     }
@@ -130,36 +137,36 @@ public class TestController {
         return "redirect:/";
     }
 
-    @RequestMapping({"/account", "/account/account"})
-    public String account() {
-        return "page/account-page";
-    }
-
-    @RequestMapping("/account/watched")
-    public String accountWatched() {
-        return "page/account-watched-page";
-    }
-
-    @RequestMapping("/account/my-order")
-    public String accountMyOrdered() {
-        return "page/account-myOrder-page";
-    }
-
-
-    @RequestMapping("/account/change-password")
-    public String accountForgotPassword() {
-        return "page/account-forgotPassword-page";
-    }
-
-    @RequestMapping("/account/location-list")
-    public String accountLocationList() {
-        return "page/account-locationList-page";
-    }
-
-    @RequestMapping("/account/favorite")
-    public String accountFavorite() {
-        return "page/account-favorite-page";
-    }
+//    @RequestMapping({"/account", "/account/account"})
+//    public String account() {
+//        return "page/account-page";
+//    }
+//
+//    @RequestMapping("/account/watched")
+//    public String accountWatched() {
+//        return "page/account-watched-page";
+//    }
+//
+//    @RequestMapping("/account/my-order")
+//    public String accountMyOrdered() {
+//        return "page/account-myOrder-page";
+//    }
+//
+//
+//    @RequestMapping("/account/change-password")
+//    public String accountForgotPassword() {
+//        return "page/account-forgotPassword-page";
+//    }
+//
+//    @RequestMapping("/account/location-list")
+//    public String accountLocationList() {
+//        return "page/account-locationList-page";
+//    }
+//
+//    @RequestMapping("/account/favorite")
+//    public String accountFavorite() {
+//        return "page/account-favorite-page";
+//    }
 
     @RequestMapping("/products/ao-so-mi")
     public String products() {
