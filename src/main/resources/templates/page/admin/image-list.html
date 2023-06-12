@@ -19,17 +19,17 @@
             <div class="toastify" data-duration="5000ms" th:if="${show}" th:attr="data-type=${type},data-show=${show},data-text=${message}"></div>
             <div class="page-header">
                 <div class="page-title">
-                    <h4>Danh sách sản phẩm</h4>
-                    <h6>Quản lí sản phẩm của bạn</h6>
+                    <h4>Danh sách ảnh sản phẩm</h4>
+                    <h6>Quản lí hình ảnh sản phẩm của bạn</h6>
                 </div>
                 <div class="page-btn">
-                    <a th:href="@{/admin/product/add}" class="btn btn-added"
-                    ><img
-                            th:src="@{/assets/admin/img/icons/plus.svg}"
-                            alt="img"
-                            class="me-1"
-                    />Thêm sản phẩm mới</a
-                    >
+<!--                    <a th:href="@{/admin/product-variant/add}" class="btn btn-added"-->
+<!--                    ><img-->
+<!--                            th:src="@{/assets/admin/img/icons/plus.svg}"-->
+<!--                            alt="img"-->
+<!--                            class="me-1"-->
+<!--                    />Thêm ảnh sản phẩm mới</a-->
+<!--                    >-->
                 </div>
             </div>
 
@@ -80,57 +80,31 @@
                             </ul>
                         </div>
                     </div>
-
-
-
                     <div class="table-responsive">
-                        <!--                        <div th:if="${msg}" class="alert alert-success text-center">-->
-                        <!--                            [[${msg}]]-->
-                        <!--                        </div>-->
                         <table class="table datanew">
                             <thead>
                             <tr>
-                                <th>Tên sản phẩm</th>
-                                <th>Danh mục</th>
-                                <th>Giá mới</th>
-                                <th>Giá cũ</th>
-                                <th>Chất liệu</th>
-                                <th>Trạng thái</th>
-                                <th>Ngày tạo</th>
-                                <th>Ngày cập nhật</th>
+                                <th>SKU</th>
+                                <th>Ảnh 1</th>
                                 <th>Lựa chọn</th>
-
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="item:${products}">
-                                <td th:text="${item.getProductName()}" >
-
+                            <tr th:each="item:${imageSku}">
+                                <td th:text="${item.getProductSku()}"></td>
+                                <td  >
+                                    <a class="me-3" th:href="@{'/admin/image/add/'+${item.getProductSku()}}">
+                                        <div th:if="${(item.getImage1()== null) or ((#strings.startsWith(item.getImage1(), 'http')) ?: false)}">
+                                            <img width="50px" height="50px" th:src="@{${item.getImage1()}}" alt="img" />
+                                        </div>
+                                        <div th:unless="${(item.getImage1()== null) or ((#strings.startsWith(item.getImage1(), 'http')) ?: false)}">
+                                            <img width="50px" height="50px" th:src="@{'/api/v1/fileUpLoad/files/'+${item.getImage1()}}">
+                                        </div>
+                                    </a>
                                 </td>
-
-                                <td th:text="${item.getCategory().getCategoryName()}"></td>
-                                <td th:text="${item.getPriceOld()}"></td>
-                                <td th:text="${#numbers.formatDecimal(item.getPriceNew(),0, 'COMMA', 0, 'POINT')}"></td>
-                                <td th:text="${item.getMaterial()}"></td>
-                                <td th:switch="${item.getStatus()}" >
-                                    <span th:case="'Còn hàng'" th:text="${item.getStatus()}" class="badges bg-lightgreen"
-                                    >
-                                    </span>
-                                    <span th:case="'Hết hàng'" th:text="${item.getStatus()}" class="badges bg-warning"
-                                    >
-                                    </span>
-                                </td>
-                                <td th:text="${#temporals.format(item.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
-                                <td th:text="${#temporals.format(item.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>
                                 <td>
-                                    <a class="me-3" th:href="@{'/admin/product-variant/add/'+${item.getProductId()}}">
-                                        <img th:src="@{/assets/admin/img/icons/color.svg}" alt="img" />
-                                    </a>
-                                    <a class="me-3" th:href="@{'/admin/product/edit/'+${item.getProductId()}}">
+                                    <a class="me-3" th:href="@{'/admin/product-variant/edit/'+${item.getProductSku()}}">
                                         <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img" />
-                                    </a>
-                                    <a class="btn-delete-product" th:href="@{'/admin/product/delete/'+${item.getProductId()}}">
-                                        <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img" />
                                     </a>
                                 </td>
                             </tr>

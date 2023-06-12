@@ -4,6 +4,7 @@ import com.chronos.chronosshop.entity.Image;
 import com.chronos.chronosshop.entity.Payment;
 import com.chronos.chronosshop.entity.Product;
 import com.chronos.chronosshop.repository.ProductRepository;
+import com.chronos.chronosshop.util.Delete;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.Null;
 import org.slf4j.Logger;
@@ -13,6 +14,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +29,7 @@ public class ProductService implements IProductService{
     public void updateStatusDeleted(Integer id){
             Product product = findById(id);
             if (product!=null){
-                product.setStatus("Đã xóa");
+                product.setDeleted(Delete.deleted);
                 save(product);
             }else
                 throw  new RuntimeException("Không tìm thấy sản phẩm với id: "+id);
@@ -43,7 +46,16 @@ public class ProductService implements IProductService{
     @Override
     public boolean save(Product product) {
         try {
-            repository.save(product);
+            Product product1 = findById(product.getProductId());
+            if(product1!=null){
+                product1.setUpdateTime(LocalDateTime.now());
+                repository.save(product1);
+            }else {
+                product.setDeleted(Delete.notDeleted);
+                product.setCreateTime(LocalDateTime.now());
+                product.setUpdateTime(LocalDateTime.now());
+                repository.save(product);
+            }
             repository.flush();
             return true;
         }catch (Exception e) {
@@ -55,6 +67,7 @@ public class ProductService implements IProductService{
     @Override
     public boolean update(Product product) {
         try {
+            product.setUpdateTime(LocalDateTime.now());
             repository.save(product);
             repository.flush();
             return true;
@@ -78,7 +91,7 @@ public class ProductService implements IProductService{
 
     @Override
     public List<Product> findAll() {
-        return repository.findAll();
+        return repository.findProductsNotDeleted();
     }
 
     @Override

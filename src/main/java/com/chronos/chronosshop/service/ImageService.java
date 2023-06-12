@@ -1,7 +1,12 @@
 package com.chronos.chronosshop.service;
 
+import com.chronos.chronosshop.entity.Feedback;
 import com.chronos.chronosshop.entity.Image;
+import com.chronos.chronosshop.entity.Payment;
+import com.chronos.chronosshop.entity.ProductVariant;
 import com.chronos.chronosshop.repository.ImageRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,28 +14,57 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ImageService {
+public class ImageService implements IImageService{
+    private static final Logger logger = LoggerFactory.getLogger(ImageService.class);
     @Autowired
     private ImageRepository repository;
-
-    public List<Image> listAllByProductSku() {
-        // tạo câu @Query SELECT * FROM Image WHERE productSku = '?';
-        return null;
-    }
-
-    public void save(Image image) {
-        repository.save(image);
-    }
-
-    public Image get(String id) {
-        Optional<Image> result = repository.findById(id);
-        if (result.isPresent()) {
-            return result.get();
+    @Override
+    public boolean save(Image image) {
+        try {
+            repository.save(image);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
         }
-        return null;
     }
 
-    public void delete(String id) {
-        repository.deleteById(id);
+    @Override
+    public boolean update(Image image) {
+        try {
+            repository.save(image);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(String id) {
+        try {
+            repository.deleteById(id);
+            repository.flush();
+            return true;
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public List<Image> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Image findById(String id) {
+        Optional<Image> payment = repository.findById(id);
+        return payment.orElse(null);
+    }
+    public boolean updateImage(){
+        return true;
     }
 }

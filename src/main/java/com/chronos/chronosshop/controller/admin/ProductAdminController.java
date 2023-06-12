@@ -67,7 +67,7 @@ public class ProductAdminController {
         try {
             productService.updateStatusDeleted(id);
             redirectAttributes.addFlashAttribute("message","Xóa sản phẩm thành công");
-            redirectAttributes.addFlashAttribute("type","error");
+            redirectAttributes.addFlashAttribute("type","success");
             redirectAttributes.addFlashAttribute("show",true);
         }catch (RuntimeException e){
             redirectAttributes.addFlashAttribute("message",e.getMessage());

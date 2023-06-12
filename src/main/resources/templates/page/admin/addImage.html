@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <title>Chronos admin</title>
+  <div th:replace="~{component/admin/link/linkAndscript :: head}"></div>
+</head>
+
+<body>
+<div id="global-loader">
+  <div class="whirly-loader"> </div>
+</div>
+
+<div class="main-wrapper">
+
+  <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+
+  <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="page-header">
+        <div class="page-title">
+          <h4>[[${title}]] ảnh sản phẩm</h4>
+        </div>
+      </div>
+
+      <div class="card">
+        <form class="card-body" th:action="@{/admin/image/add}" th:object="${imagess}" method="post" id="formProduct" enctype="multipart/form-data">
+          <div class="row">
+            <input class="form-control mb-3" type="hidden" th:field="*{productSku}">
+              <!--image1-->
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <div class="form-group">
+                  <label>Ảnh 1</label>
+                  <input type="hidden" name="image1Link" th:value="${imagess.getImage1()}">
+                  <div th:if="${(imagess.getImage1()== null) or ((#strings.startsWith(imagess.getImage1(), 'http')) ?: false)}">
+                    <input class="form-control"  type="file" name="image11"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{${imagess.getImage1()}}" alt="img" />
+                  </div>
+                  <div th:unless="${(imagess.getImage1()== null) or ((#strings.startsWith(imagess.getImage1(), 'http')) ?: false)}">
+                    <input class="form-control"  type="file" name="image11"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{'/api/v1/fileUpLoad/files/'+${imagess.getImage1()}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--image2-->
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <div class="form-group">
+                  <label>Ảnh 2</label>
+                  <input type="hidden" name="image2Link" th:value="${imagess.getImage2()}">
+                  <div th:if="${(imagess.getImage2()== null) or ((#strings.startsWith(imagess.getImage2(), 'http')) ?: false)}">
+                    <input class="form-control" type="file" name="image12"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{${imagess.getImage2()}}" alt="img" />
+                  </div>
+                  <div th:unless="${(imagess.getImage2()== null) or ((#strings.startsWith(imagess.getImage2(), 'http')) ?: false)}">
+                    <input class="form-control" type="file" name="image12"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{'/api/v1/fileUpLoad/files/'+${imagess.getImage2()}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--image3-->
+              <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                  <div class="form-group">
+                    <label>Ảnh 3</label>
+                    <input type="hidden" name="image3Link" th:value="${imagess.getImage3()}">
+                    <div th:if="${(imagess.getImage3()== null) or ((#strings.startsWith(imagess.getImage3(), 'http')) ?: false)}">
+                      <input class="form-control"  type="file" name="image13"  accept="image/*" >
+                      <img class="mt-3" width="100px" height="100px" th:src="@{${imagess.getImage3()}}" alt="img" />
+                    </div>
+                    <div th:unless="${(imagess.getImage3()== null) or ((#strings.startsWith(imagess.getImage3(), 'http')) ?: false)}">
+                      <input class="form-control" type="file" name="image13"  accept="image/*" >
+                      <img class="mt-3" width="100px" height="100px" th:src="@{'/api/v1/fileUpLoad/files/'+${imagess.getImage3()}}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!--image4-->
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <div class="form-group">
+                  <label>Ảnh 4</label>
+                  <input type="hidden" name="image4Link" th:value="${imagess.getImage4()}">
+                  <div th:if="${(imagess.getImage4()== null) or ((#strings.startsWith(imagess.getImage4(), 'http')) ?: false)}">
+                    <input class="form-control" type="file" name="image14"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{${imagess.getImage4()}}" alt="img" />
+                  </div>
+                  <div th:unless="${(imagess.getImage4()== null) or ((#strings.startsWith(imagess.getImage4(), 'http')) ?: false)}">
+                    <input class="form-control" type="file" name="image14"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{'/api/v1/fileUpLoad/files/'+${imagess.getImage4()}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--image5-->
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <div class="form-group">
+                  <label>Ảnh 5</label>
+                  <input type="hidden" name="image5Link" th:value="${imagess.getImage5()}">
+                  <div th:if="${(imagess.getImage5()== null) or ((#strings.startsWith(imagess.getImage5(), 'http')) ?: false)}">
+                    <input class="form-control" type="file" name="image15"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{${imagess.getImage5()}}" alt="img" />
+                  </div>
+                  <div th:unless="${(imagess.getImage5()== null) or ((#strings.startsWith(imagess.getImage5(), 'http')) ?: false)}">
+                    <input class="form-control" type="file" name="image15"  accept="image/*" >
+                    <img class="mt-3" width="100px" height="100px" th:src="@{'/api/v1/fileUpLoad/files/'+${imagess.getImage5()}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--image5-->
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <div class="form-group">
+                  <label>Ảnh 6</label>
+                  <input type="hidden" name="image6Link" th:value="${imagess.getImage6()}">
+                    <div th:if="${(imagess.getImage6()== null) or ((#strings.startsWith(imagess.getImage6(), 'http')) ?: false)}">
+                      <input class="form-control" type="file" name="image16"  accept="image/*" >
+                      <img class="img-fluid mt-3" width="100px" height="100px" th:src="@{${imagess.getImage6()}}" alt="img" />
+                    </div>
+                    <div th:unless="${(imagess.getImage6()== null) or ((#strings.startsWith(imagess.getImage6(), 'http')) ?: false)}">
+                      <input class="form-control" type="file" name="image16"  accept="image/*" >
+                      <img class="img-fluid mt-3" width="100px" height="100px" th:src="@{'/api/v1/fileUpLoad/files/'+${imagess.getImage6()}}">
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <button type="submit" class="btn btn-submit me-2">Submit</button>
+              <a th:href="@{/admin/product-variant/list}" class="btn btn-cancel">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+
+<!-- <script>
+  var toolbarOptions = [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    ["link", "image", "video", "formula"], // add's image support
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"], // remove formatting button
+  ];
+
+  var quill = new Quill("#editor", {
+    modules: {
+      toolbar: toolbarOptions,
+    },
+
+    theme: "snow",
+  });
+
+  const formProduct = document.querySelector('#formProduct')
+
+  formProduct.onsubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(formProduct);
+    formData.append('description',quill.root.innerHTML)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", formProduct.action, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send(formData);
+  }
+</script> -->
+</body>
+
+</html>

@@ -21,36 +21,43 @@
     <div class="content">
       <div class="page-header">
         <div class="page-title">
-          <h4>Thêm sản phẩm biến thể</h4>
-          <h6>Tạo sản phẩm biến thể mới</h6>
+          <h4>[[${title}]] sản phẩm biến thể</h4>
         </div>
       </div>
 
       <div class="card">
-        <form class="card-body" th:action="@{/admin/product/variant/add}" method="post" id="formProduct" enctype="multipart/form-data">
+        <form class="card-body" th:action="@{/admin/product-variant/add}" th:object="${productVariants}" method="post" id="formProduct" enctype="multipart/form-data">
           <div class="row">
+            <input type="hidden" th:field="*{productColorId}">
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="form-group">
+                <label>SKU</label>
+                <input id="validationDefault02" type="text" name="sku" th:value="${sku}" required  min="4" max="10">
+              </div>
+            </div>
             <div class="col-lg-4 col-sm-6 col-12">
               <div class="form-group">
                 <label>Id Sản phẩm</label>
-                <input type="text" disabled  th:value="${idProduct}"   >
+                <input  disabled class="form-control" name="productIdHidden" th:value="${productId}" >
+                <input  type="hidden" class="form-control" name="productId" th:value="${productId}" required  min="1" max="999999999">
               </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-12">
               <div class="form-group">
-                <label>Màu sản phẩm</label>
-                <input type="text">
+                <label>Màu sắc</label>
+                <input type="text" th:field="*{productColorName}" required  min="1" max="20" >
               </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-12">
               <div class="form-group">
-                <label>Số lượng tồn kho</label>
-                <input type="text" >
+                <label>Số lượng</label>
+                <input type="number" class="form-control" th:field="*{inventoryQuantity}" required min="0" >
               </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-12">
               <div class="form-group">
                 <label>Kích thước</label>
-                <select  class="select">
+                <select th:field="*{productSize}" class="select">
                   <option th:each="size:${sizeProduct}" th:value="${size}" th:text="${size}"></option>
                 </select>
               </div>
@@ -59,20 +66,21 @@
               <div class="form-group">
                 <div class="form-group">
                   <label>Ảnh</label>
-                  <input class="form-control" type="file" name="image" accept="image/*" >
+                  <input type="hidden" name="image1Link" th:value="${productVariants.getImage1()}">
+                    <div th:if="${(productVariants.getImage1()== null) or ((#strings.startsWith(productVariants.getImage1(), 'http')) ?: false)}">
+                      <input class="form-control" type="file" name="image11"  accept="image/*" >
+                      <img class="mt-3" width="100px" height="100px" th:src="@{${productVariants.getImage1()}}" alt="img" />
+                    </div>
+                    <div th:unless="${(productVariants.getImage1()== null) or ((#strings.startsWith(productVariants.getImage1(), 'http')) ?: false)}">
+                      <input class="form-control" type="file" name="image11"  accept="image/*" >
+                      <img class="mt-3" width="100px" height="100px" th:src="@{'/api/v1/fileUpLoad/files/'+${productVariants.getImage1()}}">
+                    </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-              <div class="form-group">
-                <label>Ngày tạo</label>
-                <input class="form-control"  type="date">
-              </div>
-            </div>
-
             <div class="col-lg-12">
               <button type="submit" class="btn btn-submit me-2">Submit</button>
-              <a th:href="@{/admin/productlist}" class="btn btn-cancel">Cancel</a>
+              <a th:href="@{/admin/product-variant/list}" class="btn btn-cancel">Cancel</a>
             </div>
           </div>
         </form>

@@ -21,4 +21,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("SELECT p  FROM Product p WHERE p.productName LIKE CONCAT('%', ?1 ,'%')")
     List<Product> findProductsByName(String cond);
+
+    @Query("SELECT p from  Product p WHERE p.deleted = false or p.deleted is null ")
+    List<Product> findProductsNotDeleted();
+
 }

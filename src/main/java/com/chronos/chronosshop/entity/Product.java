@@ -52,6 +52,9 @@ public class Product {
     @Column(name = "update_time")
     private LocalDateTime updateTime;
 
+    @Column(name = "deleted")
+    private Boolean deleted;
+
     @OneToMany(mappedBy = "product")
     private List<ProductMedia> productMediaList;
 
