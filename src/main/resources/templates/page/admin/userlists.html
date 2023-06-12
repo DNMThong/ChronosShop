@@ -7,168 +7,147 @@
 </head>
 
 <body>
-    <div id="global-loader">
-        <div class="whirly-loader"> </div>
-    </div>
+<div id="global-loader">
+    <div class="whirly-loader"> </div>
+</div>
 
-    <div class="main-wrapper">
+<div class="main-wrapper">
 
-        <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
+    <th:block th:replace="~{component/admin/header/headerAdmin :: header}"></th:block>
 
-        <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
+    <th:block th:replace="~{component/admin/sidebar/SideBarAdmin :: sliderbarAdmin}"></th:block>
 
-        <div class="page-wrapper">
-            <div class="content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <h4>Danh sách người dùng</h4>
-                        <h6>Quản lý người dùng</h6>
-                    </div>
-                    <div class="page-btn">
-                        <a th:href="@{/admin/newuser}" class="btn btn-added"><img th:src="@{/assets/admin/img/icons/plus.svg}" alt="img">
-                            Thêm người dùng
-                        </a>
-                    </div>
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="toastify" data-duration="5000ms" th:if="${show}" th:attr="data-type=${type},data-show=${show},data-text=${message}"></div>
+            <div class="page-header">
+                <div class="page-title">
+                    <h4>Danh sách người dùng</h4>
+                    <h6>Quản lý người dùng</h6>
                 </div>
+                <div class="page-btn">
+                    <a th:href="@{/admin/users/add}" class="btn btn-added">
+                        <img th:src="@{/assets/admin/img/icons/plus.svg}" alt="img">
+                        Thêm người dùng
+                    </a>
+                </div>
+            </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-top">
-                            <div class="search-set">
-                                <div class="search-path">
-                                    <a class="btn btn-filter" id="filter_search">
-                                        <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img">
-                                        <span><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"></span>
-                                    </a>
-                                </div>
-                                <div class="search-input">
-                                    <a class="btn btn-searchset"><img th:src="@{/assets/admin/img/icons/search-white.svg}"
-                                                                      alt="img"></a>
-                                </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-top">
+                        <div class="search-set">
+                            <div class="search-path">
+                                <a class="btn btn-filter" id="filter_search">
+                                    <img th:src="@{/assets/admin/img/icons/filter.svg}" alt="img">
+                                    <span><img th:src="@{/assets/admin/img/icons/closes.svg}" alt="img"></span>
+                                </a>
                             </div>
-                            <div class="wordset">
-                                <ul>
-                                    <li>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img
-                                                th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"></a>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img
-                                                th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"></a>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img
-                                                th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"></a>
-                                    </li>
-                                </ul>
+                            <div class="search-input">
+                                <a class="btn btn-searchset"><img th:src="@{/assets/admin/img/icons/search-white.svg}"
+                                                                  alt="img"></a>
                             </div>
                         </div>
-
-                        <div class="card" id="filter_inputs">
-                            <div class="card-body pb-0">
-                                <div class="row">
-                                    <div class="col-lg-2 col-sm-6 col-12">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Enter User Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-6 col-12">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Enter Phone">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-6 col-12">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Enter Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-6 col-12">
-                                        <div class="form-group">
-                                            <input type="text" class="datetimepicker cal-icon"
-                                                   placeholder="Choose Date">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-sm-6 col-12">
-                                        <div class="form-group">
-                                            <select class="select">
-                                                <option>Disable</option>
-                                                <option>Enable</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-1 col-sm-6 col-12 ms-auto">
-                                        <div class="form-group">
-                                            <a class="btn btn-filters ms-auto"><img
-                                                    th:src="@{/assets/admin/img/icons/search-whites.svg}" alt="img"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="wordset">
+                            <ul>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img
+                                            th:src="@{/assets/admin/img/icons/pdf.svg}" alt="img"></a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img
+                                            th:src="@{/assets/admin/img/icons/excel.svg}" alt="img"></a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img
+                                            th:src="@{/assets/admin/img/icons/printer.svg}" alt="img"></a>
+                                </li>
+                            </ul>
                         </div>
+                    </div>
 
-                        <div class="table-responsive">
-                            <table class="table datanew">
-                                <thead>
-                                <tr>
-                                    <th>
-                                        <label class="checkboxs">
-                                            <input type="checkbox">
-                                            <span class="checkmarks"></span>
-                                        </label>
-                                    </th>
-                                    <th>Tên người dùng</th>
-                                    <th>Email</th>
-                                    <th>SĐT</th>
-                                    <th>Giới tính</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Ảnh</th>
-                                    <th>Ngày tạo</th>
-                                    <th>Ngày cập nhật</th>
-                                    <th>Ngày cuối đăng nhập</th>
-                                    <th>Trạng thái</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
+                    <div class="table-responsive">
+                        <table class="table  datanew">
+                            <thead>
+                            <tr>
+                                <th>Tên người dùng</th>
+                                <th>Email</th>
+                                <th>SĐT</th>
+                                <th>Giới tính</th>
+                                <th>Ngày sinh</th>
+                                <th>Ảnh</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Ngày cuối đăng nhập</th>
+                                <th>Trạng thái</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <div th:each="user: ${listUser}">
+                                <tr th:if="${user.deleted  == false}">
+                                    <td th:text="${user.fullname}">
+                                    <td th:text="${user.email}">
+                                    <td th:text="${user.phone}">
+                                    <td th:text="${user.gender} == true ? 'Nam' : 'Nữ'"></td>
+                                    <td th:text="${#dates.format(user.birthday, 'dd-MM-yyyy')}">
                                     <td>
-                                        <label class="checkboxs">
-                                            <input type="checkbox">
-                                            <span class="checkmarks"></span>
-                                        </label>
+                                        <img th:src="@{|${user.image}|}"/>
                                     </td>
-                                    <td>Thomas</td>
-                                    <td>+12163547758 </td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                           data-cfemail="fb8f9394969a88bb9e839a968b979ed5989496">[email&#160;protected]</a>
-                                    </td>
-                                    <td>Admin </td>
-                                    <td>3/15/2022</td>
-                                    <td><span class="bg-lightgreen badges">Active</span></td>
+                                    <td th:text="${#temporals.format(user.createdDate,'dd-MM-yyyy HH:mm:ss')}">
+                                    <td th:text="${#temporals.format(user.updatedDate,'dd-MM-yyyy HH:mm:ss')}">
+                                    <td th:text="${#temporals.format(user.lastLogin,'dd-MM-yyyy HH:mm:ss')}">
                                     <td>
-                                        <a class="me-3" th:href="@{/admin/newuseredit}">
+                                            <span class="bg-lightgreen badges"
+                                                  th:class="${user.status} == 'Hoạt động' ? 'bg-lightgreen badges' : 'bg-lightred badges'"
+                                                  th:text="${user.status} == 'Hoạt động' ? 'Hoạt động' : 'Bị khóa'"
+                                            >
+                                            </span>
+                                    </td>
+                                    <td>
+                                        <a class="me-3"
+                                           th:href="@{|/admin/users/edit/${user.userId}|}"
+                                        >
                                             <img th:src="@{/assets/admin/img/icons/edit.svg}" alt="img">
                                         </a>
-                                        <a class="me-3 confirm-text" href="javascript:void(0);">
+                                        <a class="btn-delete-product me-3 confirm-text"
+                                           th:href="@{|/admin/users/delete/${user.userId}|}">
                                             <img th:src="@{/assets/admin/img/icons/delete.svg}" alt="img">
                                         </a>
                                     </td>
                                 </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </div>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
-
-
-
-
-    <div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+</div>
+<div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+<script>
+    document.querySelectorAll('.btn-delete-product').forEach(item => {
+        item.onclick = (e) => {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Bạn có chắc muốn xóa sản phẩm này?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Xóa sản phẩm',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = item.href;
+                }
+            })
+        }
+    })
+</script>
 </body>
 
 </html>
