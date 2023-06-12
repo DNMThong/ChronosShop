@@ -97,7 +97,12 @@ const display = (c) => {
         console.log(this.value === "Việt Nam")
         if (this.value !== "Việt Nam")
             form.querySelector(".vn__location").classList.add("hidden")
-        else form.querySelector(".vn__location").classList.remove("hidden")
+        else {
+            form.querySelector(".vn__location").classList.remove("hidden")
+            form.querySelector("select#province").value = null;
+            form.querySelector("select#district").value = null;
+            form.querySelector("select#ward").value = null;
+        }
     })
 
 };
@@ -105,7 +110,26 @@ fetchCountriesData();
 fetchProvinceVn();
 
 
+const inputs = form.querySelectorAll('input[type=text]')
+inputs.forEach((item) => {
+    item.onblur = (ev) => {
+        handleInputAnimation(item)
+    };
+    item.onchange = (ev) => {
+        handleInputAnimation(item)
+    };
+})
 
+function handleInputAnimation(item) {
+    const parent = item.parentElement;
+    if (item.value !== null && item.value.length > 0) {
+        parent.classList.remove("after:top-1/2");
+        parent.classList.add("after:top-0", "after:text-sm");
+    } else {
+        parent.classList.remove("after:top-0", "after:text-sm");
+        parent.classList.add("after:top-1/2");
+    }
+}
 if (addAddressBtn) {
     addAddressBtn.addEventListener("click", function(ev) {
         ev.preventDefault()
@@ -117,6 +141,7 @@ if (closeBtns && closeBtns.length > 0) {
     closeBtns.forEach(closeBtn => closeBtn.addEventListener("click", function(ev) {
         ev.preventDefault()
         modal.classList.replace("flex", "hidden")
+        window.location.href = this.getAttribute("href")
     }))
 }
 
