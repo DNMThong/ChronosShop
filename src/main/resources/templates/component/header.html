@@ -160,7 +160,7 @@
                              th:each="femaleCategory : ${femaleCategories}">
                             <h3 class="flex items-center justify-between text-lg font-bold md:block">
                                 <a class="hover:text-primary transition-all"
-                                   th:href="@{${femaleCategory.categoryUrl}}">[(${femaleCategory.categoryName})]</a>
+                                   th:href="|@{/category${femaleCategory.categoryUrl}}|">[(${femaleCategory.categoryName})]</a>
                                 <span class="inline-block md:hidden">
                               <svg class="h-4 w-4"
                                    viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
@@ -173,7 +173,7 @@
                                 th:if="${femaleCategory.subcategory != null && !femaleCategory.subcategory.isEmpty()}">
                                 <li class="text-md text-gray-400"
                                     th:each="subItem : ${femaleCategory.subcategory}">
-                                    <a th:href="@{${subItem.categoryUrl}}">[(${subItem.categoryName})]</a>
+                                    <a th:href="|@{/category${subItem.categoryUrl}}|">[(${subItem.categoryName})]</a>
                                 </li>
                             </ul>
                         </div>
@@ -204,7 +204,7 @@
                              th:each="maleCategory : ${maleCategories}">
                             <h3 class="flex items-center justify-between text-lg font-bold sm:block">
                                 <a class="hover:text-primary transition-all"
-                                   th:href="@{${maleCategory.categoryUrl}}">[(${maleCategory.categoryName})]</a>
+                                   th:href="|@{/category${maleCategory.categoryUrl}}|">[(${maleCategory.categoryName})]</a>
                                 <span class="inline-block md:hidden">
                               <svg class="h-4 w-4"
                                    viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">

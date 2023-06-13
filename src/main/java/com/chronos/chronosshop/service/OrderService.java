@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,4 +65,16 @@ public class OrderService implements IOrderService {
         Optional<Orders> order = repository.findById(id);
         return order.orElse(null);
     }
+
+    @Override
+    public Orders createOrderAndPayment(String userId, int shipId, String couponId, String status, LocalDateTime createTime, LocalDateTime updateTime, String paymentMethod, Long subTotal, Long subTotalFee, Long total, String currency) {
+        return repository.taoOrderVaPayment(userId, shipId, couponId, status, createTime, updateTime, paymentMethod, subTotal, subTotalFee, total, currency);
+    }
+
+    @Override
+    public Orders findByUser_UserIdAndAddressShipping_ShipIdAndCreateTime(String userId, int shipId, LocalDateTime createDate) {
+        return repository.findByUser_UserIdAndAddressShipping_ShipIdAndCreateTime(userId, shipId, createDate);
+    }
+
+
 }

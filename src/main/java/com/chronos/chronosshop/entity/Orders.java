@@ -16,6 +16,29 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
+@NamedStoredProcedureQuery(
+        name = "TaoOrderVaPayment",
+        procedureName = "TaoOrderVaPayment",
+        parameters = {
+                @StoredProcedureParameter(name = "user_id", mode = ParameterMode.IN, type = String.class),
+                @StoredProcedureParameter(name = "ship_id", mode = ParameterMode.IN, type = int.class),
+                @StoredProcedureParameter(name = "coupon_id", mode = ParameterMode.IN, type = String.class),
+                @StoredProcedureParameter(name = "status", mode = ParameterMode.IN, type = String.class),
+                @StoredProcedureParameter(name = "create_time", mode = ParameterMode.IN, type = LocalDateTime.class),
+                @StoredProcedureParameter(name = "update_time", mode = ParameterMode.IN, type = LocalDateTime.class),
+                @StoredProcedureParameter(name = "payment_method_name", mode = ParameterMode.IN, type = String.class),
+                @StoredProcedureParameter(name = "subtotal", mode = ParameterMode.IN, type = Long.class),
+                @StoredProcedureParameter(name = "subtotal_fee", mode = ParameterMode.IN, type = Long.class),
+                @StoredProcedureParameter(name = "total", mode = ParameterMode.IN, type = Long.class),
+                @StoredProcedureParameter(name = "currency", mode = ParameterMode.IN, type = String.class),
+
+        },
+        resultSetMappings = "OrdersMapping"
+)
+@SqlResultSetMapping(
+        name = "OrdersMapping",
+        entities = @EntityResult(entityClass = Orders.class)
+)
 public class Orders {
     @Id
     @Column(name = "order_id")

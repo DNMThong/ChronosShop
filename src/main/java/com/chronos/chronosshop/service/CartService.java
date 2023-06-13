@@ -69,4 +69,11 @@ public class CartService implements  ICartService{
     public Cart findCartByProductColorIdAndUserId(int productColorId, String userId) {
         return repository.findCartByProductVariant_ProductColorIdAndUser_UserId(productColorId, userId);
     }
+
+    @Override
+    public List<Cart> deleteCartsByUser_UserId(String userId) {
+        return repository.deleteCartsByUser_UserId(userId);
+    }
+
+
 }

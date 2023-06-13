@@ -29,6 +29,13 @@ public class OrderDetail {
     @Column(name = "product_price")
     private Integer productPrice;
 
+    public OrderDetail(Orders order, ProductVariant productVariant, Integer productPrice, Integer quantity) {
+        this.order = order;
+        this.productVariant = productVariant;
+        this.productPrice = productPrice;
+        this.quantity = quantity;
+    }
+
     @Column(name = "quantity")
     private Integer quantity;
 }

@@ -1,5 +1,5 @@
 <div th:fragment="orderContent(user, locationList, carts)" id="order-form" class="container mx-auto">
-  <form action="/order" class="grid grid-cols-3 gap-5">
+  <form action="/order" class="grid grid-cols-3 gap-5" method="post" th:object="${orderDto}">
     <div class="col-span-2 grid grid-cols-2 gap-5 bg-white">
       <div class="">
         <div class="mb-5 flex items-center justify-between">
@@ -14,46 +14,46 @@
         <div>
           <div class="mb-5 items-center gap-3">
               <span after="Sổ địa chỉ" class="relative col-span-full block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
-                <select name="locationList" id="locationList" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
-                     <option value="other" selected>Địa chỉ khác</option>
+                <select name="locationList" th:field="${orderDto.shipId}" id="locationList" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+                     <option value="0" selected>Địa chỉ khác</option>
                   <th:block th:each="address : ${locationList}">
-                    <option th:value="|${address.recipientName}, ${address.recipientAddress}|" th:attr="data-phone='${address.recipentPhone}'">[[${address.recipientAddress}]]</option>
+                    <option th:value="${address.shipId}" th:attr="data-phone=${address.recipientPhone}, data-value=|${address.recipientName}, ${address.recipientAddress}|">[[${address.recipientAddress}]]</option>
                   </th:block>
                 </select>
               </span>
           </div>
           <div class="mb-5 items-center gap-3">
               <span after="Họ và tên" class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
-                <input type="text" name="recipientName" id="recipientName" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+                <input type="text" name="recipientName" id="recipientName" th:field="${orderDto.addressShippingDto.recipientName}" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
               </span>
           </div>
           <div class="mb-5 items-center gap-3">
               <span after="Số điện thoại" class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
-                <input type="text" name="recipientPhone" id="recipientPhone" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+                <input type="text" name="recipientPhone" id="recipientPhone" th:field="${orderDto.addressShippingDto.recipientPhone}" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
               </span>
           </div>
           <div class="mb-5 items-center gap-3">
               <span after="Địa chỉ" class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
-                <input type="text" name="number" id="number" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+                <input type="text" name="number" id="number" th:field="${orderDto.addressShippingDto.number}" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
               </span>
           </div>
           <div class="mb-5 items-center gap-3">
               <span after="Tỉnh thành" class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
-                <select name="province" id="province" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+                <select name="province" id="province" th:field="${orderDto.addressShippingDto.province}" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
                 <option value='null'>--</option>
                 </select>
               </span>
           </div>
           <div class="mb-5 items-center gap-3">
               <span after="Quận/Huyện" class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
-                <select name="district" id="district" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+                <select name="district" id="district" th:field="${orderDto.addressShippingDto.district}" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
                 <option value='null'>--</option>
                 </select>
               </span>
           </div>
           <div class="mb-5 items-center gap-3">
               <span after="Phường/xã" class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
-                <select name="ward" id="ward" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+                <select name="ward" id="ward" th:field="${orderDto.addressShippingDto.ward}" class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
                   <option value='null'>--</option>
                 </select>
               </span>
@@ -71,7 +71,7 @@
           <label class="mb-5 block items-center gap-3 rounded-md border border-gray-300">
             <p class="flex items-center justify-between p-2">
               <span class="after:border-primary relative block pl-10 after:absolute after:left-2 after:top-1/2 after:z-10 after:h-5 after:w-5 after:-translate-y-1/2 after:cursor-pointer after:rounded-full after:border-[8px] after:bg-white"> Phí vận chuyển </span>
-              <span class="">20.000đ</span>
+              <span class="order__shipping-fee">20.000đ</span>
             </p>
           </label>
           <div class="mb-5 items-center gap-3">
@@ -80,7 +80,7 @@
           <div class="flex flex-col rounded-md border border-gray-300">
             <label class="block cursor-pointer border-b border-b-gray-200">
               <p class="flex items-center justify-between px-2 py-3">
-              <input type="radio" name="paymentMethod" id="VNPAY" class="peer hidden" />
+              <input type="radio" name="paymentMethod" id="VNPAY" value="VNPAY" class="peer hidden" />
                 <span class="relative block pl-10 after:absolute after:left-2 after:top-1/2 after:z-10 after:h-5 after:w-5 after:-translate-y-1/2 after:cursor-pointer after:rounded-full after:border-[8px] after:bg-white peer-checked:after:border-primary">  Thanh toán qua thẻ thanh toán, ứng dụng ngân hàng VNPAY </span>
                 <span class=""><img src="https://bizweb.dktcdn.net/assets/themes_support/payment_icon_vnpay.png" alt="" /></span>
               </p>
@@ -88,21 +88,21 @@
 
             <label class="block cursor-pointer border-b border-b-gray-200">
               <p class="flex items-center justify-between px-2 py-3">
-              <input type="radio" name="paymentMethod" id="VNPAY_QR" class="peer hidden" />
+              <input type="radio" name="paymentMethod" id="VNPAY_QR" th:field="${orderDto.paymentMethod}"  th:value="VNPAY_QR" class="peer hidden" />
                 <span class="relative block pl-10 after:absolute after:left-2 after:top-1/2 after:z-10 after:h-5 after:w-5 after:-translate-y-1/2 after:cursor-pointer after:rounded-full after:border-[8px] after:bg-white peer-checked:after:border-primary">  Thanh toán qua mã QR - VNPAY </span>
                 <span class=""><img src="	https://bizweb.dktcdn.net/assets/themes_support/vnpayqr-icon.png" alt="" /></span>
               </p>
             </label>
             <label class="block cursor-pointer border-b border-b-gray-200">
               <p class="flex items-center justify-between px-2 py-3">
-              <input type="radio" name="paymentMethod" id="MOMO" class="peer hidden" />
+              <input type="radio" name="paymentMethod" id="MOMO" th:field="${orderDto.paymentMethod}"  th:value="MOMO" class="peer hidden" />
                 <span class="relative block pl-10 after:absolute after:left-2 after:top-1/2 after:z-10 after:h-5 after:w-5 after:-translate-y-1/2 after:cursor-pointer after:rounded-full after:border-[8px] after:bg-white peer-checked:after:border-primary"> Thanh toán qua Ví MoMo </span>
                 <span class=""><img src="https://bizweb.dktcdn.net/assets/admin/images/logomm1.png?v=1" alt="" /></span>
               </p>
             </label>
             <label class="block cursor-pointer border-b border-b-gray-200">
               <p class="flex items-center justify-between px-2 py-3">
-              <input type="radio" name="paymentMethod" id="COD" class="peer hidden" checked />
+              <input type="radio" name="paymentMethod" id="COD" class="peer hidden" th:field="${orderDto.paymentMethod}" th:value="COD" checked />
                 <span class="relative block pl-10 after:absolute after:left-2 after:top-1/2 after:z-10 after:h-5 after:w-5 after:-translate-y-1/2 after:cursor-pointer after:rounded-full after:border-[8px] after:bg-white peer-checked:after:border-primary"> Thanh toán khi nhận hàng (COD) </span>
                 <span class="">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcaf17" class="h-8 w-8">
@@ -121,15 +121,15 @@
     <div class="">
       <h3 class="text-xl font-medium mb-5">Đơn hàng (1 sản phẩm)</h3>
       <div class="mb-5 flex max-h-[200px] flex-col border border-gray-300 p-2 rounded-md overflow-y-auto gap-y-3">
-        <th:block th:each="cart : ${user.carts}">
-          <div th:replace="~{component/card/order-card :: orderCard(${cart.productVariant.product.productName}, ${cart.productVariant.productColorName}, ${cart.productVariant.productSize}, ${cart.productVariant.product.priceNew * cart.quantity}, ${cart.quantity})}"> </div>
+        <th:block th:each="cart : ${user.carts}" >
+          <div th:replace="~{component/card/order-card :: orderCard(${cart.productVariant.product.productName}, ${cart.productVariant.productColorName}, ${cart.productVariant.productSize}, ${cart.productVariant.product.priceNew * cart.quantity}, ${cart.quantity}, ${cart.productVariant.productColorId})}"> </div>
         </th:block>
 
       </div>
       <div class="mb-5 flex items-center gap-3">
         <div class="flex w-full flex-col gap-3">
             <span after="Mã giảm giá" class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
-              <input type="text" name="coupon" id="coupon" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+              <input type="text" name="coupon" id="coupon" th:field="${orderDto.couponId}" class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
             </span>
         </div>
         <button class="bg-primary border-primary whitespace-nowrap rounded-md border px-3 py-2 text-center font-medium text-white">Áp dụng</button>
@@ -141,7 +141,7 @@
         </div>
         <div class="flex items-center justify-between">
           <span>Phí vận chuyển</span>
-          <span>289.000đ</span>
+          <span class="order__shipping-fee">289.000đ</span>
         </div>
       </div>
       <div class="flex items-center justify-between text-lg mb-3">

@@ -80,16 +80,17 @@ fetchProvinceVn();
 const locationList = form.querySelector("#locationList")
 
 locationList.onchange = function (ev) {
-    const address = locationList.value;
-    if (address !== "other") {
+    const address = locationList.querySelector(`option:checked`).getAttribute("data-value")
+    console.log(address)
+    if (address !== "0") {
         const _add = address.split(", ")
 
         inputRecipientName.value = _add[0]
-        inputRecipientPhone.value = locationList.querySelector("option[selected]").getAttribute("data-phone")
+        inputRecipientPhone.value = locationList.querySelector(`option:checked`).getAttribute("data-phone")
         inputNumber.value = _add[1]
-        selectWard.innerHTML = `<option value="${_add[2]}" selected>${_add[2]}</option>` + "\n" + selectWard.innerHTML
-        selectDistrict.innerHTML = `<option value="${_add[3]}" selected>${_add[3]}</option>` + "\n" + selectDistrict.innerHTML
-        selectProvince.innerHTML = `<option value="${_add[4]}" selected>${_add[4]}</option>` + "\n" + selectProvince.innerHTML
+        selectWard.innerHTML = `<option th:value="${_add[2]}" selected>${_add[2]}</option>` + "\n" + selectWard.innerHTML
+        selectDistrict.innerHTML = `<option th:value="${_add[3]}" selected>${_add[3]}</option>` + "\n" + selectDistrict.innerHTML
+        selectProvince.innerHTML = `<option th:value="${_add[4]}" selected>${_add[4]}</option>` + "\n" + selectProvince.innerHTML
     } else {
         inputRecipientName.value = ""
         inputRecipientPhone.value = ""
@@ -109,3 +110,8 @@ orderTotal.innerText = Array.from(form.querySelectorAll(".order__card")).reduce(
     return total + price;
 }, 0)
 
+const shippingFee = form.querySelectorAll(".order__shipping-fee")
+shippingFee.forEach(item => {
+    if (orderTotal.innerText >= 499500)
+        item.innerHTML = 0 + "đ"
+})
