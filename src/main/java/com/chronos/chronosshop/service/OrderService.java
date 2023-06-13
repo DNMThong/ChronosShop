@@ -6,17 +6,17 @@ import com.chronos.chronosshop.repository.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OrderService implements IOrderService{
+public class OrderService implements IOrderService {
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
     @Autowired
     private OrderRepository repository;
-
 
     @Override
     public boolean save(Orders orders) {
@@ -24,7 +24,7 @@ public class OrderService implements IOrderService{
             repository.save(orders);
             repository.flush();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }
@@ -36,7 +36,7 @@ public class OrderService implements IOrderService{
             repository.save(orders);
             repository.flush();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }
@@ -48,7 +48,7 @@ public class OrderService implements IOrderService{
             repository.deleteById(id);
             repository.flush();
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }

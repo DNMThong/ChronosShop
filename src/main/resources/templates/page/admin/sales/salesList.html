@@ -79,14 +79,17 @@
                                     <td style="text-align: end">[[${#numbers.formatDecimal(order.getPayment().getTotal(), 0, 'COMMA', 0, 'POINT')}]]₫&emsp;</td>
                                     <td th:text="${#temporals.format(order.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
                                     <td th:text="${#temporals.format(order.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>
-                                    <td th:switch="${order.getStatus()}">
-                                        <span th:case="'Đang xác nhận'" th:text="${order.getStatus()}" class="badges bg-info"></span>
-                                        <span th:case="'Đang giao hàng'" th:text="${order.getStatus()}" class="badges bg-warning-subtle"></span>
-                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    <td>
+                                        <span th:if="${order.getStatus() == 'Hoàn thành'}" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                        <span th:if="${order.getStatus() == 'Giao hàng thất bại'}" th:text="${order.getStatus()}" class="badges bg-warning"></span>
+                                        <span th:if="${order.getStatus() == 'Huỷ bỏ'}" th:text="${order.getStatus()}" class="badges bg-danger"></span>
+                                        <span th:if="(${order.getStatus() != 'Hoàn thành'}) and (${order.getStatus() != 'Giao hàng thất bại'}) and (${order.getStatus() != 'Huỷ bỏ'})" th:text="${order.getStatus()}" class="badges bg-primary"></span>
                                     </td>
-                                    <td th:switch="${order.getPayment().getStatus()}">
-                                        <span th:case="'Đang chờ'" th:text="${order.getStatus()}" class="badges bg-info"></span>
-                                        <span th:case="'Hoàn thành'" th:text="${order.getStatus()}" class="badges bg-lightgreen"></span>
+                                    <td>
+                                        <span th:if="${order.getPayment().getStatus() == 'Đã thanh toán'}" class="badges bg-lightgreen" th:text="${order.getPayment().getStatus()}"></span>
+                                        <span th:if="${order.getPayment().getStatus() == 'Huỷ bỏ'}" class="badges bg-warning" th:text="${order.getPayment().getStatus()}"></span>
+                                        <span th:if="${order.getPayment().getStatus() == 'Hoàn tiền'}" class="badges bg-danger" th:text="${order.getPayment().getStatus()}"></span>
+                                        <span th:if="(${order.getPayment().getStatus() == 'Đã thanh toán'}) and (${order.getPayment().getStatus() == 'Huỷ bỏ'}) and (${order.getPayment().getStatus() == 'Hoàn tiền'})" class="badges bg-danger" th:text="${order.getPayment().getStatus()}"></span>
                                     </td>
                                     <td>
                                         <a class="me-3"

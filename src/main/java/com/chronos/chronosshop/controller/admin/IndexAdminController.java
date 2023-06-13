@@ -36,7 +36,7 @@ public class IndexAdminController {
     public String index(@RequestParam(name = "year", defaultValue = "2023", required = false) int year,
                         Model model) {
         long startTime = System.currentTimeMillis();
-        List<Object> listYear = paymentRepository.listYear();
+        List<Object> listYear = paymentRepository.listYea();
         List<Object[]> list = paymentRepository.thongKeDoanhThuTheoNam(year);
         int totalDoanhThuNam = list.stream()
                 .mapToInt(item -> Integer.parseInt(item[0].toString()))

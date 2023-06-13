@@ -19,19 +19,21 @@
                 </div>
             </div>
             <div class="card">
-                <form action="/admin/category/save" method="post" class="card-body" th:object="${category}">
+                <form action="/admin/category/save" method="post" class="card-body" th:object="${category}" id="categoryForm">
                     <input type="hidden" th:field="*{categoryId}">
                     <div class="row">
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Tên danh mục</label>
                                 <input th:field="*{categoryName}" class="" type="text">
+                                <span class="text-red-500 message" style="color: #dc3545;"></span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Đường dẫn URL</label>
                                 <input th:field="*{categoryUrl}" type="text">
+                                <span class="text-red-500 message" style="color: #dc3545;"></span>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -45,5 +47,31 @@
     </div>
 </div>
 <div th:replace="~{component/admin/link/linkAndscript :: script}"></div>
+<script>
+    const isValidRequired = (element, message) => {
+        const parentElement = element.parentElement
+        if (element.value.trim() === "") {
+            parentElement.querySelector(".message").innerText = message
+            return false;
+        } else {
+            parentElement.querySelector(".message").innerText = ""
+            return true;
+        }
+    }
+
+    const categoryName = document.getElementById("categoryName");
+    const categoryUrl = document.getElementById("categoryUrl");
+    const categoryForm = document.getElementById("categoryForm");
+
+    categoryForm.onsubmit = (e) => {
+        const isValidCategoryName = isValidRequired(categoryName, "Vui lòng tên danh mục")
+        const isValidCategoryUrl = isValidRequired(categoryUrl, "Vui lòng đường dẫn URL")
+        if (isValidCategoryName && isValidCategoryUrl) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 </body>
 </html>
