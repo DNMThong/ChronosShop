@@ -73,7 +73,7 @@ public class AccountController {
             user.setFullname(String.valueOf(map.get("name")));
             userService.saveUserFromGoogle(user);
         }
-        return "redirect:/login/success";
+        return "redirect:/";
     }
 
 

@@ -337,7 +337,7 @@
       </div>
       <div class="mb-5 grid grid-cols-4 gap-5">
         <th:block th:each="product : ${products}" th:if="${product.productVariants.size()>0}">
-          <div class="group relative flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm">
+          <a th:href="@{'/'+${product.productId}}" class="group relative flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm">
             <div class="card__top w-full">
               <img alt="" class="h-[280px] w-full object-cover" th:src="${product.productVariants[0].image1}" />
             </div>
@@ -359,7 +359,7 @@
 <!--            <div class="group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md bg-primary px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">-->
 <!--              <span>Đặt hàng</span>-->
 <!--            </div>-->
-          </div>
+          </a>
         </th:block>
       </div>
     </div>

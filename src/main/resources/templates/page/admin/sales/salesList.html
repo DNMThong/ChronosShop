@@ -75,7 +75,7 @@
                             <th:block th:each="order : ${listOrder}">
                                 <tr>
                                     <td th:text="${order.getOrderId()}"></td>
-                                    <td th:text="${order.getUser().getUsername()}"></td>
+                                    <td th:text="${order.getUser().fullname}"></td>
                                     <td style="text-align: end">[[${#numbers.formatDecimal(order.getPayment().getTotal(), 0, 'COMMA', 0, 'POINT')}]]₫&emsp;</td>
                                     <td th:text="${#temporals.format(order.getCreateTime(), 'yyyy-MM-dd HH:mm')}"></td>
                                     <td th:text="${#temporals.format(order.getUpdateTime(), 'yyyy-MM-dd HH:mm')}"></td>

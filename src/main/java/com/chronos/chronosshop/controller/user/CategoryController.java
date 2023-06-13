@@ -12,10 +12,26 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
+@ControllerAdvice
 @RequestMapping("/category")
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
+
+    @ModelAttribute("femaleCategories")
+    public List<Category> getFemaleCategory() {
+        return categoryService.findCategoriesByName("Nữ");
+    }
+
+    @ModelAttribute("maleCategories")
+    public List<Category> getMaleCategory() {
+        return categoryService.findCategoriesByName("Nam");
+    }
+
+    @ModelAttribute("kidCategories")
+    public List<Category> getKidCategory() {
+        return categoryService.findCategoriesByName("Trẻ em");
+    }
 
     @GetMapping("/{categorySlug}")
     public String productsCategory(Model model, @PathVariable("categorySlug") String slug) {

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{component/html-head :: headTitle('Đăng nhập', ~{})}"></head>
+<head th:replace="~{component/html-head :: headTitle('Giỏ hàng', ~{})}"></head>
 <body>
 <header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
-<div th:replace="~{component/cart-content :: cart-content}"></div>
+<div th:replace="~{component/cart-content :: cart-content(${user})}"></div>
 <footer th:replace="~{component/footer :: footer}"></footer>
 
-<script th:src="@{/assets/users/js/header.js}"></script>
+<script th:src="@{/assets/users/js/header.js}" type="text/javascript"></script>
+<script th:src="@{/assets/users/js/cartPage.js}" type="text/javascript"></script>
 
 </body>
 </html>

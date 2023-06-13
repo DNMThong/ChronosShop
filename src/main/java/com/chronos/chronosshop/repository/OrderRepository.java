@@ -17,6 +17,7 @@ import java.util.List;
 @Repository
 @EnableTransactionManagement
 public interface OrderRepository extends JpaRepository<Orders, String> {
+    Iterable<Orders> findAllByOrderByCreateTimeDesc();
     @Query("select count(o) from Orders o where o.status = 'Hoàn thành' and YEAR(o.createTime) = ?1 GROUP BY YEAR(o.createTime)")
     Integer countOrders(int year);
 
@@ -31,4 +32,9 @@ public interface OrderRepository extends JpaRepository<Orders, String> {
     Orders taoOrderVaPayment(@Param("user_id") String userId, @Param("ship_id") int shipId, @Param("coupon_id") String couponId, @Param("status") String status, @Param("create_time") LocalDateTime createTime, @Param("update_time") LocalDateTime updateTime, @Param("payment_method_name") String paymentMethod, @Param("subtotal") Long subTotal, @Param("subtotal_fee") Long subTotalFee, @Param("total") Long total, @Param("currency") String currency);
 
     Orders findByUser_UserIdAndAddressShipping_ShipIdAndCreateTime(String userId, int shipId, LocalDateTime createDate);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Orders SET status = ?1, update_time = ?2 WHERE order_id = ?3", nativeQuery = true)
+    void updateOrderStatusByOrderId(String status, String updateTime, String orderId);
 }

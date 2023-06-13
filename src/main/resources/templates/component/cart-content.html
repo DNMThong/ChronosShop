@@ -1,4 +1,4 @@
-<div class="container mb-5" th:fragment="cart-content">
+<div class="container mb-5" th:fragment="cart-content(user)">
   <div class="flex w-full flex-col gap-10">
     <h3 class="flex items-center gap-3">
       <span class="text-xl font-bold">Giỏ hàng</span>
@@ -15,28 +15,28 @@
               <div class="px-6 py-4">Số lượng</div>
               <div class="px-6 py-4 text-right">Tổng tiền</div>
             </div>
-            <div class="grid grid-cols-6 border-b font-medium dark:border-neutral-500">
+            <div class="grid grid-cols-6 border-b font-medium dark:border-neutral-500" th:each="cart : ${user.carts}">
               <div class="px-6 py-4 font-medium">
                 <span class="block w-20">
-                  <img src="https://bizweb.dktcdn.net/thumb/compact/100/438/408/products/sqm5005-den-8.jpg" alt="" class="h-full w-full object-cover" />
+                  <img th:src="${cart.productVariant.image1}" alt="" class="h-full w-full object-cover" />
                 </span>
               </div>
               <div class="col-span-2 flex px-6 py-4">
                 <div class="flex h-full flex-1 flex-col self-stretch">
-                  <a href="" class="hover:text-primary">Quần Short Thun Nam Thể Thao Năng Động</a>
-                  <span class="mt-auto block">Den/31</span>
+                  <a href="" class="hover:text-primary">[[${cart.productVariant.product.productName}]]</a>
+                  <span class="mt-auto block">[[${cart.productVariant.productColorName}]]/[[${cart.productVariant.productSize}]]</span>
                 </div>
               </div>
-              <div class="px-6 py-4">299.000đ</div>
+              <div class="px-6 py-4">[[${cart.productVariant.product.priceNew}]]</div>
               <div class="px-6 py-4">
                 <div action="" class="m-0 flex w-[120px] flex-1 rounded-xl border border-gray-300">
                   <span class="inline-block cursor-pointer border-r border-gray-300 px-3 py-1.5 text-xl font-medium">-</span>
-                  <input type="text" class="block w-full px-3 py-1.5 text-center outline-none" />
+                  <input type="text" class="block w-full px-3 py-1.5 text-center outline-none" th:value="${cart.quantity}" />
                   <span class="inline-block cursor-pointer border-l border-gray-300 px-3 py-1.5 text-xl font-medium">+</span>
                 </div>
               </div>
               <div class="flex flex-col items-end justify-between px-6 py-4">
-                <span> 299.000đ </span>
+                <span class="cart__prod-total">[[${cart.productVariant.product.priceNew * cart.quantity}]]đ</span>
 
                 <a href="" class="inline-block self-end"
                 ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6 w-6 opacity-70">
@@ -52,9 +52,9 @@
           <img src="https://bizweb.dktcdn.net/100/438/408/themes/904142/assets/banner-cart-promotion.png?1685174295403" alt="" class="h-full w-full object-cover" />
           <span class="bg-[#FEECC7] px-2 py-1 text-center">Dùng mã giảm giá của YODY trong bước tiếp theo</span>
         </div>
-        <p class="mb-5 flex items-center justify-between px-5 text-center font-medium">Tổng đơn hàng (tạm tính): <span>299.000đ</span></p>
+        <p class="mb-5 flex items-center justify-between px-5 text-center font-medium">Tổng đơn hàng (tạm tính): <span class="cart__total">299.000đ</span></p>
         <div class="px-5">
-          <button class="w-full rounded-lg bg-yellow-400 px-3 py-1.5 text-center text-lg font-medium text-white">Đặt hàng (3)</button>
+          <a href="/order-detail" class="w-full rounded-lg bg-yellow-400 px-3 py-1.5 text-center text-lg font-medium text-white">Đặt hàng ([[${user.carts.size()}]])</a>
         </div>
       </div>
     </div>
