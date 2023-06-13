@@ -2,47 +2,53 @@
 <div class="" th:fragment="locationList">
   <p class="mb-2 flex w-full items-center justify-between border-b border-gray-200 px-10 py-2 text-xl font-medium">
     <span class="text-primary">Địa chỉ của bạn</span>
-    <a href="" class="bg-primary rounded-lg px-5 py-1.5 text-center text-white transition-all hover:bg-yellow-500">&plus; Thêm địa chỉ mới</a>
+    <a href=""
+       class="btn__add-address bg-primary rounded-lg px-5 py-1.5 text-center text-white transition-all hover:bg-yellow-500">&plus; Thêm địa chỉ mới
+    </a>
   </p>
   <div class="flex flex-col px-10">
-    <div class="border-b border-gray-200 py-3 text-sm">
-      <div class="grid grid-cols-12 items-center gap-y-1">
+    <div th:each="a : ${addresses}"
+            class="border-b border-gray-200 py-3 text-sm">
+      <div th:if="${a.deleted == false}"
+              class="grid grid-cols-12 items-center gap-y-1">
         <div class="col-span-2 text-gray-500">Họ tên:</div>
-        <div class="col-span-9">Nguyễn Trọng Nghĩa</div>
+        <div class="col-span-9" th:text="${a.recipientName}">Nguyễn Trọng Nghĩa</div>
         <div class="flex items-center justify-end text-lg">
-          <a href="" class="hover:text-primary inline-block text-right font-medium text-gray-300 underline">Sửa</a>
+          <a th:href="@{|/account/edit_address/${a.shipId}|}" class="hover:text-primary inline-block text-right font-medium text-gray-300 underline">Sửa</a>
         </div>
         <div class="col-span-2 text-gray-500">Địa chỉ:</div>
-        <div class="col-span-9">139/3 bạch đằng, phường 15, Phường 15, Quận Bình Thạnh, TP Hồ Chí Minh, Vietnam</div>
+        <div class="col-span-9"
+            th:text="${a.recipientAddress}"
+        >139/3 bạch đằng, phường 15, Phường 15, Quận Bình Thạnh, TP Hồ Chí Minh, Vietnam</div>
         <div class="flex items-center justify-end text-lg">
-          <a href="" class="hover:text-primary text-primary ml-auto inline-block text-right font-medium">Xóa</a>
+          <a th:href="@{|/account/delete_address/${a.shipId}|}" class="hover:text-primary text-primary ml-auto inline-block text-right font-medium">Xóa</a>
         </div>
       </div>
     </div>
-    <div class="border-b border-gray-200 py-3 text-sm last:border-0">
-      <div class="grid grid-cols-12 items-center gap-y-1">
-        <div class="col-span-2 text-gray-500">Họ tên:</div>
-        <div class="col-span-9 flex items-center">
-          Nguyễn Trọng Nghĩa
-          <span class="m-0 ml-[15px] flex w-fit items-center gap-1 text-xs text-green-500">
-            <span class="inline-block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
-            Địa chỉ mặc định
-          </span>
-        </div>
-        <div class="flex items-center justify-end text-lg">
-          <a href="" class="hover:text-primary inline-block text-right font-medium text-gray-300 underline">Sửa</a>
-        </div>
-        <div class="col-span-2 text-gray-500">Địa chỉ:</div>
-        <div class="col-span-9">139/3 bạch đằng, phường 15, Phường 15, Quận Bình Thạnh, TP Hồ Chí Minh, Vietnam</div>
-        <div class="flex items-center justify-end text-lg">
-          <a href="" class="hover:text-primary text-primary ml-auto inline-block text-right font-medium">Xóa</a>
-        </div>
-      </div>
-    </div>
+<!--    <div class="border-b border-gray-200 py-3 text-sm last:border-0">-->
+<!--      <div class="grid grid-cols-12 items-center gap-y-1">-->
+<!--        <div class="col-span-2 text-gray-500">Họ tên:</div>-->
+<!--        <div class="col-span-9 flex items-center">-->
+<!--          Nguyễn Trọng Nghĩa-->
+<!--          <span class="m-0 ml-[15px] flex w-fit items-center gap-1 text-xs text-green-500">-->
+<!--            <span class="inline-block">-->
+<!--              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />-->
+<!--              </svg>-->
+<!--            </span>-->
+<!--            Địa chỉ mặc định-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <div class="flex items-center justify-end text-lg">-->
+<!--          <a href="" class="hover:text-primary inline-block text-right font-medium text-gray-300 underline">Sửa</a>-->
+<!--        </div>-->
+<!--        <div class="col-span-2 text-gray-500">Địa chỉ:</div>-->
+<!--        <div class="col-span-9">139/3 bạch đằng, phường 15, Phường 15, Quận Bình Thạnh, TP Hồ Chí Minh, Vietnam</div>-->
+<!--        <div class="flex items-center justify-end text-lg">-->
+<!--          <a href="" class="hover:text-primary text-primary ml-auto inline-block text-right font-medium">Xóa</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </div>
 <!-- End Sổ địa chỉ -->

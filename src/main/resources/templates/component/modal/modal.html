@@ -1,0 +1,90 @@
+<div class="modal fixed inset-0 z-[99999] flex items-center py-[150px]"
+     th:fragment="modal">
+    <div class="overlay absolute inset-0 bg-[rgba(0,0,0,0.2)]"></div>
+    <div class="container relative z-10">
+
+
+        <div class="w-1/2 mx-auto bg-white rounded-lg bg-white shadow-md">
+            <h3 class="px-10 py-2.5 flex justify-between items-center font-medium border-b border-gray-300">
+                <span>Thêm địa chỉ mới</span>
+                <span class="p-1 cursor-pointer modal__close-btn">X</span>
+            </h3>
+            <form action="" class="flex flex-col gap-3 p-10 " id="form__update">
+                <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Họ tên"
+              class="relative col-span-2 block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                 id="" name=""
+                 type="text"/>
+        </span>
+                    <span after="Số diện thoại"
+                          class="relative col-span-2 block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                 id="" name=""
+                 type="text"/>
+        </span>
+                </div>
+                <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Công ty"
+              class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                 id="" name=""
+                 type="text"/>
+        </span>
+                </div>
+                <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Địa chỉ"
+              class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                 id="" name=""
+                 type="text"/>
+        </span>
+                </div>
+                <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Quốc gia"
+              class="relative col-span-full block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+          <select class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                  id="country"
+                  name="country">
+            <option selected value="vn">Việt Nam</option>
+          </select>
+        </span>
+                </div>
+                <div class="grid grid-cols-3 items-center gap-3">
+        <span after="Tỉnh thành"
+              class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+          <select class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                  id="province"
+                  name="province">
+            <option selected value="vn">Việt Nam</option>
+          </select>
+        </span>
+                    <span after="Quận/Huyện"
+                          class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+          <select class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                  id="country"
+                  name="country">
+            <option selected value="vn">Việt Nam</option>
+          </select>
+        </span>
+                    <span after="Phường/xã"
+                          class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+          <select class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none"
+                  id="province"
+                  name="province">
+            <option selected value="vn">Việt Nam</option>
+          </select>
+        </span>
+                </div>
+                <label class="flex w-fit items-center gap-3">
+                    <input id="default" name="isDefault" type="checkbox"/>
+                    <label for="default">Đặt làm địa chỉ mặc định</label>
+                </label>
+                <div class="grid grid-cols-2 items-center gap-5">
+                    <button class="bg-primary text-primary rounded-lg bg-opacity-20 px-5 py-2 text-lg font-medium">Hủy</button>
+                    <button class="bg-primary rounded-lg px-5 py-2 text-lg font-medium text-white">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

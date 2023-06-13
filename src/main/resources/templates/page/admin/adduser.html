@@ -33,18 +33,26 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
+                                <label>ID Người dùng</label>
+                                <input
+                                       th:field="*{userId}"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="form-group">
                                 <label>Tên người dùng</label>
                                 <input
-                                        th:field="${user.fullname}"
-                                        type="text">
+                                       th:field="*{username}"
+                                       type="text">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Email</label>
                                 <input
-                                        th:field="${user.email}"
-                                        type="email" class="form-control">
+                                       th:field="*{email}"
+                                       type="email" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
@@ -52,8 +60,8 @@
                                 <label>Password</label>
                                 <div class="pass-group">
                                     <input
-                                            th:field="${user.password}"
-                                            type="text"
+                                           th:field="*{password}"
+                                           type="text"
                                     >
                                 </div>
                             </div>
@@ -62,25 +70,26 @@
                             <div class="form-group">
                                 <label>Phone</label>
                                 <input
-                                        th:field="${user.phone}"
-                                        type="text">
+                                       th:field="*{phone}"
+                                       type="text">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Sinh nhật</label>
                                 <input
-                                        th:field="${user.birthday}"
-                                        type="date"
-                                        class="form-control"
+                                       th:field="*{birthday}"
+                                       type="date"
+                                       class="form-control"
                                 />
+<!--                                <div id="dtBox"></div>-->
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>IMG</label>
                                 <input
-                                        th:field="${user.image}"
+                                        th:field="*{image}"
                                         type="text" class="form-control">
                             </div>
                         </div>
@@ -89,15 +98,15 @@
                                 <label>Giới tính</label>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" id="inlineRadio1"
-                                           th:field="${user.gender}"
-                                           th:value="${user.gender}"
-                                    >
+                                           th:field="*{gender}"
+                                           th:value="*{gender}"
+                                           >
                                     <label class="form-check-label" for="inlineRadio1">Nam</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" id="inlineRadio2"
-                                           th:field="${user.gender}"
-                                           th:value="${user.gender}"
+                                           th:field="*{gender}"
+                                           th:value="*{gender}"
 
                                     >
                                     <label class="form-check-label" for="inlineRadio2">Nữ</label>
@@ -107,7 +116,7 @@
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Trạng thái</label>
-                                <select th:field="${user.status}"
+                                <select th:field="*{status}"
                                         class="select">
                                     <option th:each="status : ${status_list}"
                                             th:value="${status}"
@@ -119,7 +128,7 @@
                         </div>
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-submit me-2">Submit</button>
-                            <a th:href="@{/admin/users}" class="btn btn-cancel">Cancel</a>
+                            <a th:href="@{/admin/userlist}" class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>
                 </form>

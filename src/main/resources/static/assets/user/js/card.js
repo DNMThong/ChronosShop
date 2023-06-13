@@ -1,6 +1,5 @@
 const cards = document.querySelectorAll(".card-product");
 const cardOptions = document.querySelectorAll(".card__option");
-console.log(cardOptions);
 
 cardOptions.forEach((cardOption) => {
     cardOption.onclick = (e) => {

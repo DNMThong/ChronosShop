@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="~{component/html-head :: headTitle('Tài khoản', ~{})}"></head>
 
 <body>
@@ -78,7 +78,104 @@
 </div>
 <footer th:replace="~{component/footer :: footer}"></footer>
 
-<script th:src="@{/assets/users/js/header.js}"></script>
+
+<div class="modal fixed inset-0 z-[99999] items-center py-[150px]"
+     th:classappend="${show} ?  'flex' : 'hidden'"
+>
+  <div class="overlay absolute inset-0 bg-[rgba(0,0,0,0.2)]"></div>
+  <div class="container relative z-10">
+    <div class="w-1/2 mx-auto bg-white rounded-lg bg-white shadow-md">
+      <h3 class="px-10 py-2.5 flex justify-between items-center font-medium border-b border-gray-300">
+        <span>Thêm địa chỉ mới</span>
+        <a href="/account/cancel" class="p-1 cursor-pointer modal__close-btn">X</a>
+      </h3>
+      <form th:action="${action}" th:object="${address}" th:method="post" id="form-update" class=" flex flex-col gap-3 p-10 ">
+        <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Họ tên" class="relative col-span-2 block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input type="text"
+                 th:field="${address.recipientName}"
+                 class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+        </span>
+          <span after="Số diện thoại" class="relative col-span-2 block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input type="text"
+                 th:field="${address.recipientPhone}"
+                 class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+        </span>
+        </div>
+        <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Công ty" class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input type="text"
+                 th:field="${address.status}"
+                 class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+        </span>
+        </div>
+        <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Địa chỉ" class="relative col-span-full block w-full after:absolute after:left-4 after:top-1/2 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-gray-400 after:transition-[top] after:content-[attr(after)] focus-within:after:top-0 focus-within:after:z-50 focus-within:after:text-sm">
+          <input type="text"
+                 th:field="${address.number}"
+                 class="focus:border-primary relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none" />
+        </span>
+        </div>
+        <div class="grid grid-cols-4 items-center gap-3">
+        <span after="Quốc gia" class="relative col-span-full block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+          <select name="country" id="country"
+                  th:field="${address.country}"
+                  class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+            <option th:value="${address.country}"
+                    th:text="${address.country}"
+                   selected>Việt Nam</option>
+          </select>
+        </span>
+        </div>
+        <div class="grid grid-cols-3 items-center gap-3 vn__location">
+               <span after="Tỉnh thành"
+                     class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+                  <select name="province" id="province"
+                          th:field="${address.province}"
+                          class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+                     <option th:value="${address.province}"
+                             th:text="${address.province}"
+                             selected>--</option>
+                  </select>
+               </span>
+          <span after="Quận/Huyện"
+                class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+                  <select name="district" id="district"
+                          th:field="${address.district}"
+                          class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+                     <option th:value="${address.district}"
+                             th:text="${address.district}"
+                             selected>--</option>
+                  </select>
+               </span>
+          <span after="Phường/xã"
+                class="relative block w-full after:absolute after:left-4 after:top-0 after:z-50 after:flex after:h-fit after:w-fit after:-translate-y-1/2 after:items-center after:bg-white after:px-2 after:text-sm after:text-gray-400 after:transition-[top] after:content-[attr(after)]">
+                  <select name="ward" id="ward"
+                          th:field="${address.ward}"
+                          class="relative z-[11] w-full rounded-md border border-gray-300 bg-transparent px-5 py-2 caret-gray-500 outline-none">
+                     <option th:value="${address.ward}"
+                             th:text="${address.ward}"
+                             selected>--</option>
+                  </select>
+          </span>
+        </div>
+        <label class="flex w-fit items-center gap-3">
+          <input type="checkbox" name="isDefault" id="default" />
+          <label for="default">Đặt làm địa chỉ mặc định</label>
+        </label>
+        <div class="grid grid-cols-2 items-center gap-5">
+          <span class="cursor-pointer block bg-primary text-primary rounded-lg bg-opacity-20 px-5 py-2 text-lg font-medium modal__close-btn w-full text-center">Hủy</span>
+          <button type="submit"
+                  class="bg-primary rounded-lg px-5 py-2 text-lg font-medium text-white">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script th:src="@{/assets/user/js/header.js}"></script>
+<script th:src="@{/assets/user/js/modal.js}"></script>
 
 </body>
 </html>
