@@ -34,9 +34,6 @@ public class CouponAdminController {
                        @RequestParam("createTime") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") LocalDateTime createTime,
                        @RequestParam("expiresTime") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") LocalDateTime expiresTime) {
         try {
-//            ra.addFlashAttribute("message", "Lưu sản phẩm thành công!");
-//            ra.addFlashAttribute("type", "success");
-//            ra.addFlashAttribute("show", true);
             coupon.setCreateTime(createTime);
             coupon.setExpiresTime(expiresTime);
             couponService.save(coupon);

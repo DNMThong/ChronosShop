@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin/category")
@@ -33,14 +34,9 @@ public class CategoryAdminController {
     }
 
     @PostMapping("/save")
-    public String saveCategory(@ModelAttribute("category") Category category, RedirectAttributes ra) {
-        try {
-            categoryService.save(category);
-            return "redirect:/admin/category";
-        } catch (Exception e) {
-            ra.addFlashAttribute("messageFail", "Tạo danh mục mới thất bại!!!");
-            return "redirect:/admin/category/add";
-        }
+    public String saveCategory(@ModelAttribute("category") Category category, BindingResult bindingResult) {
+        categoryService.save(category);
+        return "redirect:/admin/category";
     }
 
     @GetMapping("/edit/{categoryId}")
