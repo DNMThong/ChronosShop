@@ -1,10 +1,13 @@
 package com.chronos.chronosshop.entity;
 
+import com.chronos.chronosshop.util.CurrencyUtil;
 import lombok.*;
 
 import jakarta.persistence.*;
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -70,4 +73,20 @@ public class Product {
         this.category = category;
         this.status = status;
     }
+
+    public String getPriceNewFormat() {
+        return CurrencyUtil.format(this.priceNew);
+    }
+
+    public List<ProductVariant> getDistinctVariants() {
+        List<ProductVariant> variants = null;
+        HashMap<String, ProductVariant> map = new HashMap<>();
+        productVariants.forEach(vari -> map.put(vari.getProductColorName(), vari));
+        return new ArrayList<>(map.values());
+    }
+
+    public Integer getNumberOfProductsSold() {
+        return productVariants.stream().mapToInt(i -> i.getOrderDetailList().size()).sum();
+    }
+
 }

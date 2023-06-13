@@ -1,6 +1,7 @@
 package com.chronos.chronosshop.service;
 
 import com.chronos.chronosshop.entity.Category;
+import com.chronos.chronosshop.entity.Product;
 import com.chronos.chronosshop.repository.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,5 +66,23 @@ public class CategoryService implements ICategoryService {
     public Category findById(Integer id) {
         Optional<Category> category = repository.findById(id);
         return category.orElse(null);
+    }
+
+    @Override
+    public List<Product> findProductsBySlug(String slug) {
+        Optional<Category> optional = repository.findByCategoryUrlAndSubcategoryIsNull(slug);
+        if(optional.isPresent()) {
+            return optional.get().getProducts();
+        }
+        return null;
+    }
+
+    @Override
+    public Category findBySlug(String slug) {
+        Optional<Category> optional = repository.findByCategoryUrlAndSubcategoryIsNull(slug);
+        if(optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-<div class="container mb-5" th:fragment="content">
+<div class="container mb-5" th:fragment="content(products,optionFilter,slug)">
   <div class="mb-3">
     <img src="https://bizweb.dktcdn.net/100/438/408/files/so-mi-nam-a7fb06b0-6f8a-40c4-9012-c3886145e915.jpg?v=1676618743022" alt="" />
   </div>
@@ -8,199 +8,321 @@
   </div>
   <h2 class="mb-5 text-center text-xl font-medium uppercase text-primary">Áo sơ mi nam</h2>
   <div class="mb-5 flex items-center justify-center gap-3">
-    <a href="" class="rounded-lg border-2 border-primary px-5 py-1.5 uppercase text-primary transition-all hover:bg-primary hover:text-white">Nữ</a>
-    <a href="" class="rounded-lg border-2 border-primary bg-primary px-5 py-1.5 uppercase text-white transition-all hover:bg-primary hover:text-white">Nam</a>
-    <a href="" class="rounded-lg border-2 border-primary px-5 py-1.5 uppercase text-primary transition-all hover:bg-primary hover:text-white">Trẻ em</a>
+    <a href="" th:class="|rounded-lg border-2 border-primary px-5 py-1.5 uppercase text-primary transition-all hover:bg-primary hover:text-white ${slug.contains('nu')?'bg-primary text-white':''}|">Nữ</a>
+    <a href="" th:class="|rounded-lg border-2 border-primary px-5 py-1.5 uppercase text-primary transition-all hover:bg-primary hover:text-white ${slug.contains('nam')?'bg-primary text-white':''}|">Nam</a>
+    <a href="" th:class="|rounded-lg border-2 border-primary px-5 py-1.5 uppercase text-primary transition-all hover:bg-primary hover:text-white ${slug.contains('tre-em')?'bg-primary text-white':''}|">Trẻ em</a>
   </div>
   <div class="grid grid-cols-4 gap-10">
+
     <!-- Sidebar -->
-    <div class="flex flex-col gap-5">
-      <div class="">
-        <div class="flex items-center justify-between cursor-pointer mb-3">
-          <span>Loại sản phẩm</span>
-          <span>
+    <form method="post" th:action="@{'/category/'+${slug}}" id="formFilter">
+      <div class="flex flex-col gap-5">
+        <div>
+          <div class="flex items-center justify-between cursor-pointer mb-3">
+            <span>Loại sản phẩm</span>
+            <span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
+          </div>
+          <div>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" />
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">Áo sơ mi</div>
+            </label>
+          </div>
         </div>
-        <div class="">
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">Áo sơ mi</a>
-        </div>
-      </div>
-      <div class="">
-        <div class="flex items-center justify-between cursor-pointer mb-3">
-          <span>Kích thước</span>
-          <span>
+        <div>
+          <div class="flex items-center justify-between cursor-pointer mb-3">
+            <span>Kích thước</span>
+            <span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
+          </div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" value="XS" name="size" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('XS')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">XS</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="S" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('S')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">S</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="M" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('M')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">M</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="L" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('L')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">L</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="XL" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('XL')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">XL</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="2XL" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('2XL')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">2XL</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="3XL" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('3XL')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">3XL</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="4XL" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('4XL')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">4XL</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="2" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('2')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">2</div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="size" value="4" th:checked="${optionFilter.containsKey('size') && optionFilter.get('size').contains('4')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white">4</div>
+            </label>
+          </div>
         </div>
-        <div class="flex items-center gap-3 flex-wrap">
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">XS</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">S</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">M</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">L</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">XL</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">2XL</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">3XL</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">2</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">4</a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">6</a>
-        </div>
-      </div>
 
-      <div class="">
-        <div class="flex items-center justify-between cursor-pointer mb-3">
-          <span>Màu sắc</span>
-          <span>
+        <div>
+          <div class="flex items-center justify-between cursor-pointer mb-3">
+            <span>Màu sắc</span>
+            <span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
+          </div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="color" value="Đen" th:checked="${optionFilter.containsKey('color') && optionFilter.get('color').contains('Đen')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-black"></span>
+                Màu đen
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="color" value="Trắng" th:checked="${optionFilter.containsKey('color') && optionFilter.get('color').contains('Trắng')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-white"></span>
+                Trắng
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="color" value="Xanh navy" th:checked="${optionFilter.containsKey('color') && optionFilter.get('color').contains('Xanh navy')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-[#03204C]"></span>
+                Xanh navy
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="color" value="Xanh lá" th:checked="${optionFilter.containsKey('color') && optionFilter.get('color').contains('Xanh lá')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-[#62BF5E]"></span>
+                Xanh lá
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="color" value="Nâu" th:checked="${optionFilter.containsKey('color') && optionFilter.get('color').contains('Nâu')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-yellow-800"></span>
+                Màu nâu
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="checkbox" class="peer hidden" name="color" value="Xanh mint" th:checked="${optionFilter.containsKey('color') && optionFilter.get('color').contains('Xanh mint')}"/>
+              <div
+                      class="hover:text-primary hover:border-primary peer-checked:border-primary
+                    inline-block cursor-pointer rounded-md border border-transparent bg-gray-100
+                    text-center px-4 py-1.5 text-gray-400 transition-all
+                    hover:bg-white peer-checked:bg-white flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-[#8CD6C4]"></span>
+                Màu xanh mint
+              </div>
+            </label>
+          </div>
         </div>
-        <div class="flex items-center gap-3 flex-wrap">
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-black"></span>
-            Màu đen
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#03204C]"></span>
-            Xanh Navy
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-white"></span>
-            Trắng
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#62BF5E]"></span>
-            Xanh lá
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-yellow-800"></span>
-            Màu nâu
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-[#8CD6C4]"></span>
-            Màu xanh mint
-          </a>
-        </div>
-      </div>
 
-      <div class="">
-        <div class="flex items-center justify-between cursor-pointer mb-3">
-          <span>Khoảng giá (VNĐ)</span>
-          <span>
+        <div>
+          <div class="flex items-center justify-between cursor-pointer mb-3">
+            <span>Khoảng giá (VNĐ)</span>
+            <span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
+          </div>
+          <form class="flex flex-col gap-3">
+            <label class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
+              <input type="checkbox" class="peer" name="aboutPrice" value="0-100000" th:checked="${optionFilter.containsKey('aboutPrice') && optionFilter.get('aboutPrice').contains('0-100000')}"/>
+              Nhỏ hơn 100.000đ
+            </label>
+            <label  class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
+              <input type="checkbox" class="peer" name="aboutPrice" value="100000-200000" th:checked="${optionFilter.containsKey('aboutPrice') && optionFilter.get('aboutPrice').contains('100000-200000')}"/>
+              Từ 100.000đ - 200.000đ
+            </label>
+            <label  class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
+              <input type="checkbox" class="peer" name="aboutPrice" value="200000-350000" th:checked="${optionFilter.containsKey('aboutPrice') && optionFilter.get('aboutPrice').contains('200000-350000')}"/>
+              Từ 200.000đ - 350.000đ
+            </label>
+            <label  class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
+              <input type="checkbox" class="peer" name="aboutPrice" value="350000-500000" th:checked="${optionFilter.containsKey('aboutPrice') && optionFilter.get('aboutPrice').contains('350000-500000')}"/>
+              Từ 350.000đ - 500.000đ
+            </label>
+            <label  class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
+              <input type="checkbox" class="peer" name="aboutPrice" value="500000-700000" th:checked="${optionFilter.containsKey('aboutPrice') && optionFilter.get('aboutPrice').contains('500000-700000')}"/>
+              Từ 500.000đ - 700.000đ
+            </label>
+            <label  class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
+              <input type="checkbox" class="peer" name="aboutPrice" value="700000" th:checked="${optionFilter.containsKey('aboutPrice') && optionFilter.get('aboutPrice').contains('700000')}"/>
+              Lớn hơn 700.000đ
+            </label>
+          </form>
         </div>
-        <form class="flex flex-col gap-3">
-          <label href="" class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <input type="checkbox" name="price" id="less100">
-            Nhỏ hơn 100.000đ
-          </label>
-          <label href="" class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <input type="checkbox" name="price" id="100to200">
-            Từ 100.000đ - 200.000đ
-          </label>
-          <label href="" class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <input type="checkbox" name="price" id="200to350">
-            Từ 200.000đ - 350.000đ
-          </label>
-          <label href="" class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <input type="checkbox" name="price" id="350to500">
-            Từ 350.000đ - 500.000đ
-          </label>
-          <label href="" class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <input type="checkbox" name="price" id="500to700">
-            Từ 500.000đ - 700.000đ
-          </label>
-          <label href="" class="text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all flex items-center gap-3">
-            <input type="checkbox" name="price" id="greater700">
-            Lớn hơn 700.000đ
-          </label>
-        </form>
-      </div>
 
-      <div class="">
-        <div class="flex items-center justify-between cursor-pointer mb-3">
-          <span>Chất liệu</span>
-          <span>
+        <div>
+          <div class="flex items-center justify-between cursor-pointer mb-3">
+            <span>Chất liệu</span>
+            <span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </span>
-        </div>
-        <div class="flex items-center gap-5 flex-wrap max-h-[300px] overflow-auto">
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Pique
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Airycool
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Cafe
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Coolmax
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Cotton
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Vỏ hàu
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Nano
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Pima
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Bamboo
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Modal
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Denim
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Lụa
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Vicose
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Rayon
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Đũi
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Polyester
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Voan
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Kaki
-          </a>
-          <a href="" class="bg-gray-300 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
-            Tuýt si
-          </a>
+          </div>
+          <div class="flex items-center gap-5 flex-wrap max-h-[300px] overflow-auto">
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Pique
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Airycool
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Cafe
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Coolmax
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Cotton
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Vỏ hàu
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Nano
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Pima
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Bamboo
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Modal
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Denim
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Lụa
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Vicose
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Rayon
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Đũi
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Polyester
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Voan
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Kaki
+            </a>
+            <a href="" class="bg-gray-100 text-gray-400 text-center px-4 py-1.5 rounded-md border border-transparent hover:text-primary hover:bg-white hover:border-primary transition-all">
+              Tuýt si
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
     <!-- end Sidebar -->
 
     <!-- Products -->
     <div class="col-span-3">
       <div class="flex items-center justify-between">
-        <span class="font-medium text-gray-400">27 Sản phẩm</span>
+        <span class="font-medium text-gray-400">[[${products.?[productVariants.size()>0].size()}]] Sản phẩm</span>
         <div class="mb-3 flex w-fit items-center gap-5">
           <label for="sort" class="whitespace-nowrap">Sắp xếp theo</label>
           <select id="sort" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500">
@@ -213,220 +335,32 @@
           </select>
         </div>
       </div>
-      <div class="mb-5 grid grid-cols-4">
-        <div class="group relative flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm sm:w-[255px]">
-          <div class="card__top">
-            <img alt="" class="h-[350px] w-full object-cover" src="https://bizweb.dktcdn.net/thumb/large/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-          </div>
-          <div class="card__body mt-2 p-3">
-            <h3 class="card__title from-neutral-600">Dép Trẻ em chống trơn trượt</h3>
-            <p class="mt-2 font-medium">139000đ</p>
-            <div class="mt-3 flex items-center gap-3">
-              <span class="h-8 w-8">
-                <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-              </span>
-              <span class="h-8 w-8">
-                <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-              </span>
-              <span class="h-8 w-8">
-                <img alt="" class="h-full w-full rounded-full object-cover" src="https://bizweb.dktcdn.net/thumb/thumb/100/438/408/products/phu-kien-tre-em-khac-dek5003-tra-1-yodyvn.jpg?v=1684211011000" />
-              </span>
+      <div class="mb-5 grid grid-cols-4 gap-5">
+        <th:block th:each="product : ${products}" th:if="${product.productVariants.size()>0}">
+          <div class="group relative flex h-full w-full flex-col overflow-hidden rounded-md border border-gray-200 shadow-sm">
+            <div class="card__top w-full">
+              <img alt="" class="h-[280px] w-full object-cover" th:src="${product.productVariants[0].image1}" />
             </div>
+            <div class="card__body mt-2 p-3">
+              <h3 class="card__title from-neutral-600 text-sm  h-[40px]">[[${product.productName}]]</h3>
+              <p class="mt-2 font-medium mt-auto">[[${product.getPriceNewFormat()}]]</p>
+              <div class="mt-3 flex items-center gap-3">
+                <span class="h-8 w-8" th:each="item : ${product.getDistinctVariants()}">
+                  <img alt="" class="h-full w-full rounded-full object-cover" th:src="${item.image1}" />
+                </span>
+              </div>
+            </div>
+            <div class="absolute top-0 w-fit rounded-r-md bg-[rgba(0,0,0,0.3)] px-3 py-1">
+              <span class="text-sm font-medium text-white">Đã bán [[${product.getNumberOfProductsSold()}]]</span>
+            </div>
+            <div class="absolute right-2 top-0 rounded-b-md bg-primary px-3 py-1">
+              <span class="text-sm font-medium text-white">Mới</span>
+            </div>
+<!--            <div class="group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md bg-primary px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">-->
+<!--              <span>Đặt hàng</span>-->
+<!--            </div>-->
           </div>
-          <div class="absolute top-0 w-fit rounded-r-md bg-[rgba(0,0,0,0.3)] px-3 py-1">
-            <span class="text-sm font-medium text-white">Đã bán 7</span>
-          </div>
-          <div class="absolute right-2 top-0 rounded-b-md bg-primary px-3 py-1">
-            <span class="text-sm font-medium text-white">Mới</span>
-          </div>
-          <div class="group-hover:animate-swipeUp invisible absolute left-1/2 top-[50%] w-fit -translate-x-1/2 cursor-pointer rounded-md bg-primary px-3 py-1.5 font-medium text-white opacity-0 group-hover:visible group-hover:opacity-100">
-            <span>Đặt hàng</span>
-          </div>
-        </div>
-      </div>
-      <div class="px-10 text-sm">
-        <p class="mb-3 font-medium">Áo sơ mi nam chính là lựa chọn ưu tiên của phái mạnh. Chiếc áo sơ mi thể hiện được sự trẻ trung nhưng vẫn không làm mất đi sự lịch sự, trưởng thành.</p>
-        <p>Thế giới áo sơ mi nam đẹp với chất liệu cao cấp, mẫu mã đa dạng dành tặng các quý ông. Cùng YODY tìm hiểu những mẫu đang được ưa chuộng và cách phối đồ với áo sơ mi nam nhé!</p>
-        <h2 class="text-3xl font-medium tracking-wide">1. Áo sơ mi nam YODY - Chất liệu tạo nên thương hiệu</h2>
-        <p class="mb-3">Với một thương hiệu thời trang “đặc biệt” chính là nơi được khách hàng đánh giá cao về chất liệu, mẫu mã đa dạng, màu sắc phù hợp.</p>
-        <p class="mb-3">Đội ngũ sáng tạo YODY luôn nỗ lực dựa trên các nghiên cứu và trải nghiệm thực tế để hình thành dòng sản phẩm <a href="" class="text-blue-500">áo sơ mi nam</a> chất lượng, có dấu ấn riêng gắn liền với thương hiệu.</p>
-        <h2 class="text-3xl font-medium tracking-wide">1.1 Áo sơ mi nam công sở vải nano kháng khuẩn chống nhăn</h2>
-        <p class="mb-3">Mang trong mình nhiều ưu điểm vượt trội, chắc chắn chiếc áo sơ mi nam công sở này sẽ không làm chàng thất vọng ngay từ những lần chạm đầu tiên.</p>
-        <p class="mb-3">Sử dụng chất liệu nano được tạo nên từ sợi polyester có khả năng khử mùi và kháng khuẩn khác với nhiều chất liệu thông thường.</p>
-        <p class="mb-3">
-          <img src="https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam-yodyvn.jpg?v=1654935151800" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center">Áo sơ mi nam vải nano</p>
-        </p>
-        <p class="mb-3">
-          Không những vậy, chiếc áo này luôn giữ được form dáng, giữ nếp hiệu quả giúp bạn tự tin mỗi khi ra ngoài cùng chiếc áo phẳng phiu.
-        </p>
-        <p class="mb-3">
-          Phần cổ áo được mở rộng về phía cầu vai, có ly gấp sau lưng chính là điểm nhấn giúp chiếc áo luôn được lòng đấng mày râu nhà YODY. Chắc chắn, đây là kiểu áo mà bất cứ chàng trai nào cũng nên sở hữu trong tủ đồ của mình.
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">1.2 Áo sơ mi nam dài tay cafe melange khử mùi</h2>
-        <p class="mb-3">Đặc biệt hơn hẳn với những chất liệu vải sơ mi nam khác, đây là chiếc áo sử dụng vải cafe để sản xuất.</p>
-        <p class="mb-3">Chỉ cần nghe đến tên, chắc chắn bạn đã hình dung được đây là chất liệu thân thiện với môi trường, an toàn với làn da bởi chúng được sáng chế và tạo ra từ bã cà phê và polyester tái chế.</p>
-        <p class="mb-3">
-          <img src="https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam-yodyvn1.jpg?v=1654935174222" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Sơ mi nam vải cafe kháng khuẩn</p>
-        </p>
-        <p class="mb-3">
-          Khi sở hữu chiếc áo sơ mi nam vải cafe này, bạn sẽ không còn lo lắng về vấn đề xù lông, cũng như việc kiểm soát mùi mỗi khi diện. Hơn thế nữa, sợi vải cũng thông thoáng, nhanh khô giúp bạn cảm nhận được sự dễ chịu, thoải mái khi sử dụng. Chiếc áo này còn có khả năng chống tia UV tự nhiên đặc biệt giúp tránh nắng hiệu quả.
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">1.3 Áo sơ mi nam cao cấp vải bamboo</h2>
-        <p class="mb-3">
-          Áo sơ mi nam đẹp với công nghệ thấm hút cực tốt từ sợi tre tự nhiên có khả năng co giãn, đàn hồi cực tốt. Khi sở hữu chiếc áo vải bamboo này bạn sẽ hoàn toàn cảm thấy tự tin và không còn khó chịu với những mùi hôi bởi chúng có khả năng loại bỏ mùi tối ưu.
-        </p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam-yodyvn2.jpg?v=1654935193400" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Vải bamboo - Chất liệu vải chất lượng may áo sơ mi</p>
-        </p>
-        <p class="mb-3">Chiếc áo sơ mi nam công sở rất đặc biệt bởi những họa tiết nhí được in nổi bật trên áo đem lại vẻ ngoài trẻ trung và lịch sự. Thiết kế cổ đức với form dáng ôm cơ thể nhưng không hề làm mất đi sự thoải mái mỗi khi sử dụng.</p>
-        <p class="mb-3">Dù đi làm, đi chơi hay đi sự kiện chiếc áo này cũng hoàn toàn phù hợp với phái mạnh.</p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">1.4 Vải visco với áo sơ mi nam tay ngắn họa tiết</h2>
-        <p class="mb-3">
-          Nam giới sẽ chẳng còn xa lạ với vải visco trong những mẫu áo sơ mi nam họa tiết. Phá cách thời trang khác với những kiểu áo sơ mi có thiết kế thông thường, chúng sẽ hoàn toàn chinh phục các anh chàng yêu thích phong cách năng động mùa hè.
-        </p>
-        <p class="mb-3">
-          <img src="https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam-yodyvn3.jpg?v=1654935215963" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Sơ mi họa tiết phù hợp với các anh chàng năng động</p>
-        </p>
-        <p class="mb-3">Trọng lượng nhẹ, không tích điện nên trong quá trình sử dụng các chàng trai sẽ hoàn toàn hài lòng về sản phẩm này.</p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">1.5 Áo sơ mi nam lụa nến</h2>
-        <p class="mb-3">Cảm giác mềm mướt khi chạm vào sản phẩm chính là ưu điểm đầu tiên chinh phục khách hàng. Với đặc điểm mỏng, mịn, không nhăn nhàu, không gây kích ứng da - áo sơ mi nam dài tay nano sẽ làm hài lòng tất cả những vị khách khó tính nhất.</p>
-        <p class="mb-3">
-          <img src="https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam-yody.jpg?v=1654935392749" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Sơ mi nam lụa nến đem lại cảm giác tuyệt vời cho người dùng</p>
-        </p>
-        <p class="mb-3">Độ óng tự nhiên của áo là điểm cộng giúp chúng tạo điểm nhấn mỗi khi bước ra ngoài trời.</p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2. Bí kíp phối đồ cùng áo sơ mi nam đẹp thu hút ánh nhìn</h2>
-        <p class="mb-3">Làm sao để thay đổi phong cách ăn mặc hằng ngày với áo sơ mi đẹp? YODY mách bạn bí kíp phối đồ với sơ mi nam tuyệt đẹp.</p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.1 Quần jean - Set đồ không nên bỏ qua</h2>
-        <p class="mb-3">
-          Quần áo không chỉ là trang phục để diện, đây còn là nơi thể hiện cá tính, sự mạnh mẽ của các anh chàng. Để đa dạng outfit của các bạn nam hãy lựa chọn các dáng <a href="" class="text-blue-500">quần jean</a> khác nhau để làm nổi bật set đồ của mình.
-        </p>
-        <p class="mb-3">Áo sơ mi nam tay ngắn hoặc áo sơ mi tay dài cũng đều hài hòa. Một chiếc quần jean basic sẽ là chiếc quần vừa đơn giản nhưng cũng giúp bạn toát lên được vẻ nhã nhặn, lịch thiệp mà chẳng hề lỗi mốt.</p>
-        <p class="mb-3">
-          <img src="https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam-yody.jpg?v=1654935392749" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Outfit không hề lỗi thời</p>
-        </p>
-        <p class="mb-3">Đừng ngần ngại phá cách thời trang cùng chiếc quần rách năng động, mới mẻ. Một đôi giày sneaker chính là “vũ khí” biến set đồ của các chàng thêm phần hoàn thiện hơn.</p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.2 Quần vải ống rộng - Sự kết hợp mang hơi hướng Hàn Quốc</h2>
-        <p class="mb-3">Option được lòng các chàng trai theo đuổi phong cách Hàn Quốc. Thật đơn giản, chàng chỉ cần chọn ngay một chiếc quần vải đơn giản, cùng với áo sơ mi nam màu trắng mix thêm một đôi giày sneaker. Đây chính là trang phục thoải mái, tiện lợi, phù hợp với tất các chàng trai mọi lứa tuổi.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam-2.jpg?v=1672814181875" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Phong cách Hàn Quốc được lòng giới trẻ</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.3 Quần tây - Nổi bật với vẻ ngoài lịch lãm</h2>
-        <p class="mb-3">Chiếc quần luôn được ưu tiên mặc trong các dịp quan trọng như tiếp khách, đối tác. Bạn có thể kết hợp với tất cả các loại áo sơ mi với chiếc quần tây nam này.</p>
-        <p class="mb-3">Nhưng để biến mình trở nên thu hút và lịch lãm nhất có thể thì chiếc áo sơ mi nam trắng chính là lựa chọn ưu tiên. Đi kèm đó là những chiếc quần tây có màu sắc nhã nhặn sẽ khiến outfit của bạn thêm phần hoàn hảo.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi-nam.jpg?v=1672813842803" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Lịch lãm cuốn hút cùng quần tây, áo sơ mi</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.4 Quần short - Cách mix đồ mới mẻ, năng động dành cho chàng</h2>
-        <p class="mb-3">Set đồ gần đây được các anh chàng đam mê thời trang sử dụng rất nhiều. Khi kết hợp với quần short sẽ đem lại cho bạn vẻ bề ngoài năng động, cá tính, cuốn hút. Không những thế dù là kiểu áo sơ mi nào cùng đều phù hợp với chiếc quần “thần thánh” này!</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-…b-b4f6-4c9d-91e2-f3f82da9ca48.jpg?v=1654935693233" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Năng động, trẻ trung</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.4 Quần short - Cách mix đồ mới mẻ, năng động dành cho chàng</h2>
-        <p class="mb-3">Set đồ gần đây được các anh chàng đam mê thời trang sử dụng rất nhiều. Khi kết hợp với quần short sẽ đem lại cho bạn vẻ bề ngoài năng động, cá tính, cuốn hút. Không những thế dù là kiểu áo sơ mi nào cùng đều phù hợp với chiếc quần “thần thánh” này!</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-…b-b4f6-4c9d-91e2-f3f82da9ca48.jpg?v=1654935693233" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Năng động, trẻ trung</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.5 Áo sơ mi nam sọc caro mix với quần sáng màu</h2>
-        <p class="mb-3">Những chiếc áo kẻ chính là item không thể thiếu trong tủ đồ của đấng mày râu. Những chiếc áo kẻ sọc là lựa chọn không tồi khi phối hợp cùng những chiếc quần màu ghi sáng.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Sơ mi kẻ sọc cùng quần jean sáng màu</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.5 Áo sơ mi nam sọc caro mix với quần sáng màu</h2>
-        <p class="mb-3">Những chiếc áo kẻ chính là item không thể thiếu trong tủ đồ của đấng mày râu. Những chiếc áo kẻ sọc là lựa chọn không tồi khi phối hợp cùng những chiếc quần màu ghi sáng.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Sơ mi kẻ sọc cùng quần jean sáng màu</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.6 Áo sơ mi nam sọc caro mix với quần sáng màu</h2>
-        <p class="mb-3">Những chiếc áo kẻ chính là item không thể thiếu trong tủ đồ của đấng mày râu. Những chiếc áo kẻ sọc là lựa chọn không tồi khi phối hợp cùng những chiếc quần màu ghi sáng.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Sơ mi kẻ sọc cùng quần jean sáng màu</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">2.7 Áo sơ mi nam sọc caro mix với quần sáng màu</h2>
-        <p class="mb-3">Những chiếc áo kẻ chính là item không thể thiếu trong tủ đồ của đấng mày râu. Những chiếc áo kẻ sọc là lựa chọn không tồi khi phối hợp cùng những chiếc quần màu ghi sáng.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Sơ mi kẻ sọc cùng quần jean sáng màu</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">3. Gợi ý chọn áo sơ mi nam đẹp phù hợp cho phái mạnh</h2>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">3.1 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">3.2 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">3.3 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">3.4 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">3.5 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">3.1 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">4. Gợi ý chọn áo sơ mi nam đẹp phù hợp cho phái mạnh</h2>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">4.1 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">4.2 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">4.3 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-        <h2 class="text-3xl font-medium tracking-wide mb-3">4.4 Việc đi làm trở nên dễ dàng hơn với kiểu áo sơ mi nam công sở</h2>
-        <p class="mb-3">Áo sơ mi nam tay ngắn, áo sơ mi caro,... chính là những kiểu áo cực kì phù hợp đối với các anh chàng công sở. Chàng sẽ không phải loay hoay mỗi sáng vì không biết mặc gì đi làm vì giờ đây chúng thật đơn giản.</p>
-        <p class="mb-3">
-          <img src="	https://bizweb.dktcdn.net/100/438/408/files/ao-so-mi.png?v=1657350978467" alt="" class="w-full max-w-[750px] object-cover mx-auto mb-2">
-        <p class="italic text-center mb-3">Mẫu áo sơ mi nam công sở đẹp nhất hiện nay</p>
-        </p>
-
-
-        <h2 class="text-3xl font-medium tracking-wide mb-3">5.Chronos - Thương hiệu áo sơ mi nam cao cấp</h2>
-        <p class="mb-3"><a href="" class="text-blue-500 font-medium uppercase">Chronos</a> hân hạnh là thương hiệu thời trang với những mẫu sơ mi nam chất lượng, mẫu mã đa dạng dành tặng các quý ông.</p>
-        <p class="mb-3">Sự thành công của thương hiệu chính là sự chú trọng trong khâu thiết kế, chất liệu sản phẩm chính là điểm cộng lớn giúp YODY vẫn luôn là thương hiệu Việt hàng đầu được khách hàng đánh giá cao.</p>
+        </th:block>
       </div>
     </div>
     <!-- End Products -->
@@ -436,7 +370,7 @@
   <h4 class="mb-3 text-center font-medium">Sản phẩm đã xem</h4>
   <div class="grid grid-cols-5 gap-20">
     <div class="flex flex-col gap-5">
-      <div class="">
+      <div>
         <img src="https://bizweb.dktcdn.net/100/438/408/products/qjn3076-dni-1.jpg?v=1673334276577" alt="" class="h-[400px]" />
       </div>
       <div class="flex flex-col gap-3 text-center text-sm">
@@ -445,7 +379,7 @@
       </div>
     </div>
     <div class="flex flex-col gap-5">
-      <div class="">
+      <div>
         <img src="https://bizweb.dktcdn.net/100/438/408/products/qjn3076-dni-1.jpg?v=1673334276577" alt="" class="h-[400px]" />
       </div>
       <div class="flex flex-col gap-3 text-center text-sm">
@@ -454,7 +388,7 @@
       </div>
     </div>
     <div class="flex flex-col gap-5">
-      <div class="">
+      <div>
         <img src="https://bizweb.dktcdn.net/100/438/408/products/qjn3076-dni-1.jpg?v=1673334276577" alt="" class="h-[400px]" />
       </div>
       <div class="flex flex-col gap-3 text-center text-sm">
@@ -463,7 +397,7 @@
       </div>
     </div>
     <div class="flex flex-col gap-5">
-      <div class="">
+      <div>
         <img src="https://bizweb.dktcdn.net/100/438/408/products/qjn3076-dni-1.jpg?v=1673334276577" alt="" class="h-[400px]" />
       </div>
       <div class="flex flex-col gap-3 text-center text-sm">
@@ -472,7 +406,7 @@
       </div>
     </div>
     <div class="flex flex-col gap-5">
-      <div class="">
+      <div>
         <img src="https://bizweb.dktcdn.net/100/438/408/products/qjn3076-dni-1.jpg?v=1673334276577" alt="" class="h-[400px]" />
       </div>
       <div class="flex flex-col gap-3 text-center text-sm">

@@ -151,8 +151,8 @@
                             </h3>
                             <ul class="hidden flex-col gap-1 group-hover/subitem:flex md:flex"
                                 th:if="${femaleCategory.subcategory != null && !femaleCategory.subcategory.isEmpty()}">
-                                <li class="text-md text-gray-400" th:each="subItem : ${femaleCategory.subcategory}">
-                                    <a th:href="@{${subItem.categoryUrl}}">[(${subItem.categoryName})]</a></li>
+                                <li class="text-md hover:text-primary text-black" th:each="subItem : ${femaleCategory.subcategory}">
+                                    <a th:href="@{${'/category'+subItem.categoryUrl}}">[(${subItem.categoryName})]</a></li>
                             </ul>
                         </div>
                     </div>
@@ -189,8 +189,8 @@
                             </h3>
                             <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex"
                                 th:if="${maleCategory.subcategory != null && !maleCategory.subcategory.isEmpty()}">
-                                <li class="text-md text-gray-400" th:each="subItem : ${maleCategory.subcategory}">
-                                    <a th:href="@{${subItem.categoryUrl}}">[(${subItem.categoryName})]</a></li>
+                                <li class="text-md hover:text-primary text-black" th:each="subItem : ${maleCategory.subcategory}">
+                                    <a th:href="@{'/category'${subItem.categoryUrl}}">[(${subItem.categoryName})]</a></li>
                             </ul>
                         </div>
                     </div>
@@ -226,8 +226,8 @@
                             </h3>
                             <ul class="hidden flex-col gap-1 group-hover/subitem:flex sm:flex"
                                 th:if="${kidCategory.subcategory != null && !kidCategory.subcategory.isEmpty()}">
-                                <li class="text-md text-gray-400" th:each="subItem : ${kidCategory.subcategory}">
-                                    <a th:href="@{${subItem.categoryUrl}}">[(${subItem.categoryName})]</a></li>
+                                <li class="text-md hover:text-primary text-black" th:each="subItem : ${kidCategory.subcategory}">
+                                    <a th:href="@{'/category'+${subItem.categoryUrl}}">[(${subItem.categoryName})]</a></li>
                             </ul>
                         </div>
                     </div>

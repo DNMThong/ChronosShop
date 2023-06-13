@@ -24,4 +24,6 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     @Query("select c from Category c where upper(c.categoryName) like upper(?1)")
     Optional<Category> findByNameLikeIgnoreCase(@Nullable String name);
 
+    Optional<Category> findByCategoryUrlAndSubcategoryIsNull(String slug);
+
 }

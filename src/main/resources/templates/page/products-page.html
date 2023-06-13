@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{component/html-head :: headTitle('Áo sơ mi', ~{})}"></head>
 
 <body>
 
 <header th:replace="~{component/header :: header(${femaleCategories}, ${maleCategories}, ${kidCategories})}"></header>
 
-<div th:replace="~{component/products-content :: content}"></div>
-<div th:replace="~{component/products-content :: watchedContent}"></div>
 
+
+<div th:replace="~{component/products-content :: content(${products},${optionFilter},${slug})}"></div>
 
 
 <footer th:replace="~{component/footer :: footer}"></footer>
 
-
 <script th:src="@{/assets/users/js/header.js}"></script>
-
+<script>
+    const formFilter = document.querySelector("#formFilter")
+    formFilter.querySelectorAll("input[type='checkbox']").forEach(item => {
+        item.onchange = (e) => formFilter.submit()
+    })
+</script>
 </body>
 </html>

@@ -51,4 +51,7 @@ public class ProductVariant {
 
     @OneToMany(mappedBy = "productVariant")
     List<Cart> carts;
+
+    @OneToMany(mappedBy = "productVariant")
+    List<OrderDetail> orderDetailList;
 }
