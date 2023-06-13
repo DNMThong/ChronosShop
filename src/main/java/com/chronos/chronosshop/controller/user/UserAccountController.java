@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("account")
+@RequestMapping("/account")
 public class UserAccountController {
     @Autowired
     Auth auth;
@@ -28,7 +28,7 @@ public class UserAccountController {
     @Autowired
     UserService userService;
 
-    @GetMapping({"/account", "/account/account"})
+    @GetMapping({"/account", ""})
     public String account() {
         return "page/account-page";
     }

@@ -43,9 +43,23 @@ public class Payment {
     @Column(name = "payment_date")
     private LocalDateTime paymentDate;
 
+    public Payment(String paymentId, String paymentMethodName, Users user, Long subtotal, Long subtotalFee, Long total, String currency, String status, LocalDateTime paymentDate, Boolean deleted) {
+        this.paymentId = paymentId;
+        this.paymentMethodName = paymentMethodName;
+        this.user = user;
+        this.subtotal = subtotal;
+        this.subtotalFee = subtotalFee;
+        this.total = total;
+        this.currency = currency;
+        this.status = status;
+        this.paymentDate = paymentDate;
+        this.deleted = deleted;
+    }
+
     @OneToOne(mappedBy = "payment")
     private Orders orders;
 
     @Column(name = "deleted")
     private Boolean deleted;
+
 }
