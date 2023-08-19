@@ -3,9 +3,8 @@ package com.chronos.chronosshop.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.Objects;
+
 
 @Data
 @NoArgsConstructor
@@ -14,7 +13,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-public class Admin {
+public class Admin  {
     @Id
     @Column(name = "admin_id")
     private String adminId;
@@ -45,4 +44,7 @@ public class Admin {
 
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
+
+    @Column(name = "deleted")
+    private Boolean deleted;
 }

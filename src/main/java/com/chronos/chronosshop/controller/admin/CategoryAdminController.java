@@ -1,5 +1,6 @@
 package com.chronos.chronosshop.controller.admin;
 
+import com.chronos.chronosshop.entity.Admin;
 import com.chronos.chronosshop.entity.Category;
 import com.chronos.chronosshop.repository.CategoryRepository;
 import com.chronos.chronosshop.service.CategoryService;
@@ -18,7 +19,8 @@ public class CategoryAdminController {
     private CategoryService categoryService;
 
     @GetMapping("")
-    public String categoryAll(Model model) {
+    public String categoryAll(Admin admin, Model model) {
+        System.out.println(admin.getImage());
         model.addAttribute("listCategory", categoryRepository.listCategoryParent());
         return "page/admin/category/categoryList";
     }

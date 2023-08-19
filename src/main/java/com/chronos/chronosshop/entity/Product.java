@@ -1,5 +1,6 @@
 package com.chronos.chronosshop.entity;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -21,7 +22,9 @@ public class Product {
     @Column(name = "product_id")
     private int productId;
 
+
     @Column(name = "product_name")
+    @NotBlank(message="{NotBlank.product.name}")
     private String productName;
 
     @Column(name = "price_old")

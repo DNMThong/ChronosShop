@@ -27,14 +27,15 @@
             </div>
 
             <div class="card">
-
+                <div class="toastify" data-duration="5000ms" th:if="${show}" th:attr="data-type=${type},data-show=${show},data-text=${message}"></div>
                 <form class="card-body" th:action="@{/admin/product/add}" method="post" id="formProduct" th:object="${product}" >
                     <div class="row">
                         <input type="hidden" th:field="*{productId}">
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Tên sản phẩm</label>
-                                <input id="validationDefault01" type="text" th:field="*{productName}" required min="1">
+                                <input id="validationDefault01" type="text" th:field="*{productName}" >
+                                <p  class="text-danger text-start mt-2 mb-0" th:if="${#fields.hasErrors('productName')}"  th:errors="*{productName}" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
@@ -57,7 +58,7 @@
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Vật liệu</label>
-                                <input  id="validationDefault02"  th:field="*{material}" type="text" required>
+                                <input   th:field="*{material}" type="text">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
